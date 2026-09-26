@@ -13,15 +13,15 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
+&emsp; **Full Name:** Nguyen Duong Thanh Binh
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Phone Number:** 0784964343 
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** thanhbinhnguyenduong.work@gmail.com
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **University:** FPT University
 
-&emsp; **Major:** Information Technology
+&emsp; **Major:** Software Engineering
 
 &emsp; **Class:** AWS082025
 
