@@ -1,125 +1,142 @@
 ---
-title: "Event 2"
-date: 2024-01-01
-weight: 1
+title: "Event 2 - AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City"
+date: 2026-09-29
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
 {{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+⚠️ **Lưu ý:** Thông tin dưới đây được ghi chép làm tài liệu tham khảo cho khóa thực tập. Vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn.
 {{% /notice %}}
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Báo cáo tổng kết: “AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City”
 
-### Mục Đích Của Sự Kiện
+### Mục tiêu sự kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Khám phá tác động của Agentic AI, Generative AI và Hạ tầng đám mây đối với quy trình làm việc của doanh nghiệp và định hướng phát triển tương lai tại Việt Nam.  
+- Hướng dẫn doanh nghiệp rút ngắn khoảng cách giữa công nghệ tiên tiến và giá trị tài chính thực tế.  
+- Giới thiệu các kiến trúc đám mây hiện đại, cơ chế hoạt động Serverless và chiến lược dữ liệu để triển khai AI an toàn, quy mô lớn.  
+- Thúc đẩy kết nối cộng đồng và chia sẻ tri thức giữa sân khấu chính Hà Nội và hệ sinh thái công nghệ TP. Hồ Chí Minh.  
 
-### Danh Sách Diễn Giả
+### Diễn giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Dr. Werner Vogels** – Phó Chủ tịch & Giám đốc Công nghệ (CTO), Amazon.com  
+- **Eric Yeo** – Tổng Giám đốc, AWS Việt Nam  
+- **Mai Le** – Trưởng nhóm Kỹ thuật Cấp cao, AWS  
+- **Dr. Jens Lottner** – Tổng Giám đốc (CEO), Techcombank  
+- **Hoàng Minh** – Thứ trưởng, Bộ Khoa học và Công nghệ Việt Nam  
+- **Jennifer Wicks McNamara** – Đại sứ, Đại sứ quán Hoa Kỳ tại Việt Nam  
+- **Nguyễn Hữu Toàn** – Kiến trúc sư Giải pháp (Solution Architect), SoftwareOne Việt Nam  
+- **Trần Thiệu Quang** – Giám đốc Vận hành (COO), Renova Cloud  
+- **Chuyên gia Kỹ thuật** – Đại diện từ Cloud Kinetics Việt Nam  
+- **Kiến trúc sư Giải pháp** – Trưởng nhóm Giải pháp Doanh nghiệp, Katalon  
 
-### Nội Dung Nổi Bật
+### Các điểm nhấn chính
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### 1. Thực trạng ứng dụng AI tại Việt Nam
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- **Mức độ quan tâm cao vs. Hiệu quả kinh tế thấp**: Mặc dù 26% doanh nghiệp Việt Nam đã bắt đầu triển khai AI, rào cản lớn nhất vẫn là chuyển đổi việc triển khai kỹ thuật thành lợi nhuận tài chính rõ ràng. Thảo luận tập trung vào vai trò của AI đối với sự phát triển quốc gia trong thời gian tới.
+- **Thách thức về độ sẵn sàng của dữ liệu**: Các kho dữ liệu phân tán (data silos) và pipeline dữ liệu thiếu tổ chức làm chậm quá trình tích hợp các mô hình nền tảng.  
+- **Thách thức về nhân lực**: Nhu cầu tăng cao đối với kỹ sư Cloud và AI có cả kinh nghiệm vận hành lẫn năng lực thiết kế kiến trúc.  
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### 2. Chuyển dịch sang Agentic AI và Generative AI nâng cao
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+Chuyển từ các chatbot tĩnh sang các **AI Agent** linh hoạt có khả năng hoạt động độc lập để thực thi các quy trình công việc đa bước phức tạp:
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+- **Tính tự chủ**: Tự động thực thi tác vụ dựa trên các mô hình ngôn ngữ lớn (LLM) nâng cao.  
+- **Tích hợp hệ thống**: Điều phối API sâu, kết nối trực tiếp các tầng AI với cơ sở dữ liệu doanh nghiệp.  
+- **Nhận thức ngữ cảnh**: Duy trì bộ nhớ vận hành dài hạn để giảm thiểu tình trạng ảo giác logic.  
 
-#### Domain-Driven Design (DDD)
+#### 3. Nền tảng Đám mây & Dữ liệu cho Doanh nghiệp
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+- **Bảo mật Serverless & Cơ chế bên trong AWS (Phiên chia sẻ từ CTO AWS)**: Dr. Werner Vogels chia sẻ chuyên sâu về kiến trúc bên trong của các dịch vụ AWS, minh họa cách AWS giải quyết các điểm nghẽn hạ tầng trong khi vẫn đảm bảo an toàn tối đa khi triển khai serverless.
+- **Data Clean Rooms**: Thiết lập khung làm việc an toàn cho phép phân tích dữ liệu đa bên mà không lộ thông tin bảo mật.  
+- **Evolusjon lưu trữ**: Chuyển đổi các cơ sở dữ liệu local sang các kho lưu trữ Vector serverless, được quản lý hoàn toàn và tối ưu cho truy xuất tốc độ cao.  
+- **Hạ tầng có khả năng mở rộng**: Tinh chỉnh các instance máy chủ và mô hình kiến trúc tham chiếu để cân bằng giữa chi phí huấn luyện và hiệu quả triển khai.  
 
-#### Event-Driven Architecture
+#### 4. Hiện đại hóa Đám mây và Tác động Tài chính (Case Study Khối Tài chính - Ngân hàng)
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+- **Hành trình của Techcombank**: Bài học thực tế minh họa cách Techcombank dịch chuyển các kiến trúc cốt lõi lên AWS để mở rộng các dịch vụ ngân hàng linh hoạt dựa trên AI.  
+- **Bảo mật & Tuân thủ**: Đáp ứng các quy định nghiêm ngặt của ngành tài chính nội địa trong khi vẫn giữ được tính co giãn của hạ tầng.  
+- **Sự linh hoạt trong kinh doanh**: Rút ngắn thời gian triển khai hạ tầng từ vài tuần xuống còn vài phút, cho phép thử nghiệm sản phẩm nhanh chóng.  
 
-#### Compute Evolution
+#### 5. Mô hình Chia sẻ Tách nhiệm trong Kỷ nguyên AI
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+- **AWS Quản lý**: Bảo mật *CỦA* đám mây (Security *of* the cloud), bao gồm các trung tâm dữ liệu vật lý, hạ tầng cốt lõi và các mô hình nền tảng gốc.  
+- **Khách hàng Quản lý**: Bảo mật *TRÊN* đám mây (Security *in* the cloud), bao gồm dữ liệu nội bộ doanh nghiệp, quản trị truy cập và các rào chắn prompt an toàn.  
 
-#### Amazon Q Developer
+#### 6. Quản trị Tri thức Thực tiễn (Từ Tri thức đến Hành động)
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+- **Hợp nhất Dữ liệu**: Kết nối các nguồn tri thức phân tán và rời rạc thành một kho lưu trữ tập trung cho doanh nghiệp.  
+- **Xác thực Nguồn & Tránh Ảo giác (Delusion)**: Thực thi cấu trúc prompt nghiêm ngặt và khung RAG để đảm bảo mô hình đưa ra câu trả lời chính xác, có trích dẫn nguồn mà không bị ảo giác logic.
+- **Bảo mật Dữ liệu khi Nạp (Ingestion)**: Thiết lập các quy tắc quản lý truy cập và định danh (IAM) chặt chẽ trước khi dữ liệu tùy chỉnh được nạp vào tầng mô hình nền tảng.  
 
-### Những Gì Học Được
+#### 7. Tính Thực tế trong Kiến trúc (Tránh Dùng Quá Tay / Over-Engineering)
 
-#### Tư Duy Thiết Kế
+- **Triết lý Phở ("Đừng dùng Ferrari chỉ để đi ăn Phở")**: Lựa chọn tài nguyên máy chủ và mô hình database đúng dung lượng, tiết kiệm chi phí thay vì cấp phát quá thừa mứa cho các quy trình đơn giản.  
+- **Đồng bộ Vận hành**: Khớp các workload IT cụ thể với các chỉ số chi phí thực tế để đánh giá hiệu năng so với chi phí đám mây.  
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+#### 8. Đi sâu vào Kỹ thuật: Phân nhánh Builders x AI
 
-#### Kiến Trúc Kỹ Thuật
+- **Kích hoạt 8-Bit Agents & Giải pháp từ Solution Architect**: Cung cấp sổ tay hướng dẫn triển khai thực tế và các sơ đồ kiến trúc từ các Solution Architect của AWS giúp giải quyết bài toán thực tế.
+- **Chất lượng Phần mềm Doanh nghiệp (Case Study Katalon)**: Minh họa cách đưa AI vào quy trình kiểm thử phần mềm và chẩn đoán lỗi giúp nâng cao chất lượng sản phẩm và rút ngắn thời gian phát triển ứng dụng.
+- **Kiểm thử & Chẩn đoán Tự động**: Giải quyết các thách thức khó khăn nhất trong việc debug Agentic AI thông qua giám sát pipeline đám mây chuẩn hóa.  
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+### Bài học cốt lõi
 
-#### Chiến Lược Hiện Đại Hóa
+#### Tư duy Thiết kế
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- **AI Hướng đến Giá trị**: Các sáng kiến công nghệ phải luôn giải quyết các điểm nghẽn thực tế của doanh nghiệp (như chất lượng sản phẩm và tốc độ ra mắt), thay vì chỉ chạy theo phong trào.  
+- **Nền tảng Dữ liệu là Trên hết**: Triển khai GenAI thành công đòi hỏi tầng dữ liệu doanh nghiệp phải sạch, có cấu trúc tốt và dễ truy cập.  
+- **Hệ sinh thái An toàn & Tin cậy**: Thiết lập các chính sách quản trị vững chắc ngay từ đầu để quản lý sự tuân thủ, bảo mật dữ liệu và độ tin cậy của hệ thống.  
 
-### Ứng Dụng Vào Công Việc
+#### Kiến trúc Kỹ thuật
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- Sử dụng **Vector Database** kết hợp với Retrieval-Augmented Generation (RAG) để đảm bảo ứng dụng AI truy xuất dữ liệu nội bộ theo thời gian thực mà không bị ảo giác.  
+- Triển khai **Kiến trúc Serverless** một cách an toàn để tối ưu hóa chi phí vận hành bằng cách tự động giảm tải trong giờ thấp điểm.  
+- Thiết lập **API Gateway** tập trung để dễ dàng quản lý kết nối giữa các microservices riêng biệt và các mô hình AI bên thứ ba.  
 
-### Trải nghiệm trong event
+#### Chiến lược Hiện đại hóa
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+- **Lộ trình Theo Giai đoạn**: Tránh các cuộc dịch chuyển lớn đầy rủi ro; thay vào đó, ưu tiên các dự án AI thử nghiệm nhỏ (quick-win) mang lại tác động kinh doanh ngay lập tức.  
+- **Đối tác Chiến lược**: Tận dụng các nhà cung cấp dịch vụ quản trị (MSP) uy tín tại địa phương để đẩy nhanh tiến độ triển khai và quản trị rủi ro.  
+- **Theo dõi ROI**: Định nghĩa các chỉ số đo lường hiệu quả (KPI) nghiêm ngặt để đánh giá mức độ tiết kiệm chi phí, tối ưu quy trình và tính linh hoạt tổng thể.  
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+### Áp dụng vào Công việc
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+- **Đánh giá các Giải pháp RAG**: Nghiên cứu cách tích hợp kho tri thức hiện tại của doanh nghiệp vào các pipeline RAG an toàn trên AWS để loại bỏ ảo giác đầu ra.  
+- **Kiểm tra Hạ tầng Dữ liệu**: Rà soát lại các pipeline dữ liệu nội bộ để đánh giá độ sẵn sàng cho việc phân tích Generative AI trên đám mây.  
+- **Tối ưu Chi phí Vận hành**: Thực hiện kiểm tra các workload đám mây hiện tại để chuyển đổi các quy trình phù hợp sang kiến trúc serverless.  
+- **Nâng cao Năng lực Đội ngũ**: Tham gia các buổi workshop AWS thực hành tiếp theo để liên tục tích lũy kinh nghiệm thực tế về kiến trúc AI và Cloud.  
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+### Trải nghiệm Sự kiện
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+Tham dự **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** đã mang lại một góc nhìn kỹ thuật toàn diện về cách các nhà lãnh đạo công nghệ trong khu vực đang giải quyết bài toán dịch chuyển đám mây và tích hợp Generative AI thực tế. Các trải nghiệm nổi bật bao gồm:
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+#### Học hỏi từ các diễn giả chuyên môn cao
+- Tiếp thu các góc nhìn kiến trúc giá trị trực tiếp từ các lãnh đạo toàn cầu như Dr. Werner Vogels (CTO AWS) về bảo mật serverless và Dr. Jens Lottner.  
+- Lắng nghe các câu chuyện triển khai thực tế giúp làm nổi bật cả chiến lược thành công lẫn các bẫy vận hành thường gặp.  
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+#### Tiếp cận Kỹ thuật Thực tế
+- Khám phá các khung làm việc thực tiễn để tổ chức dữ liệu doanh nghiệp thành các khối lưu trữ an toàn, sẵn sàng cho AI.  
+- Phân tích các case study kỹ thuật chi tiết về cách các định chế tài chính lớn đáp ứng các tiêu chuẩn bảo mật khi chuyển dịch workload lên public cloud.  
+
+#### Tận dụng các Công cụ Hiện đại
+- Tiếp cận các công cụ AWS mới nhất được thiết kế để tự động hóa quản trị đám mây, giám sát quyền riêng tư dữ liệu và tinh chỉnh mô hình tùy chỉnh.  
+- Khám phá các phương pháp mới để tận dụng pipeline serverless và các blueprint từ Solution Architect giúp giữ môi trường phát triển gọn nhẹ và tiết kiệm chi phí.  
+
+#### Kết nối và Thảo luận
+- Giao lưu với các kiến trúc sư, lập trình viên địa phương và các đối tác trong hệ sinh thái tại điểm cầu TP. Hồ Chí Minh.  
+- Thảo luận về thách thức tìm kiếm nhân lực đám mây nội địa và chia sẻ các thực thi tốt nhất về tái cấu trúc hệ thống.  
+
+#### Bài học Rút ra
+- Các ứng dụng AI hiệu năng cao đòi hỏi nền tảng dữ liệu vững chắc; nếu không có kiến trúc dữ liệu sạch, các mô hình tiên tiến sẽ mất đi giá trị.  
+- Bảo mật và tuân thủ phải được tích hợp trực tiếp vào giai đoạn thiết kế kiến trúc ban đầu thay vì bổ sung ở bước cuối cùng.  
+- Tối ưu hóa việc sử dụng AI yêu cầu kiểm soát prompt nghiêm ngặt và pipeline RAG để đảm bảo kết quả tin cậy, không bị ảo giác.
+- Hợp tác với các chuyên gia công nghệ địa phương giúp rút ngắn đáng kể thời gian triển khai và giảm thiểu rủi ro dịch chuyển dự án.  
+
+#### Một số hình ảnh sự kiện
+![Bằng chứng tham dự AWS Cloud Day and AI Day Hanoi - Watch Party](/images/cloud-day-and-ai.jpg)
+
+> Nhìn chung, buổi watch party đã mang lại sự cân bằng tuyệt vời giữa chiến lược tầm cao và các lời khuyên kỹ thuật thực tế, thay đổi cách tôi tư duy về việc xây dựng các hệ thống AI doanh nghiệp tiết kiệm chi phí, linh hoạt và bảo mật.
