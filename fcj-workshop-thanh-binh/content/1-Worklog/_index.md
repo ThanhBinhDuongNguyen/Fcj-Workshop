@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference and training tracking purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 ### Overview
 
 This section documents my daily tasks, learning progress, and technical achievements throughout the **First Cloud AI Journey (FCAJ)** internship and **FCJ Buildrathon** program. Over the 12-week internship period, I record hands-on lab execution, architectural design exploration, and project development progress on AWS Cloud.
@@ -21,7 +17,7 @@ This section documents my daily tasks, learning progress, and technical achievem
 * **Week 1:** [AWS Fundamentals, Account Setup & Core Services (EC2, S3, IAM, CLI)](1.1-week1/)
 * **Week 2:** [Advanced Networking, Windows Workloads, Architecture Analysis & Buildrathon Kick-off](1.2-week2/)
 * **Week 3:** [AWS Disaster Recovery & Migration Tools (EDR & VM Import/Export)](1.3-week3/)
-* **Week 4:** *[Upcoming Worklog]*
+* **Week 4:** *[Upcoming Worklog](1.4-week4/)*
 * **Week 5:** *[Upcoming Worklog]*
 * **Week 6:** *[Upcoming Worklog]*
 * **Week 7:** *[Upcoming Worklog]*
