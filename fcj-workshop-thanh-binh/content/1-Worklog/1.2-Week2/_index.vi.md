@@ -5,9 +5,6 @@ weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Lưu ý:** Thông tin dưới đây được ghi chép làm tài liệu tham khảo cho khóa thực tập. Vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn.
-{{% /notice %}}
 
 ### Mục tiêu Tuần 2:
 

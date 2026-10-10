@@ -5,9 +5,6 @@ weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Lưu ý:** Thông tin dưới đây chỉ mang tính chất tham khảo. Vui lòng **không sao chép nguyên văn** cho báo cáo của bạn, kể cả lưu ý này.
-{{% /notice %}}
 
 
 ### Mục tiêu Tuần 3:
