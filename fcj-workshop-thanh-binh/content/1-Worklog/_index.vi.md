@@ -19,7 +19,7 @@ Mục này ghi chép lại toàn bộ tiến độ công việc hàng ngày, ki�
 * **Tuần 2:** [Nâng cao Năng lực Mạng, Workload Windows, Phân tích Kiến trúc & Buildrathon Kick-off](1.2-week2/)
 * **Tuần 3:** [Phục hồi sau thảm họa & Dịch chuyển Hạ tầng (AWS EDR & VM Import/Export)](1.3-week3/)
 * **Tuần 4:** *[Đang cập nhật](1.4-week4/)*
-* **Tuần 5:** *[Đang cập nhật]*
+* **Tuần 5:** *[Đang cập nhật](1.5-week5/)*
 * **Tuần 6:** *[Đang cập nhật]*
 * **Tuần 7:** *[Đang cập nhật]*
 * **Tuần 8:** *[Đang cập nhật]*

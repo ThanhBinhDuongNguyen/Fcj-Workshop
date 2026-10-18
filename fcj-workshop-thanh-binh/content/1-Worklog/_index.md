@@ -18,7 +18,7 @@ This section documents my daily tasks, learning progress, and technical achievem
 * **Week 2:** [Advanced Networking, Windows Workloads, Architecture Analysis & Buildrathon Kick-off](1.2-week2/)
 * **Week 3:** [AWS Disaster Recovery & Migration Tools (EDR & VM Import/Export)](1.3-week3/)
 * **Week 4:** *[Upcoming Worklog](1.4-week4/)*
-* **Week 5:** *[Upcoming Worklog]*
+* **Week 5:** *[Upcoming Worklog](1.5-week5/)*
 * **Week 6:** *[Upcoming Worklog]*
 * **Week 7:** *[Upcoming Worklog]*
 * **Week 8:** *[Upcoming Worklog]*
