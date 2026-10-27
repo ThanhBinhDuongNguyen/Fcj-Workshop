@@ -1,58 +1,35 @@
 ---
 title: "Worklog Tuần 6"
-date: 2024-01-01
+date: 2026-10-19
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 6:
-
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
-
+ 
+* Tìm hiểu cách tìm kiếm spec và chuyển đổi thành requirement, sau đó sang ERD và cuối cùng là thiết kế API.
+* Xây dựng nền tảng backend .NET cần thiết cho dự án NexusOMS (ASP.NET Core, EF Core, thực hành C# chuyên nghiệp).
+* Học thiết kế cơ sở dữ liệu và thiết kế API để chuẩn bị cho giai đoạn thiết kế của NexusOMS.
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
+ 
+| Thứ | Công việc                                                                                                                                                                                | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                                                                                                                                                                                                                   |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1-6 | - Tìm hiểu các cách tìm kiếm spec và chuyển đổi thành requirement, ERD và thiết kế API — quy trình sẽ áp dụng cho NexusOMS                                                               | 19/10/2026   | 24/10/2026      | Kế hoạch 18 tuần NexusOMS                                                                                                                                                                                                                        |
+| 1-6 | - Xem lại nền tảng backend .NET (Coursera): <br>&emsp; + ASP.NET Core MVC cơ bản và CRUD <br>&emsp; + Giới thiệu ASP.NET Core Web API <br>&emsp; + Thực hành phát triển C# chuyên nghiệp | 19/10/2026   | 24/10/2026      | <https://www.coursera.org/learn/packt-asp-net-core-mvc-fundamentals-crud-asd1a> <br> <https://www.coursera.org/learn/packt-introduction-to-aspnet-core-web-api-diqqk> <br> <https://www.coursera.org/learn/professional-c-development-practices> |
+| 1-6 | - Xem lại tầng dữ liệu (Coursera): <br>&emsp; + Entity Framework Core: tổng quan toàn diện (.NET 5 trở lên) <br>&emsp; + Thiết kế và mô hình hóa cơ sở dữ liệu với PostgreSQL và MySQL   | 19/10/2026   | 24/10/2026      | <https://www.coursera.org/learn/packt-entity-framework-core-a-full-tour-net-5-and-up-hqzlv> <br> <https://www.coursera.org/organizations/fptuniversity/learn/packt-database-design-and-modeling-with-postgresql-and-mysql>                       |
+| 1-6 | - Xem lại thiết kế API (Coursera): <br>&emsp; + Thiết kế API với Apigee (Google Cloud)                                                                                                   | 19/10/2026   | 24/10/2026      | <https://www.coursera.org/organizations/fptuniversity/learn/api-design-apigee-gcp>                                                                                                                                                               |
+ 
+ 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+ 
+* Nắm được quy trình thiết kế từ đầu đến cuối cho NexusOMS: spec → requirement → ERD → API.
+* Xem lại nền tảng backend .NET cần thiết để bắt đầu triển khai:
+  * ASP.NET Core MVC cơ bản và CRUD
+  * ASP.NET Core Web API cơ bản
+  * Thực hành phát triển C# chuyên nghiệp
+* Xem lại tầng dữ liệu của dự án:
+  * Entity Framework Core (tổng quan toàn diện, .NET 5 trở lên)
+  * Thiết kế và mô hình hóa cơ sở dữ liệu với PostgreSQL và MySQL
+* Tìm hiểu các nguyên tắc thiết kế API qua khóa học Apigee (Google Cloud) để chuẩn bị thiết kế API cho NexusOMS.
+* Chuẩn bị nền tảng cho bước tiếp theo: viết requirement và ERD cho NexusOMS, sau đó suy ra danh sách API từ ERD.
+ 

@@ -17,9 +17,9 @@ This section documents my daily tasks, learning progress, and technical achievem
 * **Week 1:** [AWS Fundamentals, Account Setup & Core Services (EC2, S3, IAM, CLI)](1.1-week1/)
 * **Week 2:** [Advanced Networking, Windows Workloads, Architecture Analysis & Buildrathon Kick-off](1.2-week2/)
 * **Week 3:** [AWS Disaster Recovery & Migration Tools (EDR & VM Import/Export)](1.3-week3/)
-* **Week 4:** *[Upcoming Worklog](1.4-week4/)*
-* **Week 5:** *[Upcoming Worklog](1.5-week5/)*
-* **Week 6:** *[Upcoming Worklog]*
+* **Week 4:** [Cost Optimization, Containers & CI/CD, Microservices Architecture & Serverless Bookstore](1.4-week4/)
+* **Week 5:** [Serverless Document Management System, Completing the Lab Roadmap & NexusOMS Project Planning](1.5-week5/)
+* **Week 6:** [.NET Backend Foundations, Database & API Design for NexusOMS](1.6-week6/)
 * **Week 7:** *[Upcoming Worklog]*
 * **Week 8:** *[Upcoming Worklog]*
 * **Week 9:** *[Upcoming Worklog]*
