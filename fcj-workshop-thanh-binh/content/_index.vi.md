@@ -7,7 +7,7 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Nguyễn Dương
+&emsp; **Họ và tên:** Nguyễn Dương Thanh Binh
 
 &emsp; **Số điện thoại:** 0784964343
 

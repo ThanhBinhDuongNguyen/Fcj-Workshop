@@ -36,7 +36,7 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 
 
 ### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+&emsp;**Tên sự kiện:** AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City
 
 &emsp;**Thời gian:** 08:00 ngày 29/09/2026
 
