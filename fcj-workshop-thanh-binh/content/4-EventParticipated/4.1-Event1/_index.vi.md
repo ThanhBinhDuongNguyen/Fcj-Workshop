@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Thông tin dưới đây được ghi chép làm minh chứng tham dự sự kiện thuộc khóa thực tập. Vui lòng không sao chép nguyên văn.
-{{% /notice %}}
-
 # Báo cáo Tổng kết: "Buildathon Kickoff: Code the Future with CMC Global"
 
 ### Mục tiêu Sự kiện

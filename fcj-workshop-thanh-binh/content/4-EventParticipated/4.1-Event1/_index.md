@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference and proof of attendance purposes for the internship program. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
-
 # Summary Report: "Buildathon Kickoff: Code the Future with CMC Global"
 
 ### Event Objectives

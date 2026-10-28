@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Thông tin dưới đây được ghi chép làm tài liệu tham khảo cho khóa thực tập. Vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn.
-{{% /notice %}}
-
 # Báo cáo tổng kết: “AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City”
 
 ### Mục tiêu sự kiện
