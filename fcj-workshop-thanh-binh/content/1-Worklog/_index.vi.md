@@ -21,7 +21,7 @@ Mục này ghi chép lại toàn bộ tiến độ công việc hàng ngày, ki�
 * **Tuần 4:** [Tối ưu Chi phí, Container & CI/CD, Kiến trúc Microservices & Website bán sách Serverless](1.4-week4/)
 * **Tuần 5:** [Hệ thống Quản lý Tài liệu Serverless, Hoàn thành Lộ trình Lab & Lên Kế hoạch dự án NexusOMS](1.5-week5/)
 * **Tuần 6:** [Nền tảng Backend .NET, Thiết kế Cơ sở dữ liệu & API cho NexusOMS](1.6-week6/)
-* **Tuần 7:** *[Đang cập nhật]*
+* **Tuần 7:** [Kế hoạch NexusOMS v4.0, Schema Database chuẩn & Frontend MVP cùng Prototype Supabase](1.7-week7/)
 * **Tuần 8:** *[Đang cập nhật]*
 * **Tuần 9:** *[Đang cập nhật]*
 * **Tuần 10:** *[Đang cập nhật]*
