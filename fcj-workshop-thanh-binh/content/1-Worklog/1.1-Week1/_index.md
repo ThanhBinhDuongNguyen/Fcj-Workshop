@@ -8,9 +8,9 @@ pre: " <b> 1.1. </b> "
 
 ### Week 1 Objectives:
 
-* Get acquainted with First Cloud Journey members and understand internship regulations[cite: 1].
-* Learn fundamental AWS concepts, account management, and basic service usage[cite: 1].
-* Get familiar with AWS Management Console, AWS CLI, EC2, and S3[cite: 1].
+* Get acquainted with First Cloud Journey members and understand internship regulations.
+* Learn fundamental AWS concepts, account management, and basic service usage.
+* Get familiar with AWS Management Console, AWS CLI, EC2, and S3.
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                                                                              | Start Date | Completion Date | Reference Material                      |

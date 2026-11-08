@@ -8,7 +8,7 @@ pre: " <b> 2. </b> "
 
 Tại phần này, bạn cần tóm tắt nội dung workshop NexusOMS mà nhóm **dự tính** thực hiện và demo trên AWS.
 
-# NexusOMS — Nền tảng Vận hành Đơn hàng và Tồn kho Đa kênh  
+# NexusOMS - Nền tảng Vận hành Đơn hàng và Tồn kho Đa kênh  
 ## Giải pháp AWS thực tiễn cho vận hành đơn hàng, tồn kho và lợi nhuận  
 
 ### 1. Tóm tắt điều hành  
@@ -24,7 +24,7 @@ Người bán đa kênh thường phải chuyển qua nhiều dashboard để th
 NexusOMS nhận webhook marketplace mô phỏng, kiểm tra chữ ký HMAC, ánh xạ SKU kênh về sản phẩm nội bộ và giữ tồn khả dụng trong PostgreSQL transaction. Đơn sau đó đi qua xác nhận, chuẩn bị, xuất kho/vận chuyển và giao thành công. Idempotency key cùng ràng buộc database ngăn việc webhook lặp tạo ra thao tác nghiệp vụ thứ hai. Giao diện cho phép theo dõi luồng vận hành, tồn kho, ánh xạ kênh và CM1–CM3 theo đơn/kênh.
 
 *Lợi ích và hoàn vốn đầu tư (ROI)*  
-Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm, tồn và đơn, giảm đối soát thủ công giữa các kênh. Luồng reserve, release và commit giúp minh họa flash sale có kiểm soát và có thể truy vết. Kiến trúc có thể triển khai AWS trong thời gian ngắn để chụp báo cáo/thuyết trình, sau đó xóa để tránh chi phí chạy liên tục. **PLACEHOLDER — bổ sung giả định kinh doanh, số giờ tiết kiệm và phép tính ROI của nhóm.**  
+Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm, tồn và đơn, giảm đối soát thủ công giữa các kênh. Luồng reserve, release và commit giúp minh họa flash sale có kiểm soát và có thể truy vết. Kiến trúc có thể triển khai AWS trong thời gian ngắn để chụp báo cáo/thuyết trình, sau đó xóa để tránh chi phí chạy liên tục. **PLACEHOLDER - bổ sung giả định kinh doanh, số giờ tiết kiệm và phép tính ROI của nhóm.**  
 
 ### 3. Kiến trúc giải pháp  
 Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. NAT Gateway cho phép task đi ra Supabase Cloud và endpoint marketplace mô phỏng. Hạ tầng gồm hai public subnet, hai private subnet, WAF và ACM ở lớp public edge.
@@ -52,7 +52,7 @@ Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm,
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  
-Dự án gồm 2 phần — hoàn thiện MVP NexusOMS và chuẩn bị AWS demo — mỗi phần trải qua 4 giai đoạn:  
+Dự án gồm 2 phần - hoàn thiện MVP NexusOMS và chuẩn bị AWS demo - mỗi phần trải qua 4 giai đoạn:  
 1. *Nghiên cứu và vẽ kiến trúc*: Phân tích nghiệp vụ đơn/tồn, rà soát codebase và vẽ kiến trúc AWS mục tiêu.  
 2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính theo region và thời gian demo, sau đó điều chỉnh nếu cần.  
 3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Rà soát security group, IAM, NAT, image delivery và phạm vi cleanup trước khi deploy.  
@@ -71,19 +71,19 @@ Dự án gồm 2 phần — hoàn thiện MVP NexusOMS và chuẩn bị AWS demo
 - *Sau demo*: Xóa tài nguyên AWS tạm; chỉ giữ code, sơ đồ, screenshot và bằng chứng chi phí cho báo cáo.  
 
 ### 6. Ước tính ngân sách  
-**PLACEHOLDER — chèn kết quả AWS Pricing Calculator theo region và thời lượng demo mà nhóm chọn.**  
+**PLACEHOLDER - chèn kết quả AWS Pricing Calculator theo region và thời lượng demo mà nhóm chọn.**  
 
 Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
 
 *Chi phí hạ tầng*  
 - AWS Services:  
-    - **PLACEHOLDER — chi phí CPU/memory cho Amazon ECS Fargate task.**  
-    - **PLACEHOLDER — chi phí Application Load Balancer và load-balancer capacity.**  
-    - **PLACEHOLDER — chi phí theo giờ/xử lý dữ liệu của NAT Gateway trong thời gian demo.**  
-    - **PLACEHOLDER — ước tính S3, CloudFront, ECR, CloudWatch, Secrets Manager và data transfer.**  
-    - **PLACEHOLDER — WAF, VPC endpoint, CloudTrail/log storage và dịch vụ tùy chọn được chọn.**  
+    - **PLACEHOLDER - chi phí CPU/memory cho Amazon ECS Fargate task.**  
+    - **PLACEHOLDER - chi phí Application Load Balancer và load-balancer capacity.**  
+    - **PLACEHOLDER - chi phí theo giờ/xử lý dữ liệu của NAT Gateway trong thời gian demo.**  
+    - **PLACEHOLDER - ước tính S3, CloudFront, ECR, CloudWatch, Secrets Manager và data transfer.**  
+    - **PLACEHOLDER - WAF, VPC endpoint, CloudTrail/log storage và dịch vụ tùy chọn được chọn.**  
 
-*Tổng*: **PLACEHOLDER — điền tổng chi phí trong cửa sổ demo dự kiến.**  
+*Tổng*: **PLACEHOLDER - điền tổng chi phí trong cửa sổ demo dự kiến.**  
 - *Phần cứng*: Không cần mua thêm; dự án dùng máy phát triển hiện có và Supabase Cloud project.  
 
 ### 7. Đánh giá rủi ro  

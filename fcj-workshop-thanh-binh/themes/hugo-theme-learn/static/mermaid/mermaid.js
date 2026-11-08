@@ -975,7 +975,6 @@
                     e = i.length,
                     n = (n = ue(t[a + 1])) ? n.split("-") : null;
                   e > 0;
-
                 ) {
                   if ((r = ce(i.slice(0, e).join("-")))) return r;
                   if (n && n.length >= e && w(i, n, !0) >= e - 1) break;
@@ -3125,7 +3124,6 @@
                 for (
                   null == r && (r = 0), null == i && (i = e.length);
                   r < i;
-
                 ) {
                   var a = (r + i) >>> 1;
                   t(e[a], n) < 0 ? (r = a + 1) : (i = a);
@@ -3136,7 +3134,6 @@
                 for (
                   null == r && (r = 0), null == i && (i = e.length);
                   r < i;
-
                 ) {
                   var a = (r + i) >>> 1;
                   t(e[a], n) > 0 ? (i = a) : (r = a + 1);
@@ -3155,7 +3152,6 @@
           for (
             var n = 0, r = t.length - 1, i = t[0], a = new Array(r < 0 ? 0 : r);
             n < r;
-
           )
             a[n] = e(i, (i = t[++n]));
           return a;
@@ -3246,7 +3242,6 @@
               i = 0 | Math.max(0, Math.ceil((e - t) / n)),
               a = new Array(i);
             ++r < i;
-
           )
             a[r] = t + r * n;
           return a;
@@ -3272,7 +3267,6 @@
                 e = Math.floor(e / o),
                 a = new Array((i = Math.ceil(e - t + 1)));
               ++s < i;
-
             )
               a[s] = (t + s) * o;
           else
@@ -3281,7 +3275,6 @@
                 e = Math.ceil(e * o),
                 a = new Array((i = Math.ceil(t - e + 1)));
               ++s < i;
-
             )
               a[s] = (t - s) / o;
           return (r && a.reverse(), a);
@@ -3461,7 +3454,6 @@
           for (
             var r, i, a = (null == n ? t.length : n) - (e = null == e ? 0 : +e);
             a;
-
           )
             ((i = (Math.random() * a--) | 0),
               (r = t[a + e]),
@@ -6014,7 +6006,6 @@
                   a = -1,
                   o = r.length;
                 ++a < o;
-
               )
                 r[a].call(null, i);
               n.state === Wr &&
@@ -7430,7 +7421,6 @@
                 o = 0,
                 c = -1;
               ++c < d;
-
             ) {
               for (s = o, l = -1; ++l < d; ) {
                 var g = h[c],
@@ -7801,7 +7791,6 @@
             for (
               var u, c, l, d = -1, f = n.length, h = r[i++], _ = qa(), p = o();
               ++d < f;
-
             )
               (l = _.get((u = h((c = n[d])) + ""))) ? l.push(c) : _.set(u, [c]);
             return (
@@ -7948,7 +7937,6 @@
                   ;
                   (o++ < a && t.charCodeAt(o) !== ao) ||
                   t.charCodeAt(++o) === ao;
-
                 );
                 return (
                   (e = o) >= a
@@ -7971,7 +7959,6 @@
               t.charCodeAt(a - 1) === oo && --a,
                 t.charCodeAt(a - 1) === so && --a;
               (r = l()) !== io;
-
             ) {
               for (var d = []; r !== ro && r !== io; ) (d.push(r), (r = l()));
               (e && null == (d = e(d, s++))) || i.push(d);
@@ -8177,7 +8164,6 @@
         for (
           t = [{ source: r, target: (n._root = new Array(4)) }];
           (r = t.pop());
-
         )
           for (var i = 0; i < 4; ++i)
             (e = r.source[i]) &&
@@ -8314,7 +8300,6 @@
                   (h = e + n),
                   (n *= n));
             (u = _.pop());
-
           )
             if (
               !(
@@ -8436,7 +8421,6 @@
           for (
             u && s.push(new xo(u, this._x0, this._y0, this._x1, this._y1));
             (e = s.pop());
-
           )
             if (
               !t(
@@ -8465,7 +8449,6 @@
             this._root &&
             n.push(new xo(this._root, this._x0, this._y0, this._x1, this._y1));
             (e = n.pop());
-
           ) {
             var i = e.node;
             if (i.length) {
@@ -9151,7 +9134,6 @@
                       (u + s + 1 > r && (s = Math.max(1, r - u)),
                       a.push(t.substring((i -= s), i + s)),
                       !((u += s + 1) > r));
-
                     )
                       s = e[(o = (o + 1) % e.length)];
                     return a.reverse().join(n);
@@ -12183,7 +12165,6 @@
             for (
               var n = +t(e.data) || 0, r = e.children, i = r && r.length;
               --i >= 0;
-
             )
               n += r[i].value;
             e.value = n;
@@ -12208,7 +12189,6 @@
               })(e, t),
               r = [e];
             e !== n;
-
           )
             ((e = e.parent), r.push(e));
           for (var i = r.length; t !== n; ) (r.splice(i, 0, t), (t = t.parent));
@@ -12266,7 +12246,6 @@
             })(hf.call(t))).length,
             a = [];
           r < i;
-
         )
           ((e = t[r]),
             n && yf(n, e) ? ++r : ((n = vf((a = pf(a, e)))), (r = 0)));
@@ -12433,7 +12412,6 @@
           for (
             r.previous = e, r.next = n, e.next = n.previous = n = r, a = wf(e);
             (r = r.next) !== n;
-
           )
             (o = wf(r)) < a && ((e = r), (a = o));
           n = e.next;
@@ -12537,7 +12515,6 @@
               u = o.length,
               c = t.value && (r - e) / t.value;
             ++s < u;
-
           )
             (((a = o[s]).y0 = n),
               (a.y1 = i),
@@ -12701,7 +12678,6 @@
               for (
                 var e, n, r, i, a, o = new Xf(t, 0), s = [o];
                 (e = s.pop());
-
               )
                 if ((r = e._.children))
                   for (
@@ -12743,7 +12719,6 @@
                 for (
                   var e, n = 0, r = 0, i = t.children, a = i.length;
                   --a >= 0;
-
                 )
                   (((e = i[a]).z += n), (e.m += n), (n += e.s + (r += e.c)));
               })(e);
@@ -12763,7 +12738,6 @@
                     d = s.m,
                     f = u.m;
                   (s = $f(s)), (a = Vf(a)), s && a;
-
                 )
                   ((u = Vf(u)),
                     ((o = $f(o)).a = e),
@@ -12814,7 +12788,6 @@
               u = o.length,
               c = t.value && (i - n) / t.value;
             ++s < u;
-
           )
             (((a = o[s]).x0 = e),
               (a.x1 = r),
@@ -12842,7 +12815,6 @@
             b = g.length,
             k = e.value;
           v < b;
-
         ) {
           ((u = i - n), (c = a - r));
           do {
@@ -13024,7 +12996,6 @@
               for (
                 var o, s, u, c, l, d = -1, f = o.length, h = t.value;
                 ++d < f;
-
               ) {
                 for (
                   u = (s = o[d]).children, c = s.value = 0, l = u.length;
@@ -13055,7 +13026,6 @@
           for (
             var e, n, r = -1, i = t.length, a = 0, o = 0, s = t[i - 1], u = 0;
             ++r < i;
-
           )
             ((e = s),
               (s = t[r]),
@@ -13128,7 +13098,6 @@
               s = a[1],
               u = 0;
             ++r < i;
-
           )
             ((e = o),
               (n = s),
@@ -13652,7 +13621,6 @@
         for (
           t[i] < t[0] && ((t = t.slice().reverse()), (e = e.slice().reverse()));
           ++s < i;
-
         )
           ((a[s] = n(t[s], t[s + 1])), (o[s] = r(e[s], e[s + 1])));
         return function (e) {
@@ -16370,7 +16338,6 @@
             for (
               var r, i = t[0], a = e[0], o = t[n] - i, s = e[n] - a, u = -1;
               ++u <= n;
-
             )
               ((r = u / n),
                 this._basis.point(
@@ -17666,7 +17633,6 @@
           u.circle &&
           Math.abs(n - u.circle.x) < vM &&
           Math.abs(r - u.circle.cy) < vM;
-
         )
           ((a = u.P), s.unshift(u), lM(u), (u = a));
         (s.unshift(u), sM(u));
@@ -17675,7 +17641,6 @@
           c.circle &&
           Math.abs(n - c.circle.x) < vM &&
           Math.abs(r - c.circle.cy) < vM;
-
         )
           ((o = c.N), s.push(c), lM(c), (c = o));
         (s.push(c), sM(c));
@@ -17789,7 +17754,6 @@
         for (
           gM = [], mM = new Array(t.length), pM = new Jv(), yM = new Jv();
           ;
-
         )
           if (
             ((i = iM), a && (!i || a[1] < i.y || (a[1] === i.y && a[0] < i.x)))
@@ -17938,7 +17902,6 @@
                     f = e[i[a - 1]],
                     h = f.left === l ? f.right : f.left;
                   ++d < a;
-
                 )
                   ((o = h),
                     (h = (f = e[i[d]]).left === l ? f.right : f.left),
@@ -17969,7 +17932,6 @@
           for (
             var r, i, a = this, o = a._found || 0, s = a.cells.length;
             !(i = a.cells[o]);
-
           )
             if (++o >= s) return null;
           var u = t - i.site[0],
@@ -20377,7 +20339,6 @@
             for (
               var n = -1, r = null == t ? 0 : t.length;
               ++n < r && !1 !== e(t[n], n, t);
-
             );
             return t;
           }
@@ -20385,7 +20346,6 @@
             for (
               var n = null == t ? 0 : t.length;
               n-- && !1 !== e(t[n], n, t);
-
             );
             return t;
           }
@@ -20398,7 +20358,6 @@
             for (
               var n = -1, r = null == t ? 0 : t.length, i = 0, a = [];
               ++n < r;
-
             ) {
               var o = t[n];
               e(o, n, t) && (a[i++] = o);
@@ -20417,7 +20376,6 @@
             for (
               var n = -1, r = null == t ? 0 : t.length, i = Array(r);
               ++n < r;
-
             )
               i[n] = e(t[n], n, t);
             return i;
@@ -21027,7 +20985,6 @@
               for (
                 var n = -1, i = e.length, a = Xt(i), o = null == t;
                 ++n < i;
-
               )
                 a[n] = o ? r : Qs(t, e[n]);
               return a;
@@ -21426,7 +21383,6 @@
                   c = 1 / 0,
                   l = [];
                 s--;
-
               ) {
                 var d = t[s];
                 (s && e && (d = Ze(d, pn(e))),
@@ -21754,7 +21710,6 @@
                           o = i.length,
                           s = n.length;
                         ++r < o;
-
                       ) {
                         var u = ta(i[r], a[r]);
                         if (u) {
@@ -21786,7 +21741,6 @@
                 for (
                   var u = 0, c = e[a], l = n ? n(c) : c;
                   (u = i(s, l, u, r)) > -1;
-
                 )
                   (s !== t && Pe.call(s, u, 1), Pe.call(t, u, 1));
               return t;
@@ -21827,7 +21781,6 @@
               for (
                 var a = -1, o = (e = $i(e, t)).length, s = o - 1, u = t;
                 null != u && ++a < o;
-
               ) {
                 var c = co(e[a]),
                   l = n;
@@ -21902,7 +21855,6 @@
                   c = Hs(e),
                   l = e === r;
                 a < o;
-
               ) {
                 var d = Rn((a + o) / 2),
                   f = n(t[d]),
@@ -21977,7 +21929,6 @@
               for (
                 var i = t.length, a = r ? i : -1;
                 (r ? a-- : ++a < i) && e(t[a], a, t);
-
               );
               return n
                 ? Ai(t, r ? 0 : a, r ? a + 1 : i)
@@ -22084,7 +22035,6 @@
                   l = Xt(u + c),
                   d = !r;
                 ++s < u;
-
               )
                 l[s] = e[s];
               for (; ++i < o; ) (d || i < a) && (l[n[i]] = t[i]);
@@ -22103,7 +22053,6 @@
                   d = Xt(l + c),
                   f = !r;
                 ++i < l;
-
               )
                 d[i] = t[i];
               for (var h = i; ++u < c; ) d[h + u] = e[u];
@@ -22144,7 +22093,6 @@
                     s && $a(n[0], n[1], s) && ((o = a < 3 ? r : o), (a = 1)),
                     e = ee(e);
                   ++i < a;
-
                 ) {
                   var u = n[i];
                   u && t(e, u, i, o);
@@ -22159,7 +22107,6 @@
                 for (
                   var i = n.length, a = e ? i : -1, o = ee(n);
                   (e ? a-- : ++a < i) && !1 !== r(o[a], a, o);
-
                 );
                 return n;
               };
@@ -22294,7 +22241,6 @@
                         for (
                           var n = t.length, i = $n(e.length, n), a = ra(t);
                           i--;
-
                         ) {
                           var o = e[i];
                           t[i] = Va(o, n) ? a[o] : r;
@@ -22363,7 +22309,6 @@
                     for (
                       var i = -1, a = Vn(Bn((e - t) / (n || 1)), 0), o = Xt(a);
                       a--;
-
                     )
                       ((o[r ? a : ++i] = t), (t += n));
                     return o;
@@ -22502,7 +22447,6 @@
                               u = o,
                               c = Ha(a);
                             u--;
-
                           )
                             s[u] = arguments[u];
                           var l =
@@ -22537,7 +22481,6 @@
                                     ? a
                                     : t;
                               ++u < c;
-
                             )
                               l[u] = r[u];
                             for (; s--; ) l[u++] = arguments[++o];
@@ -22626,7 +22569,6 @@
                   n = ar[e],
                   r = le.call(ar, e) ? n.length : 0;
                 r--;
-
               ) {
                 var i = n[r],
                   a = i.func;
@@ -22801,7 +22743,6 @@
                       a = Vn(r.length - e, 0),
                       o = Xt(a);
                     ++i < a;
-
                   )
                     o[i] = r[e + i];
                   i = -1;
@@ -23483,7 +23424,6 @@
                   for (
                     var o = e[n], s = au(o), u = -1, c = s.length;
                     ++u < c;
-
                   ) {
                     var l = s[u],
                       d = t[l];
@@ -23753,7 +23693,6 @@
                 for (
                   var e = -1, n = null == t ? 0 : t.length, r = 0, i = [];
                   ++e < n;
-
                 ) {
                   var a = t[e];
                   a && (i[r++] = a);
@@ -23851,7 +23790,6 @@
                           (i = i === r || i > a ? a : Is(i)) < 0 && (i += a),
                           i = n > i ? 0 : zs(i);
                         n < i;
-
                       )
                         t[n++] = e;
                       return t;
@@ -23888,7 +23826,6 @@
                 for (
                   var e = -1, n = null == t ? 0 : t.length, r = {};
                   ++e < n;
-
                 ) {
                   var i = t[e];
                   r[i[0]] = i[1];
@@ -24726,7 +24663,6 @@
                       a.global || (a = ne(a.source, Us(It.exec(a)) + "g")),
                         a.lastIndex = 0;
                       (l = a.exec(d));
-
                     )
                       var f = l.index;
                     c = c.slice(0, f === r ? u : f);
@@ -26249,7 +26185,6 @@
         for (
           o.logger.debug("Entering isfastforwardable:", t.id, e.id);
           t.seq <= e.seq && t !== e && null != e.parent;
-
         ) {
           if (Array.isArray(e.parent))
             return (
@@ -27502,7 +27437,6 @@
                   r = {},
                   i = !0;
                 i;
-
               )
                 ((i = !1),
                   n[0].match(/^\s*active\s*$/) &&
@@ -27554,7 +27488,6 @@
                   r = {},
                   i = !0;
                 i;
-
               )
                 ((i = !1),
                   n[0].match(/^\s*active\s*$/) &&
@@ -30241,7 +30174,6 @@
                 for (
                   var e = void 0;
                   t.hasNode((e = i.default.uniqueId("_root")));
-
                 );
                 return e;
               })(t),
@@ -30525,7 +30457,6 @@
                 ),
                 o = 1;
               o < n.length;
-
             )
               o <<= 1;
             var s = 2 * o - 1;
@@ -30863,7 +30794,6 @@
                   c = o[u],
                   l = !0;
                 n !== i.w;
-
               ) {
                 if (((r = t.node(n)), l)) {
                   for (; (c = o[u]) !== s && t.node(c).maxRank < r.rank; ) u++;
@@ -30874,7 +30804,6 @@
                     ;
                     u < o.length - 1 &&
                     t.node((c = o[u + 1])).minRank <= r.rank;
-
                   )
                     u++;
                   c = o[u];
@@ -31212,7 +31141,6 @@
                 for (
                   var r = [], i = e[e.length - 1], a = e[0], o = void 0;
                   t.nodeCount();
-
                 ) {
                   for (; (o = a.dequeue()); ) u(t, e, n, o);
                   for (; (o = i.dequeue()); ) u(t, e, n, o);
@@ -35213,7 +35141,6 @@
           for (
             var e, n = this._arr, r = n[t].priority;
             0 !== t && !(n[(e = t >> 1)].priority < r);
-
           )
             (this._swap(t, e), (t = e));
         }),
@@ -35257,7 +35184,6 @@
             o.size() > 0 &&
             ((s = o.removeMin()),
             (u = a[s]).distance !== Number.POSITIVE_INFINITY);
-
           )
             r(s).forEach(c);
           return a;
@@ -49906,7 +49832,7 @@
               _: "lowbar",
               "‐": "dash",
               "–": "ndash",
-              "—": "mdash",
+              "-": "mdash",
               "―": "horbar",
               ",": "comma",
               ";": "semi",
@@ -52439,7 +52365,7 @@
               mcomma: "⨩",
               mcy: "м",
               Mcy: "М",
-              mdash: "—",
+              mdash: "-",
               mDDot: "∺",
               measuredangle: "∡",
               MediumSpace: " ",
@@ -53658,7 +53584,7 @@
               148: "”",
               149: "•",
               150: "–",
-              151: "—",
+              151: "-",
               152: "˜",
               153: "™",
               154: "š",

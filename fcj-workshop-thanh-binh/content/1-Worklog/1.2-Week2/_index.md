@@ -9,9 +9,9 @@ pre: " <b> 1.2. </b> "
 
 ### Week 2 Objectives:
 
-* Understand fundamental networking concepts in AWS (VPC)[cite: 1].
-* Learn about Identity and Access Management (IAM) for secure cloud management[cite: 1].
-* Master basic web server deployment and database setup on AWS[cite: 1].
+* Understand fundamental networking concepts in AWS (VPC).
+* Learn about Identity and Access Management (IAM) for secure cloud management.
+* Master basic web server deployment and database setup on AWS.
 
 ### Tasks to be carried out this week:
 | Day | Task                                                                                                                                                                                            | Start Date | Completion Date | Reference Material                      |

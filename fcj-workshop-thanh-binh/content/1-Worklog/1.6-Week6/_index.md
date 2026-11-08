@@ -14,7 +14,7 @@ pre: " <b> 1.6. </b> "
  
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 1-6 | - Study approaches to discover specifications and convert them into requirements, ERD, and API design — the workflow to be applied to NexusOMS | 19/10/2026 | 24/10/2026 | NexusOMS 18-week plan |
+| 1-6 | - Study approaches to discover specifications and convert them into requirements, ERD, and API design - the workflow to be applied to NexusOMS | 19/10/2026 | 24/10/2026 | NexusOMS 18-week plan |
 | 1-6 | - Review .NET backend foundations (Coursera): <br>&emsp; + ASP.NET Core MVC fundamentals and CRUD <br>&emsp; + Introduction to ASP.NET Core Web API <br>&emsp; + Professional C# development practices | 19/10/2026 | 24/10/2026 | <https://www.coursera.org/learn/packt-asp-net-core-mvc-fundamentals-crud-asd1a> <br> <https://www.coursera.org/learn/packt-introduction-to-aspnet-core-web-api-diqqk> <br> <https://www.coursera.org/learn/professional-c-development-practices> |
 | 1-6 | - Review the data layer (Coursera): <br>&emsp; + Entity Framework Core: a full tour (.NET 5 and up) <br>&emsp; + Database design and modeling with PostgreSQL and MySQL | 19/10/2026 | 24/10/2026 | <https://www.coursera.org/learn/packt-entity-framework-core-a-full-tour-net-5-and-up-hqzlv> <br> <https://www.coursera.org/organizations/fptuniversity/learn/packt-database-design-and-modeling-with-postgresql-and-mysql> |
 | 1-6 | - Review API design (Coursera): <br>&emsp; + API design with Apigee (Google Cloud) | 19/10/2026 | 24/10/2026 | <https://www.coursera.org/organizations/fptuniversity/learn/api-design-apigee-gcp> |
