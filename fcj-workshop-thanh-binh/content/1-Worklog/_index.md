@@ -21,7 +21,7 @@ This section documents my daily tasks, learning progress, and technical achievem
 * **Week 5:** [Serverless Document Management System, Completing the Lab Roadmap & NexusOMS Project Planning](1.5-week5/)
 * **Week 6:** [.NET Backend Foundations, Database & API Design for NexusOMS](1.6-week6/)
 * **Week 7:** [NexusOMS Plan v4.0, Canonical Database Schema & Frontend MVP with Supabase Prototype](1.7-week7/)
-* **Week 8:** *[Upcoming Worklog]*
+* **Week 8:** [NexusOMS MVP: .NET Backend, Order–Inventory Flow & Demo-Ready Frontend](1.8-week8/)
 * **Week 9:** *[Upcoming Worklog]*
 * **Week 10:** *[Upcoming Worklog]*
 * **Week 11:** *[Upcoming Worklog]*
