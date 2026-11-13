@@ -71,19 +71,27 @@ Dự án gồm 2 phần - hoàn thiện MVP NexusOMS và chuẩn bị AWS demo -
 - *Sau demo*: Xóa tài nguyên AWS tạm; chỉ giữ code, sơ đồ, screenshot và bằng chứng chi phí cho báo cáo.  
 
 ### 6. Ước tính ngân sách  
-**PLACEHOLDER - chèn kết quả AWS Pricing Calculator theo region và thời lượng demo mà nhóm chọn.**  
-
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+Dự toán được lập bằng AWS Pricing Calculator cho Region **Asia Pacific (Singapore) / ap-southeast-1**. Các mức dưới đây là chi phí tháng theo cấu hình và lượng sử dụng demo đã nhập vào Calculator; hóa đơn thực tế cho 10 ngày có thể khác do thời gian chạy từng tài nguyên, lưu lượng thực tế, Free Tier và thuế.
 
 *Chi phí hạ tầng*  
-- AWS Services:  
-    - **PLACEHOLDER - chi phí CPU/memory cho Amazon ECS Fargate task.**  
-    - **PLACEHOLDER - chi phí Application Load Balancer và load-balancer capacity.**  
-    - **PLACEHOLDER - chi phí theo giờ/xử lý dữ liệu của NAT Gateway trong thời gian demo.**  
-    - **PLACEHOLDER - ước tính S3, CloudFront, ECR, CloudWatch, Secrets Manager và data transfer.**  
-    - **PLACEHOLDER - WAF, VPC endpoint, CloudTrail/log storage và dịch vụ tùy chọn được chọn.**  
+| Dịch vụ | Ước tính (USD/tháng) |
+| --- | ---: |
+| Amazon ECS Fargate | 3.75 |
+| Application Load Balancer | 18.98 |
+| 2 NAT Gateway | 86.14 |
+| VPC Interface Endpoints | 113.88 |
+| Amazon S3 | 0.02 |
+| Amazon ECR | 0.20 |
+| Amazon CloudWatch | 0.07 |
+| AWS Secrets Manager | 0.13 |
+| Amazon CloudTrail | 0.00 |
+| Amazon CloudFront | 0.00 |
+| AWS WAF (ước tính riêng, chưa bật trong lần demo) | 14.00 |
+| **Tổng có tính WAF** | **237.17** |
+| **Tổng khi WAF tắt** | **223.17** |
 
-*Tổng*: **PLACEHOLDER - điền tổng chi phí trong cửa sổ demo dự kiến.**  
+Calculator cho kết quả **$0.00 chi phí trả trước**. WAF được cộng vào tổng ngân sách để thể hiện phương án có bảo vệ lớp ứng dụng; tài nguyên WAF sẽ không được bật trong lần demo hiện tại. Chi phí NAT Gateway, ALB và VPC Interface Endpoints chủ yếu phát sinh theo giờ; vì vậy không nên xem tổng theo tháng là hóa đơn chính xác cho 10 ngày. Với giả định phân bổ tuyến tính 10/30 ngày, tổng tham khảo gồm WAF là khoảng **$79.06** (không gồm thuế); số thực trả cần đối chiếu thời điểm tạo/xóa tài nguyên và mức sử dụng trong AWS Billing.
+
 - *Phần cứng*: Không cần mua thêm; dự án dùng máy phát triển hiện có và Supabase Cloud project.  
 
 ### 7. Đánh giá rủi ro  

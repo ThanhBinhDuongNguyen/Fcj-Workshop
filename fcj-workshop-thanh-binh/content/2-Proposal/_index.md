@@ -8,7 +8,7 @@ pre: " <b> 2. </b> "
 
 This section summarizes the NexusOMS workshop proposal and the AWS demonstration that the team **plans** to conduct.
 
-# NexusOMS — Multi-Channel Order and Inventory Operations Platform
+# NexusOMS - Multi-Channel Order and Inventory Operations Platform
 ## A Practical AWS Deployment for Reliable Order, Inventory and Profit Operations
 
 ### 1. Executive Summary
@@ -24,7 +24,7 @@ Multi-channel sellers frequently switch between marketplace dashboards to manage
 NexusOMS receives a simulated marketplace webhook, verifies its HMAC signature, maps the channel SKU to an internal product and reserves available inventory in a database transaction. The order can then move through confirmation, preparation, shipment and delivery. Idempotency keys and database constraints prevent duplicate delivery from generating a second business operation. The frontend exposes the operational flow, warehouse balances, channel mappings and CM1–CM3 per-order/channel reporting.
 
 ### Benefits and Return on Investment
-The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. The architecture can be deployed for a short AWS demonstration, photographed for the report and removed afterwards. **PLACEHOLDER — add the team’s business assumptions, measured time savings and ROI calculation.**
+The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. The architecture can be deployed for a short AWS demonstration, photographed for the report and removed afterwards. **PLACEHOLDER - add the team’s business assumptions, measured time savings and ROI calculation.**
 
 ### 3. Solution Architecture
 The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. NAT Gateways provide outbound access from the tasks to Supabase Cloud and simulated marketplace endpoints. The architecture uses two public and two private subnets, with WAF and ACM at the public edge.
@@ -52,7 +52,7 @@ The current application runs locally with React/Vite, a .NET 10 API and Supabase
 
 ### 4. Technical Implementation
 **Implementation Phases**
-This project has two parts—completing the NexusOMS MVP and preparing a short AWS demonstration—each following 4 phases:
+This project has two parts-completing the NexusOMS MVP and preparing a short AWS demonstration-each following 4 phases:
 - Build Theory and Draw Architecture: review the order/inventory domain, inspect the existing codebase and draw the target AWS architecture.
 - Calculate Price and Check Practicality: use AWS Pricing Calculator to estimate the selected-region, short-duration demonstration cost and adjust if needed.
 - Fix Architecture for Cost or Solution Fit: review security groups, IAM permissions, NAT usage, image delivery and cleanup scope before deployment.
@@ -72,19 +72,26 @@ This project has two parts—completing the NexusOMS MVP and preparing a short A
 - Post-Demonstration: delete temporary AWS resources and retain only code, diagrams, screenshots and cost evidence for the report.
 
 ### 6. Budget Estimation
-**PLACEHOLDER — insert the team’s AWS Pricing Calculator estimate for the selected region and demonstration duration.**
-
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+The estimate was prepared in AWS Pricing Calculator for **Asia Pacific (Singapore) / ap-southeast-1**. The values below are the monthly costs for the demo configuration and usage entered in the Calculator. The actual 10-day bill may differ based on each resource’s runtime, actual traffic, Free Tier eligibility and taxes.
 
 ### Infrastructure Costs
-- AWS Services:
-    - **PLACEHOLDER — Amazon ECS Fargate task CPU/memory cost.**
-    - **PLACEHOLDER — Application Load Balancer and load-balancer capacity cost.**
-    - **PLACEHOLDER — NAT Gateway hourly/data-processing cost for the demo window.**
-    - **PLACEHOLDER — S3, CloudFront, ECR, CloudWatch, Secrets Manager and data-transfer estimates.**
-    - **PLACEHOLDER — WAF, VPC endpoints, CloudTrail/log storage and any selected optional services.**
+| Service | Estimate (USD/month) |
+| --- | ---: |
+| Amazon ECS Fargate | 3.75 |
+| Application Load Balancer | 18.98 |
+| 2 NAT Gateways | 86.14 |
+| VPC Interface Endpoints | 113.88 |
+| Amazon S3 | 0.02 |
+| Amazon ECR | 0.20 |
+| Amazon CloudWatch | 0.07 |
+| AWS Secrets Manager | 0.13 |
+| Amazon CloudTrail | 0.00 |
+| Amazon CloudFront | 0.00 |
+| AWS WAF (separate estimate; disabled for this demo) | 14.00 |
+| **Total including WAF** | **237.17** |
+| **Total with WAF disabled** | **223.17** |
 
-Total: **PLACEHOLDER — enter total cost for the planned demonstration window.**
+The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to show the protected option, but it will remain disabled during this demonstration. NAT Gateways, the ALB and VPC Interface Endpoints are primarily hourly charges, so the monthly total is not an exact 10-day invoice. A simple 10/30-day proration gives a reference estimate of approximately **$79.06 including WAF** (before tax); the actual charge should be checked in AWS Billing after resources are deleted.
 
 - Hardware: No additional hardware is required; the project uses the existing development machines and Supabase Cloud project.
 
