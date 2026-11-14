@@ -67,7 +67,7 @@ In AWS Console, complete **Open CloudFront dashboard + Create distribution** as 
 nexusoms-demo-web
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1. Open CloudFront dashboard + Create distribution.png" title="Open CloudFront dashboard + Create distribution" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png" title="Open CloudFront dashboard + Create distribution" >}}
 
 ### Step 2 - Configure distribution options
 
@@ -87,38 +87,38 @@ Default root object: index.html
 Path pattern: /api/*
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2. Configure distribution options.png" title="Configure distribution options" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png" title="Configure distribution options" >}}
 
 ### Step 3 - Choose S3 type + mapping to S3 FE
 
 In AWS Console, complete **Choose S3 type + mapping to S3 FE** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3. Choose S3 type + mapping to S3 FE.png" title="Choose S3 type + mapping to S3 FE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png" title="Choose S3 type + mapping to S3 FE" >}}
 
 ### Step 4 - Click next
 
 In AWS Console, complete **Click next** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4. Click next.png" title="Click next" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png" title="Click next" >}}
 
 ### Step 5 - Choose Do not enable for demo
 
 In AWS Console, complete **Choose Do not enable for demo** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5. Choose Do not enable for demo.png" title="Choose Do not enable for demo" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png" title="Choose Do not enable for demo" >}}
 
 ### Step 6 - Click Create distribution
 
 In AWS Console, complete **Click Create distribution** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6. Click Create distribution.png" title="Click Create distribution" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png" title="Click Create distribution" >}}
 
 ### Step 7 - Choose origins + Create origin
 
 In AWS Console, complete **Choose origins + Create origin** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7. Choose origins + Create origin.png" title="Choose origins + Create origin" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png" title="Choose origins + Create origin" >}}
 
 ### Step 8 - Configure setting for origin
 
@@ -132,19 +132,19 @@ In AWS Console, complete **Configure setting for origin** as shown below.
 nexusoms-demo-alb-origin
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8. Configure setting for origin.png" title="Configure setting for origin" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png" title="Configure setting for origin" >}}
 
 ### Step 9 - Choose Behavior tab + Create behavior
 
 In AWS Console, complete **Choose Behavior tab + Create behavior** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9. Choose Behavior tab + Create behavior.png" title="Choose Behavior tab + Create behavior" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png" title="Choose Behavior tab + Create behavior" >}}
 
 ### Step 10 - Configure behavior setting
 
 In AWS Console, complete **Configure behavior setting** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10. Configure behavior setting.png" title="Configure behavior setting" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png" title="Configure behavior setting" >}}
 
 ### Step 11 - Choose origin request policy
 
@@ -164,4 +164,4 @@ Cache policy: CachingDisabled
 Origin request policy: AllViewerExceptHostHeader
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11. Choose origin request policy.png" title="Choose origin request policy" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png" title="Choose origin request policy" >}}

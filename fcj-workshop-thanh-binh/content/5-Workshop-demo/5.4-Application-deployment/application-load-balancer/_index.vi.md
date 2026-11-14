@@ -91,13 +91,13 @@ nexusoms-demo-alb
 Internet-facing
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/1. Open Load Balancers dashboard + Create load balancer.png" title="Open Load Balancers dashboard + Create load balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/1-open-load-balancers-dashboard-create-load-balancer.png" title="Open Load Balancers dashboard + Create load balancer" >}}
 
 ### Bước 2 - Choose create Application Load Balancer
 
 Trên AWS Console, thực hiện **Choose create Application Load Balancer** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/2. Choose create Application Load Balancer.png" title="Choose create Application Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/2-choose-create-application-load-balancer.png" title="Choose create Application Load Balancer" >}}
 
 ### Bước 3 - Configure basic Load Balancer
 
@@ -123,29 +123,29 @@ HTTP:80
 nexusoms-demo-api-tg
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/3. Configure basic Load Balancer.png" title="Configure basic Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/3-configure-basic-load-balancer.png" title="Configure basic Load Balancer" >}}
 
 ### Bước 4 - Configure Network mapping for Load Balancer
 
 Trên AWS Console, thực hiện **Configure Network mapping for Load Balancer** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/4. Configure Network mapping for Load Balancer.png" title="Configure Network mapping for Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/4-configure-network-mapping-for-load-balancer.png" title="Configure Network mapping for Load Balancer" >}}
 
 ### Bước 5 - Configure Security group for Load Balancer
 
 Trên AWS Console, thực hiện **Configure Security group for Load Balancer** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/5. Configure Security group for Load Balancer.png" title="Configure Security group for Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/5-configure-security-group-for-load-balancer.png" title="Configure Security group for Load Balancer" >}}
 
 ### Bước 6 - Configure Target group for Load Balancer
 
 Trên AWS Console, thực hiện **Configure Target group for Load Balancer** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/6. Configure Target group for Load Balancer.png" title="Configure Target group for Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/6-configure-target-group-for-load-balancer.png" title="Configure Target group for Load Balancer" >}}
 
 ### Bước 7 - Copy Load balancer ARN
 
 Trên AWS Console, thực hiện **Copy Load balancer ARN** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/7. Copy Load balancer ARN.png" title="Copy Load balancer ARN" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/7-copy-load-balancer-arn.png" title="Copy Load balancer ARN" >}}

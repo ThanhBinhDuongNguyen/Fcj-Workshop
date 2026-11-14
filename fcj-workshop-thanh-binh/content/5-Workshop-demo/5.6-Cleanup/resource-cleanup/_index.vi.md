@@ -335,37 +335,37 @@ nexusoms-demo-deployer
 
 Trên AWS Console, thực hiện **Disable Distribution** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/1. Disable Distribution.png" title="Disable Distribution" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/1-disable-distribution.png" title="Disable Distribution" >}}
 
 ### Bước 2 - Delete Distribution
 
 Trên AWS Console, thực hiện **Delete Distribution** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/2. Delete Distribution.png" title="Delete Distribution" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/2-delete-distribution.png" title="Delete Distribution" >}}
 
 ### Bước 3 - Delete CloudFront functions
 
 Trên AWS Console, thực hiện **Delete CloudFront functions** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/3. Delete CloudFront functions.png" title="Delete CloudFront functions" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/3-delete-cloudfront-functions.png" title="Delete CloudFront functions" >}}
 
 ### Bước 4 - Delete Stacks in CloudFormation
 
 Trên AWS Console, thực hiện **Delete Stacks in CloudFormation** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/4. Delete Stacks in CloudFormation.png" title="Delete Stacks in CloudFormation" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/4-delete-stacks-in-cloudformation.png" title="Delete Stacks in CloudFormation" >}}
 
 ### Bước 5 - Delete cluster
 
 Trên AWS Console, thực hiện **Delete cluster** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/5. Delete cluster.png" title="Delete cluster" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/5-delete-cluster.png" title="Delete cluster" >}}
 
 ### Bước 6 - Delete Target Group
 
 Trên AWS Console, thực hiện **Delete Target Group** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/6. Delete Target Group.png" title="Delete Target Group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/6-delete-target-group.png" title="Delete Target Group" >}}
 
 ### Bước 7 - Delete Load Balancer
 
@@ -379,37 +379,37 @@ Trên AWS Console, thực hiện **Delete Load Balancer** như hình dưới đ�
 nexusoms-demo-alb
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/7. Delete Load Balancer.png" title="Delete Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/7-delete-load-balancer.png" title="Delete Load Balancer" >}}
 
 ### Bước 8 - Delete NAT Gateway B
 
 Trên AWS Console, thực hiện **Delete NAT Gateway B** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/8. Delete NAT Gateway B.png" title="Delete NAT Gateway B" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/8-delete-nat-gateway-b.png" title="Delete NAT Gateway B" >}}
 
 ### Bước 9 - Delete NAT Gateway A
 
 Trên AWS Console, thực hiện **Delete NAT Gateway A** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/9. Delete NAT Gateway A.png" title="Delete NAT Gateway A" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/9-delete-nat-gateway-a.png" title="Delete NAT Gateway A" >}}
 
 ### Bước 10 - Release 2 Elastic IP addresses
 
 Trên AWS Console, thực hiện **Release 2 Elastic IP addresses** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/10. Release 2 Elastic IP addresses.png" title="Release 2 Elastic IP addresses" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/10-release-2-elastic-ip-addresses.png" title="Release 2 Elastic IP addresses" >}}
 
 ### Bước 11 - Detach IGW from VPC
 
 Trên AWS Console, thực hiện **Detach IGW from VPC** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/11. Detach IGW from VPC.png" title="Detach IGW from VPC" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/11-detach-igw-from-vpc.png" title="Detach IGW from VPC" >}}
 
 ### Bước 12 - Delete VPC
 
 Trên AWS Console, thực hiện **Delete VPC** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/12. Delete VPC.png" title="Delete VPC" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/12-delete-vpc.png" title="Delete VPC" >}}
 
 ### Bước 13 - Choose Nexusoms-demo-api task
 
@@ -471,52 +471,52 @@ nexusoms-demo-vpc
 nexusoms-demo-deployer
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/13. Choose Nexusoms-demo-api task.png" title="Choose Nexusoms-demo-api task" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/13-choose-nexusoms-demo-api-task.png" title="Choose Nexusoms-demo-api task" >}}
 
 ### Bước 14 - Deregister the Task revision
 
 Trên AWS Console, thực hiện **Deregister the Task revision** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/14. Deregister the Task revision.png" title="Deregister the Task revision" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/14-deregister-the-task-revision.png" title="Deregister the Task revision" >}}
 
 ### Bước 15 - Delete Repositories
 
 Trên AWS Console, thực hiện **Delete Repositories** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/15. Delete Repositories.png" title="Delete Repositories" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/15-delete-repositories.png" title="Delete Repositories" >}}
 
 ### Bước 16 - Open detail Secrets Manager
 
 Trên AWS Console, thực hiện **Open detail Secrets Manager** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/16. Open detail Secrets Manager.png" title="Open detail Secrets Manager" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/16-open-detail-secrets-manager.png" title="Open detail Secrets Manager" >}}
 
 ### Bước 17 - Select waiting period + schedule deletion
 
 Trên AWS Console, thực hiện **Select waiting period + schedule deletion** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/17. Select waiting period + schedule deletion.png" title="Select waiting period + schedule deletion" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/17-select-waiting-period-schedule-deletion.png" title="Select waiting period + schedule deletion" >}}
 
 ### Bước 18 - Delete log groups in CloudWatch
 
 Trên AWS Console, thực hiện **Delete log groups in CloudWatch** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/18. Delete log groups in CloudWatch.png" title="Delete log groups in CloudWatch" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/18-delete-log-groups-in-cloudwatch.png" title="Delete log groups in CloudWatch" >}}
 
 ### Bước 19 - Empty S3 bucket
 
 Trên AWS Console, thực hiện **Empty S3 bucket** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/19. Empty S3 bucket.png" title="Empty S3 bucket" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/19-empty-s3-bucket.png" title="Empty S3 bucket" >}}
 
 ### Bước 20 - Delete S3 bucket
 
 Trên AWS Console, thực hiện **Delete S3 bucket** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/20. Delete S3 bucket.png" title="Delete S3 bucket" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/20-delete-s3-bucket.png" title="Delete S3 bucket" >}}
 
 ### Bước 21 - Delete 2 role that create
 
 Trên AWS Console, thực hiện **Delete 2 role that create** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/21. Delete 2 role that create.png" title="Delete 2 role that create" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.6-Cleanup/resource-cleanup/21-delete-2-role-that-create.png" title="Delete 2 role that create" >}}

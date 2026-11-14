@@ -51,10 +51,10 @@ Trên AWS Console, thực hiện **Open Log Management dashboard + Create log gr
 14 days
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1. Open Log Management dashboard + Create log group.png" title="Open Log Management dashboard + Create log group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png" title="Open Log Management dashboard + Create log group" >}}
 
 ### Bước 2 - Fill name + retention setting
 
 Trên AWS Console, thực hiện **Fill name + retention setting** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2. Fill name + retention setting.png" title="Fill name + retention setting" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png" title="Fill name + retention setting" >}}

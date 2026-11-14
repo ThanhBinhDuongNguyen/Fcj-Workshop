@@ -29,7 +29,7 @@ The platform creates one operating view for products, stock and orders, reducing
 ### 3. Solution Architecture
 The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. NAT Gateways provide outbound access from the tasks to Supabase Cloud and simulated marketplace endpoints. The architecture uses two public and two private subnets, with WAF and ACM at the public edge.
 
-![NexusOMS business flow architecture](/images/2-Proposal/Noxus_AWS_Architect_1.png)
+![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
 ### AWS Services Used
 - **Amazon S3 and Amazon CloudFront**: Store and distribute the static React/Vite build.

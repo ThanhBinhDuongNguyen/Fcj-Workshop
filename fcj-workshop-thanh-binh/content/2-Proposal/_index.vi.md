@@ -29,7 +29,7 @@ Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm,
 ### 3. Kiến trúc giải pháp  
 Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. NAT Gateway cho phép task đi ra Supabase Cloud và endpoint marketplace mô phỏng. Hạ tầng gồm hai public subnet, hai private subnet, WAF và ACM ở lớp public edge.
 
-![Kiến trúc luồng nghiệp vụ NexusOMS](/images/2-Proposal/Noxus_AWS_Architect_1.png)
+![Kiến trúc luồng nghiệp vụ NexusOMS](/images/2-Proposal/noxus-aws-architect-1.png)
 
 *Dịch vụ AWS sử dụng*  
 - *Amazon S3 và Amazon CloudFront*: Lưu trữ và phân phối React/Vite build tĩnh.  

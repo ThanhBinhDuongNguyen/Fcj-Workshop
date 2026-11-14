@@ -70,14 +70,14 @@ nexusoms-demo-vpc
 Trên AWS Console, thực hiện **Open Your VPCs dashboard** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/1. Open Your VPCs dashboard.png" title="Open Your VPCs dashboard" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/1-open-your-vpcs-dashboard.png" title="Open Your VPCs dashboard" >}}
 
 ### Bước 2 - Click create VPC
 
 Trên AWS Console, thực hiện **Click create VPC** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/2. Click create VPC.png" title="Click create VPC" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/2-click-create-vpc.png" title="Click create VPC" >}}
 
 ### Bước 3 - Configure VPC settings
 
@@ -103,22 +103,22 @@ nexusoms-demo-vpc
 10.80.0.0/16
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/3. Configure VPC settings.png" title="Configure VPC settings" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/3-configure-vpc-settings.png" title="Configure VPC settings" >}}
 
 ### Bước 4 - Choose Action + Edit VPC Settings
 
 Trên AWS Console, thực hiện **Choose Action + Edit VPC Settings** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/4. Choose Action + Edit VPC Settings.png" title="Choose Action + Edit VPC Settings" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/4-choose-action-edit-vpc-settings.png" title="Choose Action + Edit VPC Settings" >}}
 
 ### Bước 5 - Check 2 box in DNS settings
 
 Trên AWS Console, thực hiện **Check 2 box in DNS settings** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/5. Check 2 box in DNS settings.png" title="Check 2 box in DNS settings" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/5-check-2-box-in-dns-settings.png" title="Check 2 box in DNS settings" >}}
 
 ### Bước 6 - Copy VPC ID
 
 Trên AWS Console, thực hiện **Copy VPC ID** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/6. Copy VPC ID.png" title="Copy VPC ID" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/6-copy-vpc-id.png" title="Copy VPC ID" >}}

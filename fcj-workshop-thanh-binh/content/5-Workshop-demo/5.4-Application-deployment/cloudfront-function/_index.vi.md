@@ -100,7 +100,7 @@ Trên AWS Console, thực hiện **Open Functions dashboard + Create function** 
 nexusoms-demo-spa-routing
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1. Open Functions dashboard + Create function.png" title="Open Functions dashboard + Create function" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png" title="Open Functions dashboard + Create function" >}}
 
 ### Bước 2 - Configure function details
 
@@ -132,34 +132,34 @@ Behavior: Default (*)
 Stage: LIVE
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2. Configure function details.png" title="Configure function details" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png" title="Configure function details" >}}
 
 ### Bước 3 - Paste code build section
 
 Trên AWS Console, thực hiện **Paste code build section** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3. Paste code build section.png" title="Paste code build section" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png" title="Paste code build section" >}}
 
 ### Bước 4 - Publish function
 
 Trên AWS Console, thực hiện **Publish function** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4. Publish function.png" title="Publish function" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png" title="Publish function" >}}
 
 ### Bước 5 - Open distribution detail + choose behaviors + edit
 
 Trên AWS Console, thực hiện **Open distribution detail + choose behaviors + edit** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5. Open distribution detail + choose behaviors + edit.png" title="Open distribution detail + choose behaviors + edit" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png" title="Open distribution detail + choose behaviors + edit" >}}
 
 ### Bước 6 - Configure Function associations
 
 Trên AWS Console, thực hiện **Configure Function associations** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6. Configure Function associations.png" title="Configure Function associations" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png" title="Configure Function associations" >}}
 
 ### Bước 7 - Copy Distribution domain name
 
 Trên AWS Console, thực hiện **Copy Distribution domain name** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7. Copy Distribution domain name.png" title="Copy Distribution domain name" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png" title="Copy Distribution domain name" >}}

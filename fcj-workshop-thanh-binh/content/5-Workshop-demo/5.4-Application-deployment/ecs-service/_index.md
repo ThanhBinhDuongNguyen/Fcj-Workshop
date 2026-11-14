@@ -54,7 +54,7 @@ Container port: 8080
 In AWS Console, complete **Choose service tab + Create** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1. Choose service tab + Create.png" title="Choose service tab + Create" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1-choose-service-tab-create.png" title="Choose service tab + Create" >}}
 
 ### Step 2 - Configure service detail
 
@@ -92,28 +92,28 @@ Container: api
 Container port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2. Configure service detail.png" title="Configure service detail" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2-configure-service-detail.png" title="Configure service detail" >}}
 
 ### Step 3 - Configure Network for service
 
 In AWS Console, complete **Configure Network for service** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3. Configure Network for service.png" title="Configure Network for service" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3-configure-network-for-service.png" title="Configure Network for service" >}}
 
 ### Step 4 - Configure Load balancer for service
 
 In AWS Console, complete **Configure Load balancer for service** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4. Configure Load balancer for service.png" title="Configure Load balancer for service" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-configure-load-balancer-for-service.png" title="Configure Load balancer for service" >}}
 
 ### Step 5 - Configure Load balancer for service
 
 In AWS Console, complete **Configure Load balancer for service** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4.1. Configure Load balancer for service.png" title="Configure Load balancer for service" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-1-configure-load-balancer-for-service.png" title="Configure Load balancer for service" >}}
 
 ### Step 6 - Click create
 
 In AWS Console, complete **Click create** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5. Click create.png" title="Click create" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5-click-create.png" title="Click create" >}}

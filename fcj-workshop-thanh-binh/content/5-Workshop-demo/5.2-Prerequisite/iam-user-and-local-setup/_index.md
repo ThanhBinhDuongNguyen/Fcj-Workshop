@@ -71,13 +71,13 @@ aws sts get-caller-identity --profile nexusoms-demo --region ap-southeast-1
 
 In AWS Console, complete **Open IAM user dashboard** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1. Open IAM user dashboard.png" title="Open IAM user dashboard" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1-open-iam-user-dashboard.png" title="Open IAM user dashboard" >}}
 
 ### Step 2 - Create IAM user button
 
 In AWS Console, complete **Create IAM user button** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2. Create IAM user button.png" title="Create IAM user button" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2-create-iam-user-button.png" title="Create IAM user button" >}}
 
 ### Step 3 - Configure Specify user detail
 
@@ -97,43 +97,43 @@ ap-southeast-1
 nexusoms-demo-deployer
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3. Configure Specify user detail.png" title="Configure Specify user detail" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3-configure-specify-user-detail.png" title="Configure Specify user detail" >}}
 
 ### Step 4 - Configure permission
 
 In AWS Console, complete **Configure permission** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4. Configure permission.png" title="Configure permission" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4-configure-permission.png" title="Configure permission" >}}
 
 ### Step 5 - Select Permissions Policies
 
 In AWS Console, complete **Select Permissions Policies** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5. Select Permissions Policies.png" title="Select Permissions Policies" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5-select-permissions-policies.png" title="Select Permissions Policies" >}}
 
 ### Step 6 - Click Create User
 
 In AWS Console, complete **Click Create User** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6. Click Create User.png" title="Click Create User" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6-click-create-user.png" title="Click Create User" >}}
 
 ### Step 7 - Complete create IAM User
 
 In AWS Console, complete **Complete create IAM User** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7. Complete create IAM User.png" title="Complete create IAM User" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7-complete-create-iam-user.png" title="Complete create IAM User" >}}
 
 ### Step 8 - Configure Security credentials for user
 
 In AWS Console, complete **Configure Security credentials for user** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8. Configure Security credentials for user.png" title="Configure Security credentials for user" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8-configure-security-credentials-for-user.png" title="Configure Security credentials for user" >}}
 
 ### Step 9 - Create access key
 
 In AWS Console, complete **Create access key** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9. Create access key.png" title="Create access key" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9-create-access-key.png" title="Create access key" >}}
 
 ### Step 10 - Configure Command Link Interface + I understand... + Next
 
@@ -153,19 +153,19 @@ git clone https://github.com/ThanhBinhDuongNguyen/nexus-aws.git
 cd nexus-aws
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10. Configure Command Link Interface + I understand... + Next.png" title="Configure Command Link Interface + I understand... + Next" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10-configure-command-link-interface-i-understand-next.png" title="Configure Command Link Interface + I understand... + Next" >}}
 
 ### Step 11 - Set description tag
 
 In AWS Console, complete **Set description tag** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11. Set description tag.png" title="Set description tag" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png" title="Set description tag" >}}
 
 ### Step 12 - Copy access key + download csv
 
 In AWS Console, complete **Copy access key + download csv** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12. Copy access key + download csv.png" title="Copy access key + download csv" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png" title="Copy access key + download csv" >}}
 
 ### Step 13 - Open PowerShell
 
@@ -179,7 +179,7 @@ In AWS Console, complete **Open PowerShell** as shown below.
 nexusoms-demo-powershell
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13. Open PowerShell.png" title="Open PowerShell" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13-open-powershell.png" title="Open PowerShell" >}}
 
 ### Step 14 - Check AWS version + Configure profile
 
@@ -205,46 +205,46 @@ $env:AWS_PROFILE = 'nexusoms-demo'
 aws sts get-caller-identity --profile nexusoms-demo --region ap-southeast-1
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14. Check AWS version + Configure profile.png" title="Check AWS version + Configure profile" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14-check-aws-version-configure-profile.png" title="Check AWS version + Configure profile" >}}
 
 ### Step 15 - Configure more
 
 In AWS Console, complete **Configure more** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15. Configure more.png" title="Configure more" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15-configure-more.png" title="Configure more" >}}
 
 ### Step 16 - Get available zone + CloudFront
 
 In AWS Console, complete **Get available zone + CloudFront** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16. Get available zone + CloudFront.png" title="Get available zone + CloudFront" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png" title="Get available zone + CloudFront" >}}
 
 ### Step 17 - Checking library in cmd
 
 In AWS Console, complete **Checking library in cmd** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17. Checking library in cmd.png" title="Checking library in cmd" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17-checking-library-in-cmd.png" title="Checking library in cmd" >}}
 
 ### Step 18 - Run test for BE
 
 In AWS Console, complete **Run test for BE** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18.1. Run test for BE.png" title="Run test for BE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18-1-run-test-for-be.png" title="Run test for BE" >}}
 
 ### Step 19 - Docker build project
 
 In AWS Console, complete **Docker build project** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18.2. Docker build project.png" title="Docker build project" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18-2-docker-build-project.png" title="Docker build project" >}}
 
 ### Step 20 - CI & type-check FE
 
 In AWS Console, complete **CI & type-check FE** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19.1. CI & type-check FE.png" title="CI & type-check FE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19-1-ci-type-check-fe.png" title="CI & type-check FE" >}}
 
 ### Step 21 - Run test + run build FE
 
 In AWS Console, complete **Run test + run build FE** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19.2. Run test + run build FE.png" title="Run test + run build FE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19-2-run-test-run-build-fe.png" title="Run test + run build FE" >}}

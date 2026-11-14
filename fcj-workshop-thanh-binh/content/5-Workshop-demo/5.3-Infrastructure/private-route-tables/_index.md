@@ -35,19 +35,19 @@ nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
 
 In AWS Console, complete **Open Route tables dashboard + Click create route table** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/1. Open Route tables dashboard + Click create route table.png" title="Open Route tables dashboard + Click create route table" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/1-open-route-tables-dashboard-click-create-route-table.png" title="Open Route tables dashboard + Click create route table" >}}
 
 ### Step 2 - Fill Name + Choose VPC + Create route table
 
 In AWS Console, complete **Fill Name + Choose VPC + Create route table** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/2. Fill Name + Choose VPC + Create route table.png" title="Fill Name + Choose VPC + Create route table" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/2-fill-name-choose-vpc-create-route-table.png" title="Fill Name + Choose VPC + Create route table" >}}
 
 ### Step 3 - Choose routes + Edit routes
 
 In AWS Console, complete **Choose routes + Edit routes** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/3. Choose routes + Edit routes.png" title="Choose routes + Edit routes" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/3-choose-routes-edit-routes.png" title="Choose routes + Edit routes" >}}
 
 ### Step 4 - Add Route + Configure NAT Gateway
 
@@ -67,22 +67,22 @@ nexusoms-demo-private-a-rt | 0.0.0.0/0 -> nexusoms-demo-nat-a
 nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/4. Add Route + Configure NAT Gateway.png" title="Add Route + Configure NAT Gateway" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/4-add-route-configure-nat-gateway.png" title="Add Route + Configure NAT Gateway" >}}
 
 ### Step 5 - Choose Subnet associations + Edit subnet associations
 
 In AWS Console, complete **Choose Subnet associations + Edit subnet associations** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/5. Choose Subnet associations + Edit subnet associations.png" title="Choose Subnet associations + Edit subnet associations" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/5-choose-subnet-associations-edit-subnet-associations.png" title="Choose Subnet associations + Edit subnet associations" >}}
 
 ### Step 6 - Choose subnet private a + Save associations
 
 In AWS Console, complete **Choose subnet private a + Save associations** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/6. Choose subnet private a + Save associations.png" title="Choose subnet private a + Save associations" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/6-choose-subnet-private-a-save-associations.png" title="Choose subnet private a + Save associations" >}}
 
 ### Step 7 - Complete create private route table
 
 In AWS Console, complete **Complete create private route table** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/7. Complete create private route table.png" title="Complete create private route table" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/7-complete-create-private-route-table.png" title="Complete create private route table" >}}

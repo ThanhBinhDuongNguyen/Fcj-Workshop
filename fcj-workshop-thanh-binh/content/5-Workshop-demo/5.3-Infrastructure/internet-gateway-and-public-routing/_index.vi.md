@@ -55,19 +55,19 @@ nexusoms-demo-public-rt
 
 Trên AWS Console, thực hiện **Open IGW dashboard + Create IGW** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1. Open IGW dashboard + Create IGW.png" title="Open IGW dashboard + Create IGW" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png" title="Open IGW dashboard + Create IGW" >}}
 
 ### Bước 2 - Put name tag + Create IGW
 
 Trên AWS Console, thực hiện **Put name tag + Create IGW** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2. Put name tag + Create IGW.png" title="Put name tag + Create IGW" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png" title="Put name tag + Create IGW" >}}
 
 ### Bước 3 - Attach to a VPC
 
 Trên AWS Console, thực hiện **Attach to a VPC** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3. Attach to a VPC.png" title="Attach to a VPC" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png" title="Attach to a VPC" >}}
 
 ### Bước 4 - Choose VPC + Click Attach IGW
 
@@ -81,14 +81,14 @@ Trên AWS Console, thực hiện **Choose VPC + Click Attach IGW** như hình d�
 nexusoms-demo-igw
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4. Choose VPC + Click Attach IGW.png" title="Choose VPC + Click Attach IGW" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png" title="Choose VPC + Click Attach IGW" >}}
 
 ### Bước 5 - Open Route tables dashboard + Create Route table
 
 Trên AWS Console, thực hiện **Open Route tables dashboard + Create Route table** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5. Open Route tables dashboard + Create Route table.png" title="Open Route tables dashboard + Create Route table" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png" title="Open Route tables dashboard + Create Route table" >}}
 
 ### Bước 6 - Fill Name + Choose VPC + Create route table
 
@@ -102,7 +102,7 @@ Trên AWS Console, thực hiện **Fill Name + Choose VPC + Create route table**
 nexusoms-demo-public-rt
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6. Fill Name + Choose VPC + Create route table.png" title="Fill Name + Choose VPC + Create route table" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6-fill-name-choose-vpc-create-route-table.png" title="Fill Name + Choose VPC + Create route table" >}}
 
 ### Bước 7 - Choose Routes + Edit routes
 
@@ -116,22 +116,22 @@ Trên AWS Console, thực hiện **Choose Routes + Edit routes** như hình dư�
 0.0.0.0/0
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7. Choose Routes + Edit routes.png" title="Choose Routes + Edit routes" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png" title="Choose Routes + Edit routes" >}}
 
 ### Bước 8 - Add route + choose Internet gateway + Save changes
 
 Trên AWS Console, thực hiện **Add route + choose Internet gateway + Save changes** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8. Add route + choose Internet gateway + Save changes.png" title="Add route + choose Internet gateway + Save changes" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8-add-route-choose-internet-gateway-save-changes.png" title="Add route + choose Internet gateway + Save changes" >}}
 
 ### Bước 9 - Choose subnet associations + Edit subnet associations
 
 Trên AWS Console, thực hiện **Choose subnet associations + Edit subnet associations** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9. Choose subnet associations + Edit subnet associations.png" title="Choose subnet associations + Edit subnet associations" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png" title="Choose subnet associations + Edit subnet associations" >}}
 
 ### Bước 10 - Choose 2 public subnet + Save associations
 
 Trên AWS Console, thực hiện **Choose 2 public subnet + Save associations** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10. Choose 2 public subnet + Save associations.png" title="Choose 2 public subnet + Save associations" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10-choose-2-public-subnet-save-associations.png" title="Choose 2 public subnet + Save associations" >}}

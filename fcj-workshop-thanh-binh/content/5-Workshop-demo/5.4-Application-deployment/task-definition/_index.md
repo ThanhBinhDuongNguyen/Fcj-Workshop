@@ -84,7 +84,7 @@ WebhookSimulator__SigningSecret <- webhookSigningSecret
 In AWS Console, complete **Open task definitions dashboard + Create new task definition** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1. Open task definitions dashboard + Create new task definition.png" title="Open task definitions dashboard + Create new task definition" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1-open-task-definitions-dashboard-create-new-task-definition.png" title="Open task definitions dashboard + Create new task definition" >}}
 
 ### Step 2 - Configure task definition
 
@@ -146,13 +146,13 @@ WebhookSimulator__SigningSecret <- webhookSigningSecret
 /ecs/nexusoms-demo-api
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2. Configure task definition.png" title="Configure task definition" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2-configure-task-definition.png" title="Configure task definition" >}}
 
 ### Step 3 - Configure OS, task roles
 
 In AWS Console, complete **Configure OS, task roles** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3. Configure OS, task roles.png" title="Configure OS, task roles" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3-configure-os-task-roles.png" title="Configure OS, task roles" >}}
 
 ### Step 4 - Configure Container-1 detail
 
@@ -166,10 +166,10 @@ In AWS Console, complete **Configure Container-1 detail** as shown below.
 Container port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4. Configure Container-1 detail.png" title="Configure Container-1 detail" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4-configure-container-1-detail.png" title="Configure Container-1 detail" >}}
 
 ### Step 5 - Configure environment variables
 
 In AWS Console, complete **Configure environment variables** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5. Configure environment variables.png" title="Configure environment variables" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5-configure-environment-variables.png" title="Configure environment variables" >}}

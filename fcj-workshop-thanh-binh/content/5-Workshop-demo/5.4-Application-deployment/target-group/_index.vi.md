@@ -50,7 +50,7 @@ Health check path: /health
 Trên AWS Console, thực hiện **Open Target Groups dashboard + Create target group** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1. Open Target Groups dashboard + Create target group.png" title="Open Target Groups dashboard + Create target group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png" title="Open Target Groups dashboard + Create target group" >}}
 
 ### Bước 2 - Configure target group
 
@@ -82,7 +82,7 @@ Protocol: HTTP
 Port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2. Configure target group.png" title="Configure target group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png" title="Configure target group" >}}
 
 ### Bước 3 - Choose VPC + Set up health checks
 
@@ -96,10 +96,10 @@ Trên AWS Console, thực hiện **Choose VPC + Set up health checks** như hìn
 Health check path: /health
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3. Choose VPC + Set up health checks.png" title="Choose VPC + Set up health checks" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png" title="Choose VPC + Set up health checks" >}}
 
 ### Bước 4 - Complete create target group
 
 Trên AWS Console, thực hiện **Complete create target group** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4. Complete create target group.png" title="Complete create target group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png" title="Complete create target group" >}}

@@ -157,7 +157,7 @@ https://<CLOUDFRONT_DOMAIN>/app?page=dashboard
 Trên AWS Console, thực hiện **Open website** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/1. Open website.png" title="Open website" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/1-open-website.png" title="Open website" >}}
 
 ### Bước 2 - Checking overall dashboard
 
@@ -171,13 +171,13 @@ Trên AWS Console, thực hiện **Checking overall dashboard** như hình dư�
 https://<CLOUDFRONT_DOMAIN>/app?page=dashboard
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/2. Checking overall dashboard.png" title="Checking overall dashboard" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/2-checking-overall-dashboard.png" title="Checking overall dashboard" >}}
 
 ### Bước 3 - Create product
 
 Trên AWS Console, thực hiện **Create product** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/3. Create product.png" title="Create product" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/3-create-product.png" title="Create product" >}}
 
 ### Bước 4 - Checking order detail
 
@@ -203,16 +203,16 @@ https://<CLOUDFRONT_DOMAIN>/api/health
 /ecs/nexusoms-demo-api
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4. Checking order detail.png" title="Checking order detail" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4-checking-order-detail.png" title="Checking order detail" >}}
 
 ### Bước 5 - Measuring product cost
 
 Trên AWS Console, thực hiện **Measuring product cost** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4.1. Measuring product cost.png" title="Measuring product cost" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4-1-measuring-product-cost.png" title="Measuring product cost" >}}
 
 ### Bước 6 - Using webhook to create order
 
 Trên AWS Console, thực hiện **Using webhook to create order** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/5. Using webhook to create order.png" title="Using webhook to create order" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/5-using-webhook-to-create-order.png" title="Using webhook to create order" >}}

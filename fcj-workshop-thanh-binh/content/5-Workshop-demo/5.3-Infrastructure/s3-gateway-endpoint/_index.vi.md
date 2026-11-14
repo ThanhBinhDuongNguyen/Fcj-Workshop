@@ -71,19 +71,19 @@ Trên AWS Console, thực hiện **Open Endpoints dashboard + Create endpoint** 
 com.amazonaws.ap-southeast-1.s3
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1. Open Endpoints dashboard + Create endpoint.png" title="Open Endpoints dashboard + Create endpoint" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1-open-endpoints-dashboard-create-endpoint.png" title="Open Endpoints dashboard + Create endpoint" >}}
 
 ### Bước 2 - Fill name tag + Choose type
 
 Trên AWS Console, thực hiện **Fill name tag + Choose type** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2. Fill name tag + Choose type.png" title="Fill name tag + Choose type" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2-fill-name-tag-choose-type.png" title="Fill name tag + Choose type" >}}
 
 ### Bước 3 - Choose S3 service
 
 Trên AWS Console, thực hiện **Choose S3 service** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3. Choose S3 service.png" title="Choose S3 service" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3-choose-s3-service.png" title="Choose S3 service" >}}
 
 ### Bước 4 - Choose 2 private route tables + Full access for policy
 
@@ -103,10 +103,10 @@ nexusoms-demo-private-a-rt
 nexusoms-demo-private-b-rt
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4. Choose 2 private route tables + Full access for policy.png" title="Choose 2 private route tables + Full access for policy" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4-choose-2-private-route-tables-full-access-for-policy.png" title="Choose 2 private route tables + Full access for policy" >}}
 
 ### Bước 5 - Click create endpoint
 
 Trên AWS Console, thực hiện **Click create endpoint** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5. Click create endpoint.png" title="Click create endpoint" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png" title="Click create endpoint" >}}

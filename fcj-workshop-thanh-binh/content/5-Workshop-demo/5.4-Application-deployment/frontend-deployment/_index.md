@@ -103,13 +103,13 @@ npm run build
 aws s3 sync .\dist "s3://nexusoms-demo-frontend-<AWS_ACCOUNT_ID>" --delete
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/1. Set up variable + run build project.png" title="Set up variable + run build project" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/1-set-up-variable-run-build-project.png" title="Set up variable + run build project" >}}
 
 ### Step 2 - Push to S3
 
 In AWS Console, complete **Push to S3** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/2. Push to S3.png" title="Push to S3" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/2-push-to-s3.png" title="Push to S3" >}}
 
 ### Step 3 - Create invalidation CloudFront
 
@@ -123,4 +123,4 @@ In AWS Console, complete **Create invalidation CloudFront** as shown below.
 aws cloudfront create-invalidation --distribution-id <DISTRIBUTION_ID> --paths "/*"
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3. Create invalidation CloudFront.png" title="Create invalidation CloudFront" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3-create-invalidation-cloudfront.png" title="Create invalidation CloudFront" >}}

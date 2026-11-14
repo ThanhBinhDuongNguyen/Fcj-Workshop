@@ -54,7 +54,7 @@ Health check path: /health
 In AWS Console, complete **Open Target Groups dashboard + Create target group** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1. Open Target Groups dashboard + Create target group.png" title="Open Target Groups dashboard + Create target group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png" title="Open Target Groups dashboard + Create target group" >}}
 
 ### Step 2 - Configure target group
 
@@ -86,7 +86,7 @@ Protocol: HTTP
 Port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2. Configure target group.png" title="Configure target group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png" title="Configure target group" >}}
 
 ### Step 3 - Choose VPC + Set up health checks
 
@@ -100,10 +100,10 @@ In AWS Console, complete **Choose VPC + Set up health checks** as shown below.
 Health check path: /health
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3. Choose VPC + Set up health checks.png" title="Choose VPC + Set up health checks" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png" title="Choose VPC + Set up health checks" >}}
 
 ### Step 4 - Complete create target group
 
 In AWS Console, complete **Complete create target group** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4. Complete create target group.png" title="Complete create target group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png" title="Complete create target group" >}}

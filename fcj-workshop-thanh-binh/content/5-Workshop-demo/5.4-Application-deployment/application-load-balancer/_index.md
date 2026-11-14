@@ -53,7 +53,7 @@ nexusoms-demo-api-tg
 
 In AWS Console, complete **Open Load Balancers dashboard + Create load balancer** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/1. Open Load Balancers dashboard + Create load balancer.png" title="Open Load Balancers dashboard + Create load balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/1-open-load-balancers-dashboard-create-load-balancer.png" title="Open Load Balancers dashboard + Create load balancer" >}}
 
 ### Step 2 - Choose create Application Load Balancer
 
@@ -91,34 +91,34 @@ HTTP:80
 nexusoms-demo-api-tg
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/2. Choose create Application Load Balancer.png" title="Choose create Application Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/2-choose-create-application-load-balancer.png" title="Choose create Application Load Balancer" >}}
 
 ### Step 3 - Configure basic Load Balancer
 
 In AWS Console, complete **Configure basic Load Balancer** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/3. Configure basic Load Balancer.png" title="Configure basic Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/3-configure-basic-load-balancer.png" title="Configure basic Load Balancer" >}}
 
 ### Step 4 - Configure Network mapping for Load Balancer
 
 In AWS Console, complete **Configure Network mapping for Load Balancer** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/4. Configure Network mapping for Load Balancer.png" title="Configure Network mapping for Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/4-configure-network-mapping-for-load-balancer.png" title="Configure Network mapping for Load Balancer" >}}
 
 ### Step 5 - Configure Security group for Load Balancer
 
 In AWS Console, complete **Configure Security group for Load Balancer** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/5. Configure Security group for Load Balancer.png" title="Configure Security group for Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/5-configure-security-group-for-load-balancer.png" title="Configure Security group for Load Balancer" >}}
 
 ### Step 6 - Configure Target group for Load Balancer
 
 In AWS Console, complete **Configure Target group for Load Balancer** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/6. Configure Target group for Load Balancer.png" title="Configure Target group for Load Balancer" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/6-configure-target-group-for-load-balancer.png" title="Configure Target group for Load Balancer" >}}
 
 ### Step 7 - Copy Load balancer ARN
 
 In AWS Console, complete **Copy Load balancer ARN** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/7. Copy Load balancer ARN.png" title="Copy Load balancer ARN" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/7-copy-load-balancer-arn.png" title="Copy Load balancer ARN" >}}

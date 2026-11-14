@@ -94,7 +94,7 @@ docker tag "nexusoms-demo-api:$ImageTag" "$EcrRepositoryUri`:$ImageTag"
 docker push "$EcrRepositoryUri`:$ImageTag"
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/1. Set up variable + Docker build BE.png" title="Set up variable + Docker build BE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/1-set-up-variable-docker-build-be.png" title="Set up variable + Docker build BE" >}}
 
 ### Bước 2 - Push Image to ECR Repository
 
@@ -114,4 +114,4 @@ $EcrRepositoryUri = '<AWS_ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/nexus
 $ImageTag = 'v<YYYY-MM-DD>-01'
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/2. Push Image to ECR Repository.png" title="Push Image to ECR Repository" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/2-push-image-to-ecr-repository.png" title="Push Image to ECR Repository" >}}

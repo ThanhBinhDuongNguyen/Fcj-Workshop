@@ -60,13 +60,13 @@ nexusoms-demo-private-b | 10.80.11.0/24
 
 Trên AWS Console, thực hiện **Open subnets dashboard + Create subnet** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1. Open subnets dashboard + Create subnet.png" title="Open subnets dashboard + Create subnet" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png" title="Open subnets dashboard + Create subnet" >}}
 
 ### Bước 2 - Choose VPC ID
 
 Trên AWS Console, thực hiện **Choose VPC ID** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2. Choose VPC ID.png" title="Choose VPC ID" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png" title="Choose VPC ID" >}}
 
 ### Bước 3 - Configure public subnet a
 
@@ -86,13 +86,13 @@ nexusoms-demo-public-a | 10.80.0.0/24
 nexusoms-demo-public-b | 10.80.1.0/24
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3. Configure public subnet a.png" title="Configure public subnet a" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3-configure-public-subnet-a.png" title="Configure public subnet a" >}}
 
 ### Bước 4 - Configure public subnet b
 
 Trên AWS Console, thực hiện **Configure public subnet b** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4. Configure public subnet b.png" title="Configure public subnet b" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png" title="Configure public subnet b" >}}
 
 ### Bước 5 - Configure private subnet a
 
@@ -112,22 +112,22 @@ nexusoms-demo-private-a | 10.80.10.0/24
 nexusoms-demo-private-b | 10.80.11.0/24
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5. Configure private subnet a.png" title="Configure private subnet a" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5-configure-private-subnet-a.png" title="Configure private subnet a" >}}
 
 ### Bước 6 - Configure private subnet b
 
 Trên AWS Console, thực hiện **Configure private subnet b** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6. Configure private subnet b.png" title="Configure private subnet b" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png" title="Configure private subnet b" >}}
 
 ### Bước 7 - Edit subnet settings
 
 Trên AWS Console, thực hiện **Edit subnet settings** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7. Edit subnet settings.png" title="Edit subnet settings" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png" title="Edit subnet settings" >}}
 
 ### Bước 8 - Enable auto-assign public IPv4 address
 
 Trên AWS Console, thực hiện **Enable auto-assign public IPv4 address** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8. Enable auto-assign public IPv4 address.png" title="Enable auto-assign public IPv4 address" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png" title="Enable auto-assign public IPv4 address" >}}

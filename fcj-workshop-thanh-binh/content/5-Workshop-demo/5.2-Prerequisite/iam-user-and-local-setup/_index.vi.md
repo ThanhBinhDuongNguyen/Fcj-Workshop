@@ -473,13 +473,13 @@ aws sts get-caller-identity --profile nexusoms-demo --region ap-southeast-1
 
 Trên AWS Console, thực hiện **Open IAM user dashboard** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1. Open IAM user dashboard.png" title="Open IAM user dashboard" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1-open-iam-user-dashboard.png" title="Open IAM user dashboard" >}}
 
 ### Bước 2 - Create IAM user button
 
 Trên AWS Console, thực hiện **Create IAM user button** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2. Create IAM user button.png" title="Create IAM user button" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2-create-iam-user-button.png" title="Create IAM user button" >}}
 
 ### Bước 3 - Configure Specify user detail
 
@@ -499,61 +499,61 @@ ap-southeast-1
 nexusoms-demo-deployer
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3. Configure Specify user detail.png" title="Configure Specify user detail" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3-configure-specify-user-detail.png" title="Configure Specify user detail" >}}
 
 ### Bước 4 - Configure permission
 
 Trên AWS Console, thực hiện **Configure permission** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4. Configure permission.png" title="Configure permission" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4-configure-permission.png" title="Configure permission" >}}
 
 ### Bước 5 - Select Permissions Policies
 
 Trên AWS Console, thực hiện **Select Permissions Policies** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5. Select Permissions Policies.png" title="Select Permissions Policies" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5-select-permissions-policies.png" title="Select Permissions Policies" >}}
 
 ### Bước 6 - Click Create User
 
 Trên AWS Console, thực hiện **Click Create User** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6. Click Create User.png" title="Click Create User" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6-click-create-user.png" title="Click Create User" >}}
 
 ### Bước 7 - Complete create IAM User
 
 Trên AWS Console, thực hiện **Complete create IAM User** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7. Complete create IAM User.png" title="Complete create IAM User" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7-complete-create-iam-user.png" title="Complete create IAM User" >}}
 
 ### Bước 8 - Configure Security credentials for user
 
 Trên AWS Console, thực hiện **Configure Security credentials for user** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8. Configure Security credentials for user.png" title="Configure Security credentials for user" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8-configure-security-credentials-for-user.png" title="Configure Security credentials for user" >}}
 
 ### Bước 9 - Create access key
 
 Trên AWS Console, thực hiện **Create access key** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9. Create access key.png" title="Create access key" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9-create-access-key.png" title="Create access key" >}}
 
 ### Bước 10 - Configure Command Link Interface + I understand... + Next
 
 Trên AWS Console, thực hiện **Configure Command Link Interface + I understand... + Next** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10. Configure Command Link Interface + I understand... + Next.png" title="Configure Command Link Interface + I understand... + Next" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10-configure-command-link-interface-i-understand-next.png" title="Configure Command Link Interface + I understand... + Next" >}}
 
 ### Bước 11 - Set description tag
 
 Trên AWS Console, thực hiện **Set description tag** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11. Set description tag.png" title="Set description tag" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png" title="Set description tag" >}}
 
 ### Bước 12 - Copy access key + download csv
 
 Trên AWS Console, thực hiện **Copy access key + download csv** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12. Copy access key + download csv.png" title="Copy access key + download csv" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png" title="Copy access key + download csv" >}}
 
 ### Bước 13 - Open PowerShell
 
@@ -567,7 +567,7 @@ Trên AWS Console, thực hiện **Open PowerShell** như hình dưới đây.
 nexusoms-demo-powershell
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13. Open PowerShell.png" title="Open PowerShell" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13-open-powershell.png" title="Open PowerShell" >}}
 
 ### Bước 14 - Check AWS version + Configure profile
 
@@ -605,46 +605,46 @@ $env:AWS_PROFILE = 'nexusoms-demo'
 aws sts get-caller-identity --profile nexusoms-demo --region ap-southeast-1
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14. Check AWS version + Configure profile.png" title="Check AWS version + Configure profile" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14-check-aws-version-configure-profile.png" title="Check AWS version + Configure profile" >}}
 
 ### Bước 15 - Configure more
 
 Trên AWS Console, thực hiện **Configure more** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15. Configure more.png" title="Configure more" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15-configure-more.png" title="Configure more" >}}
 
 ### Bước 16 - Get available zone + CloudFront
 
 Trên AWS Console, thực hiện **Get available zone + CloudFront** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16. Get available zone + CloudFront.png" title="Get available zone + CloudFront" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png" title="Get available zone + CloudFront" >}}
 
 ### Bước 17 - Checking library in cmd
 
 Trên AWS Console, thực hiện **Checking library in cmd** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17. Checking library in cmd.png" title="Checking library in cmd" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17-checking-library-in-cmd.png" title="Checking library in cmd" >}}
 
 ### Bước 18 - Run test for BE
 
 Trên AWS Console, thực hiện **Run test for BE** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18.1. Run test for BE.png" title="Run test for BE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18-1-run-test-for-be.png" title="Run test for BE" >}}
 
 ### Bước 19 - Docker build project
 
 Trên AWS Console, thực hiện **Docker build project** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18.2. Docker build project.png" title="Docker build project" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/18-2-docker-build-project.png" title="Docker build project" >}}
 
 ### Bước 20 - CI & type-check FE
 
 Trên AWS Console, thực hiện **CI & type-check FE** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19.1. CI & type-check FE.png" title="CI & type-check FE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19-1-ci-type-check-fe.png" title="CI & type-check FE" >}}
 
 ### Bước 21 - Run test + run build FE
 
 Trên AWS Console, thực hiện **Run test + run build FE** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19.2. Run test + run build FE.png" title="Run test + run build FE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/19-2-run-test-run-build-fe.png" title="Run test + run build FE" >}}

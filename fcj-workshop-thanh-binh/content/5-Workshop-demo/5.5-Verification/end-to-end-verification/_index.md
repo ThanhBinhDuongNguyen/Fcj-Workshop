@@ -48,7 +48,7 @@ https://<CLOUDFRONT_DOMAIN>/app?page=dashboard
 In AWS Console, complete **Open website** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/1. Open website.png" title="Open website" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/1-open-website.png" title="Open website" >}}
 
 ### Step 2 - Checking overall dashboard
 
@@ -62,13 +62,13 @@ In AWS Console, complete **Checking overall dashboard** as shown below.
 https://<CLOUDFRONT_DOMAIN>/app?page=dashboard
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/2. Checking overall dashboard.png" title="Checking overall dashboard" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/2-checking-overall-dashboard.png" title="Checking overall dashboard" >}}
 
 ### Step 3 - Create product
 
 In AWS Console, complete **Create product** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/3. Create product.png" title="Create product" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/3-create-product.png" title="Create product" >}}
 
 ### Step 4 - Checking order detail
 
@@ -94,16 +94,16 @@ https://<CLOUDFRONT_DOMAIN>/api/health
 /ecs/nexusoms-demo-api
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4. Checking order detail.png" title="Checking order detail" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4-checking-order-detail.png" title="Checking order detail" >}}
 
 ### Step 5 - Measuring product cost
 
 In AWS Console, complete **Measuring product cost** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4.1. Measuring product cost.png" title="Measuring product cost" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/4-1-measuring-product-cost.png" title="Measuring product cost" >}}
 
 ### Step 6 - Using webhook to create order
 
 In AWS Console, complete **Using webhook to create order** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/5. Using webhook to create order.png" title="Using webhook to create order" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.5-Verification/end-to-end-verification/5-using-webhook-to-create-order.png" title="Using webhook to create order" >}}

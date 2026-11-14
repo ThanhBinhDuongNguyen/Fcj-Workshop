@@ -78,19 +78,19 @@ nexusoms-demo-ecs-task-role
 Trên AWS Console, thực hiện **Open Roles dashboard + Create role** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1. Open Roles dashboard + Create role.png" title="Open Roles dashboard + Create role" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1-open-roles-dashboard-create-role.png" title="Open Roles dashboard + Create role" >}}
 
 ### Bước 2 - Configure Select trusted entity
 
 Trên AWS Console, thực hiện **Configure Select trusted entity** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2. Configure Select trusted entity.png" title="Configure Select trusted entity" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2-configure-select-trusted-entity.png" title="Configure Select trusted entity" >}}
 
 ### Bước 3 - Configure permissions
 
 Trên AWS Console, thực hiện **Configure permissions** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3. Configure permissions.png" title="Configure permissions" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3-configure-permissions.png" title="Configure permissions" >}}
 
 ### Bước 4 - Fill name role
 
@@ -116,22 +116,22 @@ ReadNexusOmsApplicationSecret
 nexusoms-demo-ecs-task-role
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/4. Fill name role.png" title="Fill name role" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/4-fill-name-role.png" title="Fill name role" >}}
 
 ### Bước 5 - Find role + Open role
 
 Trên AWS Console, thực hiện **Find role + Open role** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5. Find role + Open role.png" title="Find role + Open role" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5-find-role-open-role.png" title="Find role + Open role" >}}
 
 ### Bước 6 - Create inline policy
 
 Trên AWS Console, thực hiện **Create inline policy** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6. Create inline policy.png" title="Create inline policy" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6-create-inline-policy.png" title="Create inline policy" >}}
 
 ### Bước 7 - Paste the json to create
 
 Trên AWS Console, thực hiện **Paste the json to create** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7. Paste the json to create.png" title="Paste the json to create" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7-paste-the-json-to-create.png" title="Paste the json to create" >}}

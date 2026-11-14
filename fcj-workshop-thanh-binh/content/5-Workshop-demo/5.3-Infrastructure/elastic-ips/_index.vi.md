@@ -32,7 +32,7 @@ nexusoms-demo-nat-eip-b
 Trên AWS Console, thực hiện **Open Elastic IPs + Allocate Elastic IP** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/1. Open Elastic IPs + Allocate Elastic IP.png" title="Open Elastic IPs + Allocate Elastic IP" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/1-open-elastic-ips-allocate-elastic-ip.png" title="Open Elastic IPs + Allocate Elastic IP" >}}
 
 ### Bước 2 - Fill the name tag for Elastic IP + Allocate
 
@@ -52,4 +52,4 @@ nexusoms-demo-nat-eip-a
 nexusoms-demo-nat-eip-b
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/2. Fill the name tag for Elastic IP + Allocate.png" title="Fill the name tag for Elastic IP + Allocate" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/2-fill-the-name-tag-for-elastic-ip-allocate.png" title="Fill the name tag for Elastic IP + Allocate" >}}

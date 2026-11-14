@@ -36,7 +36,7 @@ nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 In AWS Console, complete **Open Security groups dashboard + Create security group** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/1. Open Security groups dashboard + Create security group.png" title="Open Security groups dashboard + Create security group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/1-open-security-groups-dashboard-create-security-group.png" title="Open Security groups dashboard + Create security group" >}}
 
 ### Step 2 - Full basic details of security group
 
@@ -56,10 +56,10 @@ nexusoms-demo-alb-sg | TCP 80 | <CLOUDFRONT_ORIGIN_PREFIX_LIST_ID>
 nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/2. Full basic details of security group.png" title="Full basic details of security group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/2-full-basic-details-of-security-group.png" title="Full basic details of security group" >}}
 
 ### Step 3 - Configure the second security group
 
 In AWS Console, complete **Configure the second security group** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/3. Configure the second security group.png" title="Configure the second security group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/3-configure-the-second-security-group.png" title="Configure the second security group" >}}

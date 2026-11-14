@@ -49,10 +49,10 @@ In AWS Console, complete **Open Log Management dashboard + Create log group** as
 14 days
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1. Open Log Management dashboard + Create log group.png" title="Open Log Management dashboard + Create log group" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png" title="Open Log Management dashboard + Create log group" >}}
 
 ### Step 2 - Fill name + retention setting
 
 In AWS Console, complete **Fill name + retention setting** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2. Fill name + retention setting.png" title="Fill name + retention setting" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png" title="Fill name + retention setting" >}}

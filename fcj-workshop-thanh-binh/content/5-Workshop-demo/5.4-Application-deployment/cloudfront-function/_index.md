@@ -54,7 +54,7 @@ Stage: LIVE
 In AWS Console, complete **Open Functions dashboard + Create function** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1. Open Functions dashboard + Create function.png" title="Open Functions dashboard + Create function" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png" title="Open Functions dashboard + Create function" >}}
 
 ### Step 2 - Configure function details
 
@@ -92,34 +92,34 @@ Behavior: Default (*)
 Stage: LIVE
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2. Configure function details.png" title="Configure function details" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png" title="Configure function details" >}}
 
 ### Step 3 - Paste code build section
 
 In AWS Console, complete **Paste code build section** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3. Paste code build section.png" title="Paste code build section" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png" title="Paste code build section" >}}
 
 ### Step 4 - Publish function
 
 In AWS Console, complete **Publish function** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4. Publish function.png" title="Publish function" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png" title="Publish function" >}}
 
 ### Step 5 - Open distribution detail + choose behaviors + edit
 
 In AWS Console, complete **Open distribution detail + choose behaviors + edit** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5. Open distribution detail + choose behaviors + edit.png" title="Open distribution detail + choose behaviors + edit" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png" title="Open distribution detail + choose behaviors + edit" >}}
 
 ### Step 6 - Configure Function associations
 
 In AWS Console, complete **Configure Function associations** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6. Configure Function associations.png" title="Configure Function associations" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png" title="Configure Function associations" >}}
 
 ### Step 7 - Copy Distribution domain name
 
 In AWS Console, complete **Copy Distribution domain name** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7. Copy Distribution domain name.png" title="Copy Distribution domain name" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png" title="Copy Distribution domain name" >}}

@@ -42,14 +42,14 @@ nexusoms-demo-vpc
 In AWS Console, complete **Open Your VPCs dashboard** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/1. Open Your VPCs dashboard.png" title="Open Your VPCs dashboard" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/1-open-your-vpcs-dashboard.png" title="Open Your VPCs dashboard" >}}
 
 ### Step 2 - Click create VPC
 
 In AWS Console, complete **Click create VPC** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/2. Click create VPC.png" title="Click create VPC" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/2-click-create-vpc.png" title="Click create VPC" >}}
 
 ### Step 3 - Configure VPC settings
 
@@ -75,22 +75,22 @@ nexusoms-demo-vpc
 10.80.0.0/16
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/3. Configure VPC settings.png" title="Configure VPC settings" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/3-configure-vpc-settings.png" title="Configure VPC settings" >}}
 
 ### Step 4 - Choose Action + Edit VPC Settings
 
 In AWS Console, complete **Choose Action + Edit VPC Settings** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/4. Choose Action + Edit VPC Settings.png" title="Choose Action + Edit VPC Settings" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/4-choose-action-edit-vpc-settings.png" title="Choose Action + Edit VPC Settings" >}}
 
 ### Step 5 - Check 2 box in DNS settings
 
 In AWS Console, complete **Check 2 box in DNS settings** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/5. Check 2 box in DNS settings.png" title="Check 2 box in DNS settings" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/5-check-2-box-in-dns-settings.png" title="Check 2 box in DNS settings" >}}
 
 ### Step 6 - Copy VPC ID
 
 In AWS Console, complete **Copy VPC ID** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/6. Copy VPC ID.png" title="Copy VPC ID" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/6-copy-vpc-id.png" title="Copy VPC ID" >}}

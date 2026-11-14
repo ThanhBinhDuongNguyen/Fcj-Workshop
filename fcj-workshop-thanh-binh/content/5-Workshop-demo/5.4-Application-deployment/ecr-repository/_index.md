@@ -61,7 +61,7 @@ nexusoms-demo-api
 Immutable
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1. Open ECR dashboard and create repository.png" title="Open ECR dashboard and create repository" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png" title="Open ECR dashboard and create repository" >}}
 
 ### Step 2 - Configure private repository
 
@@ -81,16 +81,16 @@ Private
 Scan on push: Enabled
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2. Configure private repository.png" title="Configure private repository" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png" title="Configure private repository" >}}
 
 ### Step 3 - Confirm encryption and create repository
 
 In AWS Console, complete **Confirm encryption and create repository** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3. Confirm encryption and create repository.png" title="Confirm encryption and create repository" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png" title="Confirm encryption and create repository" >}}
 
 ### Step 4 - Copy ECR repository URI
 
 In AWS Console, complete **Copy ECR repository URI** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4. Copy ECR repository URI.png" title="Copy ECR repository URI" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png" title="Copy ECR repository URI" >}}

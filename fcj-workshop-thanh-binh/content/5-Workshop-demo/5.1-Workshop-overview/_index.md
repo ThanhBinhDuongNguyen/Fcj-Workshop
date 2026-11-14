@@ -20,4 +20,4 @@ Follow the screenshots in order and keep all resource names consistent. The Viet
 
 In AWS Console, complete **Noxus_AWS_Architect_1** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.1-Workshop-overview/Noxus_AWS_Architect_1.png" title="Noxus_AWS_Architect_1" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.1-Workshop-overview/noxus-aws-architect-1.png" title="Noxus_AWS_Architect_1" >}}

@@ -42,19 +42,19 @@ nexusoms-demo-ecs-task-role
 In AWS Console, complete **Open Roles dashboard + Create role** as shown below.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1. Open Roles dashboard + Create role.png" title="Open Roles dashboard + Create role" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1-open-roles-dashboard-create-role.png" title="Open Roles dashboard + Create role" >}}
 
 ### Step 2 - Configure Select trusted entity
 
 In AWS Console, complete **Configure Select trusted entity** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2. Configure Select trusted entity.png" title="Configure Select trusted entity" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2-configure-select-trusted-entity.png" title="Configure Select trusted entity" >}}
 
 ### Step 3 - Configure permissions
 
 In AWS Console, complete **Configure permissions** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3. Configure permissions.png" title="Configure permissions" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3-configure-permissions.png" title="Configure permissions" >}}
 
 ### Step 4 - Fill name role
 
@@ -80,22 +80,22 @@ ReadNexusOmsApplicationSecret
 nexusoms-demo-ecs-task-role
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/4. Fill name role.png" title="Fill name role" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/4-fill-name-role.png" title="Fill name role" >}}
 
 ### Step 5 - Find role + Open role
 
 In AWS Console, complete **Find role + Open role** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5. Find role + Open role.png" title="Find role + Open role" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5-find-role-open-role.png" title="Find role + Open role" >}}
 
 ### Step 6 - Create inline policy
 
 In AWS Console, complete **Create inline policy** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6. Create inline policy.png" title="Create inline policy" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6-create-inline-policy.png" title="Create inline policy" >}}
 
 ### Step 7 - Paste the json to create
 
 In AWS Console, complete **Paste the json to create** as shown below.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7. Paste the json to create.png" title="Paste the json to create" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7-paste-the-json-to-create.png" title="Paste the json to create" >}}

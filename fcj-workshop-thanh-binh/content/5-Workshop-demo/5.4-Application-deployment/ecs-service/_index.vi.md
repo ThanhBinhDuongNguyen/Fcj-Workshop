@@ -72,7 +72,7 @@ Container port: 8080
 Trên AWS Console, thực hiện **Choose service tab + Create** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1. Choose service tab + Create.png" title="Choose service tab + Create" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1-choose-service-tab-create.png" title="Choose service tab + Create" >}}
 
 ### Bước 2 - Configure service detail
 
@@ -110,28 +110,28 @@ Container: api
 Container port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2. Configure service detail.png" title="Configure service detail" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2-configure-service-detail.png" title="Configure service detail" >}}
 
 ### Bước 3 - Configure Network for service
 
 Trên AWS Console, thực hiện **Configure Network for service** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3. Configure Network for service.png" title="Configure Network for service" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3-configure-network-for-service.png" title="Configure Network for service" >}}
 
 ### Bước 4 - Configure Load balancer for service
 
 Trên AWS Console, thực hiện **Configure Load balancer for service** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4. Configure Load balancer for service.png" title="Configure Load balancer for service" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-configure-load-balancer-for-service.png" title="Configure Load balancer for service" >}}
 
 ### Bước 5 - Configure Load balancer for service
 
 Trên AWS Console, thực hiện **Configure Load balancer for service** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4.1. Configure Load balancer for service.png" title="Configure Load balancer for service" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-1-configure-load-balancer-for-service.png" title="Configure Load balancer for service" >}}
 
 ### Bước 6 - Click create
 
 Trên AWS Console, thực hiện **Click create** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5. Click create.png" title="Click create" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5-click-create.png" title="Click create" >}}

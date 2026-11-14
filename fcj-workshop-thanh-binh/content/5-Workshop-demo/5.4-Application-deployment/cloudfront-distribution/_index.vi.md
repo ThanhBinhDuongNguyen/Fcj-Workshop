@@ -130,7 +130,7 @@ Trên AWS Console, thực hiện **Open CloudFront dashboard + Create distributi
 nexusoms-demo-web
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1. Open CloudFront dashboard + Create distribution.png" title="Open CloudFront dashboard + Create distribution" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png" title="Open CloudFront dashboard + Create distribution" >}}
 
 ### Bước 2 - Configure distribution options
 
@@ -150,38 +150,38 @@ Default root object: index.html
 Path pattern: /api/*
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2. Configure distribution options.png" title="Configure distribution options" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png" title="Configure distribution options" >}}
 
 ### Bước 3 - Choose S3 type + mapping to S3 FE
 
 Trên AWS Console, thực hiện **Choose S3 type + mapping to S3 FE** như hình dưới đây.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3. Choose S3 type + mapping to S3 FE.png" title="Choose S3 type + mapping to S3 FE" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png" title="Choose S3 type + mapping to S3 FE" >}}
 
 ### Bước 4 - Click next
 
 Trên AWS Console, thực hiện **Click next** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4. Click next.png" title="Click next" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png" title="Click next" >}}
 
 ### Bước 5 - Choose Do not enable for demo
 
 Trên AWS Console, thực hiện **Choose Do not enable for demo** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5. Choose Do not enable for demo.png" title="Choose Do not enable for demo" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png" title="Choose Do not enable for demo" >}}
 
 ### Bước 6 - Click Create distribution
 
 Trên AWS Console, thực hiện **Click Create distribution** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6. Click Create distribution.png" title="Click Create distribution" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png" title="Click Create distribution" >}}
 
 ### Bước 7 - Choose origins + Create origin
 
 Trên AWS Console, thực hiện **Choose origins + Create origin** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7. Choose origins + Create origin.png" title="Choose origins + Create origin" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png" title="Choose origins + Create origin" >}}
 
 ### Bước 8 - Configure setting for origin
 
@@ -195,19 +195,19 @@ Trên AWS Console, thực hiện **Configure setting for origin** như hình dư
 nexusoms-demo-alb-origin
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8. Configure setting for origin.png" title="Configure setting for origin" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png" title="Configure setting for origin" >}}
 
 ### Bước 9 - Choose Behavior tab + Create behavior
 
 Trên AWS Console, thực hiện **Choose Behavior tab + Create behavior** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9. Choose Behavior tab + Create behavior.png" title="Choose Behavior tab + Create behavior" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png" title="Choose Behavior tab + Create behavior" >}}
 
 ### Bước 10 - Configure behavior setting
 
 Trên AWS Console, thực hiện **Configure behavior setting** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10. Configure behavior setting.png" title="Configure behavior setting" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png" title="Configure behavior setting" >}}
 
 ### Bước 11 - Choose origin request policy
 
@@ -227,4 +227,4 @@ Cache policy: CachingDisabled
 Origin request policy: AllViewerExceptHostHeader
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11. Choose origin request policy.png" title="Choose origin request policy" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png" title="Choose origin request policy" >}}

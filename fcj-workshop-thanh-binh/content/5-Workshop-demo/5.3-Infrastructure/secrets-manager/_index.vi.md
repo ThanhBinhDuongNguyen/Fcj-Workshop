@@ -116,13 +116,13 @@ nexusoms/demo/application
 }
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/1. Open Secrets Manager service + Store a new secret.png" title="Open Secrets Manager service + Store a new secret" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/1-open-secrets-manager-service-store-a-new-secret.png" title="Open Secrets Manager service + Store a new secret" >}}
 
 ### Bước 2 - Choose secret type
 
 Trên AWS Console, thực hiện **Choose secret type** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/2. Choose secret type.png" title="Choose secret type" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/2-choose-secret-type.png" title="Choose secret type" >}}
 
 ### Bước 3 - Configure secret
 
@@ -154,10 +154,10 @@ Trên AWS Console, thực hiện **Configure secret** như hình dưới đây.
 "webhookSigningSecret": "<RANDOM_SECRET_AT_LEAST_32_CHARACTERS>"
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/3. Configure secret.png" title="Configure secret" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/3-configure-secret.png" title="Configure secret" >}}
 
 ### Bước 4 - Copy secret ARN
 
 Trên AWS Console, thực hiện **Copy secret ARN** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/4. Copy secret ARN.png" title="Copy secret ARN" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/4-copy-secret-arn.png" title="Copy secret ARN" >}}

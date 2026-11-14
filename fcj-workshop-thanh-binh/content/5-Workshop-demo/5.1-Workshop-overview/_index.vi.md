@@ -37,4 +37,4 @@ Trình duyệt gọi API cùng origin CloudFront. Trong code, các endpoint đã
 
 Trên AWS Console, thực hiện **Noxus_AWS_Architect_1** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.1-Workshop-overview/Noxus_AWS_Architect_1.png" title="Noxus_AWS_Architect_1" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.1-Workshop-overview/noxus-aws-architect-1.png" title="Noxus_AWS_Architect_1" >}}

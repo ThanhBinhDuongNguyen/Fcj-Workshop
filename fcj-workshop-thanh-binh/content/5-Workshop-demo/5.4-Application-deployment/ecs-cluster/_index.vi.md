@@ -45,22 +45,22 @@ Trên AWS Console, thực hiện **Open Clusters dashboard + Create cluster** nh
 nexusoms-demo-cluster
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1. Open Clusters dashboard + Create cluster.png" title="Open Clusters dashboard + Create cluster" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1-open-clusters-dashboard-create-cluster.png" title="Open Clusters dashboard + Create cluster" >}}
 
 ### Bước 2 - Configure cluster
 
 Trên AWS Console, thực hiện **Configure cluster** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2. Configure cluster.png" title="Configure cluster" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2-configure-cluster.png" title="Configure cluster" >}}
 
 ### Bước 3 - Choose update cluster
 
 Trên AWS Console, thực hiện **Choose update cluster** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3. Choose update cluster.png" title="Choose update cluster" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3-choose-update-cluster.png" title="Choose update cluster" >}}
 
 ### Bước 4 - Turn on Container Insights
 
 Trên AWS Console, thực hiện **Turn on Container Insights** như hình dưới đây.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4. Turn on Container Insights.png" title="Turn on Container Insights" >}}
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4-turn-on-container-insights.png" title="Turn on Container Insights" >}}
