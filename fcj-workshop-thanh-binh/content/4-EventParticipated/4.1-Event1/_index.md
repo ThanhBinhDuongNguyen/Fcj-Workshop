@@ -72,6 +72,6 @@ Attending the **"Buildathon Kickoff: Code the Future with CMC Global"** event wa
 
 _Due to a technical glitch with the check-in app during the event, the screenshot below serves as proof of attendance as instructed:_
 
-![Buildathon Kickoff Attendance Proof](/images/buildathon-kickoff.jpg)
+![Buildathon Kickoff Attendance Proof](/images/4-Event/buildathon-kickoff.jpg)
 
 > _Figure 1: Screenshot confirming attendance at the "Buildathon Kickoff: Code the Future with CMC Global" event._

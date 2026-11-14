@@ -72,6 +72,6 @@ Buổi Kickoff mang lại nhiều giá trị thực tế, không chỉ giúp tô
 
 _Do ứng dụng điểm danh gặp sự cố kỹ thuật trong thời gian diễn ra sự kiện, hình ảnh chụp màn hình bên dưới được sử dụng làm minh chứng tham dự theo hướng dẫn:_
 
-![Buildathon Kickoff Attendance Proof](/images/buildathon-kickoff.jpg)
+![Buildathon Kickoff Attendance Proof](/images/4-Event/buildathon-kickoff.jpg)
 
 > _Hình 1: Hình ảnh tham dự sự kiện "Buildathon Kickoff: Code the Future with CMC Global"._

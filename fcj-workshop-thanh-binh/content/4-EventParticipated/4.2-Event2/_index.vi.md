@@ -133,6 +133,6 @@ Tham dự **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** đã
 - Hợp tác với các chuyên gia công nghệ địa phương giúp rút ngắn đáng kể thời gian triển khai và giảm thiểu rủi ro dịch chuyển dự án.  
 
 #### Một số hình ảnh sự kiện
-![Bằng chứng tham dự AWS Cloud Day and AI Day Hanoi - Watch Party](/images/cloud-day-and-ai.jpg)
+![Bằng chứng tham dự AWS Cloud Day and AI Day Hanoi - Watch Party](/images/4-Event/cloud-day-and-ai.jpg)
 
 > Nhìn chung, buổi watch party đã mang lại sự cân bằng tuyệt vời giữa chiến lược tầm cao và các lời khuyên kỹ thuật thực tế, thay đổi cách tôi tư duy về việc xây dựng các hệ thống AI doanh nghiệp tiết kiệm chi phí, linh hoạt và bảo mật.

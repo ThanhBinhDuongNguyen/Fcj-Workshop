@@ -133,6 +133,6 @@ Attending the **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** 
 - Partnering with local tech experts drastically shortens deployment times and reduces project migration risks.  
 
 #### Some event photos
-![AWS Cloud Day and AI Day Hanoi - Watch Party Attendance Proof](/images/cloud-day-and-ai.jpg)
+![AWS Cloud Day and AI Day Hanoi - Watch Party Attendance Proof](/images/4-Event/cloud-day-and-ai.jpg)
 
 > Overall, the watch party provided an excellent balance of high-level strategy and actionable technical advice, reshaping how I think about building cost-effective, scalable, and secure enterprise AI systems.
