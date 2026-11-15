@@ -32,7 +32,7 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 
 
 ### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City
+&emsp;**Tên sự kiện:** AWS Cloud Day and AI Day
 
 &emsp;**Thời gian:** 08:00 ngày 29/09/2026
 
@@ -40,3 +40,11 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
+### [Event 3](4.3-Event3/)  
+&emsp;**Event Name:** Cloud Mastery 
+
+&emsp;**Thời gian:** 08:00 ngày 14/11/2026
+
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự 

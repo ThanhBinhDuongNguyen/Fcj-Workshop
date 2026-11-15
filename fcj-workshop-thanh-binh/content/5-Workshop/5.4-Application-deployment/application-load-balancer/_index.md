@@ -1,0 +1,124 @@
+---
+title: "Application Load Balancer"
+date: 2026-11-13
+weight: 4
+chapter: false
+---
+
+The ALB spans both public subnets and forwards CloudFront requests to the ECS target group.
+
+## Procedure
+
+Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
+
+## Values to enter or copy
+
+> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+
+**Application Load Balancer value**
+
+```text
+nexusoms-demo-alb
+```
+
+**Application Load Balancer - input 2**
+
+```text
+Internet-facing
+```
+
+**Application Load Balancer - input 3**
+
+```text
+IPv4
+```
+
+**Application Load Balancer - input 4**
+
+```text
+HTTP:80
+```
+
+**Application Load Balancer - input 5**
+
+```text
+nexusoms-demo-api-tg
+```
+
+## AWS Console walkthrough
+
+> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
+
+### Step 1 - Open Load Balancers dashboard + Create load balancer
+
+Complete **Open Load Balancers dashboard + Create load balancer**.
+
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/1-open-load-balancers-dashboard-create-load-balancer.png" title="Open Load Balancers dashboard + Create load balancer" >}}
+
+### Step 2 - Choose create Application Load Balancer
+
+Complete **Choose create Application Load Balancer**.
+
+**Values used in this step**
+
+**Application Load Balancer value**
+
+```text
+nexusoms-demo-alb
+```
+
+**Application Load Balancer - input 2**
+
+```text
+Internet-facing
+```
+
+**Application Load Balancer - input 3**
+
+```text
+IPv4
+```
+
+**Application Load Balancer - input 4**
+
+```text
+HTTP:80
+```
+
+**Application Load Balancer - input 5**
+
+```text
+nexusoms-demo-api-tg
+```
+
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/2-choose-create-application-load-balancer.png" title="Choose create Application Load Balancer" >}}
+
+### Step 3 - Configure basic Load Balancer
+
+Complete **Configure basic Load Balancer**.
+
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/3-configure-basic-load-balancer.png" title="Configure basic Load Balancer" >}}
+
+### Step 4 - Configure Network mapping for Load Balancer
+
+Complete **Configure Network mapping for Load Balancer**.
+
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/4-configure-network-mapping-for-load-balancer.png" title="Configure Network mapping for Load Balancer" >}}
+
+### Step 5 - Configure Security group for Load Balancer
+
+Complete **Configure Security group for Load Balancer**.
+
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/5-configure-security-group-for-load-balancer.png" title="Configure Security group for Load Balancer" >}}
+
+### Step 6 - Configure Target group for Load Balancer
+
+Complete **Configure Target group for Load Balancer**.
+
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/6-configure-target-group-for-load-balancer.png" title="Configure Target group for Load Balancer" >}}
+
+### Step 7 - Copy Load balancer ARN
+
+Complete **Copy Load balancer ARN**.
+
+{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/7-copy-load-balancer-arn.png" title="Copy Load balancer ARN" >}}

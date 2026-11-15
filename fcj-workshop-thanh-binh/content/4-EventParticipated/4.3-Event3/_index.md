@@ -25,7 +25,7 @@ pre: " <b> 4.3. </b> "
 
 ### Key Highlights
 
-#### 1. Section 1 — The Gap: From Prototype to Production
+#### 1. Section 1 - The Gap: From Prototype to Production
 
 - **The restaurant analogy**: A prototype is a home kitchen, enterprise AI is a restaurant chain, and the cloud is the central kitchen.  
 - **AI in the enterprise**: AI is a feature inside the product (Data → AI Model → Feature → Users), for example recommendations, a support chatbot and fraud detection.  
@@ -37,7 +37,7 @@ pre: " <b> 4.3. </b> "
 - **AWS toolbox**: Lambda runs code on events with no servers to manage; Bedrock provides ready-made foundation models through an API; AgentCore operates AI agents (Runtime, Memory, Identity).  
 - **Use AI wisely**: The "head chef" is an orchestrator running on a large model, while the "main course", "dessert" and "cashier" roles are handled by small, cheap models.  
 
-#### 2. Section 2 — Real-World Use Cases and AgentCore Runtime
+#### 2. Section 2 - Real-World Use Cases and AgentCore Runtime
 
 - **Use cases**: Real-life examples such as Cox Automotive and Mobileye.  
 - **Where AgentCore fits**: The stack consists of the model, the agent application and Amazon Bedrock AgentCore.  
@@ -45,21 +45,21 @@ pre: " <b> 4.3. </b> "
 - **Running an agent with AgentCore Runtime**: Running locally is fine for development, but for a real application the agent must be deployed to AgentCore Runtime so it can run in sessions.  
 - **Division of responsibility**: Developers own business rules, data and tools, and testing; the managed runtime provides compute, session isolation and scaling.  
 
-#### 3. Section 3 — Identity, Gateway, Memory and Observability
+#### 3. Section 3 - Identity, Gateway, Memory and Observability
 
 - **Identity and Gateway**: AgentCore separates inbound from outbound access through a 5-step flow, and Gateway was covered as one of the remaining AgentCore services.  
 - **Building context for an agent**: System prompt, documents, tools, instructions, memory and message history.  
 - **Current challenges of agent memory**: Storage scalability, memory refresh, integration complexity, privacy and security concerns, retrieval accuracy problems and observability.  
 - **AgentCore Memory**: Short-term memory (chat messages, session state) and long-term memory (semantic, user preferences, summarization, episodic and custom strategy).  
 - **Memory flow**: The agent implementation sends events (messages) and reads memory (agent store, list events, retrieve memory records) from AgentCore Memory, and an automatic memory extraction module turns short-term events into long-term memory.  
-- **Observability — "you cannot fix what you cannot see"**: Compliance, governance and traceability, lineage, cost visibility, troubleshooting and root cause analysis, understanding latency and operational performance, explainability and continuous evaluation.  
+- **Observability - "you cannot fix what you cannot see"**: Compliance, governance and traceability, lineage, cost visibility, troubleshooting and root cause analysis, understanding latency and operational performance, explainability and continuous evaluation.  
 
 #### 4. Live Demo and Patterns
 
 - **Live demo of an internal AI app**: User → FastAPI → Strands router, which routes each request to one of three agents: `qa_agent`, `ticket_agent` or `research_agent`.  
 - **Common multi-agent patterns**: Routing/Supervisor, Sequential, Parallel and Evaluator-optimizer.  
 - **Agentic pattern**: Reason → Act → Observe → Repeat or Finish.  
-- **RAG — from documents to grounded answers**:  
+- **RAG - from documents to grounded answers**:  
     - *Indexing*: internal knowledge → embedding model → generate vectors → store in a vector store.  
     - *Querying*: user question → query embedding → retrieve the top-K relevant knowledge → add the retrieved context to the LLM prompt → generate a grounded answer with source references.  
 

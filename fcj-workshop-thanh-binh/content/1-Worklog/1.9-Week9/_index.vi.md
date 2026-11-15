@@ -1,59 +1,55 @@
 ---
 title: "Worklog Tuần 9"
-date: 2024-01-01
+date: 2026-11-09
 weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Kiểm tra backend container và chuẩn bị triển khai lên AWS.
+* Triển khai NexusOMS lên AWS (backend trên ECS Fargate, frontend trên S3 và CloudFront) và xử lý các lỗi triển khai.
+* Thiết lập CI/CD với GitHub Actions và AWS OIDC.
+* Hoàn thiện tài liệu workshop song ngữ và sơ đồ kiến trúc high availability.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+
+| Thứ | Công việc                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                                             |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------------------------------------------------------------------- |
+| 1   | - Sửa Docker image backend bằng cách bổ sung thư viện Kerberos cho Npgsql <br> - Kiểm tra khả năng chạy backend container khi kết nối PostgreSQL/Supabase                                                                                                                                                                                                                                                                                                         | 09/11/2026   | 09/11/2026      | Repository NexusOMS (GitHub)                                               |
+| 2   | - Rà soát kiến trúc triển khai AWS, chi phí dự kiến và luồng triển khai frontend/backend <br> - Chuẩn bị tài nguyên và hướng dẫn demo                                                                                                                                                                                                                                                                                                                             | 10/11/2026   | 10/11/2026      | AWS Management Console                                                     |
+| 3   | - Cập nhật dependencies frontend <br> - Tiếp tục hoàn thiện Proposal và kế hoạch demo AWS                                                                                                                                                                                                                                                                                                                                                                         | 11/11/2026   | 11/11/2026      | Repository NexusOMS (GitHub) <br> Proposal NexusOMS                        |
+| 4   | - Triển khai NexusOMS lên AWS và xử lý lỗi backend HTTP 500 <br> - Sửa session timeout ở frontend <br> - Sửa nghiệp vụ chọn sản phẩm theo tồn kho và bổ sung nhận số lượng tồn ban đầu khi tạo sản phẩm <br> - Đồng bộ và làm sạch repository, đẩy thay đổi lên các repository GitHub                                                                                                                                                                             | 12/11/2026   | 12/11/2026      | AWS Management Console <br> Repository NexusOMS (GitHub)                   |
+| 5   | - Thực hành hạ tầng AWS: VPC, hai public subnet, hai private subnet, Internet Gateway, hai NAT Gateway, route table, security group, ALB, target group, ECS và Fargate <br> - Xử lý lỗi subnet, route IGW, security group, Secrets Manager, task role và health check <br> - Cleanup tài nguyên sau các lần triển khai lỗi                                                                                                                                        | 13/11/2026   | 13/11/2026      | AWS Management Console                                                     |
+| 6   | - Hoàn thiện tài liệu workshop NexusOMS song ngữ <br> - Chuẩn hóa tên file ảnh để hoạt động trên Vercel <br> - Bổ sung báo cáo sự kiện Cloud Mastery <br> - Chỉnh lại sơ đồ kiến trúc high availability: CloudFront, S3, ALB, ECS Fargate, ECR, NAT Gateway, S3 Gateway Endpoint, CloudWatch, CloudTrail, Supabase và tích hợp bên ngoài                                                                                                                          | 14/11/2026   | 14/11/2026      | Tài liệu workshop NexusOMS                                                 |
+| 7   | - Thực hành đầy đủ CI/CD bằng GitHub Actions và AWS OIDC: tạo IAM role và inline policy cho GitHub Actions, cấu hình repository variables/secrets, build và push backend image lên ECR, cập nhật ECS service, deploy frontend lên S3 và invalidation CloudFront <br> - Sửa lỗi OIDC, Docker build, Secrets Manager và ALB health check <br> - Chỉnh workflow chỉ publish backend container image <br> - Tái cấu trúc nội dung và hình ảnh workshop theo luồng mới | 15/11/2026   | 15/11/2026      | GitHub Actions <br> AWS Management Console <br> Tài liệu workshop NexusOMS |
 
 
 ### Kết quả đạt được tuần 9:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Chuẩn bị backend container: sửa Docker image bằng thư viện Kerberos cho Npgsql và xác nhận container kết nối được PostgreSQL/Supabase.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Triển khai NexusOMS lên AWS:
+  * Backend trên Amazon ECS với AWS Fargate
+  * Frontend trên Amazon S3 và CloudFront
+  * Xử lý lỗi backend HTTP 500, session timeout ở frontend và nghiệp vụ chọn sản phẩm theo tồn kho, đồng thời bổ sung số lượng tồn ban đầu khi tạo sản phẩm
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Tự dựng tầng mạng và compute trên AWS: VPC, hai public subnet và hai private subnet trên hai Availability Zone, Internet Gateway, hai NAT Gateway, route table, security group, ALB, target group, ECS và Fargate. Xử lý được các lỗi subnet, route IGW, security group, Secrets Manager, task role và health check.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Thiết lập CI/CD từ GitHub Actions đến Amazon ECR và Amazon ECS/Fargate, và từ GitHub Actions đến S3 kèm invalidation CloudFront:
+  * Dùng GitHub OIDC thay cho AWS access key dài hạn, với IAM role và inline policy cho GitHub Actions
+  * Cấu hình repository variables và secrets
+  * Sửa lỗi OIDC, Docker build, Secrets Manager và ALB health check
+  * Chỉnh workflow chỉ publish backend container image
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Kiểm soát chi phí khi thử nghiệm bằng cách cleanup tài nguyên AWS sau các lần triển khai lỗi và sau demo.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Hoàn thiện tài liệu:
+  * Workshop NexusOMS song ngữ kèm ảnh hướng dẫn, tái cấu trúc theo luồng mới
+  * Chuẩn hóa tên file ảnh để hoạt động trên Vercel
+  * Sơ đồ kiến trúc high availability gồm CloudFront, S3, ALB, ECS Fargate, ECR, NAT Gateway, S3 Gateway Endpoint, CloudWatch, CloudTrail, Supabase và tích hợp bên ngoài
+  * Báo cáo sự kiện Cloud Mastery
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Kết quả: NexusOMS chạy end-to-end trên AWS với kiến trúc hai Availability Zone và pipeline triển khai tự động.

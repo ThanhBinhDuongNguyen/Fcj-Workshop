@@ -27,19 +27,19 @@ NexusOMS receives a simulated marketplace webhook, verifies its HMAC signature, 
 The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. The architecture can be deployed for a short AWS demonstration, photographed for the report and removed afterwards. **PLACEHOLDER - add the team’s business assumptions, measured time savings and ROI calculation.**
 
 ### 3. Solution Architecture
-The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. NAT Gateways provide outbound access from the tasks to Supabase Cloud and simulated marketplace endpoints. The architecture uses two public and two private subnets, with WAF and ACM at the public edge.
+The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. NAT Gateways provide outbound access from the tasks to Supabase Cloud and simulated marketplace endpoints. AWS WAF remains visible in the target architecture and cost estimate but is not enabled in the workshop. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
 ### AWS Services Used
 - **Amazon S3 and Amazon CloudFront**: Store and distribute the static React/Vite build.
-- **AWS WAF and AWS Certificate Manager**: Protect public traffic and provide TLS certificates.
-- **Application Load Balancer**: Routes HTTPS API traffic to healthy ECS tasks.
+- **AWS WAF**: Represents the target application-protection layer and remains included in the estimate, but is not enabled in the workshop.
+- **Application Load Balancer**: Routes API traffic to healthy ECS tasks.
 - **Amazon ECS on AWS Fargate**: Runs the containerized .NET 10 API across two Availability Zones.
 - **Amazon ECR**: Stores versioned backend container images built from GitHub CI.
 - **Amazon VPC, NAT Gateway and Internet Gateway**: Isolate API tasks in private subnets while allowing controlled outbound access.
-- **VPC Endpoints, AWS Secrets Manager and Amazon CloudWatch**: Retrieve container images/secrets privately where applicable and collect logs/metrics.
-- **AWS CloudTrail and Amazon S3**: Record AWS API activity and retain access/load-balancer logs.
+- **S3 Gateway Endpoint, AWS Secrets Manager and Amazon CloudWatch**: Route S3 traffic privately, manage secrets and collect logs/metrics; ECR, Secrets Manager and CloudWatch Logs are reached through NAT Gateways.
+- **AWS CloudTrail and Amazon S3**: Record management events and retain CloudTrail/ALB access logs in a private audit bucket.
 - **Supabase Cloud**: Remains the external PostgreSQL database and authentication provider; it is not replaced with Amazon RDS in this MVP.
 
 ### Component Design
@@ -67,7 +67,7 @@ This project has two parts-completing the NexusOMS MVP and preparing a short AWS
 - Preparation: finalize source-code flows, test cases, architecture diagram and AWS cost worksheet.
 - Demonstration setup:
     - Configure the network, IAM roles, ECR, S3/CloudFront and observability resources.
-    - Deploy the container service and configure ALB, TLS and secrets.
+    - Deploy the container service and configure ALB, CloudFront, audit logs and secrets.
     - Run the webhook/order/inventory demonstration and capture report evidence.
 - Post-Demonstration: delete temporary AWS resources and retain only code, diagrams, screenshots and cost evidence for the report.
 
@@ -80,18 +80,16 @@ The estimate was prepared in AWS Pricing Calculator for **Asia Pacific (Singapor
 | Amazon ECS Fargate | 3.75 |
 | Application Load Balancer | 18.98 |
 | 2 NAT Gateways | 86.14 |
-| VPC Interface Endpoints | 113.88 |
 | Amazon S3 | 0.02 |
 | Amazon ECR | 0.20 |
 | Amazon CloudWatch | 0.07 |
 | AWS Secrets Manager | 0.13 |
 | Amazon CloudTrail | 0.00 |
 | Amazon CloudFront | 0.00 |
-| AWS WAF (separate estimate; disabled for this demo) | 14.00 |
-| **Total including WAF** | **237.17** |
-| **Total with WAF disabled** | **223.17** |
+| AWS WAF (separate estimate; not enabled in the workshop but included in the budget) | 14.00 |
+| **Total including WAF** | **123.29** |
 
-The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to show the protected option, but it will remain disabled during this demonstration. NAT Gateways, the ALB and VPC Interface Endpoints are primarily hourly charges, so the monthly total is not an exact 10-day invoice. A simple 10/30-day proration gives a reference estimate of approximately **$79.06 including WAF** (before tax); the actual charge should be checked in AWS Billing after resources are deleted.
+The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to show the protected option, but it is not enabled in the workshop. NAT Gateways and the ALB are primarily hourly charges, so the monthly total is not an exact 10-day invoice. A simple 10/30-day proration gives a reference estimate of approximately **$41.10 including WAF** (before tax); the actual charge should be checked in AWS Billing after resources are deleted.
 
 - Hardware: No additional hardware is required; the project uses the existing development machines and Supabase Cloud project.
 

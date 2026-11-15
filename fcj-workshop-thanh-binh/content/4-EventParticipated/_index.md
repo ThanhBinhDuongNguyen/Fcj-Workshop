@@ -31,9 +31,20 @@ During my internship, I participated in two events. Each one was a memorable exp
 ---
 
 ### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City  
+&emsp;**Event Name:** AWS Cloud Day and AI Day 
 
 &emsp;**Date & Time:** 08:00, September 29, 2026
+
+&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+&emsp;**Role:** Attendee  
+
+---
+
+### [Event 3](4.3-Event3/)  
+&emsp;**Event Name:** Cloud Mastery 
+
+&emsp;**Date & Time:** 08:00, November 14, 2026
 
 &emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 

@@ -27,19 +27,19 @@ NexusOMS nhận webhook marketplace mô phỏng, kiểm tra chữ ký HMAC, ánh
 Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm, tồn và đơn, giảm đối soát thủ công giữa các kênh. Luồng reserve, release và commit giúp minh họa flash sale có kiểm soát và có thể truy vết. Kiến trúc có thể triển khai AWS trong thời gian ngắn để chụp báo cáo/thuyết trình, sau đó xóa để tránh chi phí chạy liên tục. **PLACEHOLDER - bổ sung giả định kinh doanh, số giờ tiết kiệm và phép tính ROI của nhóm.**  
 
 ### 3. Kiến trúc giải pháp  
-Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. NAT Gateway cho phép task đi ra Supabase Cloud và endpoint marketplace mô phỏng. Hạ tầng gồm hai public subnet, hai private subnet, WAF và ACM ở lớp public edge.
+Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. NAT Gateway cho phép task đi ra Supabase Cloud và endpoint marketplace mô phỏng. AWS WAF được thể hiện trong kiến trúc mục tiêu và dự toán nhưng không bật trong workshop. Workshop dùng domain cùng chứng chỉ mặc định của CloudFront nên không tạo AWS Certificate Manager. CloudTrail và ALB access logs được lưu trong một S3 audit bucket riêng tư.
 
 ![Kiến trúc luồng nghiệp vụ NexusOMS](/images/2-Proposal/noxus-aws-architect-1.png)
 
 *Dịch vụ AWS sử dụng*  
 - *Amazon S3 và Amazon CloudFront*: Lưu trữ và phân phối React/Vite build tĩnh.  
-- *AWS WAF và AWS Certificate Manager*: Bảo vệ traffic công khai và cung cấp chứng chỉ TLS.  
-- *Application Load Balancer*: Định tuyến HTTPS API tới ECS task khỏe.  
+- *AWS WAF*: Thể hiện lớp bảo vệ ứng dụng mục tiêu và được tính trong dự toán, nhưng không bật trong workshop.  
+- *Application Load Balancer*: Định tuyến API tới ECS task khỏe.  
 - *Amazon ECS trên AWS Fargate*: Chạy container .NET 10 qua hai Availability Zone.  
 - *Amazon ECR*: Lưu Docker image backend có phiên bản từ GitHub CI.  
 - *Amazon VPC, NAT Gateway và Internet Gateway*: Cô lập API task trong private subnet nhưng vẫn cho phép outbound có kiểm soát.  
-- *VPC Endpoints, AWS Secrets Manager và Amazon CloudWatch*: Truy xuất image/secret riêng tư khi phù hợp và thu log/metric.  
-- *AWS CloudTrail và Amazon S3*: Ghi nhận AWS API activity và lưu access/load-balancer logs.  
+- *S3 Gateway Endpoint, AWS Secrets Manager và Amazon CloudWatch*: Định tuyến S3 riêng tư, quản lý secret và thu log/metric; ECR, Secrets Manager và CloudWatch Logs được truy cập qua NAT Gateway.  
+- *AWS CloudTrail và Amazon S3*: Ghi management events và lưu CloudTrail/ALB access logs trong audit bucket riêng tư.  
 - *Supabase Cloud*: Tiếp tục là PostgreSQL/Auth bên ngoài AWS; MVP này không thay bằng Amazon RDS.  
 
 *Thiết kế thành phần*  
@@ -66,7 +66,7 @@ Dự án gồm 2 phần - hoàn thiện MVP NexusOMS và chuẩn bị AWS demo -
 - *Chuẩn bị*: Chốt luồng source code, test case, sơ đồ kiến trúc và bảng tính AWS.  
 - *Thiết lập demo*:  
     - Cấu hình network, IAM, ECR, S3/CloudFront và observability.  
-    - Deploy container service, cấu hình ALB, TLS và secrets.  
+    - Deploy container service, cấu hình ALB, CloudFront, audit logs và secrets.  
     - Chạy demo webhook/đơn hàng/tồn kho, sau đó chụp bằng chứng cho báo cáo.  
 - *Sau demo*: Xóa tài nguyên AWS tạm; chỉ giữ code, sơ đồ, screenshot và bằng chứng chi phí cho báo cáo.  
 
@@ -79,18 +79,16 @@ Dự toán được lập bằng AWS Pricing Calculator cho Region **Asia Pacifi
 | Amazon ECS Fargate | 3.75 |
 | Application Load Balancer | 18.98 |
 | 2 NAT Gateway | 86.14 |
-| VPC Interface Endpoints | 113.88 |
 | Amazon S3 | 0.02 |
 | Amazon ECR | 0.20 |
 | Amazon CloudWatch | 0.07 |
 | AWS Secrets Manager | 0.13 |
 | Amazon CloudTrail | 0.00 |
 | Amazon CloudFront | 0.00 |
-| AWS WAF (ước tính riêng, chưa bật trong lần demo) | 14.00 |
-| **Tổng có tính WAF** | **237.17** |
-| **Tổng khi WAF tắt** | **223.17** |
+| AWS WAF (ước tính riêng, không bật trong workshop nhưng vẫn tính vào ngân sách) | 14.00 |
+| **Tổng có tính WAF** | **123.29** |
 
-Calculator cho kết quả **$0.00 chi phí trả trước**. WAF được cộng vào tổng ngân sách để thể hiện phương án có bảo vệ lớp ứng dụng; tài nguyên WAF sẽ không được bật trong lần demo hiện tại. Chi phí NAT Gateway, ALB và VPC Interface Endpoints chủ yếu phát sinh theo giờ; vì vậy không nên xem tổng theo tháng là hóa đơn chính xác cho 10 ngày. Với giả định phân bổ tuyến tính 10/30 ngày, tổng tham khảo gồm WAF là khoảng **$79.06** (không gồm thuế); số thực trả cần đối chiếu thời điểm tạo/xóa tài nguyên và mức sử dụng trong AWS Billing.
+Calculator cho kết quả **$0.00 chi phí trả trước**. WAF được cộng vào tổng ngân sách để thể hiện phương án có bảo vệ lớp ứng dụng, dù tài nguyên WAF không được bật trong workshop. Chi phí NAT Gateway và ALB chủ yếu phát sinh theo giờ; vì vậy không nên xem tổng theo tháng là hóa đơn chính xác cho 10 ngày. Với giả định phân bổ tuyến tính 10/30 ngày, tổng tham khảo gồm WAF là khoảng **$41.10** (không gồm thuế); số thực trả cần đối chiếu thời điểm tạo/xóa tài nguyên và mức sử dụng trong AWS Billing.
 
 - *Phần cứng*: Không cần mua thêm; dự án dùng máy phát triển hiện có và Supabase Cloud project.  
 
