@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-Triển khai NexusOMS trên AWS theo mô hình hai Availability Zone, sau đó dùng GitHub Actions để cập nhật backend và frontend.
+Triển khai NexusOMS trên AWS theo mô hình hai Availability Zone, xử lý webhook bất đồng bộ bằng SQS FIFO và dùng GitHub Actions để cập nhật backend cùng frontend.
 
 > Thay mọi placeholder `<...>` bằng giá trị thật. Các giá trị cần nhập được đặt trong khối code để có thể sao chép.
 

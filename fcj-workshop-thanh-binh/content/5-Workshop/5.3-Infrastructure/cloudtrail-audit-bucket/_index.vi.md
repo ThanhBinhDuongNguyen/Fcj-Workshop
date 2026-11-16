@@ -1,7 +1,7 @@
 ---
 title: "CloudTrail và S3 audit bucket"
 date: 2026-11-15
-weight: 12
+weight: 13
 chapter: false
 ---
 
@@ -9,7 +9,7 @@ chapter: false
 
 Mở CloudTrail → **Trails → Create trail**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/1-open-cloudtrail-and-create-trail.png" title="Mở CloudTrail và tạo trail" >}}
+![Mở CloudTrail và tạo trail](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/1-open-cloudtrail-and-create-trail.png)
 
 Nhập:
 
@@ -21,7 +21,7 @@ Log file validation: Enabled
 CloudWatch Logs: Disabled
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/2-configure-trail.png" title="Cấu hình trail" >}}
+![Cấu hình trail](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/2-configure-trail.png)
 
 Trong **Choose log events**, chọn:
 
@@ -32,25 +32,25 @@ API activity: Read và Write
 
 Giữ các mục còn lại ở trạng thái tắt.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/3-configure-management-events.png" title="Chọn management events" >}}
+![Chọn management events](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/3-configure-management-events.png)
 
 Chọn **Create trail**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/4-create-trail.png" title="Tạo trail" >}}
+![Tạo trail](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/4-create-trail.png)
 
 ## 2. Kiểm tra audit bucket
 
 Mở trail, ghi lại tên S3 bucket được CloudTrail tạo rồi mở bucket.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/5-open-audit-bucket.png" title="Mở audit bucket" >}}
+![Mở audit bucket](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/5-open-audit-bucket.png)
 
 Trong **Permissions**, xác nhận **Block all public access** đang bật.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/6-check-block-public-access.png" title="Kiểm tra Block Public Access" >}}
+![Kiểm tra Block Public Access](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/6-check-block-public-access.png)
 
 Trong **Properties**, xác nhận default encryption là **SSE-S3**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/7-check-default-encryption.png" title="Kiểm tra encryption" >}}
+![Kiểm tra encryption](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/7-check-default-encryption.png)
 
 Sau vài phút, bucket phải có prefix:
 
@@ -58,7 +58,7 @@ Sau vài phút, bucket phải có prefix:
 AWSLogs/<ACCOUNT_ID>/CloudTrail/
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/8-check-awslogs-prefix.png" title="Kiểm tra AWSLogs prefix" >}}
+![Kiểm tra AWSLogs prefix](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/8-check-awslogs-prefix.png)
 
 Ghi lại:
 

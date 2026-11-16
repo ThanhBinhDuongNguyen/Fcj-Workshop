@@ -49,10 +49,10 @@ Complete **Open Log Management dashboard + Create log group**.
 14 days
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png" title="Open Log Management dashboard + Create log group" >}}
+![Open Log Management dashboard + Create log group](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png)
 
 ### Step 2 - Fill name + retention setting
 
 Complete **Fill name + retention setting**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png" title="Fill name + retention setting" >}}
+![Fill name + retention setting](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png)

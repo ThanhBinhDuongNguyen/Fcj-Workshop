@@ -1,7 +1,7 @@
 ---
 title: "CloudTrail and S3 audit bucket"
 date: 2026-11-15
-weight: 12
+weight: 13
 chapter: false
 ---
 
@@ -9,7 +9,7 @@ chapter: false
 
 Open CloudTrail → **Trails → Create trail**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/1-open-cloudtrail-and-create-trail.png" title="Open CloudTrail and create a trail" >}}
+![Open CloudTrail and create a trail](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/1-open-cloudtrail-and-create-trail.png)
 
 ```text
 Trail name: nexusoms-demo-trail
@@ -19,7 +19,7 @@ Log file validation: Enabled
 CloudWatch Logs: Disabled
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/2-configure-trail.png" title="Configure the trail" >}}
+![Configure the trail](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/2-configure-trail.png)
 
 Under **Choose log events**, select:
 
@@ -30,25 +30,25 @@ API activity: Read and Write
 
 Leave the remaining event types disabled.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/3-configure-management-events.png" title="Configure management events" >}}
+![Configure management events](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/3-configure-management-events.png)
 
 Select **Create trail**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/4-create-trail.png" title="Create the trail" >}}
+![Create the trail](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/4-create-trail.png)
 
 ## 2. Verify the audit bucket
 
 Open the trail, record the S3 bucket name created by CloudTrail, and open that bucket.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/5-open-audit-bucket.png" title="Open the audit bucket" >}}
+![Open the audit bucket](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/5-open-audit-bucket.png)
 
 Under **Permissions**, verify that **Block all public access** is enabled.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/6-check-block-public-access.png" title="Verify Block Public Access" >}}
+![Verify Block Public Access](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/6-check-block-public-access.png)
 
 Under **Properties**, verify that default encryption is **SSE-S3**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/7-check-default-encryption.png" title="Verify default encryption" >}}
+![Verify default encryption](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/7-check-default-encryption.png)
 
 After a few minutes, verify this prefix:
 
@@ -56,7 +56,7 @@ After a few minutes, verify this prefix:
 AWSLogs/<ACCOUNT_ID>/CloudTrail/
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/8-check-awslogs-prefix.png" title="Verify the AWSLogs prefix" >}}
+![Verify the AWSLogs prefix](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/8-check-awslogs-prefix.png)
 
 ```text
 AUDIT_BUCKET_NAME=<BUCKET_CREATED_BY_CLOUDTRAIL>

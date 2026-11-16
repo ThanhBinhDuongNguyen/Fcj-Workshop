@@ -7,7 +7,7 @@ chapter: false
 
 Tạo file `frontend/.env.local`.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/frontend-environment/1-create-frontend-env-file.png" title="Tạo file môi trường frontend" >}}
+![Tạo file môi trường frontend](/images/5-Workshop/nexusoms/5.2-Prerequisite/frontend-environment/1-create-frontend-env-file.png)
 
 Nhập các giá trị lấy từ Supabase:
 
@@ -18,6 +18,6 @@ VITE_SUPABASE_URL=https://<PROJECT_REF>.supabase.co
 VITE_SUPABASE_ANON_KEY=<SUPABASE_PUBLISHABLE_OR_ANON_KEY>
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/frontend-environment/2-configure-frontend-env-values.png" title="Cấu hình biến môi trường frontend" >}}
+![Cấu hình biến môi trường frontend](/images/5-Workshop/nexusoms/5.2-Prerequisite/frontend-environment/2-configure-frontend-env-values.png)
 
 Không commit `.env.local` lên Git.

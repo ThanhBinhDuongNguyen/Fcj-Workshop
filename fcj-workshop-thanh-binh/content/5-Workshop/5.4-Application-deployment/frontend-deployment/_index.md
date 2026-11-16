@@ -26,7 +26,7 @@ npm run test
 npm run build
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/1-set-up-variable-run-build-project.png" title="Configure variables and build the frontend" >}}
+![Configure variables and build the frontend](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/1-set-up-variable-run-build-project.png)
 
 ## 2. Upload to S3
 
@@ -43,7 +43,7 @@ aws s3 sync .\dist "s3://$BucketName" `
   --region ap-southeast-1
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/2-push-to-s3.png" title="Upload the frontend to S3" >}}
+![Upload the frontend to S3](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/2-push-to-s3.png)
 
 ## 3. Create a CloudFront invalidation
 
@@ -58,4 +58,4 @@ aws cloudfront create-invalidation `
 Pop-Location
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3-create-invalidation-cloudfront.png" title="Create a CloudFront invalidation" >}}
+![Create a CloudFront invalidation](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3-create-invalidation-cloudfront.png)

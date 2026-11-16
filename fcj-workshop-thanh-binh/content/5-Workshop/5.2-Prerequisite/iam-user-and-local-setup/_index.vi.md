@@ -11,9 +11,9 @@ Tạo IAM user cho bài lab và cấu hình profile `nexusoms-demo`.
 
 Mở IAM → **Users → Create user**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1-open-iam-user-dashboard.png" title="Mở IAM Users" >}}
+![Mở IAM Users](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1-open-iam-user-dashboard.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2-create-iam-user-button.png" title="Chọn Create user" >}}
+![Chọn Create user](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2-create-iam-user-button.png)
 
 Nhập user name:
 
@@ -21,29 +21,29 @@ Nhập user name:
 nexusoms-demo-deployer
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3-configure-specify-user-detail.png" title="Nhập IAM user name" >}}
+![Nhập IAM user name](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3-configure-specify-user-detail.png)
 
 Chọn permissions dùng cho tài khoản lab rồi tạo user.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4-configure-permission.png" title="Mở phần permissions" >}}
+![Mở phần permissions](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4-configure-permission.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5-select-permissions-policies.png" title="Chọn permissions policy" >}}
+![Chọn permissions policy](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5-select-permissions-policies.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6-click-create-user.png" title="Tạo IAM user" >}}
+![Tạo IAM user](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6-click-create-user.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7-complete-create-iam-user.png" title="IAM user đã được tạo" >}}
+![IAM user đã được tạo](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7-complete-create-iam-user.png)
 
 ## 2. Tạo access key
 
 Mở user → **Security credentials → Create access key**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8-configure-security-credentials-for-user.png" title="Mở Security credentials" >}}
+![Mở Security credentials](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8-configure-security-credentials-for-user.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9-create-access-key.png" title="Tạo access key" >}}
+![Tạo access key](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9-create-access-key.png)
 
 Chọn **Command Line Interface (CLI)**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10-configure-command-link-interface-i-understand-next.png" title="Chọn Command Line Interface" >}}
+![Chọn Command Line Interface](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10-configure-command-link-interface-i-understand-next.png)
 
 Nhập description:
 
@@ -51,17 +51,17 @@ Nhập description:
 nexusoms-demo-powershell
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png" title="Nhập description" >}}
+![Nhập description](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png)
 
 Lưu Access Key ID và Secret Access Key. Không đưa hai giá trị này lên GitHub.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png" title="Lưu access key" >}}
+![Lưu access key](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png)
 
 ## 3. Cấu hình PowerShell
 
 Mở PowerShell.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13-open-powershell.png" title="Mở PowerShell" >}}
+![Mở PowerShell](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13-open-powershell.png)
 
 Kiểm tra AWS CLI rồi bắt đầu cấu hình profile:
 
@@ -70,7 +70,7 @@ aws --version
 aws configure --profile nexusoms-demo
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14-check-aws-version-configure-profile.png" title="Kiểm tra AWS CLI và cấu hình profile" >}}
+![Kiểm tra AWS CLI và cấu hình profile](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14-check-aws-version-configure-profile.png)
 
 Nhập lần lượt các giá trị khi PowerShell yêu cầu:
 
@@ -81,7 +81,7 @@ Default region name: ap-southeast-1
 Default output format: json
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15-configure-more.png" title="Hoàn tất aws configure" >}}
+![Hoàn tất aws configure](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15-configure-more.png)
 
 Kiểm tra tài khoản, Availability Zone và lấy CloudFront managed prefix list ID:
 
@@ -107,7 +107,7 @@ aws ec2 describe-managed-prefix-lists `
 
 Ghi lại kết quả `pl-...` để tạo ALB Security Group.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png" title="Kiểm tra tài khoản và CloudFront prefix list" >}}
+![Kiểm tra tài khoản và CloudFront prefix list](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png)
 
 Kiểm tra các công cụ local:
 
@@ -119,6 +119,6 @@ npm --version
 dotnet --version
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17-checking-library-in-cmd.png" title="Kiểm tra công cụ local" >}}
+![Kiểm tra công cụ local](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17-checking-library-in-cmd.png)
 
 Kết quả cần đạt: `get-caller-identity` trả về đúng AWS Account ID và lệnh prefix list trả về một ID bắt đầu bằng `pl-`.

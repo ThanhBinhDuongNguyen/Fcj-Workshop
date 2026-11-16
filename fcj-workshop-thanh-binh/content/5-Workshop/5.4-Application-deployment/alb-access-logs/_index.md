@@ -9,11 +9,11 @@ chapter: false
 
 Open S3 → `<AUDIT_BUCKET_NAME>`.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/1-open-audit-bucket.png" title="Open the audit bucket" >}}
+![Open the audit bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/1-open-audit-bucket.png)
 
 Select **Permissions → Bucket policy → Edit**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/2-open-bucket-policy.png" title="Open the bucket policy" >}}
+![Open the bucket policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/2-open-bucket-policy.png)
 
 Keep the CloudTrail statements. Add this object to the `Statement` array:
 
@@ -37,13 +37,13 @@ Keep the CloudTrail statements. Add this object to the `Statement` array:
 }
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/3-add-alb-log-delivery-policy.png" title="Add the ALB log delivery policy" >}}
+![Add the ALB log delivery policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/3-add-alb-log-delivery-policy.png)
 
 ## 2. Enable access logs
 
 Open EC2 → **Load balancers → nexusoms-demo-alb → Attributes → Edit**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/4-open-alb-attributes.png" title="Open ALB attributes" >}}
+![Open ALB attributes](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/4-open-alb-attributes.png)
 
 ```text
 Logging → Access logs: Enabled
@@ -52,7 +52,7 @@ S3 URI: s3://<AUDIT_BUCKET_NAME>/alb-access
 
 Select **Save changes**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/5-enable-alb-access-logs.png" title="Enable ALB access logs" >}}
+![Enable ALB access logs](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/5-enable-alb-access-logs.png)
 
 Verify this test object in the bucket:
 

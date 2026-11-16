@@ -130,7 +130,7 @@ Thực hiện **Open CloudFront dashboard + Create distribution**.
 nexusoms-demo-web
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png" title="Open CloudFront dashboard + Create distribution" >}}
+![Open CloudFront dashboard + Create distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png)
 
 ### Bước 2 - Configure distribution options
 
@@ -150,38 +150,38 @@ Default root object: index.html
 Path pattern: /api/*
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png" title="Configure distribution options" >}}
+![Configure distribution options](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png)
 
 ### Bước 3 - Choose S3 type + mapping to S3 FE
 
 Thực hiện **Choose S3 type + mapping to S3 FE**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png" title="Choose S3 type + mapping to S3 FE" >}}
+![Choose S3 type + mapping to S3 FE](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png)
 
 ### Bước 4 - Click next
 
 Thực hiện **Click next**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png" title="Click next" >}}
+![Click next](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png)
 
 ### Bước 5 - Choose Do not enable for demo
 
 Thực hiện **Choose Do not enable for demo**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png" title="Choose Do not enable for demo" >}}
+![Choose Do not enable for demo](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png)
 
 ### Bước 6 - Click Create distribution
 
 Thực hiện **Click Create distribution**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png" title="Click Create distribution" >}}
+![Click Create distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png)
 
 ### Bước 7 - Choose origins + Create origin
 
 Thực hiện **Choose origins + Create origin**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png" title="Choose origins + Create origin" >}}
+![Choose origins + Create origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png)
 
 ### Bước 8 - Configure setting for origin
 
@@ -195,19 +195,19 @@ Thực hiện **Configure setting for origin**.
 nexusoms-demo-alb-origin
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png" title="Configure setting for origin" >}}
+![Configure setting for origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png)
 
 ### Bước 9 - Choose Behavior tab + Create behavior
 
 Thực hiện **Choose Behavior tab + Create behavior**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png" title="Choose Behavior tab + Create behavior" >}}
+![Choose Behavior tab + Create behavior](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png)
 
 ### Bước 10 - Configure behavior setting
 
 Thực hiện **Configure behavior setting**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png" title="Configure behavior setting" >}}
+![Configure behavior setting](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png)
 
 ### Bước 11 - Choose origin request policy
 
@@ -227,4 +227,4 @@ Cache policy: CachingDisabled
 Origin request policy: AllViewerExceptHostHeader
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png" title="Choose origin request policy" >}}
+![Choose origin request policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png)

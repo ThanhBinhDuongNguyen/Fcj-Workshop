@@ -47,13 +47,13 @@ nexusoms-demo-private-b | 10.80.11.0/24
 
 Complete **Open subnets dashboard + Create subnet**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png" title="Open subnets dashboard + Create subnet" >}}
+![Open subnets dashboard + Create subnet](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png)
 
 ### Step 2 - Choose VPC ID
 
 Complete **Choose VPC ID**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png" title="Choose VPC ID" >}}
+![Choose VPC ID](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png)
 
 ### Step 3 - Configure public subnet a
 
@@ -73,13 +73,13 @@ nexusoms-demo-public-a | 10.80.0.0/24
 nexusoms-demo-public-b | 10.80.1.0/24
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3-configure-public-subnet-a.png" title="Configure public subnet a" >}}
+![Configure public subnet a](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3-configure-public-subnet-a.png)
 
 ### Step 4 - Configure public subnet b
 
 Complete **Configure public subnet b**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png" title="Configure public subnet b" >}}
+![Configure public subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png)
 
 ### Step 5 - Configure private subnet a
 
@@ -99,22 +99,22 @@ nexusoms-demo-private-a | 10.80.10.0/24
 nexusoms-demo-private-b | 10.80.11.0/24
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5-configure-private-subnet-a.png" title="Configure private subnet a" >}}
+![Configure private subnet a](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5-configure-private-subnet-a.png)
 
 ### Step 6 - Configure private subnet b
 
 Complete **Configure private subnet b**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png" title="Configure private subnet b" >}}
+![Configure private subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png)
 
 ### Step 7 - Edit subnet settings
 
 Complete **Edit subnet settings**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png" title="Edit subnet settings" >}}
+![Edit subnet settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png)
 
 ### Step 8 - Enable auto-assign public IPv4 address
 
 Complete **Enable auto-assign public IPv4 address**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png" title="Enable auto-assign public IPv4 address" >}}
+![Enable auto-assign public IPv4 address](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png)

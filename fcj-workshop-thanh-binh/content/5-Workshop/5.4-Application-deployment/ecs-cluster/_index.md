@@ -30,7 +30,7 @@ nexusoms-demo-cluster
 Complete **Open Clusters dashboard + Create cluster**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1-open-clusters-dashboard-create-cluster.png" title="Open Clusters dashboard + Create cluster" >}}
+![Open Clusters dashboard + Create cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1-open-clusters-dashboard-create-cluster.png)
 
 ### Step 2 - Configure cluster
 
@@ -44,16 +44,16 @@ Complete **Configure cluster**.
 nexusoms-demo-cluster
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2-configure-cluster.png" title="Configure cluster" >}}
+![Configure cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2-configure-cluster.png)
 
 ### Step 3 - Choose update cluster
 
 Complete **Choose update cluster**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3-choose-update-cluster.png" title="Choose update cluster" >}}
+![Choose update cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3-choose-update-cluster.png)
 
 ### Step 4 - Turn on Container Insights
 
 Complete **Turn on Container Insights**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4-turn-on-container-insights.png" title="Turn on Container Insights" >}}
+![Turn on Container Insights](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4-turn-on-container-insights.png)

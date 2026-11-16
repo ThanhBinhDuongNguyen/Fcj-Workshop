@@ -91,13 +91,13 @@ nexusoms-demo-alb
 Internet-facing
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/1-open-load-balancers-dashboard-create-load-balancer.png" title="Open Load Balancers dashboard + Create load balancer" >}}
+![Open Load Balancers dashboard + Create load balancer](/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/1-open-load-balancers-dashboard-create-load-balancer.png)
 
 ### Bước 2 - Choose create Application Load Balancer
 
 Thực hiện **Choose create Application Load Balancer**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/2-choose-create-application-load-balancer.png" title="Choose create Application Load Balancer" >}}
+![Choose create Application Load Balancer](/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/2-choose-create-application-load-balancer.png)
 
 ### Bước 3 - Configure basic Load Balancer
 
@@ -123,29 +123,29 @@ HTTP:80
 nexusoms-demo-api-tg
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/3-configure-basic-load-balancer.png" title="Configure basic Load Balancer" >}}
+![Configure basic Load Balancer](/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/3-configure-basic-load-balancer.png)
 
 ### Bước 4 - Configure Network mapping for Load Balancer
 
 Thực hiện **Configure Network mapping for Load Balancer**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/4-configure-network-mapping-for-load-balancer.png" title="Configure Network mapping for Load Balancer" >}}
+![Configure Network mapping for Load Balancer](/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/4-configure-network-mapping-for-load-balancer.png)
 
 ### Bước 5 - Configure Security group for Load Balancer
 
 Thực hiện **Configure Security group for Load Balancer**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/5-configure-security-group-for-load-balancer.png" title="Configure Security group for Load Balancer" >}}
+![Configure Security group for Load Balancer](/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/5-configure-security-group-for-load-balancer.png)
 
 ### Bước 6 - Configure Target group for Load Balancer
 
 Thực hiện **Configure Target group for Load Balancer**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/6-configure-target-group-for-load-balancer.png" title="Configure Target group for Load Balancer" >}}
+![Configure Target group for Load Balancer](/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/6-configure-target-group-for-load-balancer.png)
 
 ### Bước 7 - Copy Load balancer ARN
 
 Thực hiện **Copy Load balancer ARN**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/7-copy-load-balancer-arn.png" title="Copy Load balancer ARN" >}}
+![Copy Load balancer ARN](/images/5-Workshop/nexusoms/5.4-Application-deployment/application-load-balancer/7-copy-load-balancer-arn.png)

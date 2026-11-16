@@ -43,7 +43,7 @@ nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 Thực hiện **Open Security groups dashboard + Create security group**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/1-open-security-groups-dashboard-create-security-group.png" title="Open Security groups dashboard + Create security group" >}}
+![Open Security groups dashboard + Create security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/1-open-security-groups-dashboard-create-security-group.png)
 
 ### Bước 2 - Full basic details of security group
 
@@ -63,10 +63,10 @@ nexusoms-demo-alb-sg | TCP 80 | <CLOUDFRONT_ORIGIN_PREFIX_LIST_ID>
 nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/2-full-basic-details-of-security-group.png" title="Full basic details of security group" >}}
+![Full basic details of security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/2-full-basic-details-of-security-group.png)
 
 ### Bước 3 - Configure the second security group
 
 Thực hiện **Configure the second security group**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/3-configure-the-second-security-group.png" title="Configure the second security group" >}}
+![Configure the second security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/3-configure-the-second-security-group.png)

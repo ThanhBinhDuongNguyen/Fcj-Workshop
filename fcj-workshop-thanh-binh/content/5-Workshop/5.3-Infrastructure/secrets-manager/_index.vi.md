@@ -116,13 +116,13 @@ nexusoms/demo/application
 }
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/1-open-secrets-manager-service-store-a-new-secret.png" title="Open Secrets Manager service + Store a new secret" >}}
+![Open Secrets Manager service + Store a new secret](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/1-open-secrets-manager-service-store-a-new-secret.png)
 
 ### Bước 2 - Choose secret type
 
 Thực hiện **Choose secret type**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/2-choose-secret-type.png" title="Choose secret type" >}}
+![Choose secret type](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/2-choose-secret-type.png)
 
 ### Bước 3 - Configure secret
 
@@ -154,10 +154,10 @@ Thực hiện **Configure secret**.
 "webhookSigningSecret": "<RANDOM_SECRET_AT_LEAST_32_CHARACTERS>"
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/3-configure-secret.png" title="Configure secret" >}}
+![Configure secret](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/3-configure-secret.png)
 
 ### Bước 4 - Copy secret ARN
 
 Thực hiện **Copy secret ARN**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/4-copy-secret-arn.png" title="Copy secret ARN" >}}
+![Copy secret ARN](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/4-copy-secret-arn.png)

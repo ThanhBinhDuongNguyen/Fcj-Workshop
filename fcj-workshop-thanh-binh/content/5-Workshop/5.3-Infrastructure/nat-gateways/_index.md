@@ -36,7 +36,7 @@ nexusoms-demo-nat-b | nexusoms-demo-public-b | nexusoms-demo-nat-eip-b
 Complete **Open NAT Gateways dashboard + Create NAT Gateway**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/1-open-nat-gateways-dashboard-create-nat-gateway.png" title="Open NAT Gateways dashboard + Create NAT Gateway" >}}
+![Open NAT Gateways dashboard + Create NAT Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/1-open-nat-gateways-dashboard-create-nat-gateway.png)
 
 ### Step 2 - Configure NAT Gateway settings
 
@@ -56,10 +56,10 @@ nexusoms-demo-nat-a | nexusoms-demo-public-a | nexusoms-demo-nat-eip-a
 nexusoms-demo-nat-b | nexusoms-demo-public-b | nexusoms-demo-nat-eip-b
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/2-configure-nat-gateway-settings.png" title="Configure NAT Gateway settings" >}}
+![Configure NAT Gateway settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/2-configure-nat-gateway-settings.png)
 
 ### Step 3 - Click Create NAT Gateway
 
 Complete **Click Create NAT Gateway**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/3-click-create-nat-gateway.png" title="Click Create NAT Gateway" >}}
+![Click Create NAT Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/3-click-create-nat-gateway.png)

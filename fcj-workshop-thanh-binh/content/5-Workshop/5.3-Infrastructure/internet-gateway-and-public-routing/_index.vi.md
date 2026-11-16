@@ -5,133 +5,102 @@ weight: 3
 chapter: false
 ---
 
-Gắn Internet Gateway vào VPC và dùng một public route table chung cho cả hai public subnet.
+Gắn Internet Gateway vào VPC và dùng một public route table chung cho hai public subnet.
 
-## 5.1. Internet Gateway và route cho public subnet
+## 5.1. Tạo Internet Gateway
 
-1\. Vào **VPC → Internet gateways → Create internet gateway**.
+### Bước 1: Mở trang Internet Gateway
 
-2\. Name: nexusoms-demo-igw; chọn **Create internet gateway**.
+Vào **VPC → Internet gateways**. Chọn **Create internet gateway**.
 
-3\. Chọn IGW → **Actions → Attach to a VPC** → chọn nexusoms-demo-vpc → **Attach**.
+![Mở trang Internet Gateway và chọn Create internet gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png)
 
-4\. Mở **VPC → Route tables → Create route table**.
+### Bước 2: Tạo Internet Gateway
 
-5\. Name nexusoms-demo-public-rt, VPC nexusoms-demo-vpc; tạo.
-
-6\. Mở route table → **Routes → Edit routes → Add route**. Destination 0.0.0.0/0; Target chọn **Internet Gateway** rồi chọn nexusoms-demo-igw; lưu.
-
-7\. Mở **Subnet associations → Edit subnet associations**; chọn cả public-a và public-b; lưu.
-
-**Kiểm tra:** tab Routes có local route của VPC và 0.0.0.0/0 → igw-...; tab Subnet associations có đúng hai public subnet.
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**VPC → Internet gateways → Create internet gateway**
+Nhập **Name tag**:
 
 ```text
 nexusoms-demo-igw
 ```
 
-**VPC → Route tables → Create route table**
+Chọn **Create internet gateway**.
+
+![Nhập tên và tạo Internet Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png)
+
+### Bước 3: Gắn Internet Gateway vào VPC
+
+Chọn Internet Gateway vừa tạo. Chọn **Actions → Attach to a VPC**.
+
+![Chọn Attach to a VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png)
+
+### Bước 4: Chọn VPC
+
+Chọn **nexusoms-demo-vpc**, sau đó chọn **Attach internet gateway**.
+
+![Chọn VPC và gắn Internet Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png)
+
+## 5.2. Tạo public route table
+
+### Bước 5: Mở trang Route tables
+
+Vào **VPC → Route tables**. Chọn **Create route table**.
+
+![Mở trang Route tables và chọn Create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png)
+
+### Bước 6: Tạo route table
+
+Nhập **Name**:
 
 ```text
 nexusoms-demo-public-rt
 ```
 
-**Routes → Edit routes → Add route**
+Chọn **VPC: nexusoms-demo-vpc**, sau đó chọn **Create route table**.
+
+![Nhập tên, chọn VPC và tạo route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6-fill-name-choose-vpc-create-route-table.png)
+
+### Bước 7: Mở phần chỉnh sửa route
+
+Mở route table vừa tạo. Chọn **Routes → Edit routes**.
+
+![Mở Routes và chọn Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png)
+
+### Bước 8: Thêm route ra Internet
+
+Chọn **Add route** và nhập:
 
 ```text
-0.0.0.0/0
+Destination: 0.0.0.0/0
+Target: Internet Gateway → nexusoms-demo-igw
 ```
 
-## Thao tác trên AWS Console
+Chọn **Save changes**.
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
+![Thêm route đến Internet Gateway và lưu thay đổi](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8-add-route-choose-internet-gateway-save-changes.png)
 
-### Bước 1 - Open IGW dashboard + Create IGW
+## 5.3. Liên kết public subnet
 
-Thực hiện **Open IGW dashboard + Create IGW**.
+### Bước 9: Mở Subnet associations
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png" title="Open IGW dashboard + Create IGW" >}}
+Chọn **Subnet associations → Edit subnet associations**.
 
-### Bước 2 - Put name tag + Create IGW
+![Mở Subnet associations và chọn Edit subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png)
 
-Thực hiện **Put name tag + Create IGW**.
+### Bước 10: Chọn hai public subnet
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png" title="Put name tag + Create IGW" >}}
-
-### Bước 3 - Attach to a VPC
-
-Thực hiện **Attach to a VPC**.
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png" title="Attach to a VPC" >}}
-
-### Bước 4 - Choose VPC + Click Attach IGW
-
-Thực hiện **Choose VPC + Click Attach IGW**.
-
-**Giá trị dùng ở bước này**
-
-**VPC → Internet gateways → Create internet gateway**
+Chọn hai subnet:
 
 ```text
-nexusoms-demo-igw
+nexusoms-demo-public-a
+nexusoms-demo-public-b
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png" title="Choose VPC + Click Attach IGW" >}}
+Chọn **Save associations**.
 
-### Bước 5 - Open Route tables dashboard + Create Route table
+![Chọn hai public subnet và lưu liên kết](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10-choose-2-public-subnet-save-associations.png)
 
-Thực hiện **Open Route tables dashboard + Create Route table**.
+## Kiểm tra kết quả
 
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png" title="Open Route tables dashboard + Create Route table" >}}
-
-### Bước 6 - Fill Name + Choose VPC + Create route table
-
-Thực hiện **Fill Name + Choose VPC + Create route table**.
-
-**Giá trị dùng ở bước này**
-
-**VPC → Route tables → Create route table**
-
-```text
-nexusoms-demo-public-rt
-```
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6-fill-name-choose-vpc-create-route-table.png" title="Fill Name + Choose VPC + Create route table" >}}
-
-### Bước 7 - Choose Routes + Edit routes
-
-Thực hiện **Choose Routes + Edit routes**.
-
-**Giá trị dùng ở bước này**
-
-**Routes → Edit routes → Add route**
-
-```text
-0.0.0.0/0
-```
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png" title="Choose Routes + Edit routes" >}}
-
-### Bước 8 - Add route + choose Internet gateway + Save changes
-
-Thực hiện **Add route + choose Internet gateway + Save changes**.
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8-add-route-choose-internet-gateway-save-changes.png" title="Add route + choose Internet gateway + Save changes" >}}
-
-### Bước 9 - Choose subnet associations + Edit subnet associations
-
-Thực hiện **Choose subnet associations + Edit subnet associations**.
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png" title="Choose subnet associations + Edit subnet associations" >}}
-
-### Bước 10 - Choose 2 public subnet + Save associations
-
-Thực hiện **Choose 2 public subnet + Save associations**.
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10-choose-2-public-subnet-save-associations.png" title="Choose 2 public subnet + Save associations" >}}
+- Tab **Routes** có route `local` của VPC.
+- Tab **Routes** có `0.0.0.0/0` trỏ đến `nexusoms-demo-igw`.
+- Tab **Subnet associations** có `nexusoms-demo-public-a` và `nexusoms-demo-public-b`.

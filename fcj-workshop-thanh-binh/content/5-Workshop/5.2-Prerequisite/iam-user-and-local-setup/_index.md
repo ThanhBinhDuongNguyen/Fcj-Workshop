@@ -11,54 +11,54 @@ Create a lab IAM user and configure the `nexusoms-demo` profile.
 
 Open IAM → **Users → Create user**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1-open-iam-user-dashboard.png" title="Open IAM Users" >}}
+![Open IAM Users](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1-open-iam-user-dashboard.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2-create-iam-user-button.png" title="Select Create user" >}}
+![Select Create user](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2-create-iam-user-button.png)
 
 ```text
 nexusoms-demo-deployer
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3-configure-specify-user-detail.png" title="Enter the IAM user name" >}}
+![Enter the IAM user name](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3-configure-specify-user-detail.png)
 
 Select the lab permissions and create the user.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4-configure-permission.png" title="Open permissions" >}}
+![Open permissions](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4-configure-permission.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5-select-permissions-policies.png" title="Select the permissions policy" >}}
+![Select the permissions policy](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5-select-permissions-policies.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6-click-create-user.png" title="Create the IAM user" >}}
+![Create the IAM user](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6-click-create-user.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7-complete-create-iam-user.png" title="IAM user created" >}}
+![IAM user created](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7-complete-create-iam-user.png)
 
 ## 2. Create the access key
 
 Open the user → **Security credentials → Create access key** and select **Command Line Interface (CLI)**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8-configure-security-credentials-for-user.png" title="Open Security credentials" >}}
+![Open Security credentials](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8-configure-security-credentials-for-user.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9-create-access-key.png" title="Create an access key" >}}
+![Create an access key](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9-create-access-key.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10-configure-command-link-interface-i-understand-next.png" title="Select Command Line Interface" >}}
+![Select Command Line Interface](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10-configure-command-link-interface-i-understand-next.png)
 
 ```text
 nexusoms-demo-powershell
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png" title="Enter the description" >}}
+![Enter the description](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png" title="Save the access key" >}}
+![Save the access key](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png)
 
 ## 3. Configure PowerShell
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13-open-powershell.png" title="Open PowerShell" >}}
+![Open PowerShell](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13-open-powershell.png)
 
 ```powershell
 aws --version
 aws configure --profile nexusoms-demo
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14-check-aws-version-configure-profile.png" title="Configure the AWS profile" >}}
+![Configure the AWS profile](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14-check-aws-version-configure-profile.png)
 
 ```text
 AWS Access Key ID: <AWS_ACCESS_KEY_ID>
@@ -67,7 +67,7 @@ Default region name: ap-southeast-1
 Default output format: json
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15-configure-more.png" title="Complete aws configure" >}}
+![Complete aws configure](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15-configure-more.png)
 
 ```powershell
 $env:AWS_PROFILE = "nexusoms-demo"
@@ -89,7 +89,7 @@ aws ec2 describe-managed-prefix-lists `
   --output text
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png" title="Verify the AWS account and CloudFront prefix list" >}}
+![Verify the AWS account and CloudFront prefix list](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png)
 
 ```powershell
 git --version
@@ -99,4 +99,4 @@ npm --version
 dotnet --version
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17-checking-library-in-cmd.png" title="Verify local tools" >}}
+![Verify local tools](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17-checking-library-in-cmd.png)

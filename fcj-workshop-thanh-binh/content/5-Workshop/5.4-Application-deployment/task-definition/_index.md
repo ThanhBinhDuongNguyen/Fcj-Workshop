@@ -43,7 +43,15 @@ Container port: 8080
 
 ```text
 ASPNETCORE_ENVIRONMENT=Production
+ASPNETCORE_HTTP_PORTS=8080
+AWS__Region=ap-southeast-1
+WebhookQueue__Mode=Sqs
+WebhookQueue__QueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
+WebhookQueue__DeadLetterQueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
+WebhookQueue__WaitTimeSeconds=20
 ```
+
+Both queue values must be **Queue URLs**, not ARNs. Create a new task definition revision whenever these values change.
 
 **Connection string**
 
@@ -84,7 +92,7 @@ WebhookSimulator__Secret <- webhookSigningSecret
 Complete **Open task definitions dashboard + Create new task definition**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1-open-task-definitions-dashboard-create-new-task-definition.png" title="Open task definitions dashboard + Create new task definition" >}}
+![Open task definitions dashboard + Create new task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1-open-task-definitions-dashboard-create-new-task-definition.png)
 
 ### Step 2 - Configure task definition
 
@@ -114,6 +122,12 @@ Memory: 1 GB
 
 ```text
 ASPNETCORE_ENVIRONMENT=Production
+ASPNETCORE_HTTP_PORTS=8080
+AWS__Region=ap-southeast-1
+WebhookQueue__Mode=Sqs
+WebhookQueue__QueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
+WebhookQueue__DeadLetterQueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
+WebhookQueue__WaitTimeSeconds=20
 ```
 
 **Connection string**
@@ -146,13 +160,13 @@ WebhookSimulator__Secret <- webhookSigningSecret
 /ecs/nexusoms-demo-api
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2-configure-task-definition.png" title="Configure task definition" >}}
+![Configure task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2-configure-task-definition.png)
 
 ### Step 3 - Configure OS, task roles
 
 Complete **Configure OS, task roles**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3-configure-os-task-roles.png" title="Configure OS, task roles" >}}
+![Configure OS, task roles](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3-configure-os-task-roles.png)
 
 ### Step 4 - Configure Container-1 detail
 
@@ -166,10 +180,10 @@ Complete **Configure Container-1 detail**.
 Container port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4-configure-container-1-detail.png" title="Configure Container-1 detail" >}}
+![Configure Container-1 detail](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4-configure-container-1-detail.png)
 
 ### Step 5 - Configure environment variables
 
 Complete **Configure environment variables**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5-configure-environment-variables.png" title="Configure environment variables" >}}
+![Configure environment variables](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5-configure-environment-variables.png)

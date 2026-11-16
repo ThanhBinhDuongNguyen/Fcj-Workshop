@@ -32,7 +32,7 @@ docker build `
 
 The login result must be `Login Succeeded`, and the Docker build must complete.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/1-bootstrap-login-and-build-backend.png" title="Log in to ECR and build the backend image" >}}
+![Log in to ECR and build the backend image](/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/1-bootstrap-login-and-build-backend.png)
 
 ## 2. Tag and push the image
 
@@ -47,6 +47,6 @@ $BackendImageUri = "$EcrRepositoryUri`:$ImageTag"
 $BackendImageUri
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/2-bootstrap-push-image-to-ecr.png" title="Push the backend image to ECR" >}}
+![Push the backend image to ECR](/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/2-bootstrap-push-image-to-ecr.png)
 
 Record `$BackendImageUri` for the task definition.

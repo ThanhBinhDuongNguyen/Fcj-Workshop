@@ -14,6 +14,8 @@ ECS service: Running 1/1
 Target group: Healthy
 CloudFront distribution: Deployed
 CloudFront invalidation: Completed
+SQS main queue: Available 0, In flight 0
+SQS dead-letter queue: Available 0
 ```
 
 ## 2. Đăng nhập
@@ -26,36 +28,72 @@ https://<CLOUDFRONT_DOMAIN>
 
 Đăng nhập bằng tài khoản đã tạo trong Supabase.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/1-open-website.png" title="Mở website NexusOMS" >}}
+![Mở website NexusOMS](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/1-open-website.png)
 
 ## 3. Kiểm tra dashboard
 
 Xác nhận dashboard tải dữ liệu và request `/api/*` trả về thành công.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/2-checking-overall-dashboard.png" title="Kiểm tra dashboard" >}}
+![Kiểm tra dashboard](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/2-checking-overall-dashboard.png)
 
 ## 4. Kiểm tra sản phẩm và tồn kho
 
 Tạo sản phẩm, chọn kho và nhập số lượng ban đầu.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/3-create-product.png" title="Tạo sản phẩm" >}}
+![Tạo sản phẩm](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/3-create-product.png)
 
 ## 5. Kiểm tra đơn hàng
 
 Tạo đơn hàng bằng sản phẩm vừa tạo. Mở chi tiết đơn và kiểm tra tồn kho đã cập nhật.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-checking-order-detail.png" title="Kiểm tra chi tiết đơn hàng" >}}
+![Kiểm tra chi tiết đơn hàng](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-checking-order-detail.png)
 
 Kiểm tra chi phí và doanh thu của sản phẩm.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-1-measuring-product-cost.png" title="Kiểm tra chi phí sản phẩm" >}}
+![Kiểm tra chi phí sản phẩm](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-1-measuring-product-cost.png)
 
-## 6. Kiểm tra webhook
+## 6. Kiểm tra webhook và hủy đơn
 
 Gửi webhook demo và xác nhận đơn hàng được tạo một lần.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/5-using-webhook-to-create-order.png" title="Tạo đơn hàng bằng webhook" >}}
+![Tạo đơn hàng bằng webhook](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/5-using-webhook-to-create-order.png)
 
-## 7. Kiểm tra CI/CD
+Gửi lại cùng `eventId` và xác nhận hệ thống không tạo đơn thứ hai.
+
+Chọn một đơn chưa xuất kho, gửi sự kiện `order.cancelled` và kiểm tra:
+
+```text
+Trạng thái đơn: Cancelled
+Lý do hủy: đã được lưu
+Tồn đang giữ: được nhả
+Tồn khả dụng: được hoàn lại một lần
+```
+
+## 7. Kiểm tra tải cao qua SQS
+
+1. Đăng nhập bằng tài khoản Manager hoặc Admin.
+2. Mở **Webhook Simulator → Demo tải cao**.
+3. Kiểm tra giao diện hiển thị chế độ `SQS`.
+4. Chọn channel connection, warehouse và SKU mapping hợp lệ.
+5. Bảo đảm tồn kho đủ cho tổng số lượng của batch.
+6. Chọn batch `10` đơn và bắt đầu demo.
+7. Mở **Amazon SQS → nexusoms-demo-webhook-queue.fifo → Monitoring**.
+8. Theo dõi message available và in flight trong lúc worker xử lý.
+9. Chờ batch hoàn tất; hai chỉ số trở về `0`.
+10. Mở CloudWatch Logs và xác nhận không có lỗi `AccessDenied` với SQS.
+
+Nếu message lỗi ba lần, kiểm tra `nexusoms-demo-webhook-dlq.fifo` và CloudWatch Logs trước khi redrive hoặc xóa message.
+
+## 8. Kết thúc demo
+
+Chọn **Kết thúc và dọn dữ liệu demo**. Xác nhận:
+
+```text
+Không còn đơn DEMO-*
+Tồn kho trở về trạng thái trước khi chạy
+Main queue không còn message
+```
+
+## 9. Kiểm tra CI/CD
 
 Thay đổi nhỏ trên frontend, commit và push lên `main`. Workflow phải cập nhật S3, tạo CloudFront invalidation và giữ ECS target ở trạng thái `Healthy`.

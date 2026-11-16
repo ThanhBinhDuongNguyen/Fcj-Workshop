@@ -22,6 +22,15 @@ Pop-Location
 docker build --file backend/Dockerfile --tag nexusoms-api:local-check backend
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/local-validation/1-run-tests-and-docker-build.png" title="Kiểm tra source và Docker image" >}}
+![Kiểm tra source và Docker image](/images/5-Workshop/nexusoms/5.2-Prerequisite/local-validation/1-run-tests-and-docker-build.png)
 
 Chỉ tiếp tục khi backend test, frontend test và Docker build đều thành công.
+
+Khi chạy backend local, giữ chế độ mặc định:
+
+```powershell
+$env:WebhookQueue__Mode = "Direct"
+dotnet run --project backend/src/NexusOMS.Api/NexusOMS.Api.csproj
+```
+
+Chế độ `Direct` không cần AWS SQS. Chỉ đặt `WebhookQueue__Mode=Sqs` trong ECS Task Definition sau khi hai queue đã được tạo.

@@ -54,7 +54,7 @@ Stage: LIVE
 Complete **Open Functions dashboard + Create function**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png" title="Open Functions dashboard + Create function" >}}
+![Open Functions dashboard + Create function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png)
 
 ### Step 2 - Configure function details
 
@@ -92,34 +92,34 @@ Behavior: Default (*)
 Stage: LIVE
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png" title="Configure function details" >}}
+![Configure function details](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png)
 
 ### Step 3 - Paste code build section
 
 Complete **Paste code build section**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png" title="Paste code build section" >}}
+![Paste code build section](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png)
 
 ### Step 4 - Publish function
 
 Complete **Publish function**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png" title="Publish function" >}}
+![Publish function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png)
 
 ### Step 5 - Open distribution detail + choose behaviors + edit
 
 Complete **Open distribution detail + choose behaviors + edit**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png" title="Open distribution detail + choose behaviors + edit" >}}
+![Open distribution detail + choose behaviors + edit](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png)
 
 ### Step 6 - Configure Function associations
 
 Complete **Configure Function associations**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png" title="Configure Function associations" >}}
+![Configure Function associations](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
 
 ### Step 7 - Copy Distribution domain name
 
 Complete **Copy Distribution domain name**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png" title="Copy Distribution domain name" >}}
+![Copy Distribution domain name](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png)

@@ -14,20 +14,20 @@ This section summarizes the NexusOMS workshop proposal and the AWS demonstration
 ### 1. Executive Summary
 NexusOMS is built for a single organization that sells through Shopee, TikTok Shop, Lazada and Website D2C. It centralizes products, warehouses, inventory, marketplace orders, SKU mappings and order profitability. The implemented MVP uses a React/Vite frontend, a .NET 10 Modular Monolith API and Supabase for PostgreSQL and authentication. Access is restricted to the `admin`, `manager` and `warehouse` roles.
 
-The system focuses on operational safety rather than ordinary CRUD. It supports atomic stock reservation, idempotent requests, signed simulated webhooks, retry processing, inventory transactions and CM1–CM3 profitability. Real marketplace accounts are not available, so the team uses a simulator with payload structures inspired by marketplace APIs to demonstrate the order lifecycle.
+The system focuses on operational safety rather than ordinary CRUD. It supports atomic stock reservation, idempotent requests, signed simulated webhooks, SQS FIFO processing, inventory transactions and CM1–CM3 profitability. Real marketplace accounts are not available, so the team uses a simulator with payload structures inspired by marketplace APIs to demonstrate the order lifecycle.
 
 ### 2. Problem Statement
 ### What’s the Problem?
 Multi-channel sellers frequently switch between marketplace dashboards to manage orders and stock. Concurrent flash-sale orders may oversell a SKU, repeated webhook delivery may create duplicate records, and profit is difficult to understand after product cost, payment fees, fulfillment cost and advertising.
 
 ### The Solution
-NexusOMS receives a simulated marketplace webhook, verifies its HMAC signature, maps the channel SKU to an internal product and reserves available inventory in a database transaction. The order can then move through confirmation, preparation, shipment and delivery. Idempotency keys and database constraints prevent duplicate delivery from generating a second business operation. The frontend exposes the operational flow, warehouse balances, channel mappings and CM1–CM3 per-order/channel reporting.
+NexusOMS receives a simulated marketplace webhook, verifies its HMAC signature, and places the valid event on an Amazon SQS FIFO queue. An ECS worker consumes the message, maps the channel SKU to an internal product, and reserves available inventory in a database transaction. The order can then move through confirmation, preparation, shipment, delivery, or cancellation. Cancelling before dispatch releases reserved stock. Idempotency keys and database constraints prevent duplicate delivery from generating a second business operation, while messages that repeatedly fail move to a dead-letter queue.
 
 ### Benefits and Return on Investment
 The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. The architecture can be deployed for a short AWS demonstration, photographed for the report and removed afterwards. **PLACEHOLDER - add the team’s business assumptions, measured time savings and ROI calculation.**
 
 ### 3. Solution Architecture
-The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. NAT Gateways provide outbound access from the tasks to Supabase Cloud and simulated marketplace endpoints. AWS WAF remains visible in the target architecture and cost estimate but is not enabled in the workshop. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
+The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. Amazon SQS FIFO decouples webhook intake from business processing, and a dead-letter queue isolates messages that repeatedly fail. Each Availability Zone uses its own NAT Gateway so outbound connectivity remains available if one AZ fails. This improves availability but increases cost; a low-cost demo may use one NAT Gateway and accept a single point of failure. AWS WAF remains visible in the target architecture and cost estimate but is not enabled in the workshop. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
@@ -37,18 +37,21 @@ The current application runs locally with React/Vite, a .NET 10 API and Supabase
 - **Application Load Balancer**: Routes API traffic to healthy ECS tasks.
 - **Amazon ECS on AWS Fargate**: Runs the containerized .NET 10 API across two Availability Zones.
 - **Amazon ECR**: Stores versioned backend container images built from GitHub CI.
+- **Amazon SQS FIFO and a dead-letter queue**: Buffer webhook bursts, preserve ordering within a message group, and isolate failed messages.
 - **Amazon VPC, NAT Gateway and Internet Gateway**: Isolate API tasks in private subnets while allowing controlled outbound access.
 - **S3 Gateway Endpoint, AWS Secrets Manager and Amazon CloudWatch**: Route S3 traffic privately, manage secrets and collect logs/metrics; ECR, Secrets Manager and CloudWatch Logs are reached through NAT Gateways.
 - **AWS CloudTrail and Amazon S3**: Record management events and retain CloudTrail/ALB access logs in a private audit bucket.
-- **Supabase Cloud**: Remains the external PostgreSQL database and authentication provider; it is not replaced with Amazon RDS in this MVP.
+- **Supabase Cloud**: Remains the external PostgreSQL database and authentication provider because the application already uses PostgreSQL and Supabase Auth. This keeps the lab focused on AWS deployment instead of database migration. A production version can move to Amazon RDS or Aurora PostgreSQL when all data must be operated in AWS.
 
 ### Component Design
 - **Frontend**: React/Vite presents product, warehouse, order, profit and webhook-simulation workflows.
 - **API**: .NET 10 Modular Monolith exposes REST endpoints, validates Supabase JWTs and applies role policies.
 - **Order and inventory workflow**: PostgreSQL transactions reserve, release or commit stock while preserving an inventory-operation record.
-- **Webhook workflow**: HMAC verification, idempotency and retry processing protect marketplace-style simulated events.
+- **Asynchronous webhook workflow**: The API verifies HMAC and sends events to SQS FIFO; an ECS worker processes messages and the DLQ receives messages that fail more than three times.
+- **Order cancellation workflow**: An `order.cancelled` event records the reason, changes the order state, and releases reserved inventory when the order has not been dispatched. Idempotency prevents stock from being released twice.
 - **Database and identity**: Supabase provides PostgreSQL and Auth; the database uses a single-organization `public` schema.
-- **AWS runtime**: ECS tasks obtain secrets safely, send logs to CloudWatch and reach Supabase/marketplace simulators through NAT Gateways.
+- **AWS runtime**: ECS tasks obtain secrets safely, send logs to CloudWatch, access SQS through the task role, and reach Supabase/marketplace simulators through NAT Gateways.
+- **CI/CD**: GitHub Actions uses OIDC for short-lived AWS credentials, pushes images to ECR, updates the ECS service, syncs the frontend to S3, and creates a CloudFront invalidation.
 
 ### 4. Technical Implementation
 **Implementation Phases**
@@ -60,7 +63,7 @@ This project has two parts-completing the NexusOMS MVP and preparing a short AWS
 
 **Technical Requirements**
 - NexusOMS Application: React/Vite frontend, .NET 10 API, PostgreSQL/Npgsql, Supabase Auth JWT verification, role policies and HMAC webhook validation.
-- AWS Demonstration: Docker image in ECR, ECS Fargate service behind ALB, S3/CloudFront frontend, two public plus two private subnets, NAT Gateways, CloudWatch logs, Secrets Manager and AWS IAM roles. Supabase environment values are stored as secrets, not committed to source control.
+- AWS Demonstration: Docker image in ECR, ECS Fargate service behind ALB, SQS FIFO plus a DLQ for webhooks, S3/CloudFront frontend, two public plus two private subnets, NAT Gateways, CloudWatch logs, Secrets Manager and AWS IAM roles. Supabase environment values are stored as secrets, not committed to source control.
 
 ### 5. Timeline & Milestones
 **Project Timeline**
@@ -68,7 +71,7 @@ This project has two parts-completing the NexusOMS MVP and preparing a short AWS
 - Demonstration setup:
     - Configure the network, IAM roles, ECR, S3/CloudFront and observability resources.
     - Deploy the container service and configure ALB, CloudFront, audit logs and secrets.
-    - Run the webhook/order/inventory demonstration and capture report evidence.
+    - Run webhook, order, inventory, and SQS burst demonstrations; inspect the DLQ, clean up `DEMO-*` records, and capture report evidence.
 - Post-Demonstration: delete temporary AWS resources and retain only code, diagrams, screenshots and cost evidence for the report.
 
 ### 6. Budget Estimation
@@ -101,7 +104,7 @@ The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to 
 
 #### Mitigation Strategies
 - Marketplace integration: use the HMAC-protected simulator and documented representative payloads.
-- Order/inventory integrity: use idempotency keys, database constraints and reserve/release/commit transactions.
+- Order/inventory integrity: use SQS FIFO, a DLQ, idempotency keys, database constraints and reserve/release/commit transactions.
 - Cost: create AWS Budgets/billing alerts, constrain the demo duration and delete chargeable resources afterwards.
 
 #### Contingency Plans
@@ -110,6 +113,6 @@ The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to 
 
 ### 8. Expected Outcomes
 #### Technical Improvements: 
-One system demonstrates product/SKU mapping, warehouse inventory, order lifecycle, webhook safety and profitability instead of isolated manual workflows.
+One system demonstrates product/SKU mapping, warehouse inventory, an order lifecycle including cancellation, asynchronous webhook safety and profitability instead of isolated manual workflows.
 #### Long-term Value
 The MVP and AWS architecture form a reusable foundation for real marketplace credentials, production webhook adapters and future reporting improvements.

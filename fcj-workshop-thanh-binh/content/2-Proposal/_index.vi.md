@@ -14,20 +14,20 @@ Tại phần này, bạn cần tóm tắt nội dung workshop NexusOMS mà nhóm
 ### 1. Tóm tắt điều hành  
 NexusOMS là hệ thống cho một tổ chức kinh doanh qua Shopee, TikTok Shop, Lazada và Website D2C, tập trung dữ liệu sản phẩm, kho, tồn, đơn hàng sàn, ánh xạ SKU và lợi nhuận từng đơn. MVP hiện tại dùng giao diện React/Vite, API .NET 10 theo kiến trúc Modular Monolith và Supabase cho PostgreSQL cùng xác thực. Hệ thống có ba vai trò `admin`, `manager` và `warehouse`.
 
-Trọng tâm của hệ thống là an toàn vận hành thay vì chỉ CRUD: giữ tồn nguyên tử, idempotency, webhook mô phỏng có chữ ký HMAC, retry worker, lịch sử biến động kho và lợi nhuận CM1–CM3. Nhóm chưa có gian hàng hay production credential của các sàn nên dùng simulator với payload lấy cảm hứng từ API marketplace để trình diễn toàn bộ vòng đời đơn.
+Trọng tâm của hệ thống là an toàn vận hành thay vì chỉ CRUD: giữ tồn nguyên tử, idempotency, webhook mô phỏng có chữ ký HMAC, hàng đợi SQS FIFO, lịch sử biến động kho và lợi nhuận CM1–CM3. Nhóm chưa có gian hàng hay production credential của các sàn nên dùng simulator với payload lấy cảm hứng từ API marketplace để trình diễn toàn bộ vòng đời đơn.
 
 ### 2. Tuyên bố vấn đề  
 *Vấn đề hiện tại*  
 Người bán đa kênh thường phải chuyển qua nhiều dashboard để theo dõi đơn và tồn. Đơn flash sale xảy ra đồng thời có thể bán lố một SKU; webhook bị gửi lặp có thể tạo bản ghi trùng; còn lợi nhuận thực khó nhìn rõ sau giá vốn, phí thanh toán, vận hành và quảng cáo.
 
 *Giải pháp*  
-NexusOMS nhận webhook marketplace mô phỏng, kiểm tra chữ ký HMAC, ánh xạ SKU kênh về sản phẩm nội bộ và giữ tồn khả dụng trong PostgreSQL transaction. Đơn sau đó đi qua xác nhận, chuẩn bị, xuất kho/vận chuyển và giao thành công. Idempotency key cùng ràng buộc database ngăn việc webhook lặp tạo ra thao tác nghiệp vụ thứ hai. Giao diện cho phép theo dõi luồng vận hành, tồn kho, ánh xạ kênh và CM1–CM3 theo đơn/kênh.
+NexusOMS nhận webhook marketplace mô phỏng, kiểm tra chữ ký HMAC rồi đưa sự kiện hợp lệ vào Amazon SQS FIFO. Worker trong ECS lấy message, ánh xạ SKU kênh về sản phẩm nội bộ và giữ tồn khả dụng trong PostgreSQL transaction. Đơn sau đó đi qua xác nhận, chuẩn bị, xuất kho/vận chuyển, giao thành công hoặc hủy. Khi hủy trước lúc xuất kho, hệ thống nhả phần tồn đang giữ; idempotency key cùng ràng buộc database ngăn webhook lặp tạo ra thao tác nghiệp vụ thứ hai. Message lỗi quá số lần cho phép được chuyển sang dead-letter queue để kiểm tra riêng.
 
 *Lợi ích và hoàn vốn đầu tư (ROI)*  
 Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm, tồn và đơn, giảm đối soát thủ công giữa các kênh. Luồng reserve, release và commit giúp minh họa flash sale có kiểm soát và có thể truy vết. Kiến trúc có thể triển khai AWS trong thời gian ngắn để chụp báo cáo/thuyết trình, sau đó xóa để tránh chi phí chạy liên tục. **PLACEHOLDER - bổ sung giả định kinh doanh, số giờ tiết kiệm và phép tính ROI của nhóm.**  
 
 ### 3. Kiến trúc giải pháp  
-Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. NAT Gateway cho phép task đi ra Supabase Cloud và endpoint marketplace mô phỏng. AWS WAF được thể hiện trong kiến trúc mục tiêu và dự toán nhưng không bật trong workshop. Workshop dùng domain cùng chứng chỉ mặc định của CloudFront nên không tạo AWS Certificate Manager. CloudTrail và ALB access logs được lưu trong một S3 audit bucket riêng tư.
+Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. Amazon SQS FIFO tách bước tiếp nhận webhook khỏi bước xử lý nghiệp vụ; dead-letter queue giữ các message thất bại nhiều lần. Mỗi Availability Zone có một NAT Gateway để task vẫn có đường outbound khi một AZ gặp sự cố. Cấu hình này tăng chi phí nhưng tránh phụ thuộc vào một NAT duy nhất; môi trường demo tiết kiệm có thể dùng một NAT và chấp nhận single point of failure. AWS WAF được thể hiện trong kiến trúc mục tiêu và dự toán nhưng không bật trong workshop. Workshop dùng domain cùng chứng chỉ mặc định của CloudFront nên không tạo AWS Certificate Manager. CloudTrail và ALB access logs được lưu trong một S3 audit bucket riêng tư.
 
 ![Kiến trúc luồng nghiệp vụ NexusOMS](/images/2-Proposal/noxus-aws-architect-1.png)
 
@@ -37,18 +37,21 @@ Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm,
 - *Application Load Balancer*: Định tuyến API tới ECS task khỏe.  
 - *Amazon ECS trên AWS Fargate*: Chạy container .NET 10 qua hai Availability Zone.  
 - *Amazon ECR*: Lưu Docker image backend có phiên bản từ GitHub CI.  
+- *Amazon SQS FIFO và Dead-letter Queue*: Đệm webhook tăng đột biến, giữ thứ tự theo nhóm và cô lập message xử lý lỗi.
 - *Amazon VPC, NAT Gateway và Internet Gateway*: Cô lập API task trong private subnet nhưng vẫn cho phép outbound có kiểm soát.  
 - *S3 Gateway Endpoint, AWS Secrets Manager và Amazon CloudWatch*: Định tuyến S3 riêng tư, quản lý secret và thu log/metric; ECR, Secrets Manager và CloudWatch Logs được truy cập qua NAT Gateway.  
 - *AWS CloudTrail và Amazon S3*: Ghi management events và lưu CloudTrail/ALB access logs trong audit bucket riêng tư.  
-- *Supabase Cloud*: Tiếp tục là PostgreSQL/Auth bên ngoài AWS; MVP này không thay bằng Amazon RDS.  
+- *Supabase Cloud*: Tiếp tục là PostgreSQL/Auth bên ngoài AWS vì ứng dụng đã dùng PostgreSQL và Supabase Auth, giúp bài lab tập trung vào triển khai AWS thay vì di chuyển database. Bản production có thể chuyển sang Amazon RDS hoặc Aurora PostgreSQL khi cần vận hành toàn bộ dữ liệu trong AWS.
 
 *Thiết kế thành phần*  
 - *Frontend*: React/Vite hiển thị sản phẩm, kho, đơn hàng, lợi nhuận và webhook simulator.  
 - *API*: .NET 10 Modular Monolith cung cấp REST API, xác thực Supabase JWT và áp dụng role policy.  
 - *Luồng đơn/tồn*: PostgreSQL transaction giữ, nhả hoặc commit tồn và lưu inventory operation.  
-- *Luồng webhook*: HMAC, idempotency và retry bảo vệ marketplace-style event mô phỏng.  
+- *Luồng webhook bất đồng bộ*: API xác minh HMAC và gửi sự kiện vào SQS FIFO; worker ECS xử lý message, còn DLQ giữ message thất bại quá ba lần.
+- *Luồng hủy đơn*: Sự kiện `order.cancelled` cập nhật trạng thái, lưu lý do hủy và nhả tồn đang giữ nếu đơn chưa xuất kho. Idempotency ngăn việc hoàn tồn hai lần.
 - *Database và identity*: Supabase cung cấp PostgreSQL/Auth; dữ liệu nằm trong `public` schema của một tổ chức.  
-- *AWS runtime*: ECS task lấy secret an toàn, gửi log đến CloudWatch và đi ra Supabase/marketplace simulator qua NAT Gateway.  
+- *AWS runtime*: ECS task lấy secret an toàn, gửi log đến CloudWatch, đọc/ghi SQS bằng task role và đi ra Supabase/marketplace simulator qua NAT Gateway.
+- *CI/CD*: GitHub Actions dùng OIDC để nhận AWS credential ngắn hạn, đẩy image lên ECR, cập nhật ECS service, đồng bộ frontend lên S3 và tạo CloudFront invalidation.
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  
@@ -60,14 +63,14 @@ Dự án gồm 2 phần - hoàn thiện MVP NexusOMS và chuẩn bị AWS demo -
 
 *Yêu cầu kỹ thuật*  
 - *Ứng dụng NexusOMS*: React/Vite, .NET 10 API, PostgreSQL/Npgsql, Supabase Auth JWT, role policy và HMAC webhook validation.  
-- *AWS Demo*: Docker image trên ECR, ECS Fargate sau ALB, S3/CloudFront cho frontend, hai public và hai private subnet, NAT Gateway, CloudWatch logs, Secrets Manager cùng IAM role. Giá trị môi trường Supabase được lưu trong secret, không commit vào source code.  
+- *AWS Demo*: Docker image trên ECR, ECS Fargate sau ALB, SQS FIFO và DLQ cho webhook, S3/CloudFront cho frontend, hai public và hai private subnet, NAT Gateway, CloudWatch logs, Secrets Manager cùng IAM role. Giá trị môi trường Supabase được lưu trong secret, không commit vào source code.
 
 ### 5. Lộ trình & Mốc triển khai  
 - *Chuẩn bị*: Chốt luồng source code, test case, sơ đồ kiến trúc và bảng tính AWS.  
 - *Thiết lập demo*:  
     - Cấu hình network, IAM, ECR, S3/CloudFront và observability.  
     - Deploy container service, cấu hình ALB, CloudFront, audit logs và secrets.  
-    - Chạy demo webhook/đơn hàng/tồn kho, sau đó chụp bằng chứng cho báo cáo.  
+    - Chạy demo webhook/đơn hàng/tồn kho và tải cao qua SQS, kiểm tra DLQ, sau đó dọn dữ liệu `DEMO-*` và chụp bằng chứng cho báo cáo.
 - *Sau demo*: Xóa tài nguyên AWS tạm; chỉ giữ code, sơ đồ, screenshot và bằng chứng chi phí cho báo cáo.  
 
 ### 6. Ước tính ngân sách  
@@ -100,7 +103,7 @@ Calculator cho kết quả **$0.00 chi phí trả trước**. WAF được cộn
 
 *Chiến lược giảm thiểu*  
 - Marketplace: dùng simulator có HMAC và payload đại diện được ghi nhận.  
-- Đơn/tồn: dùng idempotency key, ràng buộc database và transaction reserve/release/commit.  
+- Đơn/tồn: dùng SQS FIFO, DLQ, idempotency key, ràng buộc database và transaction reserve/release/commit.
 - Chi phí: tạo AWS Budget/billing alert, giới hạn thời gian demo và xóa tài nguyên tính phí sau đó.  
 
 *Kế hoạch dự phòng*  
@@ -108,5 +111,5 @@ Calculator cho kết quả **$0.00 chi phí trả trước**. WAF được cộn
 - Giữ lại định nghĩa hạ tầng và sơ đồ để có thể tái tạo, rồi dọn môi trường demo một cách có kiểm soát.  
 
 ### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Một hệ thống minh họa ánh xạ SKU, tồn kho, vòng đời đơn, an toàn webhook và lợi nhuận thay cho các thao tác thủ công rời rạc.  
+*Cải tiến kỹ thuật*: Một hệ thống minh họa ánh xạ SKU, tồn kho, vòng đời đơn gồm cả hủy đơn, xử lý webhook bất đồng bộ và lợi nhuận thay cho các thao tác thủ công rời rạc.
 *Giá trị dài hạn*: MVP cùng kiến trúc AWS tạo nền tảng có thể tái sử dụng khi có credential sàn thật, webhook adapter production và báo cáo nâng cao.  

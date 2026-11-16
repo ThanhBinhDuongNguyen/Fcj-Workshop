@@ -5,71 +5,56 @@ weight: 5
 chapter: false
 ---
 
-Mỗi Availability Zone có một NAT Gateway riêng để task trong private subnet truy cập Supabase và webhook ngoài AWS.
+Tạo một NAT Gateway trong mỗi Availability Zone để các task trong private subnet truy cập Supabase và webhook ngoài AWS.
 
-## 5.2. Tạo hai Elastic IP và hai NAT Gateway
+## 5.1. Tạo NAT Gateway A
 
-1\. Vào **VPC → Elastic IPs → Allocate Elastic IP address**.
+### Bước 1: Mở trang NAT Gateway
 
-2\. Chọn **Allocate** hai lần. Đặt Name tag khác nhau: nexusoms-demo-nat-eip-a và nexusoms-demo-nat-eip-b.
+Vào **VPC → NAT gateways**. Chọn **Create NAT gateway**.
 
-3\. Mở **VPC → NAT gateways → Create NAT gateway**.
+![Mở trang NAT Gateway và chọn Create NAT gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/1-open-nat-gateways-dashboard-create-nat-gateway.png)
 
-4\. NAT A: Name nexusoms-demo-nat-a; Subnet nexusoms-demo-public-a; Connectivity type **Public**; chọn Elastic IP A; tạo.
+### Bước 2: Cấu hình NAT Gateway A
 
-5\. NAT B: Name nexusoms-demo-nat-b; Subnet nexusoms-demo-public-b; Connectivity type **Public**; chọn Elastic IP B; tạo.
-
-6\. Chờ cả hai NAT Gateway có trạng thái **Available** trước khi tạo route private.
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**NAT Gateway value**
+Nhập các giá trị:
 
 ```text
-nexusoms-demo-nat-a | nexusoms-demo-public-a | nexusoms-demo-nat-eip-a
+Name: nexusoms-demo-nat-a
+Subnet: nexusoms-demo-public-a
+Connectivity type: Public
+Elastic IP allocation ID: nexusoms-demo-nat-eip-a
 ```
 
-**NAT Gateway value**
+![Cấu hình NAT Gateway A](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/2-configure-nat-gateway-settings.png)
+
+### Bước 3: Tạo NAT Gateway A
+
+Kiểm tra lại cấu hình, sau đó chọn **Create NAT gateway**.
+
+![Tạo NAT Gateway A](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/3-click-create-nat-gateway.png)
+
+## 5.2. Tạo NAT Gateway B
+
+### Bước 4: Lặp lại thao tác cho NAT Gateway B
+
+Chọn **Create NAT gateway** và nhập bộ giá trị thứ hai:
 
 ```text
-nexusoms-demo-nat-b | nexusoms-demo-public-b | nexusoms-demo-nat-eip-b
+Name: nexusoms-demo-nat-b
+Subnet: nexusoms-demo-public-b
+Connectivity type: Public
+Elastic IP allocation ID: nexusoms-demo-nat-eip-b
 ```
 
-## Thao tác trên AWS Console
+Chọn **Create NAT gateway**.
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
+## Kiểm tra kết quả
 
-### Bước 1 - Open NAT Gateways dashboard + Create NAT Gateway
+Chờ quá trình khởi tạo hoàn tất và kiểm tra:
 
-Thực hiện **Open NAT Gateways dashboard + Create NAT Gateway**.
+- `nexusoms-demo-nat-a` có trạng thái **Available**.
+- `nexusoms-demo-nat-b` có trạng thái **Available**.
+- Mỗi NAT Gateway nằm trong đúng public subnet và sử dụng đúng Elastic IP.
 
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/1-open-nat-gateways-dashboard-create-nat-gateway.png" title="Open NAT Gateways dashboard + Create NAT Gateway" >}}
-
-### Bước 2 - Configure NAT Gateway settings
-
-Thực hiện **Configure NAT Gateway settings**.
-
-**Giá trị dùng ở bước này**
-
-**NAT Gateway value**
-
-```text
-nexusoms-demo-nat-a | nexusoms-demo-public-a | nexusoms-demo-nat-eip-a
-```
-
-**NAT Gateway value**
-
-```text
-nexusoms-demo-nat-b | nexusoms-demo-public-b | nexusoms-demo-nat-eip-b
-```
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/2-configure-nat-gateway-settings.png" title="Configure NAT Gateway settings" >}}
-
-### Bước 3 - Click Create NAT Gateway
-
-Thực hiện **Click Create NAT Gateway**.
-
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/3-click-create-nat-gateway.png" title="Click Create NAT Gateway" >}}
+Chỉ tiếp tục tạo private route table sau khi cả hai NAT Gateway chuyển sang **Available**.

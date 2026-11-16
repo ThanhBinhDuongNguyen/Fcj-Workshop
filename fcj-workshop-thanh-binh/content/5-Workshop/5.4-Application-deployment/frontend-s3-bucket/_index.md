@@ -36,7 +36,7 @@ Block all public access: Enabled
 Complete **Open S3 dashboard + Create bucket**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/1-open-s3-dashboard-create-bucket.png" title="Open S3 dashboard + Create bucket" >}}
+![Open S3 dashboard + Create bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/1-open-s3-dashboard-create-bucket.png)
 
 ### Step 2 - Configure bucket
 
@@ -56,10 +56,10 @@ nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
 Block all public access: Enabled
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/2-configure-bucket.png" title="Configure bucket" >}}
+![Configure bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/2-configure-bucket.png)
 
 ### Step 3 - Click create bucket
 
 Complete **Click create bucket**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/3-click-create-bucket.png" title="Click create bucket" >}}
+![Click create bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/3-click-create-bucket.png)

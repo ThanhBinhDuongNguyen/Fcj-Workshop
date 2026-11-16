@@ -69,14 +69,14 @@ nexusoms-demo-vpc
 Thực hiện **Open Your VPCs dashboard**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/1-open-your-vpcs-dashboard.png" title="Open Your VPCs dashboard" >}}
+![Open Your VPCs dashboard](/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/1-open-your-vpcs-dashboard.png)
 
 ### Bước 2 - Click create VPC
 
 Thực hiện **Click create VPC**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/2-click-create-vpc.png" title="Click create VPC" >}}
+![Click create VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/2-click-create-vpc.png)
 
 ### Bước 3 - Configure VPC settings
 
@@ -102,22 +102,22 @@ nexusoms-demo-vpc
 10.80.0.0/16
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/3-configure-vpc-settings.png" title="Configure VPC settings" >}}
+![Configure VPC settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/3-configure-vpc-settings.png)
 
 ### Bước 4 - Choose Action + Edit VPC Settings
 
 Thực hiện **Choose Action + Edit VPC Settings**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/4-choose-action-edit-vpc-settings.png" title="Choose Action + Edit VPC Settings" >}}
+![Choose Action + Edit VPC Settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/4-choose-action-edit-vpc-settings.png)
 
 ### Bước 5 - Check 2 box in DNS settings
 
 Thực hiện **Check 2 box in DNS settings**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/5-check-2-box-in-dns-settings.png" title="Check 2 box in DNS settings" >}}
+![Check 2 box in DNS settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/5-check-2-box-in-dns-settings.png)
 
 ### Bước 6 - Copy VPC ID
 
 Thực hiện **Copy VPC ID**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/6-copy-vpc-id.png" title="Copy VPC ID" >}}
+![Copy VPC ID](/images/5-Workshop/nexusoms/5.3-Infrastructure/vpc/6-copy-vpc-id.png)

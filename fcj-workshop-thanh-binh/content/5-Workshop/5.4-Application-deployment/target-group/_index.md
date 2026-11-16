@@ -54,7 +54,7 @@ Health check path: /health
 Complete **Open Target Groups dashboard + Create target group**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png" title="Open Target Groups dashboard + Create target group" >}}
+![Open Target Groups dashboard + Create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png)
 
 ### Step 2 - Configure target group
 
@@ -86,7 +86,7 @@ Protocol: HTTP
 Port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png" title="Configure target group" >}}
+![Configure target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png)
 
 ### Step 3 - Choose VPC + Set up health checks
 
@@ -100,10 +100,10 @@ Complete **Choose VPC + Set up health checks**.
 Health check path: /health
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png" title="Choose VPC + Set up health checks" >}}
+![Choose VPC + Set up health checks](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png)
 
 ### Step 4 - Complete create target group
 
 Complete **Complete create target group**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png" title="Complete create target group" >}}
+![Complete create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png)

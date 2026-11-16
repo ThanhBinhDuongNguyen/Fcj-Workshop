@@ -19,4 +19,5 @@ Create resources in this order:
 9. [Secrets Manager](./secrets-manager/)
 10. [CloudWatch log group](./cloudwatch-log-group/)
 11. [ECS IAM roles](./ecs-iam-roles/)
-12. [CloudTrail and S3 audit bucket](./cloudtrail-audit-bucket/)
+12. [SQS FIFO and dead-letter queues](./sqs-webhook-queues/)
+13. [CloudTrail and S3 audit bucket](./cloudtrail-audit-bucket/)

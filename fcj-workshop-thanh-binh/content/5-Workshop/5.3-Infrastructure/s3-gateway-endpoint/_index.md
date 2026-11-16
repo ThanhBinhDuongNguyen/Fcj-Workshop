@@ -49,19 +49,19 @@ Complete **Open Endpoints dashboard + Create endpoint**.
 com.amazonaws.ap-southeast-1.s3
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1-open-endpoints-dashboard-create-endpoint.png" title="Open Endpoints dashboard + Create endpoint" >}}
+![Open Endpoints dashboard + Create endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1-open-endpoints-dashboard-create-endpoint.png)
 
 ### Step 2 - Fill name tag + Choose type
 
 Complete **Fill name tag + Choose type**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2-fill-name-tag-choose-type.png" title="Fill name tag + Choose type" >}}
+![Fill name tag + Choose type](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2-fill-name-tag-choose-type.png)
 
 ### Step 3 - Choose S3 service
 
 Complete **Choose S3 service**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3-choose-s3-service.png" title="Choose S3 service" >}}
+![Choose S3 service](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3-choose-s3-service.png)
 
 ### Step 4 - Choose 2 private route tables + Full access for policy
 
@@ -81,10 +81,10 @@ nexusoms-demo-private-a-rt
 nexusoms-demo-private-b-rt
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4-choose-2-private-route-tables-full-access-for-policy.png" title="Choose 2 private route tables + Full access for policy" >}}
+![Choose 2 private route tables + Full access for policy](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4-choose-2-private-route-tables-full-access-for-policy.png)
 
 ### Step 5 - Click create endpoint
 
 Complete **Click create endpoint**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png" title="Click create endpoint" >}}
+![Click create endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png)

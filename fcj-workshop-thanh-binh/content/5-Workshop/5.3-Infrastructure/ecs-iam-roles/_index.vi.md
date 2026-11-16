@@ -5,7 +5,7 @@ weight: 11
 chapter: false
 ---
 
-Execution role cho phép ECS kéo image, ghi log và đọc secret. Task role giữ tối thiểu vì ứng dụng hiện không gọi AWS API trực tiếp.
+Execution role cho phép ECS kéo image, ghi log và đọc secret. Task role được tạo trước; quyền SQS sẽ được gắn sau khi tạo hai queue.
 
 ## 7.3. Tạo IAM execution role và task role
 
@@ -41,11 +41,11 @@ Mở **IAM → Roles → Create role**.
 
 1\. Tạo role mới với cùng trusted entity **Elastic Container Service Task**.
 
-2\. Không gắn AdministratorAccess; code hiện tại không cần quyền gọi AWS API trực tiếp.
+2\. Không gắn AdministratorAccess và chưa chọn permissions policy tại bước này.
 
-3\. Role name nexusoms-demo-ecs-task-role; tạo role.
+3\. Role name nexusoms-demo-ecs-task-role; tạo role. Quyền SQS được thêm ở trang tiếp theo sau khi đã có queue ARN.
 
-Execution role là quyền ECS dùng để tải image, ghi log và lấy secret khi task khởi động. Task role là quyền cấp cho ứng dụng .NET đang chạy trong container. Không tráo hai role.
+Execution role là quyền ECS dùng để tải image, ghi log và lấy secret khi task khởi động. Task role là quyền ứng dụng .NET dùng để gửi, nhận, xóa và đọc trạng thái SQS. Không tráo hai role.
 
 ## Giá trị cần nhập hoặc sao chép
 
@@ -78,19 +78,19 @@ nexusoms-demo-ecs-task-role
 Thực hiện **Open Roles dashboard + Create role**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1-open-roles-dashboard-create-role.png" title="Open Roles dashboard + Create role" >}}
+![Open Roles dashboard + Create role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1-open-roles-dashboard-create-role.png)
 
 ### Bước 2 - Configure Select trusted entity
 
 Thực hiện **Configure Select trusted entity**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2-configure-select-trusted-entity.png" title="Configure Select trusted entity" >}}
+![Configure Select trusted entity](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2-configure-select-trusted-entity.png)
 
 ### Bước 3 - Configure permissions
 
 Thực hiện **Configure permissions**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3-configure-permissions.png" title="Configure permissions" >}}
+![Configure permissions](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3-configure-permissions.png)
 
 ### Bước 4 - Fill name role
 
@@ -116,22 +116,22 @@ ReadNexusOmsApplicationSecret
 nexusoms-demo-ecs-task-role
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/4-fill-name-role.png" title="Fill name role" >}}
+![Fill name role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/4-fill-name-role.png)
 
 ### Bước 5 - Find role + Open role
 
 Thực hiện **Find role + Open role**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5-find-role-open-role.png" title="Find role + Open role" >}}
+![Find role + Open role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5-find-role-open-role.png)
 
 ### Bước 6 - Create inline policy
 
 Thực hiện **Create inline policy**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6-create-inline-policy.png" title="Create inline policy" >}}
+![Create inline policy](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6-create-inline-policy.png)
 
 ### Bước 7 - Paste the json to create
 
 Thực hiện **Paste the json to create**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7-paste-the-json-to-create.png" title="Paste the json to create" >}}
+![Paste the json to create](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7-paste-the-json-to-create.png)

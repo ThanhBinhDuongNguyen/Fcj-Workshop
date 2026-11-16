@@ -25,7 +25,19 @@ Mở **Amazon ECS → Task definitions → Create new task definition**. Trên g
 
 7\. Port mapping: container port 8080, protocol TCP.
 
-8\. Environment variables → Add individually: Key ASPNETCORE_ENVIRONMENT, Value Production.
+8\. Environment variables → Add individually các giá trị plain text sau:
+
+```text
+ASPNETCORE_ENVIRONMENT = Production
+ASPNETCORE_HTTP_PORTS = 8080
+AWS__Region = ap-southeast-1
+WebhookQueue__Mode = Sqs
+WebhookQueue__QueueUrl = https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
+WebhookQueue__DeadLetterQueueUrl = https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
+WebhookQueue__WaitTimeSeconds = 20
+```
+
+Hai giá trị queue phải là **Queue URL**, không phải ARN.
 
 9\. Environment variables → Add individually → chọn **Value type: ValueFrom**. Với mỗi dòng, Key là tên biến môi trường; ValueFrom chọn Secret nexusoms/demo/application và đúng JSON key:
 
@@ -76,6 +88,12 @@ Container port: 8080
 
 ```text
 ASPNETCORE_ENVIRONMENT=Production
+ASPNETCORE_HTTP_PORTS=8080
+AWS__Region=ap-southeast-1
+WebhookQueue__Mode=Sqs
+WebhookQueue__QueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
+WebhookQueue__DeadLetterQueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
+WebhookQueue__WaitTimeSeconds=20
 ```
 
 **Connection string**
@@ -117,7 +135,7 @@ WebhookSimulator__Secret <- webhookSigningSecret
 Thực hiện **Open task definitions dashboard + Create new task definition**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1-open-task-definitions-dashboard-create-new-task-definition.png" title="Open task definitions dashboard + Create new task definition" >}}
+![Open task definitions dashboard + Create new task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1-open-task-definitions-dashboard-create-new-task-definition.png)
 
 ### Bước 2 - Configure task definition
 
@@ -147,6 +165,12 @@ Memory: 1 GB
 
 ```text
 ASPNETCORE_ENVIRONMENT=Production
+ASPNETCORE_HTTP_PORTS=8080
+AWS__Region=ap-southeast-1
+WebhookQueue__Mode=Sqs
+WebhookQueue__QueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
+WebhookQueue__DeadLetterQueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
+WebhookQueue__WaitTimeSeconds=20
 ```
 
 **Connection string**
@@ -179,13 +203,13 @@ WebhookSimulator__Secret <- webhookSigningSecret
 /ecs/nexusoms-demo-api
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2-configure-task-definition.png" title="Configure task definition" >}}
+![Configure task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2-configure-task-definition.png)
 
 ### Bước 3 - Configure OS, task roles
 
 Thực hiện **Configure OS, task roles**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3-configure-os-task-roles.png" title="Configure OS, task roles" >}}
+![Configure OS, task roles](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3-configure-os-task-roles.png)
 
 ### Bước 4 - Configure Container-1 detail
 
@@ -199,10 +223,10 @@ Thực hiện **Configure Container-1 detail**.
 Container port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4-configure-container-1-detail.png" title="Configure Container-1 detail" >}}
+![Configure Container-1 detail](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4-configure-container-1-detail.png)
 
 ### Bước 5 - Configure environment variables
 
 Thực hiện **Configure environment variables**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5-configure-environment-variables.png" title="Configure environment variables" >}}
+![Configure environment variables](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5-configure-environment-variables.png)

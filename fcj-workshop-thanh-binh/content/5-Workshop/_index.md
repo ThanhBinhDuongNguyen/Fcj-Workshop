@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-Deploy NexusOMS to AWS across two Availability Zones, then use GitHub Actions to update the backend and frontend.
+Deploy NexusOMS to AWS across two Availability Zones, process webhooks asynchronously with SQS FIFO, and use GitHub Actions to update the backend and frontend.
 
 > Replace every `<...>` placeholder with the real value. Copy-ready input values are provided in code blocks.
 

@@ -54,7 +54,7 @@ Container port: 8080
 Complete **Choose service tab + Create**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1-choose-service-tab-create.png" title="Choose service tab + Create" >}}
+![Choose service tab + Create](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1-choose-service-tab-create.png)
 
 ### Step 2 - Configure service detail
 
@@ -92,28 +92,28 @@ Container: api
 Container port: 8080
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2-configure-service-detail.png" title="Configure service detail" >}}
+![Configure service detail](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2-configure-service-detail.png)
 
 ### Step 3 - Configure Network for service
 
 Complete **Configure Network for service**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3-configure-network-for-service.png" title="Configure Network for service" >}}
+![Configure Network for service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3-configure-network-for-service.png)
 
 ### Step 4 - Configure Load balancer for service
 
 Complete **Configure Load balancer for service**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-configure-load-balancer-for-service.png" title="Configure Load balancer for service" >}}
+![Configure Load balancer for service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-configure-load-balancer-for-service.png)
 
 ### Step 5 - Configure Load balancer for service
 
 Complete **Configure Load balancer for service**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-1-configure-load-balancer-for-service.png" title="Configure Load balancer for service" >}}
+![Configure Load balancer for service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-1-configure-load-balancer-for-service.png)
 
 ### Step 6 - Click create
 
 Complete **Click create**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5-click-create.png" title="Click create" >}}
+![Click create](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5-click-create.png)

@@ -22,4 +22,13 @@ Pop-Location
 docker build --file backend/Dockerfile --tag nexusoms-api:local-check backend
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.2-Prerequisite/local-validation/1-run-tests-and-docker-build.png" title="Validate the source and Docker image" >}}
+![Validate the source and Docker image](/images/5-Workshop/nexusoms/5.2-Prerequisite/local-validation/1-run-tests-and-docker-build.png)
+
+Keep the default direct mode when running the backend locally:
+
+```powershell
+$env:WebhookQueue__Mode = "Direct"
+dotnet run --project backend/src/NexusOMS.Api/NexusOMS.Api.csproj
+```
+
+`Direct` mode does not require AWS SQS. Set `WebhookQueue__Mode=Sqs` only in the ECS task definition after both queues exist.

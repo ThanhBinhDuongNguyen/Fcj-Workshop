@@ -63,7 +63,7 @@ Scan on push: Enabled
 Thực hiện **Open ECR dashboard and create repository**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png" title="Open ECR dashboard and create repository" >}}
+![Open ECR dashboard and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png)
 
 ### Bước 2 - Configure private repository
 
@@ -95,16 +95,16 @@ Immutable
 Scan on push: Enabled
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png" title="Configure private repository" >}}
+![Configure private repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png)
 
 ### Bước 3 - Confirm encryption and create repository
 
 Thực hiện **Confirm encryption and create repository**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png" title="Confirm encryption and create repository" >}}
+![Confirm encryption and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png)
 
 ### Bước 4 - Copy ECR repository URI
 
 Thực hiện **Copy ECR repository URI**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png" title="Copy ECR repository URI" >}}
+![Copy ECR repository URI](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png)

@@ -18,9 +18,9 @@ Provider URL: https://token.actions.githubusercontent.com
 Audience: sts.amazonaws.com
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/1-open-identity-providers.png" title="Open Identity providers" >}}
+![Open Identity providers](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/1-open-identity-providers.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/2-configure-github-oidc-provider.png" title="Configure the GitHub OIDC provider" >}}
+![Configure the GitHub OIDC provider](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/2-configure-github-oidc-provider.png)
 
 ## 2. Create the GitHub Actions role
 
@@ -35,11 +35,11 @@ GitHub branch: main
 Role name: nexusoms-demo-github-actions-role
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/3-create-github-actions-role.png" title="Create the IAM role" >}}
+![Create the IAM role](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/3-create-github-actions-role.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/4-configure-trusted-entity.png" title="Configure the trusted entity" >}}
+![Configure the trusted entity](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/4-configure-trusted-entity.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5-limit-github-repository-and-branch.png" title="Limit the repository and branch" >}}
+![Limit the repository and branch](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5-limit-github-repository-and-branch.png)
 
 ```powershell
 gh auth status
@@ -54,9 +54,9 @@ $OidcSubject = "repo:${GitHubOwner}@${GitHubOwnerId}/${GitHubRepository}@${GitHu
 "OIDC_SUBJECT=$OidcSubject"
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5a-get-github-owner-and-repository-id.png" title="Get the GitHub owner ID and repository ID with PowerShell" >}}
+![Get the GitHub owner ID and repository ID with PowerShell](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5a-get-github-owner-and-repository-id.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/6-create-inline-deployment-policy.png" title="Create the deployment policy" >}}
+![Create the deployment policy](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/6-create-inline-deployment-policy.png)
 
 Use the trust policy and `DeployNexusOmsFromGitHub` inline policy from the Vietnamese page. Replace every placeholder before saving.
 
@@ -86,33 +86,33 @@ VITE_SUPABASE_URL=https://<PROJECT_REF>.supabase.co
 VITE_SUPABASE_ANON_KEY=<SUPABASE_PUBLISHABLE_OR_ANON_KEY>
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/7-open-actions-variables.png" title="Open Actions variables" >}}
+![Open Actions variables](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/7-open-actions-variables.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/8-create-repository-variable.png" title="Create a repository variable" >}}
+![Create a repository variable](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/8-create-repository-variable.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/9-complete-repository-variables.png" title="Complete repository variables" >}}
+![Complete repository variables](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/9-complete-repository-variables.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/10-open-repository-secrets.png" title="Open repository secrets" >}}
+![Open repository secrets](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/10-open-repository-secrets.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/11-create-repository-secret.png" title="Create a repository secret" >}}
+![Create a repository secret](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/11-create-repository-secret.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/12-complete-repository-secrets.png" title="Complete repository secrets" >}}
+![Complete repository secrets](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/12-complete-repository-secrets.png)
 
 ## 4. Run the unified workflow
 
-Disable the old GHCR publishing workflow:
+The workshop repository already contains:
 
-```powershell
-if (Test-Path ".github/workflows/cd.yml") {
-  Rename-Item ".github/workflows/cd.yml" "cd-ghcr.yml.disabled"
-}
+```text
+.github/workflows/backend-ci.yml
+.github/workflows/frontend-ci.yml
+.github/workflows/deploy-aws.yml
 ```
 
-Use `.github/workflows/deploy-aws.yml`, then commit and push the workflow to `main`.
+`deploy-aws.yml` runs both CI workflows, deploys the backend to ECR/ECS, and deploys the frontend to S3/CloudFront. Open the file and verify its content.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/13-edit-deployment-workflow.png" title="Open the deployment workflow" >}}
+![Open the deployment workflow](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/13-edit-deployment-workflow.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/14-paste-deployment-workflow.png" title="Update the deployment workflow" >}}
+![Update the deployment workflow](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/14-paste-deployment-workflow.png)
 
 ```powershell
 git add -A .github/workflows
@@ -120,8 +120,10 @@ git commit -m "ci: deploy NexusOMS to AWS with GitHub OIDC"
 git push origin main
 ```
 
+If the workflow file did not change, open GitHub → **Actions → Deploy NexusOMS to AWS → Run workflow**.
+
 Open GitHub → **Actions → Deploy NexusOMS to AWS** and wait for every job to pass.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/15-github-actions-deployment-success.png" title="GitHub Actions deployment succeeded" >}}
+![GitHub Actions deployment succeeded](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/15-github-actions-deployment-success.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/16-check-updated-frontend-bucket.png" title="The frontend bucket was updated" >}}
+![The frontend bucket was updated](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/16-check-updated-frontend-bucket.png)

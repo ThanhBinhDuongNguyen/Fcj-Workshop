@@ -45,22 +45,22 @@ Thực hiện **Open Clusters dashboard + Create cluster**.
 nexusoms-demo-cluster
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1-open-clusters-dashboard-create-cluster.png" title="Open Clusters dashboard + Create cluster" >}}
+![Open Clusters dashboard + Create cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1-open-clusters-dashboard-create-cluster.png)
 
 ### Bước 2 - Configure cluster
 
 Thực hiện **Configure cluster**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2-configure-cluster.png" title="Configure cluster" >}}
+![Configure cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2-configure-cluster.png)
 
 ### Bước 3 - Choose update cluster
 
 Thực hiện **Choose update cluster**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3-choose-update-cluster.png" title="Choose update cluster" >}}
+![Choose update cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3-choose-update-cluster.png)
 
 ### Bước 4 - Turn on Container Insights
 
 Thực hiện **Turn on Container Insights**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4-turn-on-container-insights.png" title="Turn on Container Insights" >}}
+![Turn on Container Insights](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4-turn-on-container-insights.png)

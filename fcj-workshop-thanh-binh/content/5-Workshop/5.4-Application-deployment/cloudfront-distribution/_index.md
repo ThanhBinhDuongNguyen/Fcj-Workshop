@@ -67,7 +67,7 @@ Complete **Open CloudFront dashboard + Create distribution**.
 nexusoms-demo-web
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png" title="Open CloudFront dashboard + Create distribution" >}}
+![Open CloudFront dashboard + Create distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png)
 
 ### Step 2 - Configure distribution options
 
@@ -87,38 +87,38 @@ Default root object: index.html
 Path pattern: /api/*
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png" title="Configure distribution options" >}}
+![Configure distribution options](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png)
 
 ### Step 3 - Choose S3 type + mapping to S3 FE
 
 Complete **Choose S3 type + mapping to S3 FE**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png" title="Choose S3 type + mapping to S3 FE" >}}
+![Choose S3 type + mapping to S3 FE](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png)
 
 ### Step 4 - Click next
 
 Complete **Click next**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png" title="Click next" >}}
+![Click next](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png)
 
 ### Step 5 - Choose Do not enable for demo
 
 Complete **Choose Do not enable for demo**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png" title="Choose Do not enable for demo" >}}
+![Choose Do not enable for demo](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png)
 
 ### Step 6 - Click Create distribution
 
 Complete **Click Create distribution**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png" title="Click Create distribution" >}}
+![Click Create distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png)
 
 ### Step 7 - Choose origins + Create origin
 
 Complete **Choose origins + Create origin**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png" title="Choose origins + Create origin" >}}
+![Choose origins + Create origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png)
 
 ### Step 8 - Configure setting for origin
 
@@ -132,19 +132,19 @@ Complete **Configure setting for origin**.
 nexusoms-demo-alb-origin
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png" title="Configure setting for origin" >}}
+![Configure setting for origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png)
 
 ### Step 9 - Choose Behavior tab + Create behavior
 
 Complete **Choose Behavior tab + Create behavior**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png" title="Choose Behavior tab + Create behavior" >}}
+![Choose Behavior tab + Create behavior](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png)
 
 ### Step 10 - Configure behavior setting
 
 Complete **Configure behavior setting**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png" title="Configure behavior setting" >}}
+![Configure behavior setting](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png)
 
 ### Step 11 - Choose origin request policy
 
@@ -164,4 +164,4 @@ Cache policy: CachingDisabled
 Origin request policy: AllViewerExceptHostHeader
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png" title="Choose origin request policy" >}}
+![Choose origin request policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png)

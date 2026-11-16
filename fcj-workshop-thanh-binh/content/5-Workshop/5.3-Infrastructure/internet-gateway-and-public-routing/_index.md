@@ -42,31 +42,31 @@ nexusoms-demo-public-rt
 Complete **Open IGW dashboard + Create IGW**.
 
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png" title="Open IGW dashboard + Create IGW" >}}
+![Open IGW dashboard + Create IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png)
 
 ### Step 2 - Put name tag + Create IGW
 
 Complete **Put name tag + Create IGW**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png" title="Put name tag + Create IGW" >}}
+![Put name tag + Create IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png)
 
 ### Step 3 - Attach to a VPC
 
 Complete **Attach to a VPC**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png" title="Attach to a VPC" >}}
+![Attach to a VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png)
 
 ### Step 4 - Choose VPC + Click Attach IGW
 
 Complete **Choose VPC + Click Attach IGW**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png" title="Choose VPC + Click Attach IGW" >}}
+![Choose VPC + Click Attach IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png)
 
 ### Step 5 - Open Route tables dashboard + Create Route table
 
 Complete **Open Route tables dashboard + Create Route table**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png" title="Open Route tables dashboard + Create Route table" >}}
+![Open Route tables dashboard + Create Route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png)
 
 ### Step 6 - Fill Name + Choose VPC + Create route table
 
@@ -80,13 +80,13 @@ Complete **Fill Name + Choose VPC + Create route table**.
 0.0.0.0/0
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6-fill-name-choose-vpc-create-route-table.png" title="Fill Name + Choose VPC + Create route table" >}}
+![Fill Name + Choose VPC + Create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6-fill-name-choose-vpc-create-route-table.png)
 
 ### Step 7 - Choose Routes + Edit routes
 
 Complete **Choose Routes + Edit routes**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png" title="Choose Routes + Edit routes" >}}
+![Choose Routes + Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png)
 
 ### Step 8 - Add route + choose Internet gateway + Save changes
 
@@ -100,13 +100,13 @@ Complete **Add route + choose Internet gateway + Save changes**.
 nexusoms-demo-igw
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8-add-route-choose-internet-gateway-save-changes.png" title="Add route + choose Internet gateway + Save changes" >}}
+![Add route + choose Internet gateway + Save changes](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8-add-route-choose-internet-gateway-save-changes.png)
 
 ### Step 9 - Choose subnet associations + Edit subnet associations
 
 Complete **Choose subnet associations + Edit subnet associations**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png" title="Choose subnet associations + Edit subnet associations" >}}
+![Choose subnet associations + Edit subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png)
 
 ### Step 10 - Choose 2 public subnet + Save associations
 
@@ -120,4 +120,4 @@ Complete **Choose 2 public subnet + Save associations**.
 nexusoms-demo-public-rt
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10-choose-2-public-subnet-save-associations.png" title="Choose 2 public subnet + Save associations" >}}
+![Choose 2 public subnet + Save associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10-choose-2-public-subnet-save-associations.png)

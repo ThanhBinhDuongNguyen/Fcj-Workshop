@@ -61,7 +61,7 @@ nexusoms-demo-api
 Immutable
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png" title="Open ECR dashboard and create repository" >}}
+![Open ECR dashboard and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png)
 
 ### Step 2 - Configure private repository
 
@@ -81,16 +81,16 @@ Private
 Scan on push: Enabled
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png" title="Configure private repository" >}}
+![Configure private repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png)
 
 ### Step 3 - Confirm encryption and create repository
 
 Complete **Confirm encryption and create repository**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png" title="Confirm encryption and create repository" >}}
+![Confirm encryption and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png)
 
 ### Step 4 - Copy ECR repository URI
 
 Complete **Copy ECR repository URI**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png" title="Copy ECR repository URI" >}}
+![Copy ECR repository URI](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png)

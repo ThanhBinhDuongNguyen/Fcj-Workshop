@@ -19,4 +19,5 @@ Tạo tài nguyên theo đúng thứ tự sau:
 9. [Secrets Manager](./secrets-manager/)
 10. [CloudWatch Log Group](./cloudwatch-log-group/)
 11. [IAM role cho ECS](./ecs-iam-roles/)
-12. [CloudTrail và S3 audit bucket](./cloudtrail-audit-bucket/)
+12. [SQS FIFO và Dead-letter Queue](./sqs-webhook-queues/)
+13. [CloudTrail và S3 audit bucket](./cloudtrail-audit-bucket/)

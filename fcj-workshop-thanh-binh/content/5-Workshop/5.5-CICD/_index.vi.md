@@ -12,7 +12,7 @@ Chỉ thực hiện phần này sau khi triển khai thủ công đã chạy end
 
 IAM → **Identity providers → Add provider**:
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/1-open-identity-providers.png" title="Mở Identity providers" >}}
+![Mở Identity providers](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/1-open-identity-providers.png)
 
 ```text
 Provider type: OpenID Connect
@@ -20,7 +20,7 @@ Provider URL: https://token.actions.githubusercontent.com
 Audience: sts.amazonaws.com
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/2-configure-github-oidc-provider.png" title="Cấu hình GitHub OIDC provider" >}}
+![Cấu hình GitHub OIDC provider](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/2-configure-github-oidc-provider.png)
 
 
 
@@ -28,7 +28,7 @@ Audience: sts.amazonaws.com
 
 IAM → **Roles → Create role → Web identity**:
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/3-create-github-actions-role.png" title="Tạo IAM role" >}}
+![Tạo IAM role](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/3-create-github-actions-role.png)
 
 ```text
 Identity provider: token.actions.githubusercontent.com
@@ -38,9 +38,9 @@ GitHub repository: <GITHUB_REPOSITORY>
 GitHub branch: main
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/4-configure-trusted-entity.png" title="Cấu hình trusted entity" >}}
+![Cấu hình trusted entity](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/4-configure-trusted-entity.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5-limit-github-repository-and-branch.png" title="Giới hạn repository và branch" >}}
+![Giới hạn repository và branch](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5-limit-github-repository-and-branch.png)
 
 Chọn **Next**. Tại **Add permissions**, chọn **Create inline policy → JSON** và dùng policy bên dưới.
 
@@ -65,7 +65,7 @@ $OidcSubject = "repo:${GitHubOwner}@${GitHubOwnerId}/${GitHubRepository}@${GitHu
 "OIDC_SUBJECT=$OidcSubject"
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5a-get-github-owner-and-repository-id.png" title="Lấy GitHub owner ID và repository ID bằng PowerShell" >}}
+![Lấy GitHub owner ID và repository ID bằng PowerShell](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5a-get-github-owner-and-repository-id.png)
 
 Nếu `gh auth status` chưa đăng nhập, chạy `gh auth login` rồi thực hiện lại.
 
@@ -194,7 +194,7 @@ Role name:
 nexusoms-demo-github-actions-role
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/6-create-inline-deployment-policy.png" title="Tạo inline deployment policy" >}}
+![Tạo inline deployment policy](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/6-create-inline-deployment-policy.png)
 
 Không lưu AWS access key trong GitHub Secrets.
 
@@ -206,7 +206,7 @@ Không lưu AWS access key trong GitHub Secrets.
 
 GitHub → repository → **Settings → Secrets and variables → Actions**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/7-open-actions-variables.png" title="Mở Actions variables" >}}
+![Mở Actions variables](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/7-open-actions-variables.png)
 
 Tab **Variables** → phần **Repository variables** → **New repository variable**. Không dùng phần **Environment variables**.
 
@@ -224,13 +224,13 @@ CLOUDFRONT_DISTRIBUTION_ID=<DISTRIBUTION_ID>
 CLOUDFRONT_DOMAIN=<DOMAIN>.cloudfront.net
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/8-create-repository-variable.png" title="Tạo repository variable" >}}
+![Tạo repository variable](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/8-create-repository-variable.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/9-complete-repository-variables.png" title="Hoàn tất repository variables" >}}
+![Hoàn tất repository variables](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/9-complete-repository-variables.png)
 
 Tab **Secrets** → phần **Repository secrets** → **New repository secret**.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/10-open-repository-secrets.png" title="Mở repository secrets" >}}
+![Mở repository secrets](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/10-open-repository-secrets.png)
 
 Secrets:
 
@@ -240,9 +240,9 @@ VITE_SUPABASE_URL=https://<PROJECT_REF>.supabase.co
 VITE_SUPABASE_ANON_KEY=<SUPABASE_PUBLISHABLE_OR_ANON_KEY>
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/11-create-repository-secret.png" title="Tạo repository secret" >}}
+![Tạo repository secret](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/11-create-repository-secret.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/12-complete-repository-secrets.png" title="Hoàn tất repository secrets" >}}
+![Hoàn tất repository secrets](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/12-complete-repository-secrets.png)
 
 Supabase publishable/anon key được thiết kế để dùng ở browser nhưng vẫn đặt trong GitHub Secret để quản lý cấu hình build. Không bao giờ đưa service-role key vào frontend.
 
@@ -254,19 +254,17 @@ Supabase publishable/anon key được thiết kế để dùng ở browser như
 
 ## 4. Workflow hợp nhất
 
-Workflow cũ `.github/workflows/cd.yml` publish image lên GHCR. Workflow AWS mới deploy backend lên ECR/ECS và frontend lên S3/CloudFront. Đổi đuôi workflow cũ để mỗi lần push chỉ chạy một pipeline:
+Repository thực hành đã có ba workflow:
 
-```powershell
-if (Test-Path ".github/workflows/cd.yml") {
-  Rename-Item ".github/workflows/cd.yml" "cd-ghcr.yml.disabled"
-}
+```text
+.github/workflows/backend-ci.yml
+.github/workflows/frontend-ci.yml
+.github/workflows/deploy-aws.yml
 ```
 
-Giữ `backend-ci.yml` và `frontend-ci.yml`.
+`deploy-aws.yml` gọi lại hai workflow CI, sau đó deploy backend lên ECR/ECS và frontend lên S3/CloudFront. Mở file để kiểm tra nội dung:
 
-Tạo `.github/workflows/deploy-aws.yml`:
-
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/13-edit-deployment-workflow.png" title="Mở deployment workflow" >}}
+![Mở deployment workflow](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/13-edit-deployment-workflow.png)
 
 ```yaml
 name: Deploy NexusOMS to AWS
@@ -396,9 +394,9 @@ jobs:
             --paths "/*"
 ```
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/14-paste-deployment-workflow.png" title="Cập nhật deployment workflow" >}}
+![Cập nhật deployment workflow](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/14-paste-deployment-workflow.png)
 
-Commit và push:
+Nếu vừa chỉnh workflow, commit và push:
 
 ```powershell
 git add -A .github/workflows
@@ -406,11 +404,11 @@ git commit -m "ci: deploy NexusOMS to AWS with GitHub OIDC"
 git push origin main
 ```
 
-
+Nếu không chỉnh file, mở GitHub → **Actions → Deploy NexusOMS to AWS → Run workflow**.
 
 ## 5. Xác minh pipeline
 
-Lệnh `git push origin main` tự chạy workflow. Mở GitHub → **Actions → Deploy NexusOMS to AWS** và chờ các job:
+Lệnh `git push origin main` hoặc **Run workflow** sẽ chạy pipeline. Chờ các job:
 
 ```text
 Backend CI ─┐
@@ -427,9 +425,9 @@ Kiểm tra:
 5. CloudFront invalidation có trạng thái `Completed`.
 6. Website đăng nhập và gọi API thành công.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/15-github-actions-deployment-success.png" title="GitHub Actions triển khai thành công" >}}
+![GitHub Actions triển khai thành công](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/15-github-actions-deployment-success.png)
 
-{{< figure src="/images/5-Workshop/nexusoms/5.5-CICD/github-actions/16-check-updated-frontend-bucket.png" title="Frontend bucket đã được cập nhật" >}}
+![Frontend bucket đã được cập nhật](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/16-check-updated-frontend-bucket.png)
 
 Nếu pipeline lỗi:
 

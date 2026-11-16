@@ -5,18 +5,19 @@ weight: 1
 chapter: false
 ---
 
-NexusOMS uses CloudFront as the public entry point, S3 for the React frontend, and an ALB to route `/api/*` to ECS Fargate tasks in private subnets. Supabase provides PostgreSQL and authentication.
+NexusOMS uses CloudFront as the public entry point, S3 for the React frontend, and an ALB to route `/api/*` to ECS Fargate tasks in private subnets. The API sends webhooks to an SQS FIFO queue and an ECS worker processes each message. Messages that fail more than three times move to a dead-letter queue. Supabase provides PostgreSQL and authentication.
 
 GitHub Actions validates the source, pushes the backend image to ECR, updates the ECS service, builds the frontend, synchronizes it to S3, and creates a CloudFront invalidation.
 
-{{< figure src="/images/5-Workshop/nexusoms/5.1-Workshop-overview/noxus-aws-architect-1.png" title="NexusOMS AWS architecture" >}}
+![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
 ## Deployment flow
 
 1. Prepare the repository, Supabase, and local environment.
 2. Create the VPC, subnets, routes, NAT gateways, and security groups.
-3. Create the secret, log group, IAM roles, and audit logs.
+3. Create the secret, log group, IAM roles, SQS FIFO queue, DLQ, and audit logs.
 4. Deploy the backend with ECR, ALB, and ECS Fargate.
 5. Deploy the frontend with S3 and CloudFront.
 6. Connect GitHub Actions to AWS using OIDC.
-7. Verify the application and clean up all resources.
+7. Verify orders, cancellation, and the SQS burst demonstration.
+8. Clean the demo data and delete all AWS resources.
