@@ -25,25 +25,23 @@ Giữ nguyên các statement CloudTrail. Thêm object sau vào mảng `Statement
     "Service": "logdelivery.elasticloadbalancing.amazonaws.com"
   },
   "Action": "s3:PutObject",
-  "Resource": "arn:aws:s3:::<AUDIT_BUCKET_NAME>/alb-access/AWSLogs/<ACCOUNT_ID>/*",
-  "Condition": {
-    "StringEquals": {
-      "aws:SourceAccount": "<ACCOUNT_ID>"
-    },
-    "ArnLike": {
-      "aws:SourceArn": "arn:aws:elasticloadbalancing:ap-southeast-1:<ACCOUNT_ID>:loadbalancer/*"
-    }
-  }
+  "Resource": "arn:aws:s3:::<AUDIT_BUCKET_NAME>/alb-access/AWSLogs/<ACCOUNT_ID>/*"
 }
 ```
 
+Giữ nguyên hai statement CloudTrail đang có trong bucket policy. Chỉ thêm statement ALB ở trên.
+
 ![Thêm ALB log delivery policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/3-add-alb-log-delivery-policy.png)
+
+![Cập nhật bucket policy trên giao diện mới](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/8-update-audit-bucket-policy.png)
 
 ## 2. Bật access logs
 
 Mở EC2 → **Load balancers → nexusoms-demo-alb → Attributes → Edit**.
 
 ![Mở ALB attributes](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/4-open-alb-attributes.png)
+
+![Mở ALB attributes trên giao diện mới](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/1-open-alb-attributes.png)
 
 ```text
 Logging → Access logs: Enabled

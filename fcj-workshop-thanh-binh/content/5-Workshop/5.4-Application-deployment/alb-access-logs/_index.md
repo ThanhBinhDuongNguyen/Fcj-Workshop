@@ -25,25 +25,23 @@ Keep the CloudTrail statements. Add this object to the `Statement` array:
     "Service": "logdelivery.elasticloadbalancing.amazonaws.com"
   },
   "Action": "s3:PutObject",
-  "Resource": "arn:aws:s3:::<AUDIT_BUCKET_NAME>/alb-access/AWSLogs/<ACCOUNT_ID>/*",
-  "Condition": {
-    "StringEquals": {
-      "aws:SourceAccount": "<ACCOUNT_ID>"
-    },
-    "ArnLike": {
-      "aws:SourceArn": "arn:aws:elasticloadbalancing:ap-southeast-1:<ACCOUNT_ID>:loadbalancer/*"
-    }
-  }
+  "Resource": "arn:aws:s3:::<AUDIT_BUCKET_NAME>/alb-access/AWSLogs/<ACCOUNT_ID>/*"
 }
 ```
 
+Keep the two existing CloudTrail statements in the bucket policy. Add only the ALB statement above.
+
 ![Add the ALB log delivery policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/3-add-alb-log-delivery-policy.png)
+
+![Update the bucket policy in the current console](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudtrail-audit-bucket/8-update-audit-bucket-policy.png)
 
 ## 2. Enable access logs
 
 Open EC2 → **Load balancers → nexusoms-demo-alb → Attributes → Edit**.
 
 ![Open ALB attributes](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/4-open-alb-attributes.png)
+
+![Open ALB attributes in the current console](/images/5-Workshop/nexusoms/5.4-Application-deployment/alb-access-logs/1-open-alb-attributes.png)
 
 ```text
 Logging → Access logs: Enabled

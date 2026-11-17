@@ -7,6 +7,21 @@ chapter: false
 
 All four sensitive variables must use **ValueFrom** and reference their individual JSON keys in the same secret. Do not paste the entire JSON object as a value.
 
+## Create the CloudWatch Log Group
+
+Run this PowerShell block before creating the task definition:
+
+```powershell
+$AwsProfile = "nexusoms-demo"
+
+aws logs create-log-group `
+  --profile $AwsProfile `
+  --region ap-southeast-1 `
+  --log-group-name "/ecs/nexusoms-demo-api"
+```
+
+Continue if AWS reports that the log group already exists.
+
 ## Procedure
 
 Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
@@ -80,8 +95,14 @@ WebhookSimulator__Secret <- webhookSigningSecret
 **ECS task definition - input 10**
 
 ```text
-/ecs/nexusoms-demo-api
+Destination: Amazon CloudWatch
+awslogs-group: /ecs/nexusoms-demo-api
+awslogs-region: ap-southeast-1
+awslogs-stream-prefix: ecs
+awslogs-create-group: false
 ```
+
+Enable **Use log collection** and enter the values exactly as shown.
 
 ## AWS Console walkthrough
 

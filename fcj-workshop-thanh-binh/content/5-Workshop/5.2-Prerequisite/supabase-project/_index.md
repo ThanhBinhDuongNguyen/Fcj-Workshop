@@ -88,6 +88,22 @@ manager
 
 ![Update the user role](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/15-update-user-role.png)
 
+## 5. Load Demo Data
+
+Open **SQL Editor → New query**. Open `supabase/seed.sql` from the repository, copy the complete file, and choose **Run**.
+
+![Load demo data](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/16-update-seed-data.png)
+
+Open **Table Editor** and verify the `NXDEMO-` records:
+
+```text
+Products: 18
+Warehouses: 2
+Orders: 50
+```
+
+The seed file is rerunnable. It replaces only demo data prefixed with `NXDEMO-`.
+
 Record these values:
 
 ```text

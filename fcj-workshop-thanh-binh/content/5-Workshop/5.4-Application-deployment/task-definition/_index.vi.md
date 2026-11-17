@@ -7,6 +7,29 @@ chapter: false
 
 Bốn biến bí mật phải dùng **ValueFrom** và trỏ đúng JSON key riêng trong cùng secret. Không dán cả JSON object làm giá trị.
 
+## 9.2. Tạo CloudWatch log group
+
+Chạy PowerShell trước khi tạo task definition:
+
+```powershell
+$AwsProfile = "nexusoms-demo"
+$AwsRegion = "ap-southeast-1"
+$LogGroupName = "/ecs/nexusoms-demo-api"
+
+aws logs create-log-group `
+  --profile $AwsProfile `
+  --region $AwsRegion `
+  --log-group-name $LogGroupName
+
+aws logs put-retention-policy `
+  --profile $AwsProfile `
+  --region $AwsRegion `
+  --log-group-name $LogGroupName `
+  --retention-in-days 7
+```
+
+Nếu lệnh báo log group đã tồn tại, tiếp tục bước sau.
+
 ## 9.3. Tạo task definition
 
 Mở **Amazon ECS → Task definitions → Create new task definition**. Trên giao diện mới, phần biến môi trường nằm trong container definition; không tìm "Add environment variable from Secrets Manager" ở tab khác.
@@ -50,7 +73,17 @@ Hai giá trị queue phải là **Queue URL**, không phải ARN.
 
 Mỗi dòng đều có **Value type = ValueFrom**, nhưng phải chọn đúng JSON key riêng của dòng đó. Không nhập cùng nexusoms/demo/application làm giá trị plain text; không trỏ cả bốn biến vào cùng một JSON object. Tên bên trái phải khớp chính xác, gồm hai dấu gạch dưới \__.
 
-10\. Logging: driver awslogs, log group /ecs/nexusoms-demo-api, region ap-southeast-1, stream prefix ecs.
+10\. Bật **Use log collection** và nhập:
+
+```text
+Destination: Amazon CloudWatch
+awslogs-group: /ecs/nexusoms-demo-api
+awslogs-region: ap-southeast-1
+awslogs-stream-prefix: ecs
+awslogs-create-group: false
+```
+
+Giá trị `awslogs-group` phải trùng chính xác log group đã tạo. Không thêm khoảng trắng.
 
 11\. Tạo task definition và ghi revision mới, ví dụ nexusoms-demo-api:1.
 

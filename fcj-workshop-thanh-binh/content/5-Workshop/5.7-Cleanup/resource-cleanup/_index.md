@@ -56,12 +56,22 @@ chapter: false
 
 ## 3. SQS
 
-1. Delete `nexusoms-demo-webhook-queue.fifo`.
-2. Delete `nexusoms-demo-webhook-dlq.fifo`.
+1. Confirm that the ECS service has stopped.
+2. Select `nexusoms-demo-webhook-queue.fifo` and choose **Delete**.
+
+![Delete the SQS queue](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/30-delete-sqs-queue.png)
+
+3. Enter the queue name to confirm.
+
+![Confirm SQS queue deletion](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/31-confirm-delete-sqs-queue.png)
+
+4. Delete `nexusoms-demo-webhook-dlq.fifo` the same way.
 
 ## 4. CloudTrail and the audit bucket
 
 1. Stop logging and delete `nexusoms-demo-trail`.
+
+![Delete the CloudTrail trail](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/32-delete-cloudtrail-trail.png)
 2. Empty the audit bucket.
 
 ![Empty the audit bucket](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/24-empty-audit-bucket.png)

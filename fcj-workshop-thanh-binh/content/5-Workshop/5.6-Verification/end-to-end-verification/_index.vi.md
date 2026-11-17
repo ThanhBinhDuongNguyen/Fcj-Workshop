@@ -54,13 +54,13 @@ Kiểm tra chi phí và doanh thu của sản phẩm.
 
 ## 6. Kiểm tra webhook và hủy đơn
 
-Gửi webhook demo và xác nhận đơn hàng được tạo một lần.
+Mở **Webhook Simulator → Vòng đời đơn**. Gửi webhook tạo đơn và chờ trạng thái **Đã hoàn tất**.
 
 ![Tạo đơn hàng bằng webhook](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/5-using-webhook-to-create-order.png)
 
 Gửi lại cùng `eventId` và xác nhận hệ thống không tạo đơn thứ hai.
 
-Chọn một đơn chưa xuất kho, gửi sự kiện `order.cancelled` và kiểm tra:
+Mở tab **Hủy đơn**. Chọn đơn chưa xuất kho, nhập lý do rồi gửi webhook `order.cancelled`. Kiểm tra:
 
 ```text
 Trạng thái đơn: Cancelled
@@ -82,6 +82,8 @@ Tồn khả dụng: được hoàn lại một lần
 9. Chờ batch hoàn tất; hai chỉ số trở về `0`.
 10. Mở CloudWatch Logs và xác nhận không có lỗi `AccessDenied` với SQS.
 
+Trong lúc batch chạy, xác nhận số message **Available** hoặc **In flight** tăng rồi trở về `0`. Đây là phần minh họa webhook được nhận nhanh và xử lý bất đồng bộ bởi worker.
+
 Nếu message lỗi ba lần, kiểm tra `nexusoms-demo-webhook-dlq.fifo` và CloudWatch Logs trước khi redrive hoặc xóa message.
 
 ## 8. Kết thúc demo
@@ -93,6 +95,8 @@ Không còn đơn DEMO-*
 Tồn kho trở về trạng thái trước khi chạy
 Main queue không còn message
 ```
+
+Nếu popup báo còn message trong DLQ, mở DLQ để xem lỗi. Chỉ xóa message sau khi đã kiểm tra CloudWatch Logs.
 
 ## 9. Kiểm tra CI/CD
 

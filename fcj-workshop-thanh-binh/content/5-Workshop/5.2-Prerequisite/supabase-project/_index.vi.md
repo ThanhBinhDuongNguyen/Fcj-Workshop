@@ -90,6 +90,22 @@ manager
 
 ![Cập nhật role](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/15-update-user-role.png)
 
+## 5. Nạp dữ liệu demo
+
+Mở **SQL Editor → New query**. Mở file `supabase/seed.sql` trong repository, sao chép toàn bộ nội dung rồi chọn **Run**.
+
+![Nạp dữ liệu demo](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/16-update-seed-data.png)
+
+Mở **Table Editor** và kiểm tra dữ liệu bắt đầu bằng `NXDEMO-`:
+
+```text
+Products: 18
+Warehouses: 2
+Orders: 50
+```
+
+File seed có thể chạy lại. Script chỉ thay dữ liệu demo có tiền tố `NXDEMO-`.
+
 Ghi lại các giá trị sau:
 
 ```text

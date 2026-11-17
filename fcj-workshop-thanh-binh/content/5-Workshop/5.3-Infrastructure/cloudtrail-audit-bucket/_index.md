@@ -61,3 +61,5 @@ AWSLogs/<ACCOUNT_ID>/CloudTrail/
 ```text
 AUDIT_BUCKET_NAME=<BUCKET_CREATED_BY_CLOUDTRAIL>
 ```
+
+Do not rename the bucket. Use this name again when configuring ALB access logs.

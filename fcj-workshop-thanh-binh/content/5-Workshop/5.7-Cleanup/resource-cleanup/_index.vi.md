@@ -56,12 +56,22 @@ chapter: false
 
 ## 3. SQS
 
-1. Xóa `nexusoms-demo-webhook-queue.fifo`.
-2. Xóa `nexusoms-demo-webhook-dlq.fifo`.
+1. Bảo đảm ECS service đã dừng.
+2. Chọn `nexusoms-demo-webhook-queue.fifo` → **Delete**.
+
+![Xóa SQS queue](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/30-delete-sqs-queue.png)
+
+3. Nhập tên queue để xác nhận.
+
+![Xác nhận xóa SQS queue](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/31-confirm-delete-sqs-queue.png)
+
+4. Xóa `nexusoms-demo-webhook-dlq.fifo` theo cùng cách.
 
 ## 4. CloudTrail và audit bucket
 
 1. CloudTrail → `nexusoms-demo-trail` → **Stop logging** → Delete trail.
+
+![Xóa CloudTrail trail](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/32-delete-cloudtrail-trail.png)
 2. Empty audit bucket.
 
 ![Empty audit bucket](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/24-empty-audit-bucket.png)

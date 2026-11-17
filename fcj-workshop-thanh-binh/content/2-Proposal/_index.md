@@ -24,12 +24,33 @@ Multi-channel sellers frequently switch between marketplace dashboards to manage
 NexusOMS receives a simulated marketplace webhook, verifies its HMAC signature, and places the valid event on an Amazon SQS FIFO queue. An ECS worker consumes the message, maps the channel SKU to an internal product, and reserves available inventory in a database transaction. The order can then move through confirmation, preparation, shipment, delivery, or cancellation. Cancelling before dispatch releases reserved stock. Idempotency keys and database constraints prevent duplicate delivery from generating a second business operation, while messages that repeatedly fail move to a dead-letter queue.
 
 ### Benefits and Return on Investment
-The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. The architecture can be deployed for a short AWS demonstration, photographed for the report and removed afterwards. **PLACEHOLDER - add the team’s business assumptions, measured time savings and ROI calculation.**
+The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. This workshop validates the technical solution and does not calculate financial ROI without measured operating data.
 
 ### 3. Solution Architecture
 The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. Amazon SQS FIFO decouples webhook intake from business processing, and a dead-letter queue isolates messages that repeatedly fail. Each Availability Zone uses its own NAT Gateway so outbound connectivity remains available if one AZ fails. This improves availability but increases cost; a low-cost demo may use one NAT Gateway and accept a single point of failure. AWS WAF remains visible in the target architecture and cost estimate but is not enabled in the workshop. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
+
+### Numbered Architecture Flow
+
+| No. | Flow |
+|---:|---|
+| 1 | The user accesses the system through CloudFront. |
+| 2 | CloudFront loads the React frontend from S3. |
+| 3 | CloudFront forwards `/api/*` requests to the Application Load Balancer. |
+| 4 | The ALB routes requests to healthy Fargate tasks. |
+| 5 | The API validates a webhook and sends the message to SQS FIFO. |
+| 6 | The worker in Fargate receives and processes messages in message-group order. |
+| 7 | Messages that exceed the receive limit move to the dead-letter queue. |
+| 8 | Fargate uses the NAT Gateway in its Availability Zone for outbound traffic. |
+| 9 | The NAT Gateway routes outbound traffic through the Internet Gateway. |
+| 10 | The backend connects to Supabase and external sales platforms. |
+| 11 | GitHub Actions builds and pushes the backend image to ECR. |
+| 12 | GitHub Actions registers the task definition and updates the ECS service. |
+| 13 | ECS deploys the new image as Fargate tasks in two Availability Zones. |
+| 14 | Fargate accesses S3 through the S3 Gateway Endpoint. |
+| 15 | The ALB writes access logs to the S3 audit bucket. |
+| 16 | CloudTrail writes management events to the S3 audit bucket. |
 
 ### AWS Services Used
 - **Amazon S3 and Amazon CloudFront**: Store and distribute the static React/Vite build.
@@ -89,10 +110,11 @@ The estimate was prepared in AWS Pricing Calculator for **Asia Pacific (Singapor
 | AWS Secrets Manager | 0.13 |
 | Amazon CloudTrail | 0.00 |
 | Amazon CloudFront | 0.00 |
+| Amazon SQS FIFO and Dead-letter Queue | 0.05 |
 | AWS WAF (separate estimate; not enabled in the workshop but included in the budget) | 14.00 |
-| **Total including WAF** | **123.29** |
+| **Total including WAF** | **123.34** |
 
-The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to show the protected option, but it is not enabled in the workshop. NAT Gateways and the ALB are primarily hourly charges, so the monthly total is not an exact 10-day invoice. A simple 10/30-day proration gives a reference estimate of approximately **$41.10 including WAF** (before tax); the actual charge should be checked in AWS Billing after resources are deleted.
+The SQS estimate assumes `100,000` billable FIFO requests per month at `$0.50 per million requests`, without applying Free Tier. The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to show the protected option, but it is not enabled in the workshop. NAT Gateways and the ALB are primarily hourly charges, so the monthly total is not an exact 10-day invoice. A simple 10/30-day proration gives a reference estimate of approximately **$41.11 including WAF** (before tax); the actual charge should be checked in AWS Billing after resources are deleted.
 
 - Hardware: No additional hardware is required; the project uses the existing development machines and Supabase Cloud project.
 

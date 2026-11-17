@@ -24,12 +24,33 @@ Người bán đa kênh thường phải chuyển qua nhiều dashboard để th
 NexusOMS nhận webhook marketplace mô phỏng, kiểm tra chữ ký HMAC rồi đưa sự kiện hợp lệ vào Amazon SQS FIFO. Worker trong ECS lấy message, ánh xạ SKU kênh về sản phẩm nội bộ và giữ tồn khả dụng trong PostgreSQL transaction. Đơn sau đó đi qua xác nhận, chuẩn bị, xuất kho/vận chuyển, giao thành công hoặc hủy. Khi hủy trước lúc xuất kho, hệ thống nhả phần tồn đang giữ; idempotency key cùng ràng buộc database ngăn webhook lặp tạo ra thao tác nghiệp vụ thứ hai. Message lỗi quá số lần cho phép được chuyển sang dead-letter queue để kiểm tra riêng.
 
 *Lợi ích và hoàn vốn đầu tư (ROI)*  
-Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm, tồn và đơn, giảm đối soát thủ công giữa các kênh. Luồng reserve, release và commit giúp minh họa flash sale có kiểm soát và có thể truy vết. Kiến trúc có thể triển khai AWS trong thời gian ngắn để chụp báo cáo/thuyết trình, sau đó xóa để tránh chi phí chạy liên tục. **PLACEHOLDER - bổ sung giả định kinh doanh, số giờ tiết kiệm và phép tính ROI của nhóm.**  
+Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm, tồn và đơn, giảm đối soát thủ công giữa các kênh. Luồng reserve, release và commit giúp minh họa flash sale có kiểm soát và có thể truy vết. Workshop tập trung chứng minh giải pháp kỹ thuật nên chưa quy đổi ROI tài chính khi chưa có dữ liệu vận hành thực tế.
 
 ### 3. Kiến trúc giải pháp  
 Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. Amazon SQS FIFO tách bước tiếp nhận webhook khỏi bước xử lý nghiệp vụ; dead-letter queue giữ các message thất bại nhiều lần. Mỗi Availability Zone có một NAT Gateway để task vẫn có đường outbound khi một AZ gặp sự cố. Cấu hình này tăng chi phí nhưng tránh phụ thuộc vào một NAT duy nhất; môi trường demo tiết kiệm có thể dùng một NAT và chấp nhận single point of failure. AWS WAF được thể hiện trong kiến trúc mục tiêu và dự toán nhưng không bật trong workshop. Workshop dùng domain cùng chứng chỉ mặc định của CloudFront nên không tạo AWS Certificate Manager. CloudTrail và ALB access logs được lưu trong một S3 audit bucket riêng tư.
 
 ![Kiến trúc luồng nghiệp vụ NexusOMS](/images/2-Proposal/noxus-aws-architect-1.png)
+
+*Luồng hoạt động trên sơ đồ*
+
+| Số | Luồng |
+|---:|---|
+| 1 | Người dùng truy cập hệ thống qua CloudFront. |
+| 2 | CloudFront lấy giao diện React từ S3. |
+| 3 | CloudFront chuyển request `/api/*` đến Application Load Balancer. |
+| 4 | ALB phân phối request đến Fargate task đang healthy. |
+| 5 | API xác thực webhook rồi gửi message vào SQS FIFO. |
+| 6 | Worker trong Fargate nhận và xử lý message theo thứ tự của message group. |
+| 7 | Message lỗi quá số lần nhận được chuyển sang dead-letter queue. |
+| 8 | Fargate đi ra ngoài qua NAT Gateway của Availability Zone tương ứng. |
+| 9 | NAT Gateway đi qua Internet Gateway. |
+| 10 | Backend kết nối Supabase và các nền tảng bán hàng bên ngoài. |
+| 11 | GitHub Actions build và đẩy backend image lên ECR. |
+| 12 | GitHub Actions đăng ký task definition và cập nhật ECS service. |
+| 13 | ECS triển khai image mới thành Fargate task ở hai Availability Zone. |
+| 14 | Fargate truy cập S3 qua S3 Gateway Endpoint. |
+| 15 | ALB ghi access log vào S3 audit bucket. |
+| 16 | CloudTrail ghi management event vào S3 audit bucket. |
 
 *Dịch vụ AWS sử dụng*  
 - *Amazon S3 và Amazon CloudFront*: Lưu trữ và phân phối React/Vite build tĩnh.  
@@ -88,10 +109,11 @@ Dự toán được lập bằng AWS Pricing Calculator cho Region **Asia Pacifi
 | AWS Secrets Manager | 0.13 |
 | Amazon CloudTrail | 0.00 |
 | Amazon CloudFront | 0.00 |
+| Amazon SQS FIFO và Dead-letter Queue | 0.05 |
 | AWS WAF (ước tính riêng, không bật trong workshop nhưng vẫn tính vào ngân sách) | 14.00 |
-| **Tổng có tính WAF** | **123.29** |
+| **Tổng có tính WAF** | **123.34** |
 
-Calculator cho kết quả **$0.00 chi phí trả trước**. WAF được cộng vào tổng ngân sách để thể hiện phương án có bảo vệ lớp ứng dụng, dù tài nguyên WAF không được bật trong workshop. Chi phí NAT Gateway và ALB chủ yếu phát sinh theo giờ; vì vậy không nên xem tổng theo tháng là hóa đơn chính xác cho 10 ngày. Với giả định phân bổ tuyến tính 10/30 ngày, tổng tham khảo gồm WAF là khoảng **$41.10** (không gồm thuế); số thực trả cần đối chiếu thời điểm tạo/xóa tài nguyên và mức sử dụng trong AWS Billing.
+Chi phí SQS giả định `100.000` request FIFO có tính phí mỗi tháng với đơn giá `0,50 USD/triệu request`, chưa trừ Free Tier. Calculator cho kết quả **$0.00 chi phí trả trước**. WAF được cộng vào tổng ngân sách để thể hiện phương án có bảo vệ lớp ứng dụng, dù tài nguyên WAF không được bật trong workshop. Chi phí NAT Gateway và ALB chủ yếu phát sinh theo giờ; vì vậy không nên xem tổng theo tháng là hóa đơn chính xác cho 10 ngày. Với giả định phân bổ tuyến tính 10/30 ngày, tổng tham khảo gồm WAF là khoảng **$41.11** (không gồm thuế); số thực trả cần đối chiếu thời điểm tạo/xóa tài nguyên và mức sử dụng trong AWS Billing.
 
 - *Phần cứng*: Không cần mua thêm; dự án dùng máy phát triển hiện có và Supabase Cloud project.  
 

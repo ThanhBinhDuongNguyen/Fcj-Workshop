@@ -50,7 +50,7 @@ Verify product cost and revenue.
 
 ## 6. Verify webhook creation and cancellation
 
-Send a demo webhook and confirm that one order is created.
+Open **Webhook Simulator → Order lifecycle**. Send the create-order webhook and wait for **Processed**.
 
 ![Create an order with a webhook](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/5-using-webhook-to-create-order.png)
 
@@ -78,6 +78,8 @@ Available stock: restored once
 9. Wait until the batch finishes and both values return to `0`.
 10. Open CloudWatch Logs and confirm there is no SQS `AccessDenied` error.
 
+While the batch runs, confirm that **Available** or **In flight** increases and then returns to `0`. This demonstrates asynchronous worker processing.
+
 If a message fails three times, inspect `nexusoms-demo-webhook-dlq.fifo` and CloudWatch Logs before redriving or deleting it.
 
 ## 8. Finish the demo
@@ -89,6 +91,8 @@ No DEMO-* orders remain
 Inventory returns to its pre-demo state
 The main queue contains no messages
 ```
+
+If the popup reports a DLQ message, inspect CloudWatch Logs before deleting or redriving it.
 
 ## 9. Verify CI/CD
 

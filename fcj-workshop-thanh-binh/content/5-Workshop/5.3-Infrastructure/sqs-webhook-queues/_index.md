@@ -1,15 +1,19 @@
 ---
-title: "SQS FIFO and dead-letter queues"
-date: 2026-11-16
+title: "SQS FIFO and Dead-letter Queue"
+date: 2026-11-17
 weight: 12
 chapter: false
 ---
 
-Create the dead-letter queue first, then create the webhook queue and attach the redrive policy.
+Create the dead-letter queue first. Then create the webhook queue and attach the redrive policy.
 
-## 1. Create the dead-letter queue
+## 1. Create the Dead-letter Queue
 
-Open **Amazon SQS → Create queue** and enter:
+Open **Amazon SQS → Create queue**.
+
+![Open Amazon SQS](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/1-open-sqs-dashboard.png)
+
+Use these values:
 
 ```text
 Type: FIFO
@@ -17,16 +21,26 @@ Name: nexusoms-demo-webhook-dlq.fifo
 Visibility timeout: 60 seconds
 Message retention period: 4 days
 Content-based deduplication: Disabled
-Encryption: Server-side encryption with Amazon SQS managed key (SSE-SQS)
+Encryption: Amazon SQS managed key
 Access policy: Basic
 Dead-letter queue: Disabled
 ```
 
+![Set the DLQ name](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/2-configure-dlq-type-and-name.png)
+
+![Configure the DLQ](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/3-configure-dlq-settings.png)
+
+![Configure DLQ encryption](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/4-configure-dlq-encryption.png)
+
+![Review the DLQ](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/5-review-dlq-settings.png)
+
 Choose **Create queue**.
 
-## 2. Create the webhook queue
+![DLQ created](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/6-create-webhook-dlq.png)
 
-Choose **Create queue** and enter:
+## 2. Create the Webhook Queue
+
+Choose **Create queue** and use these values:
 
 ```text
 Type: FIFO
@@ -37,20 +51,23 @@ Delivery delay: 0 seconds
 Receive message wait time: 20 seconds
 Content-based deduplication: Disabled
 High throughput FIFO: Disabled
-Encryption: Server-side encryption with Amazon SQS managed key (SSE-SQS)
+Encryption: Amazon SQS managed key
 Access policy: Basic
-Dead-letter queue: Enabled
 Dead-letter queue: nexusoms-demo-webhook-dlq.fifo
 Maximum receives: 3
 ```
 
+![Configure the webhook queue](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/7-configure-webhook-queue.png)
+
+![Configure webhook queue timing](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/8-configure-webhook-queue-settings.png)
+
+![Attach the dead-letter queue](/images/5-Workshop/nexusoms/5.3-Infrastructure/sqs-webhook-queues/9-attach-dead-letter-queue.png)
+
 Choose **Create queue**.
 
-Both queues must use the same AWS account and `ap-southeast-1` Region. FIFO queue names must end with `.fifo`.
+## 3. Get the Queue URLs and ARNs
 
-## 3. Get queue URLs and ARNs
-
-Run PowerShell:
+Run the complete PowerShell block:
 
 ```powershell
 $AwsRegion = "ap-southeast-1"
@@ -94,13 +111,19 @@ $WebhookDlqArn = aws sqs get-queue-attributes `
 "WEBHOOK_DLQ_ARN=$WebhookDlqArn"
 ```
 
-Keep both queue URLs for the ECS task definition.
+Save both Queue URLs for the ECS task definition.
 
-## 4. Grant the ECS task role access
+## 4. Grant Access to the ECS Task Role
 
-Open **IAM → Roles → nexusoms-demo-ecs-task-role → Add permissions → Create inline policy → JSON**.
+Open **IAM → Roles → nexusoms-demo-ecs-task-role**.
 
-Replace `<ACCOUNT_ID>` and paste:
+![Open the ECS task role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/8-open-ecs-task-role.png)
+
+Choose **Add permissions → Create inline policy → JSON**.
+
+![Create the SQS inline policy](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/9-add-sqs-inline-policy.png)
+
+Replace `<ACCOUNT_ID>` and paste this policy:
 
 ```json
 {
@@ -109,12 +132,7 @@ Replace `<ACCOUNT_ID>` and paste:
     {
       "Sid": "UseWebhookQueue",
       "Effect": "Allow",
-      "Action": [
-        "sqs:SendMessage",
-        "sqs:ReceiveMessage",
-        "sqs:DeleteMessage",
-        "sqs:GetQueueAttributes"
-      ],
+      "Action": ["sqs:SendMessage", "sqs:ReceiveMessage", "sqs:DeleteMessage", "sqs:GetQueueAttributes"],
       "Resource": "arn:aws:sqs:ap-southeast-1:<ACCOUNT_ID>:nexusoms-demo-webhook-queue.fifo"
     },
     {
@@ -127,17 +145,9 @@ Replace `<ACCOUNT_ID>` and paste:
 }
 ```
 
-Save the policy as:
-
-```text
-UseNexusOmsWebhookQueues
-```
-
-Do not attach this policy to the execution role.
+Save it as `UseNexusOmsWebhookQueues`. Attach it to the task role, not the execution role.
 
 ## 5. Verify
-
-Confirm:
 
 ```text
 Main queue: nexusoms-demo-webhook-queue.fifo
@@ -145,4 +155,3 @@ DLQ: nexusoms-demo-webhook-dlq.fifo
 Maximum receives: 3
 Task role policy: UseNexusOmsWebhookQueues
 ```
-

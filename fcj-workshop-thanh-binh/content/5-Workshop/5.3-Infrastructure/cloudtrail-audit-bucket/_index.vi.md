@@ -65,3 +65,5 @@ Ghi lại:
 ```text
 AUDIT_BUCKET_NAME=<TÊN_BUCKET_DO_CLOUDTRAIL_TẠO>
 ```
+
+Không đổi tên bucket. Tên này được dùng lại khi cấu hình ALB access logs.
