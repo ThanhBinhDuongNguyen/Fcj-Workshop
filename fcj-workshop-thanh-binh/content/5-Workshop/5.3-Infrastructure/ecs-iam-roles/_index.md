@@ -7,10 +7,6 @@ chapter: false
 
 The execution role lets ECS pull images, publish logs, and read the secret. Create the task role without a policy here; SQS access is added after both queues exist.
 
-## Procedure
-
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
-
 ## Values to enter or copy
 
 > Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
@@ -37,30 +33,20 @@ Do not attach `AdministratorAccess`. The next page adds a queue-scoped inline po
 
 ## AWS Console walkthrough
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
-
 ### Step 1 - Open Roles dashboard + Create role
-
-Complete **Open Roles dashboard + Create role**.
 
 
 ![Open Roles dashboard + Create role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1-open-roles-dashboard-create-role.png)
 
 ### Step 2 - Configure Select trusted entity
 
-Complete **Configure Select trusted entity**.
-
 ![Configure Select trusted entity](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2-configure-select-trusted-entity.png)
 
 ### Step 3 - Configure permissions
 
-Complete **Configure permissions**.
-
 ![Configure permissions](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3-configure-permissions.png)
 
 ### Step 4 - Fill name role
-
-Complete **Fill name role**.
 
 **Values used in this step**
 
@@ -86,18 +72,12 @@ nexusoms-demo-ecs-task-role
 
 ### Step 5 - Find role + Open role
 
-Complete **Find role + Open role**.
-
 ![Find role + Open role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5-find-role-open-role.png)
 
 ### Step 6 - Create inline policy
 
-Complete **Create inline policy**.
-
 ![Create inline policy](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6-create-inline-policy.png)
 
 ### Step 7 - Paste the json to create
-
-Complete **Paste the json to create**.
 
 ![Paste the json to create](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7-paste-the-json-to-create.png)

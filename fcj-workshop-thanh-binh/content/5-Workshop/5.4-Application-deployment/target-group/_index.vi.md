@@ -43,18 +43,12 @@ Health check path: /health
 
 ## Thao tác trên AWS Console
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
 ### Bước 1 - Open Target Groups dashboard + Create target group
-
-Thực hiện **Open Target Groups dashboard + Create target group**.
 
 
 ![Open Target Groups dashboard + Create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png)
 
 ### Bước 2 - Configure target group
-
-Thực hiện **Configure target group**.
 
 **Giá trị dùng ở bước này**
 
@@ -86,8 +80,6 @@ Port: 8080
 
 ### Bước 3 - Choose VPC + Set up health checks
 
-Thực hiện **Choose VPC + Set up health checks**.
-
 **Giá trị dùng ở bước này**
 
 **Health check path**
@@ -99,7 +91,5 @@ Health check path: /health
 ![Choose VPC + Set up health checks](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png)
 
 ### Bước 4 - Complete create target group
-
-Thực hiện **Complete create target group**.
 
 ![Complete create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png)

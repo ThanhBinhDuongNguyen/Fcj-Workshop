@@ -54,23 +54,15 @@ nexusoms-demo-private-b | 10.80.11.0/24
 
 ## Thao tác trên AWS Console
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
 ### Bước 1 - Open subnets dashboard + Create subnet
-
-Thực hiện **Open subnets dashboard + Create subnet**.
 
 ![Open subnets dashboard + Create subnet](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png)
 
 ### Bước 2 - Choose VPC ID
 
-Thực hiện **Choose VPC ID**.
-
 ![Choose VPC ID](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png)
 
 ### Bước 3 - Configure public subnet a
-
-Thực hiện **Configure public subnet a**.
 
 **Giá trị dùng ở bước này**
 
@@ -90,13 +82,9 @@ nexusoms-demo-public-b | 10.80.1.0/24
 
 ### Bước 4 - Configure public subnet b
 
-Thực hiện **Configure public subnet b**.
-
 ![Configure public subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png)
 
 ### Bước 5 - Configure private subnet a
-
-Thực hiện **Configure private subnet a**.
 
 **Giá trị dùng ở bước này**
 
@@ -116,18 +104,14 @@ nexusoms-demo-private-b | 10.80.11.0/24
 
 ### Bước 6 - Configure private subnet b
 
-Thực hiện **Configure private subnet b**.
-
 ![Configure private subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png)
 
 ### Bước 7 - Edit subnet settings
-
-Thực hiện **Edit subnet settings**.
 
 ![Edit subnet settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png)
 
 ### Bước 8 - Enable auto-assign public IPv4 address
 
-Thực hiện **Enable auto-assign public IPv4 address**.
-
 ![Enable auto-assign public IPv4 address](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png)
+
+Thực hiện lại bước này cho subnet public b

@@ -1,119 +1,67 @@
 ---
-title: "ECS service"
+title: "ECS Service"
 date: 2026-11-13
 weight: 8
 chapter: false
 ---
 
-Run one Fargate task across the private subnets, disable public IP assignment, and register the service with the ALB target group.
+Create an ECS Service that runs Fargate tasks in two private subnets and registers them with the ALB target group.
 
-## Procedure
+## Step 1: Create the service
 
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
+Open **Amazon ECS → Clusters → nexusoms-demo-cluster → Services → Create**.
 
-## Values to enter or copy
+![Open the ECS Service creation page](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1-choose-service-tab-create.png)
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
-
-**ECS service name**
+## Step 2: Configure the service
 
 ```text
-nexusoms-demo-api-service
-```
-
-**Desired tasks**
-
-```text
+Compute options: Launch type
+Launch type: Fargate
+Task definition family: nexusoms-demo-api
+Service name: nexusoms-demo-api-service
 Desired tasks: 1
 ```
 
-**Auto-assign public IP**
+Select the latest task definition revision. Increase **Desired tasks** to `2` when demonstrating two tasks.
+
+![Configure the ECS Service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2-configure-service-detail.png)
+
+## Step 3: Configure networking
 
 ```text
+VPC: nexusoms-demo-vpc
+Subnets: private-a and private-b
+Security Group: nexusoms-demo-task-sg
 Auto-assign public IP: Disabled
 ```
 
-**Container**
+![Configure service networking](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3-configure-network-for-service.png)
+
+## Step 4: Connect the Load Balancer
 
 ```text
+Load balancer type: Application Load Balancer
+Load balancer: nexusoms-demo-alb
+Listener: HTTP:80
+Target group: nexusoms-demo-api-tg
 Container: api
-```
-
-**Container port**
-
-```text
 Container port: 8080
 ```
 
-## AWS Console walkthrough
+![Select the Application Load Balancer](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-configure-load-balancer-for-service.png)
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
+![Select the listener and target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-1-configure-load-balancer-for-service.png)
 
-### Step 1 - Choose service tab + Create
+## Step 5: Finish
 
-Complete **Choose service tab + Create**.
+Choose **Create** and wait for the deployment to stabilize.
 
+![Create the ECS Service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5-click-create.png)
 
-![Choose service tab + Create](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/1-choose-service-tab-create.png)
+Verify that:
 
-### Step 2 - Configure service detail
-
-Complete **Configure service detail**.
-
-**Values used in this step**
-
-**ECS service name**
-
-```text
-nexusoms-demo-api-service
-```
-
-**Desired tasks**
-
-```text
-Desired tasks: 1
-```
-
-**Auto-assign public IP**
-
-```text
-Auto-assign public IP: Disabled
-```
-
-**Container**
-
-```text
-Container: api
-```
-
-**Container port**
-
-```text
-Container port: 8080
-```
-
-![Configure service detail](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2-configure-service-detail.png)
-
-### Step 3 - Configure Network for service
-
-Complete **Configure Network for service**.
-
-![Configure Network for service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/3-configure-network-for-service.png)
-
-### Step 4 - Configure Load balancer for service
-
-Complete **Configure Load balancer for service**.
-
-![Configure Load balancer for service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-configure-load-balancer-for-service.png)
-
-### Step 5 - Configure Load balancer for service
-
-Complete **Configure Load balancer for service**.
-
-![Configure Load balancer for service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/4-1-configure-load-balancer-for-service.png)
-
-### Step 6 - Click create
-
-Complete **Click create**.
-
-![Click create](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/5-click-create.png)
+- **Running tasks** equals **Desired tasks**.
+- The target in `nexusoms-demo-api-tg` is **Healthy**.
+- `/ecs/nexusoms-demo-api` contains a new CloudWatch log stream.
+- The task has no public IP.

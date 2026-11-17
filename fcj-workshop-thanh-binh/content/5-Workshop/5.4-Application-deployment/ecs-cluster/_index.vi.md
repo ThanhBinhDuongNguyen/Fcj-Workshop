@@ -5,62 +5,31 @@ weight: 6
 chapter: false
 ---
 
-Tạo ECS cluster dùng AWS Fargate. Container Insights là tùy chọn và có thể phát sinh thêm chi phí.
+Tạo ECS cluster để chạy backend bằng AWS Fargate.
 
-## 9.1. Cluster
+## Bước 1: Tạo cluster
 
-1\. Mở **Amazon ECS → Clusters → Create cluster**.
+Mở **Amazon ECS → Clusters → Create cluster**.
 
-2\. Cluster name: nexusoms-demo-cluster.
+![Mở trang tạo ECS cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1-open-clusters-dashboard-create-cluster.png)
 
-3\. Chọn infrastructure phù hợp Fargate; không cần EC2 capacity provider cho cấu hình này.
-
-4\. Tạo cluster.
-
-5\. Mở cluster → **Configuration**. Xác nhận **Container Insights** đang bật. Nếu chưa, dùng **Update cluster** hoặc **Actions** để bật; Console mới có thể không gọi mục này là "Cluster settings".
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**Amazon ECS → Clusters → Create cluster**
+## Bước 2: Cấu hình cluster
 
 ```text
-nexusoms-demo-cluster
+Cluster name: nexusoms-demo-cluster
+Infrastructure: AWS Fargate
 ```
 
-## Thao tác trên AWS Console
+Chọn **Create**.
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
+![Cấu hình ECS cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2-configure-cluster.png)
 
-### Bước 1 - Open Clusters dashboard + Create cluster
+## Bước 3: Bật Container Insights
 
-Thực hiện **Open Clusters dashboard + Create cluster**.
+Mở cluster vừa tạo và chọn **Update cluster**.
 
-**Giá trị dùng ở bước này**
+![Mở phần cập nhật cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3-choose-update-cluster.png)
 
-**Amazon ECS → Clusters → Create cluster**
+Bật **Container Insights**, sau đó lưu thay đổi.
 
-```text
-nexusoms-demo-cluster
-```
-
-![Open Clusters dashboard + Create cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/1-open-clusters-dashboard-create-cluster.png)
-
-### Bước 2 - Configure cluster
-
-Thực hiện **Configure cluster**.
-
-![Configure cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/2-configure-cluster.png)
-
-### Bước 3 - Choose update cluster
-
-Thực hiện **Choose update cluster**.
-
-![Choose update cluster](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/3-choose-update-cluster.png)
-
-### Bước 4 - Turn on Container Insights
-
-Thực hiện **Turn on Container Insights**.
-
-![Turn on Container Insights](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4-turn-on-container-insights.png)
+![Bật Container Insights](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-cluster/4-turn-on-container-insights.png)

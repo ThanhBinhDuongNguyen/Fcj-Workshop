@@ -30,11 +30,7 @@ Mở **CloudWatch → Logs Management → Create log group**. Nhập /ecs/nexuso
 
 ## Thao tác trên AWS Console
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
 ### Bước 1 - Open Log Management dashboard + Create log group
-
-Thực hiện **Open Log Management dashboard + Create log group**.
 
 **Giá trị dùng ở bước này**
 
@@ -53,7 +49,5 @@ Thực hiện **Open Log Management dashboard + Create log group**.
 ![Open Log Management dashboard + Create log group](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png)
 
 ### Bước 2 - Fill name + retention setting
-
-Thực hiện **Fill name + retention setting**.
 
 ![Fill name + retention setting](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png)

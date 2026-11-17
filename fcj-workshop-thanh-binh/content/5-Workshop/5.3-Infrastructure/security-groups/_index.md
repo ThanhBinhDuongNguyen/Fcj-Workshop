@@ -7,10 +7,6 @@ chapter: false
 
 The ALB accepts HTTP only from the CloudFront origin-facing prefix list; ECS accepts port 8080 only from the ALB security group.
 
-## Procedure
-
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
-
 ## Values to enter or copy
 
 > Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
@@ -29,18 +25,12 @@ nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 
 ## AWS Console walkthrough
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
-
 ### Step 1 - Open Security groups dashboard + Create security group
-
-Complete **Open Security groups dashboard + Create security group**.
 
 
 ![Open Security groups dashboard + Create security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/1-open-security-groups-dashboard-create-security-group.png)
 
 ### Step 2 - Full basic details of security group
-
-Complete **Full basic details of security group**.
 
 **Values used in this step**
 
@@ -59,7 +49,5 @@ nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 ![Full basic details of security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/2-full-basic-details-of-security-group.png)
 
 ### Step 3 - Configure the second security group
-
-Complete **Configure the second security group**.
 
 ![Configure the second security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/3-configure-the-second-security-group.png)

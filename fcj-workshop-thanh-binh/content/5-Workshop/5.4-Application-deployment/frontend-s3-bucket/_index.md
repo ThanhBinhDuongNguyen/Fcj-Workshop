@@ -5,61 +5,28 @@ weight: 9
 chapter: false
 ---
 
-Keep the frontend bucket private. CloudFront accesses it through Origin Access Control; do not enable public static website hosting.
+Create a private S3 bucket for the React build. CloudFront will access it through Origin Access Control.
 
-## Procedure
+## Step 1: Create the bucket
 
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
+Open **S3 → Buckets → Create bucket**.
 
-## Values to enter or copy
+![Open the S3 bucket creation page](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/1-open-s3-dashboard-create-bucket.png)
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
-
-**Frontend resource name**
+## Step 2: Configure the bucket
 
 ```text
-nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
-```
-
-**Block all public access**
-
-```text
+Bucket name: nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
+AWS Region: ap-southeast-1
 Block all public access: Enabled
 ```
 
-## AWS Console walkthrough
+Replace `<AWS_ACCOUNT_ID>` with your account ID. Keep the default encryption and do not enable **Static website hosting**.
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
+![Configure the S3 bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/2-configure-bucket.png)
 
-### Step 1 - Open S3 dashboard + Create bucket
+## Step 3: Finish
 
-Complete **Open S3 dashboard + Create bucket**.
+Choose **Create bucket**.
 
-
-![Open S3 dashboard + Create bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/1-open-s3-dashboard-create-bucket.png)
-
-### Step 2 - Configure bucket
-
-Complete **Configure bucket**.
-
-**Values used in this step**
-
-**Frontend resource name**
-
-```text
-nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
-```
-
-**Block all public access**
-
-```text
-Block all public access: Enabled
-```
-
-![Configure bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/2-configure-bucket.png)
-
-### Step 3 - Click create bucket
-
-Complete **Click create bucket**.
-
-![Click create bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/3-click-create-bucket.png)
+![Create the S3 bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/3-click-create-bucket.png)

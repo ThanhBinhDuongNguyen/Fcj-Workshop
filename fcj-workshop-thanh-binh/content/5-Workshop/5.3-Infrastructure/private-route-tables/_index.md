@@ -7,10 +7,6 @@ chapter: false
 
 Create one route table per private subnet and route outbound traffic through the NAT gateway in the same Availability Zone.
 
-## Procedure
-
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
-
 ## Values to enter or copy
 
 > Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
@@ -29,29 +25,19 @@ nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
 
 ## AWS Console walkthrough
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
-
 ### Step 1 - Open Route tables dashboard + Click create route table
-
-Complete **Open Route tables dashboard + Click create route table**.
 
 ![Open Route tables dashboard + Click create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/1-open-route-tables-dashboard-click-create-route-table.png)
 
 ### Step 2 - Fill Name + Choose VPC + Create route table
 
-Complete **Fill Name + Choose VPC + Create route table**.
-
 ![Fill Name + Choose VPC + Create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/2-fill-name-choose-vpc-create-route-table.png)
 
 ### Step 3 - Choose routes + Edit routes
 
-Complete **Choose routes + Edit routes**.
-
 ![Choose routes + Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/3-choose-routes-edit-routes.png)
 
 ### Step 4 - Add Route + Configure NAT Gateway
-
-Complete **Add Route + Configure NAT Gateway**.
 
 **Values used in this step**
 
@@ -71,18 +57,12 @@ nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
 
 ### Step 5 - Choose Subnet associations + Edit subnet associations
 
-Complete **Choose Subnet associations + Edit subnet associations**.
-
 ![Choose Subnet associations + Edit subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/5-choose-subnet-associations-edit-subnet-associations.png)
 
 ### Step 6 - Choose subnet private a + Save associations
 
-Complete **Choose subnet private a + Save associations**.
-
 ![Choose subnet private a + Save associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/6-choose-subnet-private-a-save-associations.png)
 
 ### Step 7 - Complete create private route table
-
-Complete **Complete create private route table**.
 
 ![Complete create private route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/7-complete-create-private-route-table.png)

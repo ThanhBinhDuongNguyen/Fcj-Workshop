@@ -36,18 +36,12 @@ nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 
 ## Thao tác trên AWS Console
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
 ### Bước 1 - Open Security groups dashboard + Create security group
-
-Thực hiện **Open Security groups dashboard + Create security group**.
 
 
 ![Open Security groups dashboard + Create security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/1-open-security-groups-dashboard-create-security-group.png)
 
 ### Bước 2 - Full basic details of security group
-
-Thực hiện **Full basic details of security group**.
 
 **Giá trị dùng ở bước này**
 
@@ -66,7 +60,5 @@ nexusoms-demo-task-sg | TCP 8080 | nexusoms-demo-alb-sg
 ![Full basic details of security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/2-full-basic-details-of-security-group.png)
 
 ### Bước 3 - Configure the second security group
-
-Thực hiện **Configure the second security group**.
 
 ![Configure the second security group](/images/5-Workshop/nexusoms/5.3-Infrastructure/security-groups/3-configure-the-second-security-group.png)

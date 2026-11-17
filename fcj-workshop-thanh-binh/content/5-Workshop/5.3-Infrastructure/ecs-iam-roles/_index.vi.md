@@ -71,30 +71,20 @@ nexusoms-demo-ecs-task-role
 
 ## Thao tác trên AWS Console
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
 ### Bước 1 - Open Roles dashboard + Create role
-
-Thực hiện **Open Roles dashboard + Create role**.
 
 
 ![Open Roles dashboard + Create role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/1-open-roles-dashboard-create-role.png)
 
 ### Bước 2 - Configure Select trusted entity
 
-Thực hiện **Configure Select trusted entity**.
-
 ![Configure Select trusted entity](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/2-configure-select-trusted-entity.png)
 
 ### Bước 3 - Configure permissions
 
-Thực hiện **Configure permissions**.
-
 ![Configure permissions](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/3-configure-permissions.png)
 
 ### Bước 4 - Fill name role
-
-Thực hiện **Fill name role**.
 
 **Giá trị dùng ở bước này**
 
@@ -120,18 +110,12 @@ nexusoms-demo-ecs-task-role
 
 ### Bước 5 - Find role + Open role
 
-Thực hiện **Find role + Open role**.
-
 ![Find role + Open role](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/5-find-role-open-role.png)
 
 ### Bước 6 - Create inline policy
 
-Thực hiện **Create inline policy**.
-
 ![Create inline policy](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/6-create-inline-policy.png)
 
 ### Bước 7 - Paste the json to create
-
-Thực hiện **Paste the json to create**.
 
 ![Paste the json to create](/images/5-Workshop/nexusoms/5.3-Infrastructure/ecs-iam-roles/7-paste-the-json-to-create.png)

@@ -1,132 +1,80 @@
 ---
 title: "Secrets Manager"
-date: 2026-11-13
+date: 2026-11-17
 weight: 9
 chapter: false
 ---
 
-Store all four values in one JSON secret. Do not create four separate secrets or expose real secret values in screenshots or Git.
+Store all four values in one JSON secret. Do not create four separate secrets.
 
-## Procedure
+## 1. Prepare the Values
 
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
+Get these values from Supabase:
 
-## Values to enter or copy
+- **Session pooler:** choose **Connect → Session pooler**, then copy the host, port, and username.
+- **Database password:** use the Supabase database password.
+- **Project URL:** open **Project Settings → API → Project URL**.
+- **Profile UUID:** open **SQL Editor → New query** and run:
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
-
-**Secrets Manager - input 1**
-
-```text
-nexusoms/demo/application
+```sql
+select id, email
+from public.profiles
+where lower(email) = lower('<LOGIN_EMAIL>')
+limit 1;
 ```
 
-**JSON content**
+Copy the UUID of the demo account. Do not generate a random UUID.
+
+## 2. Create the Secret
+
+Open **AWS Secrets Manager → Store a new secret**.
+
+![Open Secrets Manager and create a secret](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/1-open-secrets-manager-service-store-a-new-secret.png)
+
+Select:
 
 ```text
+Secret type: Other type of secret
+```
+
+Open the **Plaintext** tab. Replace every placeholder and paste the complete JSON block:
+
+```json
 {
-```
-
-**"postgresConnectionString"**
-
-```text
-"postgresConnectionString": "Host=<SESSION_POOLER_HOST>;Port=5432;Database=postgres;Username=<POOLER_USERNAME>;Password=<NEW_DATABASE_PASSWORD>;SSL Mode=Require;Trust Server Certificate=true",
-```
-
-**"supabaseUrl"**
-
-```text
-"supabaseUrl": "https://<PROJECT_REF>.supabase.co",
-```
-
-**"systemActorId"**
-
-```text
-"systemActorId": "<PROFILE_UUID>",
-```
-
-**"webhookSigningSecret"**
-
-```text
-"webhookSigningSecret": "<RANDOM_SECRET_AT_LEAST_32_CHARACTERS>"
-```
-
-**Secrets Manager - input 7**
-
-```text
+  "postgresConnectionString": "Host=<SESSION_POOLER_HOST>;Port=5432;Database=postgres;Username=<POOLER_USERNAME>;Password=<DATABASE_PASSWORD>;SSL Mode=Require;Trust Server Certificate=true",
+  "supabaseUrl": "https://<PROJECT_REF>.supabase.co",
+  "systemActorId": "<PROFILE_UUID>",
+  "webhookSigningSecret": "<RANDOM_SECRET_AT_LEAST_32_CHARACTERS>"
 }
 ```
+![Choose the secret type](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/2-choose-secret-type.png)
 
-## AWS Console walkthrough
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
-
-### Step 1 - Open Secrets Manager service + Store a new secret
-
-Complete **Open Secrets Manager service + Store a new secret**.
-
-**Values used in this step**
-
-**Secrets Manager - input 1**
+Choose **Next** and enter:
 
 ```text
-nexusoms/demo/application
+Secret name: nexusoms/demo/application
 ```
+![Enter the JSON secret](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/3-configure-secret.png)
 
-**"postgresConnectionString"**
+
+Choose **Next → Next → Store**.
+
+## 3. Copy the Secret ARN
+
+Open the new secret and copy the complete **Secret ARN**.
+
+![Copy the Secret ARN](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/4-copy-secret-arn.png)
+
+Save the ARN for the `nexusoms-demo-ecs-execution-role` policy in the next step.
+
+## 4. Verify
+
+Open **Secret value → Retrieve secret value** and confirm these four keys exist:
 
 ```text
-"postgresConnectionString": "Host=<SESSION_POOLER_HOST>;Port=5432;Database=postgres;Username=<POOLER_USERNAME>;Password=<NEW_DATABASE_PASSWORD>;SSL Mode=Require;Trust Server Certificate=true",
+postgresConnectionString
+supabaseUrl
+systemActorId
+webhookSigningSecret
 ```
-
-**Secrets Manager - input 7**
-
-```text
-}
-```
-
-![Open Secrets Manager service + Store a new secret](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/1-open-secrets-manager-service-store-a-new-secret.png)
-
-### Step 2 - Choose secret type
-
-Complete **Choose secret type**.
-
-![Choose secret type](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/2-choose-secret-type.png)
-
-### Step 3 - Configure secret
-
-Complete **Configure secret**.
-
-**Values used in this step**
-
-**JSON content**
-
-```text
-{
-```
-
-**"supabaseUrl"**
-
-```text
-"supabaseUrl": "https://<PROJECT_REF>.supabase.co",
-```
-
-**"systemActorId"**
-
-```text
-"systemActorId": "<PROFILE_UUID>",
-```
-
-**"webhookSigningSecret"**
-
-```text
-"webhookSigningSecret": "<RANDOM_SECRET_AT_LEAST_32_CHARACTERS>"
-```
-
-![Configure secret](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/3-configure-secret.png)
-
-### Step 4 - Copy secret ARN
-
-Complete **Copy secret ARN**.
-
-![Copy secret ARN](/images/5-Workshop/nexusoms/5.3-Infrastructure/secrets-manager/4-copy-secret-arn.png)

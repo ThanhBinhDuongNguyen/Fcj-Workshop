@@ -5,71 +5,28 @@ weight: 9
 chapter: false
 ---
 
-Bucket frontend phải riêng tư. CloudFront truy cập bucket qua Origin Access Control; không bật static website hosting công khai.
+Tạo S3 bucket riêng tư để lưu bản build React. CloudFront sẽ truy cập bucket qua Origin Access Control.
 
-## 10.1. S3 frontend bucket riêng tư
+## Bước 1: Tạo bucket
 
-1\. Mở **S3 → Buckets → Create bucket**.
+Mở **S3 → Buckets → Create bucket**.
 
-2\. Bucket name phải duy nhất toàn cầu, ví dụ nexusoms-demo-frontend-&lt;AWS_ACCOUNT_ID&gt;; thay placeholder bằng account ID của bạn.
+![Mở trang tạo S3 bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/1-open-s3-dashboard-create-bucket.png)
 
-3\. Region ap-southeast-1.
-
-4\. Giữ **Block all public access** bật. Không tắt để "test cho nhanh".
-
-5\. Bật versioning nếu muốn lưu bản cũ; encryption SSE-S3 mặc định; tạo bucket.
-
-6\. Không bật Static website hosting. CloudFront dùng S3 REST origin riêng tư qua OAC.
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**Frontend resource name**
+## Bước 2: Cấu hình bucket
 
 ```text
-nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
-```
-
-**Block all public access**
-
-```text
+Bucket name: nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
+AWS Region: ap-southeast-1
 Block all public access: Enabled
 ```
 
-## Thao tác trên AWS Console
+Thay `<AWS_ACCOUNT_ID>` bằng Account ID của bạn. Giữ encryption mặc định và không bật **Static website hosting**.
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
+![Cấu hình S3 bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/2-configure-bucket.png)
 
-### Bước 1 - Open S3 dashboard + Create bucket
+## Bước 3: Hoàn tất
 
-Thực hiện **Open S3 dashboard + Create bucket**.
+Chọn **Create bucket**.
 
-
-![Open S3 dashboard + Create bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/1-open-s3-dashboard-create-bucket.png)
-
-### Bước 2 - Configure bucket
-
-Thực hiện **Configure bucket**.
-
-**Giá trị dùng ở bước này**
-
-**Frontend resource name**
-
-```text
-nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
-```
-
-**Block all public access**
-
-```text
-Block all public access: Enabled
-```
-
-![Configure bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/2-configure-bucket.png)
-
-### Bước 3 - Click create bucket
-
-Thực hiện **Click create bucket**.
-
-![Click create bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/3-click-create-bucket.png)
+![Tạo S3 bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/3-click-create-bucket.png)

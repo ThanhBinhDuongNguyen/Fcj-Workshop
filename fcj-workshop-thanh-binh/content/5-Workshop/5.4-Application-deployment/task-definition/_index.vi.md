@@ -5,11 +5,11 @@ weight: 7
 chapter: false
 ---
 
-Bốn biến bí mật phải dùng **ValueFrom** và trỏ đúng JSON key riêng trong cùng secret. Không dán cả JSON object làm giá trị.
+Tạo task definition cho API, đọc cấu hình bí mật từ Secrets Manager và gửi log đến CloudWatch.
 
-## 9.2. Tạo CloudWatch log group
+## Bước 1: Tạo CloudWatch log group
 
-Chạy PowerShell trước khi tạo task definition:
+Chạy trong PowerShell:
 
 ```powershell
 $AwsProfile = "nexusoms-demo"
@@ -28,52 +28,75 @@ aws logs put-retention-policy `
   --retention-in-days 7
 ```
 
-Nếu lệnh báo log group đã tồn tại, tiếp tục bước sau.
+Nếu log group đã tồn tại, tiếp tục bước sau.
 
-## 9.3. Tạo task definition
+## Bước 2: Mở trang tạo task definition
 
-Mở **Amazon ECS → Task definitions → Create new task definition**. Trên giao diện mới, phần biến môi trường nằm trong container definition; không tìm "Add environment variable from Secrets Manager" ở tab khác.
+Mở **Amazon ECS → Task definitions → Create new task definition**.
 
-1\. Family: nexusoms-demo-api.
+![Mở trang tạo task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1-open-task-definitions-dashboard-create-new-task-definition.png)
 
-2\. Launch type/infrastructure: AWS Fargate; OS Linux; architecture X86_64.
+## Bước 3: Cấu hình task definition
 
-3\. CPU 0.5 vCPU (512); Memory 1 GB (1024 MiB).
-
-4\. Task role: nexusoms-demo-ecs-task-role.
-
-5\. Task execution role: nexusoms-demo-ecs-execution-role.
-
-6\. Container name api; Image URI dán full ECR URI gồm tag mới.
-
-7\. Port mapping: container port 8080, protocol TCP.
-
-8\. Environment variables → Add individually các giá trị plain text sau:
+Nhập các giá trị sau:
 
 ```text
-ASPNETCORE_ENVIRONMENT = Production
-ASPNETCORE_HTTP_PORTS = 8080
-AWS__Region = ap-southeast-1
-WebhookQueue__Mode = Sqs
-WebhookQueue__QueueUrl = https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
-WebhookQueue__DeadLetterQueueUrl = https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
-WebhookQueue__WaitTimeSeconds = 20
+Task definition family: nexusoms-demo-api
+Launch type: AWS Fargate
+Operating system: Linux
+CPU architecture: X86_64
+CPU: 0.5 vCPU
+Memory: 1 GB
+Task role: nexusoms-demo-ecs-task-role
+Task execution role: nexusoms-demo-ecs-execution-role
+```
+
+![Cấu hình task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2-configure-task-definition.png)
+
+![Chọn hệ điều hành và IAM role](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3-configure-os-task-roles.png)
+
+## Bước 4: Cấu hình container
+
+Nhập full ECR image URI có kèm tag mới.
+
+```text
+Container name: api
+Container port: 8080
+Protocol: TCP
+```
+
+![Cấu hình container](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4-configure-container-1-detail.png)
+
+## Bước 5: Thêm biến môi trường
+
+Trong **Environment variables**, thêm các giá trị có **Value type = Value**:
+
+```text
+ASPNETCORE_ENVIRONMENT=Production
+ASPNETCORE_HTTP_PORTS=8080
+AWS__Region=ap-southeast-1
+WebhookQueue__Mode=Sqs
+WebhookQueue__QueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
+WebhookQueue__DeadLetterQueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
+WebhookQueue__WaitTimeSeconds=20
 ```
 
 Hai giá trị queue phải là **Queue URL**, không phải ARN.
 
-9\. Environment variables → Add individually → chọn **Value type: ValueFrom**. Với mỗi dòng, Key là tên biến môi trường; ValueFrom chọn Secret nexusoms/demo/application và đúng JSON key:
+Thêm bốn dòng có **Value type = ValueFrom** và chọn đúng JSON key trong secret `nexusoms/demo/application`:
 
-| **Key trong task definition**     | **JSON key cần chọn trong secret** |
-| --------------------------------- | ---------------------------------- |
-| `ConnectionStrings__Postgres`     | `postgresConnectionString`         |
-| `Supabase__Url`                   | `supabaseUrl`                      |
-| `WebhookSimulator__Secret`        | `webhookSigningSecret`             |
-| `WebhookSimulator__SystemActorId` | `systemActorId`                    |
+| Key trong task definition | JSON key trong secret |
+| --- | --- |
+| `ConnectionStrings__Postgres` | `postgresConnectionString` |
+| `Supabase__Url` | `supabaseUrl` |
+| `WebhookSimulator__Secret` | `webhookSigningSecret` |
+| `WebhookSimulator__SystemActorId` | `systemActorId` |
 
-Mỗi dòng đều có **Value type = ValueFrom**, nhưng phải chọn đúng JSON key riêng của dòng đó. Không nhập cùng nexusoms/demo/application làm giá trị plain text; không trỏ cả bốn biến vào cùng một JSON object. Tên bên trái phải khớp chính xác, gồm hai dấu gạch dưới \__.
+![Cấu hình biến môi trường](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5-configure-environment-variables.png)
 
-10\. Bật **Use log collection** và nhập:
+## Bước 6: Cấu hình log
+
+Bật **Use log collection** và nhập:
 
 ```text
 Destination: Amazon CloudWatch
@@ -83,183 +106,4 @@ awslogs-stream-prefix: ecs
 awslogs-create-group: false
 ```
 
-Giá trị `awslogs-group` phải trùng chính xác log group đã tạo. Không thêm khoảng trắng.
-
-11\. Tạo task definition và ghi revision mới, ví dụ nexusoms-demo-api:1.
-
-Nếu AWS báo execution role không thể đọc secret, mở đúng execution role và xác nhận policy ReadNexusOmsApplicationSecret có ARN trùng Secret ARN. Nếu vừa sửa secret, ECS không tự thay env trong task đang chạy; cần deploy task mới.
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**ECS Task Definition - giá trị 1**
-
-```text
-nexusoms-demo-api
-```
-
-**CPU**
-
-```text
-CPU: 0.5 vCPU
-```
-
-**Memory**
-
-```text
-Memory: 1 GB
-```
-
-**Container port**
-
-```text
-Container port: 8080
-```
-
-**ECS Task Definition - giá trị 5**
-
-```text
-ASPNETCORE_ENVIRONMENT=Production
-ASPNETCORE_HTTP_PORTS=8080
-AWS__Region=ap-southeast-1
-WebhookQueue__Mode=Sqs
-WebhookQueue__QueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
-WebhookQueue__DeadLetterQueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
-WebhookQueue__WaitTimeSeconds=20
-```
-
-**Connection string**
-
-```text
-ConnectionStrings__Postgres <- postgresConnectionString
-```
-
-**Supabase value**
-
-```text
-Supabase__Url <- supabaseUrl
-```
-
-**System actor UUID**
-
-```text
-WebhookSimulator__SystemActorId <- systemActorId
-```
-
-**Webhook signing secret**
-
-```text
-WebhookSimulator__Secret <- webhookSigningSecret
-```
-
-**ECS Task Definition - giá trị 10**
-
-```text
-/ecs/nexusoms-demo-api
-```
-
-## Thao tác trên AWS Console
-
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
-### Bước 1 - Open task definitions dashboard + Create new task definition
-
-Thực hiện **Open task definitions dashboard + Create new task definition**.
-
-
-![Open task definitions dashboard + Create new task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/1-open-task-definitions-dashboard-create-new-task-definition.png)
-
-### Bước 2 - Configure task definition
-
-Thực hiện **Configure task definition**.
-
-**Giá trị dùng ở bước này**
-
-**ECS Task Definition - giá trị 1**
-
-```text
-nexusoms-demo-api
-```
-
-**CPU**
-
-```text
-CPU: 0.5 vCPU
-```
-
-**Memory**
-
-```text
-Memory: 1 GB
-```
-
-**ECS Task Definition - giá trị 5**
-
-```text
-ASPNETCORE_ENVIRONMENT=Production
-ASPNETCORE_HTTP_PORTS=8080
-AWS__Region=ap-southeast-1
-WebhookQueue__Mode=Sqs
-WebhookQueue__QueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-queue.fifo
-WebhookQueue__DeadLetterQueueUrl=https://sqs.ap-southeast-1.amazonaws.com/<ACCOUNT_ID>/nexusoms-demo-webhook-dlq.fifo
-WebhookQueue__WaitTimeSeconds=20
-```
-
-**Connection string**
-
-```text
-ConnectionStrings__Postgres <- postgresConnectionString
-```
-
-**Supabase value**
-
-```text
-Supabase__Url <- supabaseUrl
-```
-
-**System actor UUID**
-
-```text
-WebhookSimulator__SystemActorId <- systemActorId
-```
-
-**Webhook signing secret**
-
-```text
-WebhookSimulator__Secret <- webhookSigningSecret
-```
-
-**ECS Task Definition - giá trị 10**
-
-```text
-/ecs/nexusoms-demo-api
-```
-
-![Configure task definition](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/2-configure-task-definition.png)
-
-### Bước 3 - Configure OS, task roles
-
-Thực hiện **Configure OS, task roles**.
-
-![Configure OS, task roles](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/3-configure-os-task-roles.png)
-
-### Bước 4 - Configure Container-1 detail
-
-Thực hiện **Configure Container-1 detail**.
-
-**Giá trị dùng ở bước này**
-
-**Container port**
-
-```text
-Container port: 8080
-```
-
-![Configure Container-1 detail](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/4-configure-container-1-detail.png)
-
-### Bước 5 - Configure environment variables
-
-Thực hiện **Configure environment variables**.
-
-![Configure environment variables](/images/5-Workshop/nexusoms/5.4-Application-deployment/task-definition/5-configure-environment-variables.png)
+Chọn **Create** và ghi lại revision mới, ví dụ `nexusoms-demo-api:1`.

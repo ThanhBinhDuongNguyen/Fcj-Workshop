@@ -5,226 +5,90 @@ weight: 11
 chapter: false
 ---
 
-Distribution có S3 làm default origin và ALB làm origin cho `/api/*`. Forward Authorization/JWT nhưng không forward Host header của CloudFront đến ALB.
+Tạo một CloudFront Distribution với S3 làm origin mặc định cho frontend và ALB làm origin cho `/api/*`.
 
-## 10.2. Tạo distribution với S3 làm origin mặc định
+## Bước 1: Tạo distribution
 
-1\. Mở **CloudFront → Distributions → Create distribution**.
+Mở **CloudFront → Distributions → Create distribution**.
 
-2\. Distribution name: nexusoms-demo-web; chọn **Single website configuration**.
+![Mở trang tạo distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png)
 
-3\. Domain managed by Route 53: để trống/skip. Ta dùng domain cloudfront.net; không cần mua domain hoặc Route 53.
-
-4\. Ở **Specify origin**, chọn **Amazon S3** và bucket vừa tạo.
-
-5\. Bật **Allow private S3 bucket access to CloudFront** / tạo OAC được khuyến nghị. Chấp nhận để Console cập nhật bucket policy nếu được hỏi.
-
-6\. Origin settings và cache settings giữ đề xuất cho file tĩnh.
-
-7\. Viewer protocol policy chọn Redirect HTTP to HTTPS; default root object index.html nếu trường này có trong bước đầu hoặc bổ sung trong General sau khi tạo.
-
-8\. Security protections: chọn **Do not enable security protections**.
-
-9\. Tạo distribution. Chờ status **Deployed**.
-
-S3 origin sẽ có dạng bucket regional domain hoặc tên origin do CloudFront tạo. OAC phải được gắn với S3 origin. S3 vẫn giữ Block Public Access bật.
-
-## 10.3. Thêm ALB làm origin thứ hai
-
-Đây là bước phải làm **trước khi tạo \`/api/\*\` behavior**. Behavior chỉ liệt kê những origin đã tồn tại. Nếu dropdown origin chỉ hiện S3, ALB origin chưa được tạo - không cố chọn S3 cho API.
-
-1\. Mở distribution → tab **Origins** → **Create origin**.
-
-2\. Chọn origin type **Elastic Load Balancer** nếu Console cho chọn loại này; nếu Console yêu cầu domain, paste ALB DNS đã copy, ví dụ dạng nexusoms-demo-alb-....ap-southeast-1.elb.amazonaws.com.
-
-3\. Không gõ https:// và không thêm path vào domain origin.
-
-4\. Origin protocol: **HTTP only**, HTTP port 80 cho cấu hình demo hiện tại.
-
-5\. Origin name nexusoms-demo-alb-origin; lưu origin.
-
-6\. Xác nhận tab Origins có hai origin: S3 frontend và ALB.
-
-## 10.4. Tạo /api/\* behavior nối đến ALB
-
-1\. Distribution → **Behaviors → Create behavior**.
-
-2\. Path pattern: /api/\*.
-
-3\. Origin: chọn nexusoms-demo-alb-origin (không chọn S3).
-
-4\. Viewer protocol policy: **Redirect HTTP to HTTPS**.
-
-5\. Allowed HTTP methods: GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE.
-
-6\. Cache policy: **CachingDisabled**.
-
-7\. Origin request policy: **AllViewerExceptHostHeader** để chuyển tiếp Authorization header/JWT và query/request headers cần thiết, không chuyển Host của browser thành Host origin.
-
-8\. Tạo behavior. Behavior /api/\* phải đứng trước behavior Default (\*); CloudFront tự áp dụng path match cụ thể.
-
-**Kiểm tra:** trong Behaviors có Path pattern /api/\* → ALB origin, cache disabled. Nếu dropdown không có ALB, quay lại Origins và hoàn thành mục 10.3. Không tạo behavior API trỏ S3.
-
-## 10.6. Ghi lại CloudFront domain và ID
-
-Distribution → General. Copy riêng:
-
-- **Distribution domain name**, ví dụ dxxxxxxxxxxxx.cloudfront.net; dùng trong website URL và frontend API base URL.
-- **Distribution ID**, mã khác domain; dùng khi tạo invalidation.
-
-Không dùng ALB DNS làm website URL, không dùng S3 URL làm website URL, không dùng Distribution ID làm URL.
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**CloudFront → Distributions → Create distribution**
+Nhập tên distribution:
 
 ```text
 nexusoms-demo-web
 ```
 
-**Default root object**
+![Cấu hình distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png)
+
+## Bước 2: Chọn S3 origin cho frontend
+
+Chọn **Amazon S3**, sau đó chọn bucket `nexusoms-demo-frontend-<AWS_ACCOUNT_ID>`.
 
 ```text
+Origin access: Origin access control settings
+Viewer protocol policy: Redirect HTTP to HTTPS
 Default root object: index.html
 ```
 
-**HTTP only**
+Giữ **Block all public access** của bucket ở trạng thái bật.
+
+![Chọn S3 origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png)
+
+Chọn **Next**.
+
+![Tiếp tục cấu hình distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png)
+
+## Bước 3: Hoàn tất distribution
+
+Trong phần bảo vệ WAF, chọn **Do not enable security protections**.
+
+![Không bật WAF cho workshop](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png)
+
+Chọn **Create distribution** và chờ trạng thái **Deployed**.
+
+![Tạo distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png)
+
+## Bước 4: Thêm ALB origin
+
+Mở distribution vừa tạo, chọn **Origins → Create origin**.
+
+![Mở phần tạo origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png)
+
+Nhập cấu hình:
 
 ```text
-nexusoms-demo-alb-origin
+Origin domain: <ALB_DNS_NAME>
+Origin name: nexusoms-demo-alb-origin
+Protocol: HTTP only
+HTTP port: 80
 ```
 
-**Path pattern**
+![Cấu hình ALB origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png)
 
-```text
-Path pattern: /api/*
-```
+## Bước 5: Tạo behavior cho API
 
-**Cache policy**
+Chọn **Behaviors → Create behavior**.
 
-```text
-Cache policy: CachingDisabled
-```
+![Mở phần tạo behavior](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png)
 
-**Origin request policy**
-
-```text
-Origin request policy: AllViewerExceptHostHeader
-```
-
-## Thao tác trên AWS Console
-
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
-### Bước 1 - Open CloudFront dashboard + Create distribution
-
-Thực hiện **Open CloudFront dashboard + Create distribution**.
-
-**Giá trị dùng ở bước này**
-
-**CloudFront → Distributions → Create distribution**
-
-```text
-nexusoms-demo-web
-```
-
-![Open CloudFront dashboard + Create distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/1-open-cloudfront-dashboard-create-distribution.png)
-
-### Bước 2 - Configure distribution options
-
-Thực hiện **Configure distribution options**.
-
-**Giá trị dùng ở bước này**
-
-**Default root object**
-
-```text
-Default root object: index.html
-```
-
-**Path pattern**
+Nhập cấu hình:
 
 ```text
 Path pattern: /api/*
-```
-
-![Configure distribution options](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/2-configure-distribution-options.png)
-
-### Bước 3 - Choose S3 type + mapping to S3 FE
-
-Thực hiện **Choose S3 type + mapping to S3 FE**.
-
-
-![Choose S3 type + mapping to S3 FE](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png)
-
-### Bước 4 - Click next
-
-Thực hiện **Click next**.
-
-![Click next](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/4-click-next.png)
-
-### Bước 5 - Choose Do not enable for demo
-
-Thực hiện **Choose Do not enable for demo**.
-
-![Choose Do not enable for demo](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/5-choose-do-not-enable-for-demo.png)
-
-### Bước 6 - Click Create distribution
-
-Thực hiện **Click Create distribution**.
-
-![Click Create distribution](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/6-click-create-distribution.png)
-
-### Bước 7 - Choose origins + Create origin
-
-Thực hiện **Choose origins + Create origin**.
-
-![Choose origins + Create origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/7-choose-origins-create-origin.png)
-
-### Bước 8 - Configure setting for origin
-
-Thực hiện **Configure setting for origin**.
-
-**Giá trị dùng ở bước này**
-
-**HTTP only**
-
-```text
-nexusoms-demo-alb-origin
-```
-
-![Configure setting for origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png)
-
-### Bước 9 - Choose Behavior tab + Create behavior
-
-Thực hiện **Choose Behavior tab + Create behavior**.
-
-![Choose Behavior tab + Create behavior](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/9-choose-behavior-tab-create-behavior.png)
-
-### Bước 10 - Configure behavior setting
-
-Thực hiện **Configure behavior setting**.
-
-![Configure behavior setting](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png)
-
-### Bước 11 - Choose origin request policy
-
-Thực hiện **Choose origin request policy**.
-
-**Giá trị dùng ở bước này**
-
-**Cache policy**
-
-```text
+Origin: nexusoms-demo-alb-origin
+Viewer protocol policy: Redirect HTTP to HTTPS
+Allowed HTTP methods: GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE
 Cache policy: CachingDisabled
-```
-
-**Origin request policy**
-
-```text
 Origin request policy: AllViewerExceptHostHeader
 ```
 
-![Choose origin request policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png)
+![Cấu hình behavior cho API](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/10-configure-behavior-setting.png)
+
+![Chọn Origin request policy](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/11-choose-origin-request-policy.png)
+
+Chọn **Create behavior**. Kiểm tra `/api/*` đang trỏ đến ALB origin và tắt cache.
+
+## Bước 6: Ghi lại thông tin CloudFront
+
+Ghi lại **Distribution ID** và **Distribution domain name** để cấu hình GitHub Actions.

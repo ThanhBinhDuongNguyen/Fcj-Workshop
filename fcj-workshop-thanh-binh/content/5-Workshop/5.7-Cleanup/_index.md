@@ -6,6 +6,6 @@ chapter: false
 pre: " <b> 5.7 </b> "
 ---
 
-Delete resources in the documented order to avoid dependency errors.
+Delete resources in the order below to avoid dependency errors.
 
 1. [Clean up AWS resources](./resource-cleanup/)

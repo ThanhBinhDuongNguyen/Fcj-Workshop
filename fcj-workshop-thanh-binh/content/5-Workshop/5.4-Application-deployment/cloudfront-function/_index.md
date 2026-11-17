@@ -1,125 +1,72 @@
 ---
-title: "CloudFront function for SPA routing"
+title: "CloudFront Function for SPA"
 date: 2026-11-13
 weight: 12
 chapter: false
 ---
 
-The function rewrites extensionless frontend routes to `/index.html` while preserving `/api/*`, static assets, and query strings.
+Create a CloudFront Function that serves React routes without file extensions from `/index.html`.
 
-## Procedure
+## Step 1: Create the function
 
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
+Open **CloudFront → Functions → Create function**.
 
-## Values to enter or copy
-
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
-
-**CloudFront function for SPA routing - input 1**
+![Open the function creation page](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png)
 
 ```text
-nexusoms-demo-spa-routing
+Function name: nexusoms-demo-spa-routing
+Runtime: cloudfront-js-2.0
 ```
 
-**Runtime**
+![Configure the function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png)
 
-```text
-Runtime: JavaScript 2.0
+## Step 2: Add the SPA rewrite code
+
+Delete the sample code and paste this entire block:
+
+```javascript
+function handler(event) {
+    var request = event.request;
+    var uri = request.uri;
+
+    // Rewrite SPA routes to index.html while preserving static files.
+    if (uri === "/" || uri.indexOf(".") === -1) {
+        request.uri = "/index.html";
+    }
+
+    return request;
+}
 ```
 
-**Event**
+![Paste the code into the Build section](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png)
+
+## Step 3: Publish the function
+
+Choose **Save changes**, then choose **Publish**.
+
+![Publish the function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png)
+
+## Step 4: Associate the function with the distribution
+
+Open the distribution → **Behaviors** → select **Default (*) → Edit**.
+
+![Open the Default behavior](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png)
+
+Under **Function associations**, select:
 
 ```text
-Event: Viewer request
-```
-
-**Behavior**
-
-```text
-Behavior: Default (*)
-```
-
-**Stage**
-
-```text
+Event type: Viewer request
+Function type: CloudFront Functions
+Function ARN/Name: nexusoms-demo-spa-routing
 Stage: LIVE
 ```
 
-## AWS Console walkthrough
+Do not associate the function with the `/api/*` behavior.
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
+![Associate the function with Viewer request](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
 
-### Step 1 - Open Functions dashboard + Create function
+## Step 5: Verify
 
-Complete **Open Functions dashboard + Create function**.
+Wait for the distribution to become **Deployed**. Copy its domain name and open `/app?page=dashboard`.
 
-
-![Open Functions dashboard + Create function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png)
-
-### Step 2 - Configure function details
-
-Complete **Configure function details**.
-
-**Values used in this step**
-
-**CloudFront function for SPA routing - input 1**
-
-```text
-nexusoms-demo-spa-routing
-```
-
-**Runtime**
-
-```text
-Runtime: JavaScript 2.0
-```
-
-**Event**
-
-```text
-Event: Viewer request
-```
-
-**Behavior**
-
-```text
-Behavior: Default (*)
-```
-
-**Stage**
-
-```text
-Stage: LIVE
-```
-
-![Configure function details](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png)
-
-### Step 3 - Paste code build section
-
-Complete **Paste code build section**.
-
-![Paste code build section](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png)
-
-### Step 4 - Publish function
-
-Complete **Publish function**.
-
-![Publish function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png)
-
-### Step 5 - Open distribution detail + choose behaviors + edit
-
-Complete **Open distribution detail + choose behaviors + edit**.
-
-![Open distribution detail + choose behaviors + edit](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png)
-
-### Step 6 - Configure Function associations
-
-Complete **Configure Function associations**.
-
-![Configure Function associations](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
-
-### Step 7 - Copy Distribution domain name
-
-Complete **Copy Distribution domain name**.
-
-![Copy Distribution domain name](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png)
+![Copy the Distribution domain name](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png)

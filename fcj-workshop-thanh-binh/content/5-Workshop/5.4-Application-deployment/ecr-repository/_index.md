@@ -1,96 +1,46 @@
 ---
 title: "ECR repository"
-date: 2026-11-13
+date: 2026-11-17
 weight: 1
 chapter: false
 ---
 
-Create a private repository, enable immutable tags and scan on push, and copy the URI from the console instead of typing it manually.
+## 1. Open Amazon ECR
 
-## Procedure
+Select **Asia Pacific (Singapore) / ap-southeast-1**.
 
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
+Open **Amazon ECR → Private registry → Repositories → Create repository**.
 
-## Values to enter or copy
+![Open ECR and create a repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png)
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+## 2. Configure the Repository
 
-**ECR repository - input 1**
-
-```text
-nexusoms-demo-api
-```
-
-**Private subnet value**
+Enter:
 
 ```text
-Private
-```
-
-**ECR repository - input 3**
-
-```text
-Immutable
-```
-
-**Scan on push**
-
-```text
+Visibility: Private
+Repository name: nexusoms-demo-api
+Image tag mutability: Immutable
 Scan on push: Enabled
+Encryption: AES-256
 ```
 
-## AWS Console walkthrough
+![Configure the private repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png)
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
+## 3. Create the Repository
 
-### Step 1 - Open ECR dashboard and create repository
+Review the configuration and choose **Create repository**.
 
-Complete **Open ECR dashboard and create repository**.
+![Review encryption and create the repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png)
 
-**Values used in this step**
+## 4. Copy the Repository URI
 
-**ECR repository - input 1**
+Open `nexusoms-demo-api` and choose **Copy URI**.
+
+![Copy the ECR repository URI](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png)
+
+Save the URI for the backend image build and push steps:
 
 ```text
-nexusoms-demo-api
+<ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/nexusoms-demo-api
 ```
-
-**ECR repository - input 3**
-
-```text
-Immutable
-```
-
-![Open ECR dashboard and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png)
-
-### Step 2 - Configure private repository
-
-Complete **Configure private repository**.
-
-**Values used in this step**
-
-**Private subnet value**
-
-```text
-Private
-```
-
-**Scan on push**
-
-```text
-Scan on push: Enabled
-```
-
-![Configure private repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png)
-
-### Step 3 - Confirm encryption and create repository
-
-Complete **Confirm encryption and create repository**.
-
-![Confirm encryption and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png)
-
-### Step 4 - Copy ECR repository URI
-
-Complete **Copy ECR repository URI**.
-
-![Copy ECR repository URI](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png)

@@ -196,7 +196,6 @@ nexusoms-demo-github-actions-role
 
 ![Tạo inline deployment policy](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/6-create-inline-deployment-policy.png)
 
-Không lưu AWS access key trong GitHub Secrets.
 
 
 
@@ -244,7 +243,7 @@ VITE_SUPABASE_ANON_KEY=<SUPABASE_PUBLISHABLE_OR_ANON_KEY>
 
 ![Hoàn tất repository secrets](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/12-complete-repository-secrets.png)
 
-Supabase publishable/anon key được thiết kế để dùng ở browser nhưng vẫn đặt trong GitHub Secret để quản lý cấu hình build. Không bao giờ đưa service-role key vào frontend.
+Dùng Supabase publishable/anon key cho `VITE_SUPABASE_ANON_KEY`.
 
 
 

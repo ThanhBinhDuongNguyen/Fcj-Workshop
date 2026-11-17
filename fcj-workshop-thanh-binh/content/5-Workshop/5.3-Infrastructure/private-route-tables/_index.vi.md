@@ -40,29 +40,19 @@ nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
 
 ## Thao tác trên AWS Console
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
 ### Bước 1 - Open Route tables dashboard + Click create route table
-
-Thực hiện **Open Route tables dashboard + Click create route table**.
 
 ![Open Route tables dashboard + Click create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/1-open-route-tables-dashboard-click-create-route-table.png)
 
 ### Bước 2 - Fill Name + Choose VPC + Create route table
 
-Thực hiện **Fill Name + Choose VPC + Create route table**.
-
 ![Fill Name + Choose VPC + Create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/2-fill-name-choose-vpc-create-route-table.png)
 
 ### Bước 3 - Choose routes + Edit routes
 
-Thực hiện **Choose routes + Edit routes**.
-
 ![Choose routes + Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/3-choose-routes-edit-routes.png)
 
 ### Bước 4 - Add Route + Configure NAT Gateway
-
-Thực hiện **Add Route + Configure NAT Gateway**.
 
 **Giá trị dùng ở bước này**
 
@@ -82,18 +72,12 @@ nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
 
 ### Bước 5 - Choose Subnet associations + Edit subnet associations
 
-Thực hiện **Choose Subnet associations + Edit subnet associations**.
-
 ![Choose Subnet associations + Edit subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/5-choose-subnet-associations-edit-subnet-associations.png)
 
 ### Bước 6 - Choose subnet private a + Save associations
 
-Thực hiện **Choose subnet private a + Save associations**.
-
 ![Choose subnet private a + Save associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/6-choose-subnet-private-a-save-associations.png)
 
 ### Bước 7 - Complete create private route table
-
-Thực hiện **Complete create private route table**.
 
 ![Complete create private route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/7-complete-create-private-route-table.png)

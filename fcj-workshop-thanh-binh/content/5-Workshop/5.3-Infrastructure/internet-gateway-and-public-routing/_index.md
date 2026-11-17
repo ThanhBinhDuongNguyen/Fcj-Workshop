@@ -7,10 +7,6 @@ chapter: false
 
 Attach an internet gateway to the VPC and use one public route table for both public subnets.
 
-## Procedure
-
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
-
 ## Values to enter or copy
 
 > Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
@@ -35,42 +31,28 @@ nexusoms-demo-public-rt
 
 ## AWS Console walkthrough
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
-
 ### Step 1 - Open IGW dashboard + Create IGW
-
-Complete **Open IGW dashboard + Create IGW**.
 
 
 ![Open IGW dashboard + Create IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png)
 
 ### Step 2 - Put name tag + Create IGW
 
-Complete **Put name tag + Create IGW**.
-
 ![Put name tag + Create IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png)
 
 ### Step 3 - Attach to a VPC
-
-Complete **Attach to a VPC**.
 
 ![Attach to a VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png)
 
 ### Step 4 - Choose VPC + Click Attach IGW
 
-Complete **Choose VPC + Click Attach IGW**.
-
 ![Choose VPC + Click Attach IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png)
 
 ### Step 5 - Open Route tables dashboard + Create Route table
 
-Complete **Open Route tables dashboard + Create Route table**.
-
 ![Open Route tables dashboard + Create Route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png)
 
 ### Step 6 - Fill Name + Choose VPC + Create route table
-
-Complete **Fill Name + Choose VPC + Create route table**.
 
 **Values used in this step**
 
@@ -84,13 +66,9 @@ Complete **Fill Name + Choose VPC + Create route table**.
 
 ### Step 7 - Choose Routes + Edit routes
 
-Complete **Choose Routes + Edit routes**.
-
 ![Choose Routes + Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png)
 
 ### Step 8 - Add route + choose Internet gateway + Save changes
-
-Complete **Add route + choose Internet gateway + Save changes**.
 
 **Values used in this step**
 
@@ -104,13 +82,9 @@ nexusoms-demo-igw
 
 ### Step 9 - Choose subnet associations + Edit subnet associations
 
-Complete **Choose subnet associations + Edit subnet associations**.
-
 ![Choose subnet associations + Edit subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png)
 
 ### Step 10 - Choose 2 public subnet + Save associations
-
-Complete **Choose 2 public subnet + Save associations**.
 
 **Values used in this step**
 

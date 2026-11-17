@@ -17,5 +17,3 @@ VITE_SUPABASE_ANON_KEY=<SUPABASE_PUBLISHABLE_OR_ANON_KEY>
 ```
 
 ![Configure frontend environment values](/images/5-Workshop/nexusoms/5.2-Prerequisite/frontend-environment/2-configure-frontend-env-values.png)
-
-Do not commit `.env.local` to Git.

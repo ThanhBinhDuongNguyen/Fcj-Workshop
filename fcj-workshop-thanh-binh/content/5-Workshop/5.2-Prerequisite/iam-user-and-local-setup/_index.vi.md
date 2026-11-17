@@ -53,7 +53,7 @@ nexusoms-demo-powershell
 
 ![Nhập description](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png)
 
-Lưu Access Key ID và Secret Access Key. Không đưa hai giá trị này lên GitHub.
+Lưu Access Key ID và Secret Access Key.
 
 ![Lưu access key](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png)
 

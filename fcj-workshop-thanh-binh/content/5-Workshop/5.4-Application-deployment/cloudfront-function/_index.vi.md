@@ -5,160 +5,70 @@ weight: 12
 chapter: false
 ---
 
-Function rewrite các đường dẫn frontend không có đuôi file về `/index.html`, nhưng giữ nguyên `/api/*`, file tĩnh và query string.
+Tạo CloudFront Function để các đường dẫn React không có đuôi file được phục vụ bằng `/index.html`.
 
-## 10.5. SPA deep link bằng CloudFront Function
+## Bước 1: Tạo function
 
-React/Vite chỉ có index.html. Khi mở thẳng /app?page=dashboard, S3 tìm object tên /app và có thể trả XML AccessDenied. CloudFront Function ở **Viewer request của Default (\*) behavior** đổi URI frontend không có đuôi file thành /index.html. Query ?page=dashboard được giữ nguyên.
+Mở **CloudFront → Functions → Create function**.
 
-1\. CloudFront → **Functions → Create function**.
+![Mở trang tạo function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png)
 
-2\. Function name: nexusoms-demo-spa-routing; runtime JavaScript 2.0 nếu Console hỏi.
+Nhập cấu hình:
 
-3\. Thay code mẫu bằng đoạn sau:
-
+```text
+Function name: nexusoms-demo-spa-routing
+Runtime: cloudfront-js-2.0
 ```
+
+![Cấu hình function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png)
+
+## Bước 2: Thêm code rewrite SPA
+
+Xóa code mẫu và dán toàn bộ đoạn sau:
+
+```javascript
 function handler(event) {
     var request = event.request;
     var uri = request.uri;
-```
 
-```
-    // Route SPA như /app hoặc /app?page=dashboard về tài liệu React.
-    // File tĩnh như /assets/index-abc.js vẫn giữ nguyên URI.
+    // Chuyển route SPA về index.html nhưng giữ nguyên file tĩnh.
     if (uri === "/" || uri.indexOf(".") === -1) {
         request.uri = "/index.html";
     }
-```
 
-```
     return request;
 }
 ```
 
-4\. Chọn **Save changes**, sau đó **Publish function**. Chọn stage **LIVE** khi gắn vào distribution.
+![Dán code vào Build section](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png)
 
-5\. Distribution → **Behaviors** → chọn Default (\*) → **Edit**.
+## Bước 3: Publish function
 
-6\. Phần **Function associations** → Viewer request → CloudFront Functions → chọn nexusoms-demo-spa-routing, stage **LIVE**; lưu.
-
-7\. Không gắn function này lên /api/\* behavior. Không đổi ALB/API origin.
-
-8\. Chờ distribution status **Deployed**, rồi tạo invalidation /\* ở mục Invalidations.
-
-Không cấu hình custom error 403/404 thành trang /index.html trả HTTP 200 khi đã dùng Function. Custom error áp dụng cho lỗi thật từ origin và có thể biến lỗi API/S3 thành HTML 200, khiến trình duyệt báo lỗi khó hiểu. Function xử lý đường dẫn SPA trước khi S3 tìm object, còn lỗi quyền thật vẫn phải hiện ra để xử lý đúng.
-
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**Functions → Create function**
-
-```text
-nexusoms-demo-spa-routing
-```
-
-**Runtime**
-
-```text
-Runtime: JavaScript 2.0
-```
-
-**Event**
-
-```text
-Event: Viewer request
-```
-
-**Behavior**
-
-```text
-Behavior: Default (*)
-```
-
-**Stage**
-
-```text
-Stage: LIVE
-```
-
-## Thao tác trên AWS Console
-
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
-
-### Bước 1 - Open Functions dashboard + Create function
-
-Thực hiện **Open Functions dashboard + Create function**.
-
-**Giá trị dùng ở bước này**
-
-**Functions → Create function**
-
-```text
-nexusoms-demo-spa-routing
-```
-
-![Open Functions dashboard + Create function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/1-open-functions-dashboard-create-function.png)
-
-### Bước 2 - Configure function details
-
-Thực hiện **Configure function details**.
-
-**Giá trị dùng ở bước này**
-
-**Runtime**
-
-```text
-Runtime: JavaScript 2.0
-```
-
-**Event**
-
-```text
-Event: Viewer request
-```
-
-**Behavior**
-
-```text
-Behavior: Default (*)
-```
-
-**Stage**
-
-```text
-Stage: LIVE
-```
-
-![Configure function details](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png)
-
-### Bước 3 - Paste code build section
-
-Thực hiện **Paste code build section**.
-
-![Paste code build section](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png)
-
-### Bước 4 - Publish function
-
-Thực hiện **Publish function**.
+Chọn **Save changes**, sau đó chọn **Publish**.
 
 ![Publish function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png)
 
-### Bước 5 - Open distribution detail + choose behaviors + edit
+## Bước 4: Gắn function vào distribution
 
-Thực hiện **Open distribution detail + choose behaviors + edit**.
+Mở distribution → **Behaviors** → chọn **Default (*) → Edit**.
 
-![Open distribution detail + choose behaviors + edit](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png)
+![Mở Default behavior](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/5-open-distribution-detail-choose-behaviors-edit.png)
 
-### Bước 6 - Configure Function associations
+Trong **Function associations**, chọn:
 
-Thực hiện **Configure Function associations**.
+```text
+Event type: Viewer request
+Function type: CloudFront Functions
+Function ARN/Name: nexusoms-demo-spa-routing
+Stage: LIVE
+```
 
-![Configure Function associations](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
+Không gắn function vào behavior `/api/*`.
 
-### Bước 7 - Copy Distribution domain name
+![Gắn function vào Viewer request](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
 
-Thực hiện **Copy Distribution domain name**.
+## Bước 5: Kiểm tra
 
-![Copy Distribution domain name](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png)
+Chờ distribution chuyển sang **Deployed**. Sao chép domain name và mở đường dẫn `/app?page=dashboard`.
+
+![Sao chép Distribution domain name](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png)

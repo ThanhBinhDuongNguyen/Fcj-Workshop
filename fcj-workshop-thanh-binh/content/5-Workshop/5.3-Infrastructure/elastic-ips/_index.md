@@ -5,11 +5,7 @@ weight: 4
 chapter: false
 ---
 
-Allocate two Elastic IP addresses in `ap-southeast-1`. The screenshots show the first run; repeat it with the second Name tag. These addresses are attached to NAT gateways A and B.
-
-## Procedure
-
-Follow the screenshots in order and keep all resource names consistent. The Vietnamese page contains the authoritative field-by-field wording captured from the current AWS Console used for this workshop. AWS Console labels are intentionally kept in English so they can be searched directly.
+Allocate two Elastic IP addresses in `ap-southeast-1`. Assign a separate Name tag to each address, then attach them to NAT gateways A and B.
 
 ## Values to enter or copy
 
@@ -29,18 +25,12 @@ nexusoms-demo-nat-eip-b
 
 ## AWS Console walkthrough
 
-> When a resource must be created twice, the screenshots show only the first run. Repeat the same action with the second value set documented in the detailed instructions.
-
 ### Step 1 - Open Elastic IPs + Allocate Elastic IP
-
-Complete **Open Elastic IPs + Allocate Elastic IP**.
 
 
 ![Open Elastic IPs + Allocate Elastic IP](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/1-open-elastic-ips-allocate-elastic-ip.png)
 
 ### Step 2 - Fill the name tag for Elastic IP + Allocate
-
-Complete **Fill the name tag for Elastic IP + Allocate**.
 
 **Values used in this step**
 

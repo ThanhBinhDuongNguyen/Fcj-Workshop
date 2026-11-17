@@ -1,110 +1,46 @@
 ---
 title: "ECR repository"
-date: 2026-11-13
+date: 2026-11-17
 weight: 1
 chapter: false
 ---
 
-Tạo private repository, bật immutable tag và scan on push. Luôn copy URI từ Console thay vì tự gõ.
+## 1. Mở Amazon ECR
 
-## 8.1. Tạo ECR repository theo giao diện hiện tại
+Chọn Region **Asia Pacific (Singapore) / ap-southeast-1**.
 
-1\. Chọn region ap-southeast-1.
+Mở **Amazon ECR → Private registry → Repositories → Create repository**.
 
-2\. Mở **Amazon ECR → Private registry → Repositories → Create repository**.
+![Mở ECR và tạo repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png)
 
-3\. Visibility: **Private**. Repository name: nexusoms-demo-api.
+## 2. Cấu hình repository
 
-4\. Image tag mutability: **Immutable**.
-
-5\. Encryption: giữ AES-256 mặc định.
-
-6\. Phần **Image scanning settings - deprecated** có thể chỉ còn toggle **Scan on push**. Đây là cấu hình cũ đã được chuyển lên registry-level; không cần tìm menu Basic scanning. Để tạo repository có thể giữ toggle theo lựa chọn demo của bạn; việc scanning không quyết định task có pull image được hay không. Nếu cần bật scan, bật Scan on push hoặc cấu hình trong **ECR → Private registry → Features & settings** sau này.
-
-7\. Tạo repository. Mở repository và dùng **Copy URI**. URI phải kết thúc bằng /nexusoms-demo-api; lưu lại nguyên văn.
-
-Đừng tự gõ account ID trong URI nếu có thể copy từ Console. Không dùng latest: repository immutable từ chối ghi đè tag đã tồn tại.
-
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**Private**
+Nhập:
 
 ```text
-nexusoms-demo-api
-```
-
-**Private subnet value**
-
-```text
-Private
-```
-
-**Private**
-
-```text
-Immutable
-```
-
-**Scan on push**
-
-```text
+Visibility: Private
+Repository name: nexusoms-demo-api
+Image tag mutability: Immutable
 Scan on push: Enabled
+Encryption: AES-256
 ```
 
-## Thao tác trên AWS Console
+![Cấu hình private repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png)
 
-> Nếu một tài nguyên phải tạo hai lần, ảnh chỉ minh họa lần đầu. Hãy lặp lại cùng thao tác bằng bộ giá trị thứ hai trong phần hướng dẫn chi tiết.
+## 3. Tạo repository
 
-### Bước 1 - Open ECR dashboard and create repository
+Kiểm tra lại cấu hình rồi chọn **Create repository**.
 
-Thực hiện **Open ECR dashboard and create repository**.
+![Kiểm tra mã hóa và tạo repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png)
 
+## 4. Sao chép Repository URI
 
-![Open ECR dashboard and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/1-open-ecr-dashboard-and-create-repository.png)
+Mở `nexusoms-demo-api` và chọn **Copy URI**.
 
-### Bước 2 - Configure private repository
+![Sao chép ECR Repository URI](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png)
 
-Thực hiện **Configure private repository**.
-
-**Giá trị dùng ở bước này**
-
-**Private**
+Lưu URI để build và push backend image:
 
 ```text
-nexusoms-demo-api
+<ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/nexusoms-demo-api
 ```
-
-**Private subnet value**
-
-```text
-Private
-```
-
-**Private**
-
-```text
-Immutable
-```
-
-**Scan on push**
-
-```text
-Scan on push: Enabled
-```
-
-![Configure private repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/2-configure-private-repository.png)
-
-### Bước 3 - Confirm encryption and create repository
-
-Thực hiện **Confirm encryption and create repository**.
-
-![Confirm encryption and create repository](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/3-confirm-encryption-and-create-repository.png)
-
-### Bước 4 - Copy ECR repository URI
-
-Thực hiện **Copy ECR repository URI**.
-
-![Copy ECR repository URI](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecr-repository/4-copy-ecr-repository-uri.png)
