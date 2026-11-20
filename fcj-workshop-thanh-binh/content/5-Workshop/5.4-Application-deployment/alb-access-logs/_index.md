@@ -57,3 +57,12 @@ Verify this test object in the bucket:
 ```text
 alb-access/AWSLogs/<ACCOUNT_ID>/ELBAccessLogTestFile
 ```
+
+Send an API request through CloudFront, wait a few minutes, and verify that a `.log.gz` file appears under the same prefix. `ELBAccessLogTestFile` confirms write access; the `.log.gz` file contains actual requests.
+
+If the ALB reports `Access Denied`, verify that:
+
+- The ALB and S3 bucket are both in `ap-southeast-1`.
+- The bucket uses SSE-S3 and keeps Block Public Access enabled.
+- The prefix is `alb-access`.
+- The CloudTrail statements remain in the bucket policy.

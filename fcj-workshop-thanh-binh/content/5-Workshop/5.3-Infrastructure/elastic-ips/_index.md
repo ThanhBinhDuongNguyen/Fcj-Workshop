@@ -1,49 +1,41 @@
 ---
-title: "Allocate Elastic IP addresses"
-date: 2026-11-13
+title: "Allocate Elastic IPs"
+date: 2026-11-20
 weight: 4
 chapter: false
 ---
 
-Allocate two Elastic IP addresses in `ap-southeast-1`. Assign a separate Name tag to each address, then attach them to NAT gateways A and B.
+Allocate two Elastic IPs and record their Allocation IDs for the NAT Gateways.
 
-## Values to enter or copy
+## Step 1: Allocate Elastic IP A
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+Open **VPC → Elastic IPs → Allocate Elastic IP address**.
 
-**NAT Gateway value**
+![Open the Elastic IP allocation page](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/1-open-elastic-ips-allocate-elastic-ip.png)
 
-```text
-nexusoms-demo-nat-eip-a
-```
-
-**NAT Gateway value**
+Keep the default settings, add the tag, and choose **Allocate**:
 
 ```text
-nexusoms-demo-nat-eip-b
+Key: Name
+Value: nexusoms-demo-nat-eip-a
 ```
 
-## AWS Console walkthrough
+![Add the Elastic IP Name tag](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/2-fill-the-name-tag-for-elastic-ip-allocate.png)
 
-### Step 1 - Open Elastic IPs + Allocate Elastic IP
+## Step 2: Allocate Elastic IP B
 
-
-![Open Elastic IPs + Allocate Elastic IP](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/1-open-elastic-ips-allocate-elastic-ip.png)
-
-### Step 2 - Fill the name tag for Elastic IP + Allocate
-
-**Values used in this step**
-
-**NAT Gateway value**
+Repeat with:
 
 ```text
-nexusoms-demo-nat-eip-a
+Key: Name
+Value: nexusoms-demo-nat-eip-b
 ```
 
-**NAT Gateway value**
+## Step 3: Record the values
 
-```text
-nexusoms-demo-nat-eip-b
-```
+| Name | Public IPv4 | Allocation ID |
+| --- | --- | --- |
+| `nexusoms-demo-nat-eip-a` | `<EIP_A>` | `<ALLOCATION_ID_A>` |
+| `nexusoms-demo-nat-eip-b` | `<EIP_B>` | `<ALLOCATION_ID_B>` |
 
-![Fill the name tag for Elastic IP + Allocate](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/2-fill-the-name-tag-for-elastic-ip-allocate.png)
+The NAT Gateway dropdown may show only the IP address and Allocation ID. Use this table to select the correct address.

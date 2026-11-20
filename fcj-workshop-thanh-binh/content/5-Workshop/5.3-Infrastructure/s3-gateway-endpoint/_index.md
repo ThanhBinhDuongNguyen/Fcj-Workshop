@@ -1,74 +1,55 @@
 ---
-title: "S3 gateway endpoint"
-date: 2026-11-13
+title: "S3 Gateway Endpoint"
+date: 2026-11-20
 weight: 8
 chapter: false
 ---
 
-The S3 gateway endpoint has no hourly charge and keeps private-subnet S3 traffic off the NAT gateways.
+Create one S3 Gateway Endpoint for both private route tables.
 
-## Values to enter or copy
+## Step 1: Create the endpoint
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+Open **VPC → Endpoints → Create endpoint**.
 
-**S3 gateway endpoint - input 1**
+![Open the endpoint creation page](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1-open-endpoints-dashboard-create-endpoint.png)
+
+## Step 2: Configure the basic settings
+
+```text
+Name tag: nexusoms-demo-s3-endpoint
+Service category: AWS services
+```
+
+![Configure the endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2-fill-name-tag-choose-type.png)
+
+## Step 3: Select the S3 service
+
+Search for and select:
 
 ```text
 com.amazonaws.ap-southeast-1.s3
+Type: Gateway
 ```
 
-**Private subnet value**
+![Select the S3 Gateway service](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3-choose-s3-service.png)
+
+## Step 4: Select the VPC and route tables
 
 ```text
-nexusoms-demo-private-a-rt
+VPC: nexusoms-demo-vpc
+Route tables: nexusoms-demo-private-a-rt
+Route tables: nexusoms-demo-private-b-rt
+Policy: Full access
 ```
 
-**Private subnet value**
+A Gateway Endpoint does not use a Security Group.
 
-```text
-nexusoms-demo-private-b-rt
-```
+![Select both private route tables](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4-choose-2-private-route-tables-full-access-for-policy.png)
 
-## AWS Console walkthrough
+## Step 5: Finish
 
-### Step 1 - Open Endpoints dashboard + Create endpoint
+Choose **Create endpoint** and wait for **Available**.
 
-**Values used in this step**
+![Create the S3 Gateway Endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png)
 
-**S3 gateway endpoint - input 1**
-
-```text
-com.amazonaws.ap-southeast-1.s3
-```
-
-![Open Endpoints dashboard + Create endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1-open-endpoints-dashboard-create-endpoint.png)
-
-### Step 2 - Fill name tag + Choose type
-
-![Fill name tag + Choose type](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2-fill-name-tag-choose-type.png)
-
-### Step 3 - Choose S3 service
-
-![Choose S3 service](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3-choose-s3-service.png)
-
-### Step 4 - Choose 2 private route tables + Full access for policy
-
-**Values used in this step**
-
-**Private subnet value**
-
-```text
-nexusoms-demo-private-a-rt
-```
-
-**Private subnet value**
-
-```text
-nexusoms-demo-private-b-rt
-```
-
-![Choose 2 private route tables + Full access for policy](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4-choose-2-private-route-tables-full-access-for-policy.png)
-
-### Step 5 - Click create endpoint
-
-![Click create endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png)
+This endpoint handles only S3 traffic. Connections to Supabase and external APIs still use the NAT Gateways.

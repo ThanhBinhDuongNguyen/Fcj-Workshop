@@ -9,3 +9,4 @@ pre: " <b> 5.6 </b> "
 Mở CloudFront domain và kiểm tra toàn bộ luồng ứng dụng.
 
 1. [Kiểm thử end-to-end](./end-to-end-verification/)
+2. [Tạo CloudWatch Alarm](./cloudwatch-alarms/)

@@ -1,52 +1,83 @@
 ---
 title: "Repository thực hành"
-date: 2026-11-15
+date: 2026-11-20
 weight: 1
 chapter: false
 ---
 
-## 1. Clone source code
+Source chính của workshop:
 
-Mở PowerShell tại thư mục muốn lưu project.
+```text
+https://github.com/sneakez/nexus-aws
+```
+
+## 1. Clone source để triển khai thủ công
+
+Mở PowerShell tại thư mục muốn lưu project:
 
 ```powershell
-git clone https://github.com/ThanhBinhDuongNguyen/nexusoms-workshop.git
-cd nexusoms-workshop
+git clone https://github.com/sneakez/nexus-aws.git
+Set-Location nexus-aws
+git status
+git branch --show-current
+git log -1 --oneline
+git rev-parse HEAD
+Test-Path backend/Dockerfile
+Test-Path supabase/seed.sql
+Test-Path .github/workflows/deploy-aws.yml
+```
+
+Kết quả cần đạt:
+
+```text
+Branch: main
+Working tree: clean
+Ba lệnh Test-Path: True
+```
+
+Ghi lại commit SHA từ `git rev-parse HEAD`. Thực hiện toàn bộ workshop trên cùng commit này.
+
+## 2. Dùng source đã có
+
+Mở PowerShell tại thư mục gốc của repository:
+
+```powershell
+git status
+git remote -v
+git branch --show-current
+git fetch --all --prune
+git log -1 --oneline
+git rev-parse HEAD
+Test-Path backend/Dockerfile
+Test-Path supabase/seed.sql
+Test-Path .github/workflows/deploy-aws.yml
+```
+
+Kiểm tra một remote trỏ đến `sneakez/nexus-aws`. Ba lệnh `Test-Path` phải trả về `True`.
+
+Nếu source đang có thay đổi chưa commit, lưu phần đang làm trước khi pull hoặc đổi branch.
+
+## 3. Fork repository để thực hành CI/CD
+
+Phần GitHub Actions yêu cầu quyền mở **Settings**, tạo secrets và variables. Mở repository chính rồi chọn **Fork**:
+
+```text
+https://github.com/sneakez/nexus-aws
+```
+
+Sau khi fork, clone repository thuộc tài khoản của bạn:
+
+```powershell
+git clone https://github.com/<GITHUB_OWNER>/nexus-aws.git nexusoms-workshop
+Set-Location nexusoms-workshop
+git remote add upstream https://github.com/sneakez/nexus-aws.git
+git remote -v
 git status
 ```
 
-Repository này chỉ chứa source, migration, cấu hình build và workflow cần cho bài lab.
-
-## 2. Tạo repository riêng
-
-Mở GitHub → **New repository**.
-
-![Tạo repository mới](/images/5-Workshop/nexusoms/5.2-Prerequisite/github-repository/1-create-github-repository.png)
-
-Nhập tên repository. Không tạo README, `.gitignore` hoặc license.
+Kết quả cần đạt:
 
 ```text
-nexusoms-workshop
+origin: repository fork của bạn
+upstream: https://github.com/sneakez/nexus-aws.git
 ```
-
-![Cấu hình repository](/images/5-Workshop/nexusoms/5.2-Prerequisite/github-repository/2-configure-github-repository.png)
-
-Sao chép URL của repository vừa tạo.
-
-
-Đổi remote và push source lên repository mới.
-
-```powershell
-git remote rename origin upstream
-git remote add origin https://github.com/<GITHUB_OWNER>/nexusoms-workshop.git
-git push -u origin main
-```
-
-Kiểm tra:
-
-```powershell
-git remote -v
-git branch --show-current
-```
-
-Kết quả cần đạt: remote `origin` trỏ đến repository mới và branch hiện tại là `main`.

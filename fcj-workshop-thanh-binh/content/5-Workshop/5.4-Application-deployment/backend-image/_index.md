@@ -19,10 +19,7 @@ $EcrRepositoryUri = "$AccountId.dkr.ecr.$Region.amazonaws.com/nexusoms-demo-api"
 $Registry = $EcrRepositoryUri.Split('/')[0]
 $ImageTag = "v1-initial"
 
-aws ecr get-login-password `
-  --profile nexusoms-demo `
-  --region $Region |
-  docker login --username AWS --password-stdin $Registry
+aws ecr get-login-password --profile nexusoms-demo --region $Region | docker login --username AWS --password-stdin $Registry
 
 docker build `
   --file backend/Dockerfile `
@@ -50,3 +47,28 @@ $BackendImageUri
 ![Push the backend image to ECR](/images/5-Workshop/nexusoms/5.4-Application-deployment/backend-image/2-bootstrap-push-image-to-ecr.png)
 
 Record `$BackendImageUri` for the task definition.
+
+## 3. Troubleshoot Docker credentials on Windows
+
+If `docker login` reports `The stub received bad data` or `docker push` reports `no basic auth credentials`, do not rebuild the image. Push with a temporary Docker config:
+
+The `auth` value in the temporary file is Base64-encoded, not encrypted. The file is created outside the repository and removed in `finally`.
+
+```powershell
+$DockerConfigDir = Join-Path $env:TEMP "nexusoms-docker-$([guid]::NewGuid())"
+
+try {
+  New-Item -ItemType Directory -Path $DockerConfigDir -Force | Out-Null
+  $EcrPassword = aws ecr get-login-password --profile nexusoms-demo --region $Region
+  $Auth = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("AWS:$EcrPassword"))
+  @{ auths = @{ $Registry = @{ auth = $Auth } } } |
+    ConvertTo-Json -Depth 4 |
+    Set-Content -LiteralPath (Join-Path $DockerConfigDir "config.json") -Encoding utf8
+
+  docker --config $DockerConfigDir push "$EcrRepositoryUri`:$ImageTag"
+} finally {
+  Remove-Item -LiteralPath $DockerConfigDir -Recurse -Force -ErrorAction SilentlyContinue
+}
+```
+
+Open the ECR repository and verify that the `v1-initial` tag and image digest are present.

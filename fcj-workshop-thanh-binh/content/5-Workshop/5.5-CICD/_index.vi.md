@@ -44,26 +44,31 @@ GitHub branch: main
 
 Chọn **Next**. Tại **Add permissions**, chọn **Create inline policy → JSON** và dùng policy bên dưới.
 
-Repository GitHub mới dùng immutable owner ID và repository ID trong OIDC subject. Lấy subject chính xác:
+Đọc cấu hình OIDC subject của repository trước khi tạo trust policy:
 
 ```powershell
 gh auth status
 
 $GitHubOwner = "<GITHUB_OWNER>"
-$GitHubRepository = "nexusoms-workshop"
-$RepoInfo = gh api "repos/$GitHubOwner/$GitHubRepository" |
+$GitHubRepository = "nexus-aws"
+$ViewerPermission = gh repo view "$GitHubOwner/$GitHubRepository" --json viewerPermission --jq .viewerPermission
+if ($ViewerPermission -ne "ADMIN") { throw "Repository fork phải có viewerPermission=ADMIN" }
+
+$OidcCustomization = gh api "repos/$GitHubOwner/$GitHubRepository/actions/oidc/customization/sub" |
   ConvertFrom-Json
+$OidcCustomization | ConvertTo-Json
 
-$GitHubOwnerId = $RepoInfo.owner.id
-$GitHubRepositoryId = $RepoInfo.id
+if ($OidcCustomization.use_immutable_subject -and $OidcCustomization.sub_claim_prefix) {
+  $OidcSubject = "$($OidcCustomization.sub_claim_prefix):ref:refs/heads/main"
+} else {
+  $OidcSubject = "repo:${GitHubOwner}/${GitHubRepository}:ref:refs/heads/main"
+}
 
-"GITHUB_OWNER=$GitHubOwner"
-"GITHUB_OWNER_ID=$GitHubOwnerId"
-"GITHUB_REPOSITORY_ID=$GitHubRepositoryId"
-
-$OidcSubject = "repo:${GitHubOwner}@${GitHubOwnerId}/${GitHubRepository}@${GitHubRepositoryId}:ref:refs/heads/main"
+"VIEWER_PERMISSION=$ViewerPermission"
 "OIDC_SUBJECT=$OidcSubject"
 ```
+
+Sao chép chính xác giá trị `OIDC_SUBJECT` vào trust policy. Không tự dùng subject của repository khác. Nếu workflow chuyển sang GitHub Environment, đọc lại cấu hình OIDC và thay condition `sub` bằng subject của environment.
 
 ![Lấy GitHub owner ID và repository ID bằng PowerShell](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5a-get-github-owner-and-repository-id.png)
 
@@ -253,6 +258,22 @@ Dùng Supabase publishable/anon key cho `VITE_SUPABASE_ANON_KEY`.
 
 ## 4. Workflow hợp nhất
 
+Kiểm tra branch và workflow trước khi chỉnh:
+
+```powershell
+git status
+git remote -v
+git fetch origin --prune
+git log --oneline --decorate -5
+Get-ChildItem .github/workflows -File | Select-Object Name
+$LegacyWorkflow = ".github/workflows/cd.yml"
+if (Test-Path $LegacyWorkflow) { git rm $LegacyWorkflow }
+Get-ChildItem .github/workflows -File | Where-Object Name -Match '^(cd|deploy)' | Select-Object Name
+git diff -- .github/workflows
+```
+
+Danh sách workflow CD chỉ được còn `deploy-aws.yml`. `backend-ci.yml` và `frontend-ci.yml` phải có `workflow_call` và path filter phải bao gồm `.github/workflows/**` để thay đổi workflow vẫn chạy CI.
+
 Repository thực hành đã có ba workflow:
 
 ```text
@@ -311,7 +332,7 @@ jobs:
         id: build-image
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}-${{ github.run_attempt }}
+          IMAGE_TAG: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           IMAGE="$REGISTRY/${{ vars.ECR_REPOSITORY }}:$IMAGE_TAG"
           docker build --file backend/Dockerfile --tag "$IMAGE" backend
@@ -320,8 +341,13 @@ jobs:
 
       - name: Download and sanitize current ECS task definition
         run: |
+          TASK_DEFINITION_ARN=$(aws ecs describe-services \
+            --cluster "${{ vars.ECS_CLUSTER }}" \
+            --services "${{ vars.ECS_SERVICE }}" \
+            --query "services[0].taskDefinition" \
+            --output text)
           aws ecs describe-task-definition \
-            --task-definition "${{ vars.ECS_TASK_DEFINITION }}" \
+            --task-definition "$TASK_DEFINITION_ARN" \
             --query taskDefinition > task-definition.raw.json
           jq 'del(
             .taskDefinitionArn,
@@ -388,26 +414,47 @@ jobs:
 
       - name: Invalidate CloudFront cache
         run: |
-          aws cloudfront create-invalidation \
+          INVALIDATION_ID=$(aws cloudfront create-invalidation \
             --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
-            --paths "/*"
+            --paths "/*" \
+            --query "Invalidation.Id" \
+            --output text)
+          aws cloudfront wait invalidation-completed \
+            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --id "$INVALIDATION_ID"
 ```
 
 ![Cập nhật deployment workflow](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/14-paste-deployment-workflow.png)
 
-Nếu vừa chỉnh workflow, commit và push:
+Nếu vừa chỉnh workflow, tạo branch riêng và pull request:
 
 ```powershell
-git add -A .github/workflows
+git switch -c ci/aws-deployment
+git add .github/workflows/backend-ci.yml .github/workflows/frontend-ci.yml .github/workflows/deploy-aws.yml
+git diff --cached --stat
 git commit -m "ci: deploy NexusOMS to AWS with GitHub OIDC"
-git push origin main
+git push -u origin ci/aws-deployment
+gh pr create --base main --head ci/aws-deployment --title "ci: deploy NexusOMS to AWS" --body "Add the verified AWS deployment workflow."
 ```
+
+Mở pull request và chờ Backend CI cùng Frontend CI thành công rồi mới merge. Chỉ stage ba workflow; không dùng `git add -A`.
+
+Sau khi merge, đồng bộ lại `main` và kiểm tra workflow lần cuối:
+
+```powershell
+git switch main
+git pull --ff-only origin main
+Get-ChildItem .github/workflows -File | Where-Object Name -Match '^(cd|deploy)' | Select-Object Name
+git status
+```
+
+Kết quả cần đạt: chỉ có `deploy-aws.yml` trong nhóm CD và working tree sạch.
 
 Nếu không chỉnh file, mở GitHub → **Actions → Deploy NexusOMS to AWS → Run workflow**.
 
 ## 5. Xác minh pipeline
 
-Lệnh `git push origin main` hoặc **Run workflow** sẽ chạy pipeline. Chờ các job:
+Merge pull request vào `main` hoặc chọn **Run workflow** để chạy pipeline. Chờ các job:
 
 ```text
 Backend CI ─┐
@@ -423,6 +470,8 @@ Kiểm tra:
 4. Frontend được đồng bộ vào S3.
 5. CloudFront invalidation có trạng thái `Completed`.
 6. Website đăng nhập và gọi API thành công.
+
+Job Docker build hiển thị màu xám trên lần chạy `main` là **skipped** theo điều kiện, không phải lỗi. Nếu có job đỏ, mở đúng job và đọc bước đầu tiên thất bại trước khi chạy lại.
 
 ![GitHub Actions triển khai thành công](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/15-github-actions-deployment-success.png)
 

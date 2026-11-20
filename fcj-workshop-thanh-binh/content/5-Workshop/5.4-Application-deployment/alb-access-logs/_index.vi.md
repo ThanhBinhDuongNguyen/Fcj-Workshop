@@ -57,3 +57,12 @@ Kiểm tra bucket xuất hiện:
 ```text
 alb-access/AWSLogs/<ACCOUNT_ID>/ELBAccessLogTestFile
 ```
+
+Gửi một request API qua CloudFront, chờ vài phút rồi kiểm tra tiếp file có đuôi `.log.gz` trong cùng prefix. `ELBAccessLogTestFile` chỉ xác nhận ALB có quyền ghi; file `.log.gz` mới chứa request thực tế.
+
+Nếu ALB báo `Access Denied`, kiểm tra:
+
+- ALB và S3 bucket cùng Region `ap-southeast-1`.
+- Bucket dùng SSE-S3 và vẫn bật Block Public Access.
+- Prefix là `alb-access`.
+- Policy vẫn giữ các statement CloudTrail.

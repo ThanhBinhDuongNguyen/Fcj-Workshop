@@ -33,6 +33,8 @@ Default root object: index.html
 
 Giữ **Block all public access** của bucket ở trạng thái bật.
 
+Sau khi tạo distribution, mở thông báo S3 bucket policy của CloudFront và chọn **Copy policy** nếu Console chưa tự cập nhật quyền OAC. Thêm policy vào đúng frontend bucket.
+
 ![Chọn S3 origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png)
 
 Chọn **Next**.
@@ -60,9 +62,12 @@ Nhập cấu hình:
 ```text
 Origin domain: <ALB_DNS_NAME>
 Origin name: nexusoms-demo-alb-origin
+Origin path: để trống
 Protocol: HTTP only
 HTTP port: 80
 ```
+
+`Origin domain` chỉ chứa DNS name của ALB, không thêm `http://` hoặc `https://`.
 
 ![Cấu hình ALB origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png)
 
@@ -89,6 +94,13 @@ Origin request policy: AllViewerExceptHostHeader
 
 Chọn **Create behavior**. Kiểm tra `/api/*` đang trỏ đến ALB origin và tắt cache.
 
+Nếu ô Path pattern báo `globPattern invalid`, xóa nội dung và gõ lại `/api/*` bằng bàn phím.
+
 ## Bước 6: Ghi lại thông tin CloudFront
 
 Ghi lại **Distribution ID** và **Distribution domain name** để cấu hình GitHub Actions.
+
+```text
+Distribution ID: E...
+Distribution domain name: d....cloudfront.net
+```

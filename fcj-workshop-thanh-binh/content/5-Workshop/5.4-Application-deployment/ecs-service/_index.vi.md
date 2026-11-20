@@ -25,6 +25,8 @@ Desired tasks: 1
 
 Chọn revision task definition mới nhất. Khi cần trình diễn hai task, tăng **Desired tasks** lên `2`.
 
+Với `Desired tasks = 1`, task chỉ chạy trong một Availability Zone tại một thời điểm. Việc chọn hai private subnet chưa tạo backend HA hai AZ.
+
 ![Cấu hình ECS Service](/images/5-Workshop/nexusoms/5.4-Application-deployment/ecs-service/2-configure-service-detail.png)
 
 ## Bước 3: Cấu hình mạng
@@ -65,3 +67,26 @@ Kiểm tra:
 - Target trong `nexusoms-demo-api-tg` có trạng thái **Healthy**.
 - CloudWatch log group `/ecs/nexusoms-demo-api` có log stream mới.
 - Task không có public IP.
+
+Nếu target cũ chuyển sang **Draining** trong lúc rollout, chờ deployment hoàn tất rồi kiểm tra target mới.
+
+| Thay đổi | Cách áp dụng |
+| --- | --- |
+| Sửa giá trị secret | Force new deployment |
+| Sửa environment, `ValueFrom` hoặc image | Tạo Task Definition revision mới rồi update service |
+| Sửa IAM policy | Xác nhận policy rồi tạo task mới |
+
+Service chỉ hoàn tất khi deployment ở trạng thái **Completed** và target mới **Healthy**. `Running` không thay thế kiểm tra `Healthy`.
+
+## Bước 6: Ghi lại task đang chạy
+
+```powershell
+$TaskArn = aws ecs list-tasks --profile nexusoms-demo --region ap-southeast-1 --cluster nexusoms-demo-cluster --service-name nexusoms-demo-api-service --desired-status RUNNING --query "taskArns[0]" --output text
+aws ecs describe-tasks --profile nexusoms-demo --region ap-southeast-1 --cluster nexusoms-demo-cluster --tasks $TaskArn --query "tasks[0].{TaskArn:taskArn,TaskDefinition:taskDefinitionArn,StartedAt:startedAt,LastStatus:lastStatus}" --output table
+```
+
+Mở task → **Logs** và ghi lại log stream mới nhất:
+
+| Task ID | Task Definition revision | Started at | Log stream | Target |
+| --- | --- | --- | --- | --- |
+| `<TASK_ID>` | `<REVISION>` | `<STARTED_AT>` | `<LOG_STREAM>` | `Healthy` |

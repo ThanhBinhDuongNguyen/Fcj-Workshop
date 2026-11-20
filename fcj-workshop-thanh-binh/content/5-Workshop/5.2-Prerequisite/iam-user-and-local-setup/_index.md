@@ -1,102 +1,59 @@
 ---
-title: "IAM user and AWS CLI"
-date: 2026-11-15
+title: "Sign in to AWS CLI"
+date: 2026-11-20
 weight: 5
 chapter: false
 ---
 
-Create a lab IAM user and configure the `nexusoms-demo` profile.
+Sign in to AWS CLI with the `nexusoms-demo` profile. Do not create a long-lived access key for this lab.
 
-## 1. Create the IAM user
+## 1. Sign in
 
-Open IAM → **Users → Create user**.
-
-![Open IAM Users](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/1-open-iam-user-dashboard.png)
-
-![Select Create user](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/2-create-iam-user-button.png)
-
-```text
-nexusoms-demo-deployer
-```
-
-![Enter the IAM user name](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/3-configure-specify-user-detail.png)
-
-Select the lab permissions and create the user.
-
-![Open permissions](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/4-configure-permission.png)
-
-![Select the permissions policy](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/5-select-permissions-policies.png)
-
-![Create the IAM user](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/6-click-create-user.png)
-
-![IAM user created](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/7-complete-create-iam-user.png)
-
-## 2. Create the access key
-
-Open the user → **Security credentials → Create access key** and select **Command Line Interface (CLI)**.
-
-![Open Security credentials](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/8-configure-security-credentials-for-user.png)
-
-![Create an access key](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/9-create-access-key.png)
-
-![Select Command Line Interface](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/10-configure-command-link-interface-i-understand-next.png)
-
-```text
-nexusoms-demo-powershell
-```
-
-![Enter the description](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/11-set-description-tag.png)
-
-![Save the access key](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/12-copy-access-key-download-csv.png)
-
-## 3. Configure PowerShell
+Open PowerShell:
 
 ![Open PowerShell](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/13-open-powershell.png)
 
 ```powershell
 aws --version
-aws configure --profile nexusoms-demo
+aws login --profile nexusoms-demo --region ap-southeast-1
 ```
 
-![Configure the AWS profile](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/14-check-aws-version-configure-profile.png)
+Complete the browser sign-in opened by AWS CLI.
 
-```text
-AWS Access Key ID: <AWS_ACCESS_KEY_ID>
-AWS Secret Access Key: <AWS_SECRET_ACCESS_KEY>
-Default region name: ap-southeast-1
-Default output format: json
-```
-
-![Complete aws configure](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/15-configure-more.png)
+## 2. Verify the account
 
 ```powershell
-$env:AWS_PROFILE = "nexusoms-demo"
+$AwsProfile = "nexusoms-demo"
+$AwsRegion = "ap-southeast-1"
 
 aws sts get-caller-identity `
-  --profile nexusoms-demo `
-  --region ap-southeast-1
-
-aws ec2 describe-availability-zones `
-  --profile nexusoms-demo `
-  --region ap-southeast-1 `
-  --query "AvailabilityZones[].ZoneName" `
-  --output table
-
-aws ec2 describe-managed-prefix-lists `
-  --profile nexusoms-demo `
-  --region ap-southeast-1 `
-  --query "PrefixLists[?PrefixListName=='com.amazonaws.global.cloudfront.origin-facing'].PrefixListId" `
-  --output text
+  --profile $AwsProfile `
+  --region $AwsRegion
 ```
 
-![Verify the AWS account and CloudFront prefix list](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png)
+Match `Account` with the AWS Account ID shown in the Console.
+
+## 3. Check Availability Zones
 
 ```powershell
-git --version
-docker --version
-node --version
-npm --version
-dotnet --version
+aws ec2 describe-availability-zones `
+  --profile $AwsProfile `
+  --region $AwsRegion `
+  --query "AvailabilityZones[].ZoneName" `
+  --output table
 ```
 
-![Verify local tools](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/17-checking-library-in-cmd.png)
+## 4. Get the CloudFront managed prefix list ID
+
+```powershell
+$CloudFrontPrefixListId = aws ec2 describe-managed-prefix-lists --profile $AwsProfile --region $AwsRegion --filters "Name=prefix-list-name,Values=com.amazonaws.global.cloudfront.origin-facing" --query "PrefixLists[0].PrefixListId" --output text
+$CloudFrontPrefixListId
+```
+
+![Verify the account and CloudFront prefix list](/images/5-Workshop/nexusoms/5.2-Prerequisite/iam-user-and-local-setup/16-get-available-zone-cloudfront.png)
+
+Expected result:
+
+- STS returns the intended AWS account.
+- The selected Region is `ap-southeast-1`.
+- The prefix list ID starts with `pl-`.

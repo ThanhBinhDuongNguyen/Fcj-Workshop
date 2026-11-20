@@ -27,7 +27,7 @@ NexusOMS receives a simulated marketplace webhook, verifies its HMAC signature, 
 The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. This workshop validates the technical solution and does not calculate financial ROI without measured operating data.
 
 ### 3. Solution Architecture
-The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. Amazon SQS FIFO decouples webhook intake from business processing, and a dead-letter queue isolates messages that repeatedly fail. Each Availability Zone uses its own NAT Gateway so outbound connectivity remains available if one AZ fails. This improves availability but increases cost; a low-cost demo may use one NAT Gateway and accept a single point of failure. AWS WAF remains visible in the target architecture and cost estimate but is not enabled in the workshop. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
+The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. Amazon SQS FIFO decouples webhook intake from business processing, and a dead-letter queue isolates messages that repeatedly fail. Each Availability Zone uses its own NAT Gateway so outbound connectivity remains available if one AZ fails. AWS WAF protects the application from common malicious requests. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
@@ -54,7 +54,7 @@ The current application runs locally with React/Vite, a .NET 10 API and Supabase
 
 ### AWS Services Used
 - **Amazon S3 and Amazon CloudFront**: Store and distribute the static React/Vite build.
-- **AWS WAF**: Represents the target application-protection layer and remains included in the estimate, but is not enabled in the workshop.
+- **AWS WAF**: Protects the application from common malicious requests.
 - **Application Load Balancer**: Routes API traffic to healthy ECS tasks.
 - **Amazon ECS on AWS Fargate**: Runs the containerized .NET 10 API across two Availability Zones.
 - **Amazon ECR**: Stores versioned backend container images built from GitHub CI.
@@ -96,7 +96,7 @@ This project has two parts-completing the NexusOMS MVP and preparing a short AWS
 - Post-Demonstration: delete temporary AWS resources and retain only code, diagrams, screenshots and cost evidence for the report.
 
 ### 6. Budget Estimation
-The estimate was prepared in AWS Pricing Calculator for **Asia Pacific (Singapore) / ap-southeast-1**. The values below are the monthly costs for the demo configuration and usage entered in the Calculator. The actual 10-day bill may differ based on each resource’s runtime, actual traffic, Free Tier eligibility and taxes.
+The estimate was prepared in AWS Pricing Calculator for **Asia Pacific (Singapore) / ap-southeast-1**. The values below are the costs for one month of the demo configuration and usage entered in the Calculator. The actual bill may differ based on traffic, Free Tier eligibility and taxes.
 
 ### Infrastructure Costs
 | Service | Estimate (USD/month) |
@@ -111,10 +111,15 @@ The estimate was prepared in AWS Pricing Calculator for **Asia Pacific (Singapor
 | Amazon CloudTrail | 0.00 |
 | Amazon CloudFront | 0.00 |
 | Amazon SQS FIFO and Dead-letter Queue | 0.05 |
-| AWS WAF (separate estimate; not enabled in the workshop but included in the budget) | 14.00 |
-| **Total including WAF** | **123.34** |
+| AWS WAF | 14.00 |
+| **Total monthly cost** | **123.34** |
 
-The SQS estimate assumes `100,000` billable FIFO requests per month at `$0.50 per million requests`, without applying Free Tier. The Calculator reports **$0.00 upfront cost**. WAF is included in the budget to show the protected option, but it is not enabled in the workshop. NAT Gateways and the ALB are primarily hourly charges, so the monthly total is not an exact 10-day invoice. A simple 10/30-day proration gives a reference estimate of approximately **$41.11 including WAF** (before tax); the actual charge should be checked in AWS Billing after resources are deleted.
+The SQS estimate assumes `100,000` billable FIFO requests per month at `$0.50 per million requests`, without applying Free Tier. The Calculator reports **$0.00 upfront cost**. The full configuration with two NAT Gateways and AWS WAF is estimated at **$123.34 per month**, before tax.
+
+### Cost-saving option
+A learning environment can use one NAT Gateway and omit AWS WAF. NAT Gateway cost then decreases to approximately **$43.07 per month**, reducing the total estimate to **$66.27 per month** and saving approximately **$57.07 per month**. This option accepts the NAT Gateway as a single point of failure and removes the application-protection layer provided by AWS WAF.
+
+The workshop creates two CloudWatch metric alarms for unhealthy ALB targets and the SQS dead-letter queue. Monitoring cost remains grouped under Amazon CloudWatch instead of adding another service row. Keep the approved estimate and compare it with AWS Billing after the demo. The lab does not attach an SNS notification.
 
 - Hardware: No additional hardware is required; the project uses the existing development machines and Supabase Cloud project.
 

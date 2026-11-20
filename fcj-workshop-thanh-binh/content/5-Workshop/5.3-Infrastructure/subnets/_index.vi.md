@@ -1,117 +1,85 @@
 ---
 title: "Tạo public và private subnet"
-date: 2026-11-13
+date: 2026-11-20
 weight: 2
 chapter: false
 ---
 
-Tạo bốn subnet trên hai Availability Zone. Bật auto-assign public IPv4 chỉ cho hai public subnet.
+Tạo bốn subnet trên hai Availability Zone.
 
-## 4.3. Tạo hai public và hai private subnet
+## Bước 1: Mở trang tạo subnet
 
-Mở **VPC → Subnets → Create subnet**. Với từng subnet, chọn VPC nexusoms-demo-vpc, tên, Availability Zone và IPv4 CIDR trong bảng:
+Mở **VPC → Subnets → Create subnet**.
 
-| **Name**                  | **AZ**    | **CIDR**        | **Gán public IPv4 tự động** |
-| ------------------------- | --------- | --------------- | --------------------------- |
-| `nexusoms-demo-public-a`  | AZ A      | `10.80.0.0/24`  | Bật                         |
-| `nexusoms-demo-public-b`  | AZ B      | `10.80.1.0/24`  | Bật                         |
-| `nexusoms-demo-private-a` | Cùng AZ A | `10.80.10.0/24` | Tắt                         |
-| `nexusoms-demo-private-b` | Cùng AZ B | `10.80.11.0/24` | Tắt                         |
+![Mở trang tạo subnet](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png)
 
-Chọn AZ trong menu AWS Console; không tự gõ tên AZ chưa xác nhận. Tạo xong, chọn từng public subnet → **Actions → Edit subnet settings** → bật **Enable auto-assign public IPv4 address**. Private subnet để tắt.
-
-Nếu Console có thuộc tính **Block public access** cho subnet, không cần bật thuộc tính đó để biến subnet thành private. ECS private được bảo vệ bằng cách không gán public IP, không có route trực tiếp tới IGW và dùng Security Group giới hạn inbound. Không gán public IP cho ECS task.
-
-**Kiểm tra:** có đủ bốn subnet trong cùng VPC; hai subnet private không bật auto-assign public IPv4; mỗi AZ có một public và một private subnet.
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**Public subnet value**
+Chọn VPC:
 
 ```text
-nexusoms-demo-public-a | 10.80.0.0/24
+nexusoms-demo-vpc
 ```
 
-**Public subnet value**
+![Chọn VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png)
+
+## Bước 2: Tạo public subnet A
 
 ```text
-nexusoms-demo-public-b | 10.80.1.0/24
+Name: nexusoms-demo-public-a
+Availability Zone: AZ A
+IPv4 CIDR: 10.80.0.0/24
 ```
 
-**Private subnet value**
+![Cấu hình public subnet A](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3-configure-public-subnet-a.png)
+
+## Bước 3: Tạo public subnet B
 
 ```text
-nexusoms-demo-private-a | 10.80.10.0/24
+Name: nexusoms-demo-public-b
+Availability Zone: AZ B
+IPv4 CIDR: 10.80.1.0/24
 ```
 
-**Private subnet value**
+![Cấu hình public subnet B](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png)
+
+## Bước 4: Tạo private subnet A
 
 ```text
-nexusoms-demo-private-b | 10.80.11.0/24
+Name: nexusoms-demo-private-a
+Availability Zone: cùng AZ với public-a
+IPv4 CIDR: 10.80.10.0/24
 ```
 
-## Thao tác trên AWS Console
+![Cấu hình private subnet A](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5-configure-private-subnet-a.png)
 
-### Bước 1 - Open subnets dashboard + Create subnet
-
-![Open subnets dashboard + Create subnet](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png)
-
-### Bước 2 - Choose VPC ID
-
-![Choose VPC ID](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png)
-
-### Bước 3 - Configure public subnet a
-
-**Giá trị dùng ở bước này**
-
-**Public subnet value**
+## Bước 5: Tạo private subnet B
 
 ```text
-nexusoms-demo-public-a | 10.80.0.0/24
+Name: nexusoms-demo-private-b
+Availability Zone: cùng AZ với public-b
+IPv4 CIDR: 10.80.11.0/24
 ```
 
-**Public subnet value**
+![Cấu hình private subnet B](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png)
 
-```text
-nexusoms-demo-public-b | 10.80.1.0/24
-```
+Chọn **Create subnet**.
 
-![Configure public subnet a](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3-configure-public-subnet-a.png)
+## Bước 6: Bật public IPv4 cho public subnet
 
-### Bước 4 - Configure public subnet b
+Chọn `nexusoms-demo-public-a` → **Actions → Edit subnet settings**.
 
-![Configure public subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png)
+![Mở subnet settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png)
 
-### Bước 5 - Configure private subnet a
+Bật **Enable auto-assign public IPv4 address** và lưu.
 
-**Giá trị dùng ở bước này**
+![Bật auto-assign public IPv4](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png)
 
-**Private subnet value**
+Lặp lại cho `nexusoms-demo-public-b`. Giữ tùy chọn này tắt trên hai private subnet.
 
-```text
-nexusoms-demo-private-a | 10.80.10.0/24
-```
+## Bước 7: Kiểm tra
 
-**Private subnet value**
-
-```text
-nexusoms-demo-private-b | 10.80.11.0/24
-```
-
-![Configure private subnet a](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5-configure-private-subnet-a.png)
-
-### Bước 6 - Configure private subnet b
-
-![Configure private subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png)
-
-### Bước 7 - Edit subnet settings
-
-![Edit subnet settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png)
-
-### Bước 8 - Enable auto-assign public IPv4 address
-
-![Enable auto-assign public IPv4 address](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png)
-
-Thực hiện lại bước này cho subnet public b
+| Subnet | CIDR | Public IPv4 |
+| --- | --- | --- |
+| `nexusoms-demo-public-a` | `10.80.0.0/24` | Bật |
+| `nexusoms-demo-public-b` | `10.80.1.0/24` | Bật |
+| `nexusoms-demo-private-a` | `10.80.10.0/24` | Tắt |
+| `nexusoms-demo-private-b` | `10.80.11.0/24` | Tắt |

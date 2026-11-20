@@ -20,9 +20,9 @@ Runtime: cloudfront-js-2.0
 
 ![Configure the function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png)
 
-## Step 2: Add the SPA rewrite code
+## Step 2: Open Build and add the SPA rewrite code
 
-Delete the sample code and paste this entire block:
+Open the function, choose the **Build** tab, delete the sample code, and paste this entire block:
 
 ```javascript
 function handler(event) {
@@ -40,9 +40,15 @@ function handler(event) {
 
 ![Paste the code into the Build section](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png)
 
-## Step 3: Publish the function
+## Step 3: Build and publish the function
 
-Choose **Save changes**, then choose **Publish**.
+Follow this order:
+
+1. Choose **Save changes** in the Build tab.
+2. Choose **Publish**.
+3. Confirm that the function is in the `LIVE` stage.
+
+If Create or Publish reports `UnknownError`, refresh the Functions list and check whether the function was created or published before retrying.
 
 ![Publish the function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png)
 
@@ -62,6 +68,8 @@ Stage: LIVE
 ```
 
 Do not associate the function with the `/api/*` behavior.
+
+Do not configure distribution-wide custom 403/404 responses that return `/index.html` with HTTP 200. The function rewrites only frontend routes on the Default behavior, while API errors keep their original status and body.
 
 ![Associate the function with Viewer request](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
 

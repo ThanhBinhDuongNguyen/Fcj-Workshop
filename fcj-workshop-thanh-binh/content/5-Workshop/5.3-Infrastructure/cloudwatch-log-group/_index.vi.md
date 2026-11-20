@@ -1,53 +1,30 @@
 ---
 title: "CloudWatch Log Group"
-date: 2026-11-13
+date: 2026-11-20
 weight: 10
 chapter: false
 ---
 
-Trong giao diện hiện tại, mở **CloudWatch → Logs Management → Create log group**. Đây là log group mà task definition sẽ sử dụng.
+Tạo log group trước khi đăng ký ECS Task Definition.
 
-## 7.4. Tạo CloudWatch Log Group
+## Bước 1: Tạo log group
 
-Mở **CloudWatch → Logs Management → Create log group**. Nhập /ecs/nexusoms-demo-api, retention 14 days; tạo. Task definition sẽ ghi log vào đây.
-
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**CloudWatch → Logs Management → Create log group**
+Mở **CloudWatch → Logs → Log groups → Create log group**.
 
 ```text
-/ecs/nexusoms-demo-api
+Log group name: /ecs/nexusoms-demo-api
 ```
 
-**CloudWatch → Logs Management → Create log group**
+![Mở trang tạo log group](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png)
+
+## Bước 2: Đặt retention
+
+Mở log group vừa tạo và đặt:
 
 ```text
-14 days
+Retention setting: 14 days
 ```
 
-## Thao tác trên AWS Console
+![Đặt retention cho log group](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png)
 
-### Bước 1 - Open Log Management dashboard + Create log group
-
-**Giá trị dùng ở bước này**
-
-**CloudWatch → Logs Management → Create log group**
-
-```text
-/ecs/nexusoms-demo-api
-```
-
-**CloudWatch → Logs Management → Create log group**
-
-```text
-14 days
-```
-
-![Open Log Management dashboard + Create log group](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png)
-
-### Bước 2 - Fill name + retention setting
-
-![Fill name + retention setting](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png)
+Kết quả cần đạt: log group `/ecs/nexusoms-demo-api` tồn tại trước khi chạy ECS task.

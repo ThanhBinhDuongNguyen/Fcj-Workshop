@@ -20,6 +20,14 @@ SQS dead-letter queue: Available 0
 
 Open the CloudFront domain and sign in using the Supabase account.
 
+Open DevTools → Network and verify:
+
+```text
+Signed out: /api/v1/session/me returns 401
+Valid sign-in: /api/v1/session/me returns 200
+API domain: <CLOUDFRONT_DOMAIN>
+```
+
 ```text
 https://<CLOUDFRONT_DOMAIN>
 ```
@@ -29,6 +37,8 @@ https://<CLOUDFRONT_DOMAIN>
 ## 3. Verify the dashboard
 
 Confirm that the dashboard loads data and `/api/*` requests succeed.
+
+Open `/login` and `/app` directly, then refresh. Frontend routes must reload correctly, and API errors must not become HTML responses with HTTP 200.
 
 ![Verify the dashboard](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/2-checking-overall-dashboard.png)
 
@@ -96,4 +106,19 @@ If the popup reports a DLQ message, inspect CloudWatch Logs before deleting or r
 
 ## 9. Verify CI/CD
 
-Commit a small frontend change and push it to `main`. The workflow must update S3, create a CloudFront invalidation, and keep the ECS target healthy.
+Create a branch, make a small frontend change, and open a pull request. After CI passes, merge it into `main`. The workflow must update S3, wait for the CloudFront invalidation, and keep the ECS target healthy.
+
+## 10. Quick troubleshooting
+
+| Error | Check |
+|---|---|
+| `The config profile could not be found` | Run `aws login --profile nexusoms-demo --region ap-southeast-1`, then `aws sts get-caller-identity --profile nexusoms-demo` |
+| Docker reports `error getting credentials` | Use the temporary Docker config from the backend image step |
+| ECS reports `secretsmanager:GetSecretValue AccessDenied` | Check the execution-role policy, register a new task definition revision, and update the service |
+| Target group returns `500` | Open CloudWatch Logs and validate the secret with the PowerShell block in Secrets Manager |
+| CloudFront reports `globPattern invalid` | Clear the Path pattern and type `/api/*` again |
+| SPA route returns `403` or `404` | Build, Save, and Publish the CloudFront Function; check its Default behavior association |
+| `NoSuchDistribution` | Use the Distribution ID, not the CloudFront domain |
+| GitHub Actions cannot assume the role | Compare the actual OIDC subject with the role trust policy |
+| Two CD workflows are active | Remove `.github/workflows/cd.yml` and keep only `deploy-aws.yml` for AWS deployment |
+| A workflow PR does not run CI | Add `.github/workflows/**` to both CI path filters and keep `workflow_call` |

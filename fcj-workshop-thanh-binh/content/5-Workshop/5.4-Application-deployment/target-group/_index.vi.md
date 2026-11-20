@@ -1,95 +1,45 @@
 ---
 title: "Target Group"
-date: 2026-11-13
+date: 2026-11-20
 weight: 3
 chapter: false
 ---
 
-Tạo target group kiểu **IP addresses** vì Fargate dùng `awsvpc`. Chọn VPC `nexusoms-demo-vpc`, cổng `8080` và health check `/health`; không đăng ký IP thủ công.
+Tạo target group kiểu IP cho ECS Fargate.
 
-## Giá trị cần nhập hoặc sao chép
+## Bước 1: Tạo target group
 
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
+Mở **EC2 → Target Groups → Create target group**.
 
-**Target Group - giá trị 1**
+![Mở trang tạo target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png)
 
-```text
-nexusoms-demo-api-tg
-```
-
-**Target type**
+## Bước 2: Cấu hình target group
 
 ```text
 Target type: IP addresses
-```
-
-**Protocol**
-
-```text
+Target group name: nexusoms-demo-api-tg
 Protocol: HTTP
-```
-
-**Port**
-
-```text
 Port: 8080
+IP address type: IPv4
+VPC: nexusoms-demo-vpc
 ```
 
-**Health check path**
+![Cấu hình target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png)
+
+## Bước 3: Cấu hình health check
 
 ```text
+Health check protocol: HTTP
 Health check path: /health
+Success codes: 200
 ```
 
-## Thao tác trên AWS Console
+![Cấu hình health check](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png)
 
-### Bước 1 - Open Target Groups dashboard + Create target group
+## Bước 4: Hoàn tất
 
+Chọn **Next**. Không đăng ký IP thủ công. Chọn **Create target group**.
 
-![Open Target Groups dashboard + Create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png)
+![Tạo target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png)
 
-### Bước 2 - Configure target group
-
-**Giá trị dùng ở bước này**
-
-**Target Group - giá trị 1**
-
-```text
-nexusoms-demo-api-tg
-```
-
-**Target type**
-
-```text
-Target type: IP addresses
-```
-
-**Protocol**
-
-```text
-Protocol: HTTP
-```
-
-**Port**
-
-```text
-Port: 8080
-```
-
-![Configure target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png)
-
-### Bước 3 - Choose VPC + Set up health checks
-
-**Giá trị dùng ở bước này**
-
-**Health check path**
-
-```text
-Health check path: /health
-```
-
-![Choose VPC + Set up health checks](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png)
-
-### Bước 4 - Complete create target group
-
-![Complete create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png)
+Kết quả cần đạt: target group sử dụng `IP addresses`, port `8080` và `/health` trả `200` sau khi ECS Service chạy.

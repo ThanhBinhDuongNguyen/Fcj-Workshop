@@ -112,23 +112,27 @@ chapter: false
 
 ![Schedule secret deletion](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/17-select-waiting-period-schedule-deletion.png)
 
-2. Xóa log group `/ecs/nexusoms-demo-api`.
+2. Xóa hai CloudWatch alarm:
+
+```powershell
+aws cloudwatch delete-alarms --profile nexusoms-demo --region ap-southeast-1 --alarm-names nexusoms-demo-alb-unhealthy-targets nexusoms-demo-webhook-dlq-visible
+```
+
+3. Xóa log group `/ecs/nexusoms-demo-api`.
 
 ![Xóa CloudWatch log group](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/18-delete-log-groups-in-cloudwatch.png)
 
-3. Xóa GitHub Actions role.
+4. Xóa GitHub Actions role.
 
 ![Xóa GitHub Actions role](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/27-delete-github-actions-role.png)
 
-4. Xóa ECS execution role và task role.
+5. Xóa ECS execution role và task role.
 
 ![Xóa ECS roles](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/28-delete-ecs-roles.png)
 
-5. Xóa GitHub OIDC provider nếu không còn repository nào sử dụng.
+6. Xóa GitHub OIDC provider nếu không còn repository nào sử dụng.
 
 ![Xóa GitHub OIDC provider](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/29-delete-github-oidc-provider.png)
-
-6. Xóa IAM deployer user và access key.
 
 ## 7. Kiểm tra sau cleanup
 

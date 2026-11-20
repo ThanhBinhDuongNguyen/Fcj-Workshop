@@ -7,6 +7,19 @@ chapter: false
 
 Mở PowerShell tại thư mục gốc của repository.
 
+Phân biệt hai giá trị CloudFront:
+
+| Giá trị | Ví dụ | Dùng cho |
+| --- | --- | --- |
+| Domain | `d....cloudfront.net` | `VITE_API_BASE_URL` |
+| Distribution ID | `E...` | Lệnh invalidation |
+
+Kiểm tra file cấu hình local được Git bỏ qua:
+
+```powershell
+git check-ignore frontend/.env.production.local
+```
+
 ## 1. Build frontend
 
 ```powershell
@@ -25,6 +38,8 @@ npm run typecheck
 npm run test
 npm run build
 ```
+
+Chỉ dùng Supabase publishable/anon key cho biến `VITE_`. Không dùng service-role hoặc secret key.
 
 ![Cấu hình biến và build frontend](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/1-set-up-variable-run-build-project.png)
 
@@ -49,13 +64,12 @@ aws s3 sync .\dist "s3://$BucketName" `
 
 ```powershell
 $DistributionId = "<CLOUDFRONT_DISTRIBUTION_ID>"
-
-aws cloudfront create-invalidation `
-  --distribution-id $DistributionId `
-  --paths "/*" `
-  --profile nexusoms-demo
+$InvalidationId = aws cloudfront create-invalidation --distribution-id $DistributionId --paths "/*" --profile nexusoms-demo --query "Invalidation.Id" --output text
+aws cloudfront wait invalidation-completed --distribution-id $DistributionId --id $InvalidationId --profile nexusoms-demo
 
 Pop-Location
 ```
+
+Chỉ tiếp tục khi lệnh wait kết thúc thành công.
 
 ![Tạo CloudFront invalidation](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3-create-invalidation-cloudfront.png)

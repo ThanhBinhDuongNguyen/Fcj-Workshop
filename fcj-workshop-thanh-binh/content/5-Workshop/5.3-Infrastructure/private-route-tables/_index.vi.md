@@ -1,83 +1,63 @@
 ---
 title: "Private route table"
-date: 2026-11-13
+date: 2026-11-20
 weight: 6
 chapter: false
 ---
 
-Tạo route table riêng cho từng private subnet và định tuyến ra NAT Gateway cùng Availability Zone.
+Tạo một route table riêng cho mỗi private subnet và định tuyến qua NAT Gateway cùng Availability Zone.
 
-## 5.3. Route riêng cho private subnet
+## Bước 1: Tạo route table A
 
-1\. Tạo route table nexusoms-demo-private-a-rt trong VPC nexusoms-demo-vpc.
+Mở **VPC → Route tables → Create route table**.
 
-2\. Thêm route Destination 0.0.0.0/0, Target **NAT Gateway** nexusoms-demo-nat-a; associate chỉ với nexusoms-demo-private-a.
-
-3\. Tạo route table nexusoms-demo-private-b-rt.
-
-4\. Thêm route Destination 0.0.0.0/0, Target NAT nexusoms-demo-nat-b; associate chỉ với nexusoms-demo-private-b.
-
-Không nhập IP Supabase vào route table. Route NAT cho phép task trong private subnet khởi tạo kết nối đi ra Internet; nó không mở kết nối từ Internet đi thẳng vào ECS.
-
-**Kiểm tra:** private route A đi NAT A; private route B đi NAT B; không route private nào trỏ thẳng tới IGW.
-
-
-## Giá trị cần nhập hoặc sao chép
-
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**NAT Gateway value**
+![Mở trang tạo route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/1-open-route-tables-dashboard-click-create-route-table.png)
 
 ```text
-nexusoms-demo-private-a-rt | 0.0.0.0/0 -> nexusoms-demo-nat-a
+Name: nexusoms-demo-private-a-rt
+VPC: nexusoms-demo-vpc
 ```
 
-**NAT Gateway value**
+![Tạo private route table A](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/2-fill-name-choose-vpc-create-route-table.png)
+
+## Bước 2: Thêm route qua NAT A
+
+Mở route table → **Routes → Edit routes**.
+
+![Mở Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/3-choose-routes-edit-routes.png)
 
 ```text
-nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
+Destination: 0.0.0.0/0
+Target: NAT Gateway → nexusoms-demo-nat-a
 ```
 
-## Thao tác trên AWS Console
+![Thêm route qua NAT A](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/4-add-route-configure-nat-gateway.png)
 
-### Bước 1 - Open Route tables dashboard + Click create route table
+## Bước 3: Liên kết private subnet A
 
-![Open Route tables dashboard + Click create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/1-open-route-tables-dashboard-click-create-route-table.png)
+Chọn **Subnet associations → Edit subnet associations**.
 
-### Bước 2 - Fill Name + Choose VPC + Create route table
+![Mở subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/5-choose-subnet-associations-edit-subnet-associations.png)
 
-![Fill Name + Choose VPC + Create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/2-fill-name-choose-vpc-create-route-table.png)
+Chỉ chọn `nexusoms-demo-private-a`, sau đó lưu.
 
-### Bước 3 - Choose routes + Edit routes
+![Liên kết private subnet A](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/6-choose-subnet-private-a-save-associations.png)
 
-![Choose routes + Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/3-choose-routes-edit-routes.png)
+## Bước 4: Tạo route table B
 
-### Bước 4 - Add Route + Configure NAT Gateway
-
-**Giá trị dùng ở bước này**
-
-**NAT Gateway value**
+Lặp lại với:
 
 ```text
-nexusoms-demo-private-a-rt | 0.0.0.0/0 -> nexusoms-demo-nat-a
+Name: nexusoms-demo-private-b-rt
+Destination: 0.0.0.0/0
+Target: NAT Gateway → nexusoms-demo-nat-b
+Subnet association: nexusoms-demo-private-b
 ```
 
-**NAT Gateway value**
+![Hoàn tất hai private route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/7-complete-create-private-route-table.png)
 
-```text
-nexusoms-demo-private-b-rt | 0.0.0.0/0 -> nexusoms-demo-nat-b
-```
+## Bước 5: Kiểm tra
 
-![Add Route + Configure NAT Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/4-add-route-configure-nat-gateway.png)
-
-### Bước 5 - Choose Subnet associations + Edit subnet associations
-
-![Choose Subnet associations + Edit subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/5-choose-subnet-associations-edit-subnet-associations.png)
-
-### Bước 6 - Choose subnet private a + Save associations
-
-![Choose subnet private a + Save associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/6-choose-subnet-private-a-save-associations.png)
-
-### Bước 7 - Complete create private route table
-
-![Complete create private route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/private-route-tables/7-complete-create-private-route-table.png)
+- Private A đi qua NAT A.
+- Private B đi qua NAT B.
+- Không private route table nào trỏ trực tiếp đến Internet Gateway.

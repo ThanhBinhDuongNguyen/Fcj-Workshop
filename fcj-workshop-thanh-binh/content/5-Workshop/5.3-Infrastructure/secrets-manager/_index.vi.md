@@ -9,6 +9,13 @@ Lưu bốn giá trị trong một secret JSON. Không tạo bốn secret riêng.
 
 ## 1. Chuẩn bị giá trị
 
+| JSON key | Giá trị cần dùng |
+| --- | --- |
+| `postgresConnectionString` | Chuỗi Npgsql của Session pooler, có database password |
+| `supabaseUrl` | Project URL, không phải connection string |
+| `systemActorId` | UUID của profile demo có `is_active=true` |
+| `webhookSigningSecret` | Chuỗi ngẫu nhiên dài ít nhất 32 ký tự |
+
 Lấy các giá trị từ Supabase:
 
 - **Session pooler:** chọn **Connect → Session pooler** rồi sao chép host, port và username.
@@ -78,3 +85,30 @@ supabaseUrl
 systemActorId
 webhookSigningSecret
 ```
+
+Kiểm tra định dạng connection string mà không in password:
+
+```powershell
+$AwsProfile = "nexusoms-demo"
+$AwsRegion = "ap-southeast-1"
+$SecretId = "nexusoms/demo/application"
+
+$Secret = aws secretsmanager get-secret-value --profile $AwsProfile --region $AwsRegion --secret-id $SecretId --query SecretString --output text | ConvertFrom-Json
+$Builder = [System.Data.Common.DbConnectionStringBuilder]::new()
+$ParsedActorId = [guid]::Empty
+
+try {
+  $Builder.set_ConnectionString([string]$Secret.postgresConnectionString)
+  "postgresConnectionString: valid"
+} catch {
+  "postgresConnectionString: invalid"
+}
+
+"supabaseUrl: $([uri]::IsWellFormedUriString([string]$Secret.supabaseUrl, [System.UriKind]::Absolute))"
+"systemActorId: $([guid]::TryParse([string]$Secret.systemActorId, [ref]$ParsedActorId))"
+"webhookSigningSecret: $(([string]$Secret.webhookSigningSecret).Length -ge 32)"
+```
+
+Chỉ tiếp tục khi bốn dòng kiểm tra đều hợp lệ.
+
+Kiểm tra trên chỉ xác nhận cấu trúc JSON, URL, UUID và cú pháp connection string. Bằng chứng kết nối database là task ECS mới khởi động thành công, `/health` trả `200` và target group chuyển sang `Healthy`.

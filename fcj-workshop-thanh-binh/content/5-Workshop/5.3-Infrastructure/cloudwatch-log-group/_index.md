@@ -1,48 +1,30 @@
 ---
-title: "CloudWatch log group"
-date: 2026-11-13
+title: "CloudWatch Log Group"
+date: 2026-11-20
 weight: 10
 chapter: false
 ---
 
-In the current console, open **CloudWatch → Logs Management → Create log group**. The task definition writes application logs to this group.
+Create the log group before registering the ECS Task Definition.
 
-## Values to enter or copy
+## Step 1: Create the log group
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
-
-**CloudWatch log group - input 1**
+Open **CloudWatch → Logs → Log groups → Create log group**.
 
 ```text
-/ecs/nexusoms-demo-api
+Log group name: /ecs/nexusoms-demo-api
 ```
 
-**CloudWatch log group - input 2**
+![Open the log group creation page](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png)
+
+## Step 2: Set retention
+
+Open the new log group and set:
 
 ```text
-14 days
+Retention setting: 14 days
 ```
 
-## AWS Console walkthrough
+![Set log retention](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png)
 
-### Step 1 - Open Log Management dashboard + Create log group
-
-**Values used in this step**
-
-**CloudWatch log group - input 1**
-
-```text
-/ecs/nexusoms-demo-api
-```
-
-**CloudWatch log group - input 2**
-
-```text
-14 days
-```
-
-![Open Log Management dashboard + Create log group](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/1-open-log-management-dashboard-create-log-group.png)
-
-### Step 2 - Fill name + retention setting
-
-![Fill name + retention setting](/images/5-Workshop/nexusoms/5.3-Infrastructure/cloudwatch-log-group/2-fill-name-retention-setting.png)
+Verify that `/ecs/nexusoms-demo-api` exists before starting an ECS task.

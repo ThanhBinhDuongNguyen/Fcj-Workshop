@@ -37,7 +37,16 @@ Sao chép host và username để tạo connection string.
 Host=<SESSION_POOLER_HOST>;Port=5432;Database=postgres;Username=<POOLER_USERNAME>;Password=<DATABASE_PASSWORD>;SSL Mode=Require;Trust Server Certificate=true
 ```
 
-Lưu connection string ở nơi an toàn.
+Ghi lại đúng loại giá trị:
+
+| Giá trị | Nguồn |
+| --- | --- |
+| `postgresConnectionString` | Chuỗi Npgsql từ Session pooler, có database password |
+| `supabaseUrl` | Project URL dạng `https://<PROJECT_REF>.supabase.co` |
+| `SUPABASE_ANON_KEY` | Publishable hoặc anon key dùng cho frontend |
+| `PROFILE_UUID` | UUID của profile demo đang hoạt động |
+
+Database password, publishable key và profile role là ba giá trị khác nhau.
 
 ![Lưu connection string](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/7-save-connection-string.png)
 
@@ -82,10 +91,12 @@ Tạo email và password dùng cho demo.
 
 ![Tạo tài khoản demo](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/14-create-demo-user.png)
 
-Lấy UUID của user, mở bảng `public.profiles` và đặt role:
+Lấy UUID của user, mở bảng `public.profiles` và cập nhật:
 
 ```text
-manager
+id: <AUTH_USER_UUID>
+role: manager
+is_active: true
 ```
 
 ![Cập nhật role](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/15-update-user-role.png)

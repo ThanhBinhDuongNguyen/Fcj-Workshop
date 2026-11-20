@@ -1,89 +1,55 @@
 ---
 title: "S3 Gateway Endpoint"
-date: 2026-11-13
+date: 2026-11-20
 weight: 8
 chapter: false
 ---
 
-Gateway Endpoint cho S3 không tính phí theo giờ và tránh đưa lưu lượng S3 của private subnet qua NAT Gateway.
+Tạo một S3 Gateway Endpoint cho hai private route table.
 
-## 6.2. Tạo một S3 Gateway Endpoint
+## Bước 1: Tạo endpoint
 
+Mở **VPC → Endpoints → Create endpoint**.
 
-**S3 Gateway Endpoint**
+![Mở trang tạo endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1-open-endpoints-dashboard-create-endpoint.png)
 
-- Service category: AWS services; tìm com.amazonaws.ap-southeast-1.s3.
-- VPC: nexusoms-demo-vpc.
-- Endpoint type: Gateway.
-- Route tables: chọn cả nexusoms-demo-private-a-rt và nexusoms-demo-private-b-rt.
-- Security Group: không có; Gateway Endpoint không dùng SG.
-- Policy: Full access cho demo; chọn Create endpoint.
+## Bước 2: Cấu hình thông tin cơ bản
 
-Chờ S3 Gateway Endpoint ở trạng thái Available; hai NAT Gateway cũng phải Available trước khi tạo ECS service.
+```text
+Name tag: nexusoms-demo-s3-endpoint
+Service category: AWS services
+```
 
+![Cấu hình endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2-fill-name-tag-choose-type.png)
 
-## Giá trị cần nhập hoặc sao chép
+## Bước 3: Chọn dịch vụ S3
 
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
-
-**S3 Gateway Endpoint**
+Tìm và chọn:
 
 ```text
 com.amazonaws.ap-southeast-1.s3
+Type: Gateway
 ```
 
-**S3 Gateway Endpoint**
+![Chọn S3 Gateway service](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3-choose-s3-service.png)
+
+## Bước 4: Chọn VPC và route table
 
 ```text
-nexusoms-demo-private-a-rt
+VPC: nexusoms-demo-vpc
+Route tables: nexusoms-demo-private-a-rt
+Route tables: nexusoms-demo-private-b-rt
+Policy: Full access
 ```
 
-**Private subnet value**
+Gateway Endpoint không sử dụng Security Group.
 
-```text
-nexusoms-demo-private-b-rt
-```
+![Chọn hai private route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4-choose-2-private-route-tables-full-access-for-policy.png)
 
-## Thao tác trên AWS Console
+## Bước 5: Hoàn tất
 
-### Bước 1 - Open Endpoints dashboard + Create endpoint
+Chọn **Create endpoint** và chờ trạng thái **Available**.
 
-**Giá trị dùng ở bước này**
+![Tạo S3 Gateway Endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png)
 
-**S3 Gateway Endpoint**
-
-```text
-com.amazonaws.ap-southeast-1.s3
-```
-
-![Open Endpoints dashboard + Create endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/1-open-endpoints-dashboard-create-endpoint.png)
-
-### Bước 2 - Fill name tag + Choose type
-
-![Fill name tag + Choose type](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/2-fill-name-tag-choose-type.png)
-
-### Bước 3 - Choose S3 service
-
-![Choose S3 service](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/3-choose-s3-service.png)
-
-### Bước 4 - Choose 2 private route tables + Full access for policy
-
-**Giá trị dùng ở bước này**
-
-**S3 Gateway Endpoint**
-
-```text
-nexusoms-demo-private-a-rt
-```
-
-**Private subnet value**
-
-```text
-nexusoms-demo-private-b-rt
-```
-
-![Choose 2 private route tables + Full access for policy](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/4-choose-2-private-route-tables-full-access-for-policy.png)
-
-### Bước 5 - Click create endpoint
-
-![Click create endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png)
+Endpoint này chỉ phục vụ lưu lượng S3. Kết nối đến Supabase và API bên ngoài vẫn đi qua NAT Gateway.

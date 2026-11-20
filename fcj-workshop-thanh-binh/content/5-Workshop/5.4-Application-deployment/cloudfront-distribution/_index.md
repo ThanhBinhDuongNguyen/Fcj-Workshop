@@ -33,6 +33,8 @@ Default root object: index.html
 
 Keep **Block all public access** enabled on the bucket.
 
+After creating the distribution, use the CloudFront S3 bucket policy prompt and choose **Copy policy** if the Console did not update the OAC permission automatically. Add the policy to the frontend bucket.
+
 ![Select the S3 origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/3-choose-s3-type-mapping-to-s3-fe.png)
 
 Choose **Next**.
@@ -58,9 +60,12 @@ Open the new distribution and choose **Origins → Create origin**.
 ```text
 Origin domain: <ALB_DNS_NAME>
 Origin name: nexusoms-demo-alb-origin
+Origin path: leave empty
 Protocol: HTTP only
 HTTP port: 80
 ```
+
+Enter only the ALB DNS name in `Origin domain`. Do not include `http://` or `https://`.
 
 ![Configure the ALB origin](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-distribution/8-configure-setting-for-origin.png)
 
@@ -85,6 +90,13 @@ Origin request policy: AllViewerExceptHostHeader
 
 Choose **Create behavior**. Verify that `/api/*` points to the ALB origin with caching disabled.
 
+If Path pattern reports `globPattern invalid`, clear the field and type `/api/*` manually.
+
 ## Step 6: Record the CloudFront information
 
 Record the **Distribution ID** and **Distribution domain name** for GitHub Actions.
+
+```text
+Distribution ID: E...
+Distribution domain name: d....cloudfront.net
+```

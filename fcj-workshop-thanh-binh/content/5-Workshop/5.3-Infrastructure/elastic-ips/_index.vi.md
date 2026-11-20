@@ -1,49 +1,43 @@
 ---
 title: "Cấp phát Elastic IP"
-date: 2026-11-13
+date: 2026-11-20
 weight: 4
 chapter: false
 ---
 
-Cấp phát hai Elastic IP trong `ap-southeast-1`. Đặt Name tag riêng cho từng địa chỉ rồi gắn lần lượt vào NAT Gateway A và B.
+Cấp phát hai Elastic IP và ghi lại Allocation ID để chọn đúng địa chỉ khi tạo NAT Gateway.
 
-## Giá trị cần nhập hoặc sao chép
+## Bước 1: Cấp phát Elastic IP A
 
-> Sao chép từng dòng tương ứng vào ô nhập. Các chuỗi nằm trong dấu `<...>` là placeholder và phải được thay bằng giá trị thật của tài khoản hoặc tài nguyên của bạn.
+Mở **VPC → Elastic IPs → Allocate Elastic IP address**.
 
-**NAT Gateway value**
+![Mở trang cấp phát Elastic IP](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/1-open-elastic-ips-allocate-elastic-ip.png)
 
-```text
-nexusoms-demo-nat-eip-a
-```
-
-**NAT Gateway value**
+Giữ cấu hình mặc định, thêm tag rồi chọn **Allocate**:
 
 ```text
-nexusoms-demo-nat-eip-b
+Key: Name
+Value: nexusoms-demo-nat-eip-a
 ```
 
-## Thao tác trên AWS Console
+![Đặt Name tag cho Elastic IP](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/2-fill-the-name-tag-for-elastic-ip-allocate.png)
 
-### Bước 1 - Open Elastic IPs + Allocate Elastic IP
+## Bước 2: Cấp phát Elastic IP B
 
-
-![Open Elastic IPs + Allocate Elastic IP](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/1-open-elastic-ips-allocate-elastic-ip.png)
-
-### Bước 2 - Fill the name tag for Elastic IP + Allocate
-
-**Giá trị dùng ở bước này**
-
-**NAT Gateway value**
+Lặp lại thao tác với tag:
 
 ```text
-nexusoms-demo-nat-eip-a
+Key: Name
+Value: nexusoms-demo-nat-eip-b
 ```
 
-**NAT Gateway value**
+## Bước 3: Ghi lại thông tin
 
-```text
-nexusoms-demo-nat-eip-b
-```
+Ghi lại đúng từng dòng trong danh sách Elastic IP:
 
-![Fill the name tag for Elastic IP + Allocate](/images/5-Workshop/nexusoms/5.3-Infrastructure/elastic-ips/2-fill-the-name-tag-for-elastic-ip-allocate.png)
+| Name | Public IPv4 | Allocation ID |
+| --- | --- | --- |
+| `nexusoms-demo-nat-eip-a` | `<EIP_A>` | `<ALLOCATION_ID_A>` |
+| `nexusoms-demo-nat-eip-b` | `<EIP_B>` | `<ALLOCATION_ID_B>` |
+
+Dropdown của NAT Gateway có thể chỉ hiển thị IP và Allocation ID. Sử dụng bảng này để chọn đúng địa chỉ.

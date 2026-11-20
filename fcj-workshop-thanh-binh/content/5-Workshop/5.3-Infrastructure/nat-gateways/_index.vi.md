@@ -23,7 +23,7 @@ Nhập các giá trị:
 Name: nexusoms-demo-nat-a
 Subnet: nexusoms-demo-public-a
 Connectivity type: Public
-Elastic IP allocation ID: nexusoms-demo-nat-eip-a
+Elastic IP allocation ID: <ALLOCATION_ID_A>
 ```
 
 ![Cấu hình NAT Gateway A](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/2-configure-nat-gateway-settings.png)
@@ -44,7 +44,7 @@ Chọn **Create NAT gateway** và nhập bộ giá trị thứ hai:
 Name: nexusoms-demo-nat-b
 Subnet: nexusoms-demo-public-b
 Connectivity type: Public
-Elastic IP allocation ID: nexusoms-demo-nat-eip-b
+Elastic IP allocation ID: <ALLOCATION_ID_B>
 ```
 
 Chọn **Create NAT gateway**.
@@ -55,6 +55,7 @@ Chờ quá trình khởi tạo hoàn tất và kiểm tra:
 
 - `nexusoms-demo-nat-a` có trạng thái **Available**.
 - `nexusoms-demo-nat-b` có trạng thái **Available**.
-- Mỗi NAT Gateway nằm trong đúng public subnet và sử dụng đúng Elastic IP.
+- NAT A nằm trong `public-a` và dùng `<ALLOCATION_ID_A>`.
+- NAT B nằm trong `public-b` và dùng `<ALLOCATION_ID_B>`.
 
 Chỉ tiếp tục tạo private route table sau khi cả hai NAT Gateway chuyển sang **Available**.

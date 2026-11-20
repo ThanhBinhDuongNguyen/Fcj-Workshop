@@ -1,95 +1,45 @@
 ---
-title: "Target group"
-date: 2026-11-13
+title: "Target Group"
+date: 2026-11-20
 weight: 3
 chapter: false
 ---
 
-Create an **IP addresses** target group because Fargate uses `awsvpc`. Select `nexusoms-demo-vpc`, port `8080`, and `/health`; do not register IP addresses manually.
+Create an IP target group for ECS Fargate.
 
-## Values to enter or copy
+## Step 1: Create the target group
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+Open **EC2 → Target Groups → Create target group**.
 
-**Target group - input 1**
+![Open the target group creation page](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png)
 
-```text
-nexusoms-demo-api-tg
-```
-
-**Target type**
+## Step 2: Configure the target group
 
 ```text
 Target type: IP addresses
-```
-
-**Protocol**
-
-```text
+Target group name: nexusoms-demo-api-tg
 Protocol: HTTP
-```
-
-**Port**
-
-```text
 Port: 8080
+IP address type: IPv4
+VPC: nexusoms-demo-vpc
 ```
 
-**Health check path**
+![Configure the target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png)
+
+## Step 3: Configure the health check
 
 ```text
+Health check protocol: HTTP
 Health check path: /health
+Success codes: 200
 ```
 
-## AWS Console walkthrough
+![Configure the health check](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png)
 
-### Step 1 - Open Target Groups dashboard + Create target group
+## Step 4: Finish
 
+Choose **Next**. Do not register IP addresses manually. Choose **Create target group**.
 
-![Open Target Groups dashboard + Create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/1-open-target-groups-dashboard-create-target-group.png)
+![Create the target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png)
 
-### Step 2 - Configure target group
-
-**Values used in this step**
-
-**Target group - input 1**
-
-```text
-nexusoms-demo-api-tg
-```
-
-**Target type**
-
-```text
-Target type: IP addresses
-```
-
-**Protocol**
-
-```text
-Protocol: HTTP
-```
-
-**Port**
-
-```text
-Port: 8080
-```
-
-![Configure target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/2-configure-target-group.png)
-
-### Step 3 - Choose VPC + Set up health checks
-
-**Values used in this step**
-
-**Health check path**
-
-```text
-Health check path: /health
-```
-
-![Choose VPC + Set up health checks](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/3-choose-vpc-set-up-health-checks.png)
-
-### Step 4 - Complete create target group
-
-![Complete create target group](/images/5-Workshop/nexusoms/5.4-Application-deployment/target-group/4-complete-create-target-group.png)
+Verify that the target group uses `IP addresses`, port `8080`, and `/health` returns `200` after the ECS Service starts.

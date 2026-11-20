@@ -112,23 +112,27 @@ chapter: false
 
 ![Schedule secret deletion](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/17-select-waiting-period-schedule-deletion.png)
 
-2. Delete `/ecs/nexusoms-demo-api`.
+2. Delete both CloudWatch alarms:
+
+```powershell
+aws cloudwatch delete-alarms --profile nexusoms-demo --region ap-southeast-1 --alarm-names nexusoms-demo-alb-unhealthy-targets nexusoms-demo-webhook-dlq-visible
+```
+
+3. Delete `/ecs/nexusoms-demo-api`.
 
 ![Delete the CloudWatch log group](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/18-delete-log-groups-in-cloudwatch.png)
 
-3. Delete the GitHub Actions role.
+4. Delete the GitHub Actions role.
 
 ![Delete the GitHub Actions role](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/27-delete-github-actions-role.png)
 
-4. Delete the ECS execution role and task role.
+5. Delete the ECS execution role and task role.
 
 ![Delete the ECS roles](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/28-delete-ecs-roles.png)
 
-5. Delete the GitHub OIDC provider if no other repository uses it.
+6. Delete the GitHub OIDC provider if no other repository uses it.
 
 ![Delete the GitHub OIDC provider](/images/5-Workshop/nexusoms/5.7-Cleanup/resource-cleanup/29-delete-github-oidc-provider.png)
-
-6. Delete the lab IAM user and access key.
 
 ## 7. Verify cleanup
 

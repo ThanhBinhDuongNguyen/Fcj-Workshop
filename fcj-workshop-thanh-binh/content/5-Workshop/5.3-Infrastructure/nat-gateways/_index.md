@@ -1,53 +1,46 @@
 ---
-title: "Create NAT gateways"
-date: 2026-11-13
+title: "Create NAT Gateways"
+date: 2026-11-20
 weight: 5
 chapter: false
 ---
 
-Each Availability Zone receives its own NAT gateway so private ECS tasks can reach Supabase and external webhook endpoints.
+Create one NAT Gateway in each Availability Zone for outbound access from the private subnets.
 
-## Values to enter or copy
+## Step 1: Create NAT Gateway A
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+Open **VPC → NAT gateways → Create NAT gateway**.
 
-**NAT Gateway value**
-
-```text
-nexusoms-demo-nat-a | nexusoms-demo-public-a | nexusoms-demo-nat-eip-a
-```
-
-**NAT Gateway value**
+![Open the NAT Gateway creation page](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/1-open-nat-gateways-dashboard-create-nat-gateway.png)
 
 ```text
-nexusoms-demo-nat-b | nexusoms-demo-public-b | nexusoms-demo-nat-eip-b
+Name: nexusoms-demo-nat-a
+Subnet: nexusoms-demo-public-a
+Connectivity type: Public
+Elastic IP allocation ID: <ALLOCATION_ID_A>
 ```
 
-## AWS Console walkthrough
+![Configure NAT Gateway A](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/2-configure-nat-gateway-settings.png)
 
-### Step 1 - Open NAT Gateways dashboard + Create NAT Gateway
+Choose **Create NAT gateway**.
 
+![Create NAT Gateway A](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/3-click-create-nat-gateway.png)
 
-![Open NAT Gateways dashboard + Create NAT Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/1-open-nat-gateways-dashboard-create-nat-gateway.png)
+## Step 2: Create NAT Gateway B
 
-### Step 2 - Configure NAT Gateway settings
-
-**Values used in this step**
-
-**NAT Gateway value**
+Repeat with:
 
 ```text
-nexusoms-demo-nat-a | nexusoms-demo-public-a | nexusoms-demo-nat-eip-a
+Name: nexusoms-demo-nat-b
+Subnet: nexusoms-demo-public-b
+Connectivity type: Public
+Elastic IP allocation ID: <ALLOCATION_ID_B>
 ```
 
-**NAT Gateway value**
+## Step 3: Verify
 
-```text
-nexusoms-demo-nat-b | nexusoms-demo-public-b | nexusoms-demo-nat-eip-b
-```
+- Both NAT Gateways are **Available**.
+- NAT A is in `public-a` and uses `<ALLOCATION_ID_A>`.
+- NAT B is in `public-b` and uses `<ALLOCATION_ID_B>`.
 
-![Configure NAT Gateway settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/2-configure-nat-gateway-settings.png)
-
-### Step 3 - Click Create NAT Gateway
-
-![Click Create NAT Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/nat-gateways/3-click-create-nat-gateway.png)
+Continue only after both NAT Gateways are available.

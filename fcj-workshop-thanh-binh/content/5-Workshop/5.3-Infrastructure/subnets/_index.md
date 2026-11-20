@@ -1,100 +1,85 @@
 ---
 title: "Create public and private subnets"
-date: 2026-11-13
+date: 2026-11-20
 weight: 2
 chapter: false
 ---
 
-Create four subnets across two Availability Zones. Enable automatic public IPv4 assignment only on the two public subnets.
+Create four subnets across two Availability Zones.
 
-## Values to enter or copy
+## Step 1: Open the subnet creation page
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+Open **VPC → Subnets → Create subnet**.
 
-**Public subnet value**
+![Open the subnet creation page](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png)
 
-```text
-nexusoms-demo-public-a | 10.80.0.0/24
-```
-
-**Public subnet value**
+Select:
 
 ```text
-nexusoms-demo-public-b | 10.80.1.0/24
+nexusoms-demo-vpc
 ```
 
-**Private subnet value**
+![Select the VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png)
+
+## Step 2: Create public subnet A
 
 ```text
-nexusoms-demo-private-a | 10.80.10.0/24
+Name: nexusoms-demo-public-a
+Availability Zone: AZ A
+IPv4 CIDR: 10.80.0.0/24
 ```
 
-**Private subnet value**
+![Configure public subnet A](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3-configure-public-subnet-a.png)
+
+## Step 3: Create public subnet B
 
 ```text
-nexusoms-demo-private-b | 10.80.11.0/24
+Name: nexusoms-demo-public-b
+Availability Zone: AZ B
+IPv4 CIDR: 10.80.1.0/24
 ```
 
-## AWS Console walkthrough
+![Configure public subnet B](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png)
 
-### Step 1 - Open subnets dashboard + Create subnet
-
-![Open subnets dashboard + Create subnet](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/1-open-subnets-dashboard-create-subnet.png)
-
-### Step 2 - Choose VPC ID
-
-![Choose VPC ID](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/2-choose-vpc-id.png)
-
-### Step 3 - Configure public subnet a
-
-**Values used in this step**
-
-**Public subnet value**
+## Step 4: Create private subnet A
 
 ```text
-nexusoms-demo-public-a | 10.80.0.0/24
+Name: nexusoms-demo-private-a
+Availability Zone: same AZ as public-a
+IPv4 CIDR: 10.80.10.0/24
 ```
 
-**Public subnet value**
+![Configure private subnet A](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5-configure-private-subnet-a.png)
+
+## Step 5: Create private subnet B
 
 ```text
-nexusoms-demo-public-b | 10.80.1.0/24
+Name: nexusoms-demo-private-b
+Availability Zone: same AZ as public-b
+IPv4 CIDR: 10.80.11.0/24
 ```
 
-![Configure public subnet a](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/3-configure-public-subnet-a.png)
+![Configure private subnet B](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png)
 
-### Step 4 - Configure public subnet b
+Choose **Create subnet**.
 
-![Configure public subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/4-configure-public-subnet-b.png)
+## Step 6: Enable public IPv4 on public subnets
 
-### Step 5 - Configure private subnet a
+Select `nexusoms-demo-public-a` → **Actions → Edit subnet settings**.
 
-**Values used in this step**
+![Open subnet settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png)
 
-**Private subnet value**
+Enable **Enable auto-assign public IPv4 address** and save.
 
-```text
-nexusoms-demo-private-a | 10.80.10.0/24
-```
+![Enable auto-assign public IPv4](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png)
 
-**Private subnet value**
+Repeat for `nexusoms-demo-public-b`. Keep this setting disabled on both private subnets.
 
-```text
-nexusoms-demo-private-b | 10.80.11.0/24
-```
+## Step 7: Verify
 
-![Configure private subnet a](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/5-configure-private-subnet-a.png)
-
-### Step 6 - Configure private subnet b
-
-![Configure private subnet b](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/6-configure-private-subnet-b.png)
-
-### Step 7 - Edit subnet settings
-
-![Edit subnet settings](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/7-edit-subnet-settings.png)
-
-### Step 8 - Enable auto-assign public IPv4 address
-
-![Enable auto-assign public IPv4 address](/images/5-Workshop/nexusoms/5.3-Infrastructure/subnets/8-enable-auto-assign-public-ipv4-address.png)
-
-**Do this again for subnet public B**
+| Subnet | CIDR | Public IPv4 |
+| --- | --- | --- |
+| `nexusoms-demo-public-a` | `10.80.0.0/24` | Enabled |
+| `nexusoms-demo-public-b` | `10.80.1.0/24` | Enabled |
+| `nexusoms-demo-private-a` | `10.80.10.0/24` | Disabled |
+| `nexusoms-demo-private-b` | `10.80.11.0/24` | Disabled |

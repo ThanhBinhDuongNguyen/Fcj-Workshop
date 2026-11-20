@@ -7,7 +7,7 @@ chapter: false
 
 Create the API task definition, read secrets from Secrets Manager, and send logs to CloudWatch.
 
-## Step 1: Create the CloudWatch log group
+## Step 1: Verify the CloudWatch log group
 
 Run in PowerShell:
 
@@ -16,19 +16,15 @@ $AwsProfile = "nexusoms-demo"
 $AwsRegion = "ap-southeast-1"
 $LogGroupName = "/ecs/nexusoms-demo-api"
 
-aws logs create-log-group `
+aws logs describe-log-groups `
   --profile $AwsProfile `
   --region $AwsRegion `
-  --log-group-name $LogGroupName
-
-aws logs put-retention-policy `
-  --profile $AwsProfile `
-  --region $AwsRegion `
-  --log-group-name $LogGroupName `
-  --retention-in-days 7
+  --log-group-name-prefix $LogGroupName `
+  --query "logGroups[].logGroupName" `
+  --output text
 ```
 
-Continue if the log group already exists.
+The result must include `/ecs/nexusoms-demo-api`.
 
 ## Step 2: Open the task definition creation page
 
@@ -105,3 +101,5 @@ awslogs-create-group: false
 ```
 
 Choose **Create** and record the new revision, for example `nexusoms-demo-api:1`.
+
+Verify the four `ValueFrom` entries. Each entry must reference its own JSON key in the secret, not the complete JSON object.

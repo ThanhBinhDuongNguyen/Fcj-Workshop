@@ -28,11 +28,21 @@ https://<CLOUDFRONT_DOMAIN>
 
 Đăng nhập bằng tài khoản đã tạo trong Supabase.
 
+Mở DevTools → Network và kiểm tra:
+
+```text
+Chưa đăng nhập: /api/v1/session/me trả 401
+Đăng nhập hợp lệ: /api/v1/session/me trả 200
+API domain: <CLOUDFRONT_DOMAIN>
+```
+
 ![Mở website NexusOMS](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/1-open-website.png)
 
 ## 3. Kiểm tra dashboard
 
 Xác nhận dashboard tải dữ liệu và request `/api/*` trả về thành công.
+
+Mở trực tiếp `/login`, `/app`, sau đó nhấn F5. Các route frontend phải tải lại bình thường; response lỗi API không được đổi thành HTML 200.
 
 ![Kiểm tra dashboard](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/2-checking-overall-dashboard.png)
 
@@ -100,4 +110,19 @@ Nếu popup báo còn message trong DLQ, mở DLQ để xem lỗi. Chỉ xóa me
 
 ## 9. Kiểm tra CI/CD
 
-Thay đổi nhỏ trên frontend, commit và push lên `main`. Workflow phải cập nhật S3, tạo CloudFront invalidation và giữ ECS target ở trạng thái `Healthy`.
+Tạo branch, thay đổi nhỏ trên frontend và mở pull request. Sau khi CI thành công, merge vào `main`. Workflow phải cập nhật S3, chờ CloudFront invalidation hoàn tất và giữ ECS target ở trạng thái `Healthy`.
+
+## 10. Xử lý lỗi nhanh
+
+| Lỗi | Cách kiểm tra |
+|---|---|
+| `The config profile could not be found` | Chạy lại `aws login --profile nexusoms-demo --region ap-southeast-1`, sau đó kiểm tra bằng `aws sts get-caller-identity --profile nexusoms-demo` |
+| Docker báo `error getting credentials` | Dùng Docker config tạm ở bước push image backend |
+| ECS báo `secretsmanager:GetSecretValue AccessDenied` | Kiểm tra policy của execution role, đăng ký task definition revision mới và cập nhật service |
+| Target group trả `500` | Mở CloudWatch Logs và kiểm tra lại secret bằng đoạn PowerShell ở phần Secrets Manager |
+| CloudFront báo `globPattern invalid` | Xóa nội dung Path pattern và gõ lại `/api/*` |
+| Route SPA trả `403` hoặc `404` | Build, Save và Publish CloudFront Function; kiểm tra association ở Default behavior |
+| `NoSuchDistribution` | Dùng Distribution ID, không dùng domain CloudFront |
+| GitHub Actions không assume được role | So sánh OIDC subject thực tế với trust policy của role |
+| Hai workflow CD cùng hoạt động | Xóa `.github/workflows/cd.yml` và chỉ giữ `deploy-aws.yml` làm workflow deploy AWS |
+| PR sửa workflow nhưng CI không chạy | Thêm `.github/workflows/**` vào path filter của cả backend CI và frontend CI; giữ `workflow_call` |

@@ -7,7 +7,7 @@ chapter: false
 
 Tạo task definition cho API, đọc cấu hình bí mật từ Secrets Manager và gửi log đến CloudWatch.
 
-## Bước 1: Tạo CloudWatch log group
+## Bước 1: Kiểm tra CloudWatch log group
 
 Chạy trong PowerShell:
 
@@ -16,19 +16,15 @@ $AwsProfile = "nexusoms-demo"
 $AwsRegion = "ap-southeast-1"
 $LogGroupName = "/ecs/nexusoms-demo-api"
 
-aws logs create-log-group `
+aws logs describe-log-groups `
   --profile $AwsProfile `
   --region $AwsRegion `
-  --log-group-name $LogGroupName
-
-aws logs put-retention-policy `
-  --profile $AwsProfile `
-  --region $AwsRegion `
-  --log-group-name $LogGroupName `
-  --retention-in-days 7
+  --log-group-name-prefix $LogGroupName `
+  --query "logGroups[].logGroupName" `
+  --output text
 ```
 
-Nếu log group đã tồn tại, tiếp tục bước sau.
+Kết quả phải có `/ecs/nexusoms-demo-api`.
 
 ## Bước 2: Mở trang tạo task definition
 
@@ -107,3 +103,5 @@ awslogs-create-group: false
 ```
 
 Chọn **Create** và ghi lại revision mới, ví dụ `nexusoms-demo-api:1`.
+
+Kiểm tra lại bốn dòng `ValueFrom`: mỗi dòng phải trỏ đến đúng JSON key riêng trong secret. Không trỏ cả bốn biến đến toàn bộ JSON object.

@@ -12,4 +12,4 @@ Thực hiện lần lượt các phần sau trước khi tạo tài nguyên AWS.
 2. [Tạo Supabase project](./supabase-project/)
 3. [Cấu hình frontend local](./frontend-environment/)
 4. [Kiểm tra source code local](./local-validation/)
-5. [Tạo IAM user và cấu hình AWS CLI](./iam-user-and-local-setup/)
+5. [Đăng nhập AWS CLI](./iam-user-and-local-setup/)

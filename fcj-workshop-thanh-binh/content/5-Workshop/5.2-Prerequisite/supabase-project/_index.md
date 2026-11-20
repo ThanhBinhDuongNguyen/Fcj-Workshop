@@ -37,7 +37,16 @@ Copy the host and username.
 Host=<SESSION_POOLER_HOST>;Port=5432;Database=postgres;Username=<POOLER_USERNAME>;Password=<DATABASE_PASSWORD>;SSL Mode=Require;Trust Server Certificate=true
 ```
 
-Store the connection string securely.
+Record each value from the correct source:
+
+| Value | Source |
+| --- | --- |
+| `postgresConnectionString` | Npgsql Session pooler string with the database password |
+| `supabaseUrl` | Project URL in the form `https://<PROJECT_REF>.supabase.co` |
+| `SUPABASE_ANON_KEY` | Publishable or anon key used by the frontend |
+| `PROFILE_UUID` | UUID of the active demo profile |
+
+The database password, publishable key, and profile role are different values.
 
 ![Save the connection string](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/7-save-connection-string.png)
 
@@ -80,10 +89,12 @@ Create the demo email and password.
 
 ![Create the demo user](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/14-create-demo-user.png)
 
-Copy the user UUID, open `public.profiles`, and set the role:
+Copy the user UUID, open `public.profiles`, and update:
 
 ```text
-manager
+id: <AUTH_USER_UUID>
+role: manager
+is_active: true
 ```
 
 ![Update the user role](/images/5-Workshop/nexusoms/5.2-Prerequisite/supabase-project/15-update-user-role.png)

@@ -1,97 +1,75 @@
 ---
-title: "Internet gateway and public routing"
-date: 2026-11-13
+title: "Internet Gateway and public routing"
+date: 2026-11-20
 weight: 3
 chapter: false
 ---
 
-Attach an internet gateway to the VPC and use one public route table for both public subnets.
+Attach an Internet Gateway to the VPC and use one public route table for both public subnets.
 
-## Values to enter or copy
+## Step 1: Create the Internet Gateway
 
-> Copy the matching line into the input field. Replace every `<...>` placeholder with the real value from your AWS or Supabase account.
+Open **VPC → Internet gateways → Create internet gateway**.
 
-**Internet gateway and public routing - input 1**
-
-```text
-nexusoms-demo-igw
-```
-
-**Public subnet value**
+![Open the Internet Gateway creation page](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png)
 
 ```text
-nexusoms-demo-public-rt
+Name tag: nexusoms-demo-igw
 ```
 
-**IPv4 CIDR**
+Choose **Create internet gateway**.
+
+![Create the Internet Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png)
+
+## Step 2: Attach the Internet Gateway
+
+Choose **Actions → Attach to a VPC**.
+
+![Choose Attach to a VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png)
+
+Select `nexusoms-demo-vpc` and attach.
+
+![Attach the Internet Gateway](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png)
+
+## Step 3: Create the public route table
+
+Open **VPC → Route tables → Create route table**.
+
+![Open the route table creation page](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png)
 
 ```text
-0.0.0.0/0
+Name: nexusoms-demo-public-rt
+VPC: nexusoms-demo-vpc
 ```
 
-## AWS Console walkthrough
+![Create the public route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6-fill-name-choose-vpc-create-route-table.png)
 
-### Step 1 - Open IGW dashboard + Create IGW
+## Step 4: Add the Internet route
 
+Open **Routes → Edit routes**.
 
-![Open IGW dashboard + Create IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/1-open-igw-dashboard-create-igw.png)
-
-### Step 2 - Put name tag + Create IGW
-
-![Put name tag + Create IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/2-put-name-tag-create-igw.png)
-
-### Step 3 - Attach to a VPC
-
-![Attach to a VPC](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/3-attach-to-a-vpc.png)
-
-### Step 4 - Choose VPC + Click Attach IGW
-
-![Choose VPC + Click Attach IGW](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/4-choose-vpc-click-attach-igw.png)
-
-### Step 5 - Open Route tables dashboard + Create Route table
-
-![Open Route tables dashboard + Create Route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/5-open-route-tables-dashboard-create-route-table.png)
-
-### Step 6 - Fill Name + Choose VPC + Create route table
-
-**Values used in this step**
-
-**IPv4 CIDR**
+![Open Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png)
 
 ```text
-0.0.0.0/0
+Destination: 0.0.0.0/0
+Target: Internet Gateway → nexusoms-demo-igw
 ```
 
-![Fill Name + Choose VPC + Create route table](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/6-fill-name-choose-vpc-create-route-table.png)
+![Add the Internet Gateway route](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8-add-route-choose-internet-gateway-save-changes.png)
 
-### Step 7 - Choose Routes + Edit routes
+## Step 5: Associate the public subnets
 
-![Choose Routes + Edit routes](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/7-choose-routes-edit-routes.png)
+Choose **Subnet associations → Edit subnet associations**.
 
-### Step 8 - Add route + choose Internet gateway + Save changes
+![Open subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png)
 
-**Values used in this step**
-
-**Internet gateway and public routing - input 1**
+Select both public subnets:
 
 ```text
-nexusoms-demo-igw
+nexusoms-demo-public-a
+nexusoms-demo-public-b
 ```
 
-![Add route + choose Internet gateway + Save changes](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/8-add-route-choose-internet-gateway-save-changes.png)
+![Associate both public subnets](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10-choose-2-public-subnet-save-associations.png)
 
-### Step 9 - Choose subnet associations + Edit subnet associations
-
-![Choose subnet associations + Edit subnet associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/9-choose-subnet-associations-edit-subnet-associations.png)
-
-### Step 10 - Choose 2 public subnet + Save associations
-
-**Values used in this step**
-
-**Public subnet value**
-
-```text
-nexusoms-demo-public-rt
-```
-
-![Choose 2 public subnet + Save associations](/images/5-Workshop/nexusoms/5.3-Infrastructure/internet-gateway-and-public-routing/10-choose-2-public-subnet-save-associations.png)
+Verify that `0.0.0.0/0` points to `nexusoms-demo-igw` and both public subnets are associated.

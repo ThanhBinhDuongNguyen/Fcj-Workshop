@@ -22,9 +22,9 @@ Runtime: cloudfront-js-2.0
 
 ![Cấu hình function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/2-configure-function-details.png)
 
-## Bước 2: Thêm code rewrite SPA
+## Bước 2: Mở Build và thêm code rewrite SPA
 
-Xóa code mẫu và dán toàn bộ đoạn sau:
+Mở function vừa tạo, chọn tab **Build**, xóa code mẫu và dán toàn bộ đoạn sau:
 
 ```javascript
 function handler(event) {
@@ -42,9 +42,15 @@ function handler(event) {
 
 ![Dán code vào Build section](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/3-paste-code-build-section.png)
 
-## Bước 3: Publish function
+## Bước 3: Build và publish function
 
-Chọn **Save changes**, sau đó chọn **Publish**.
+Thực hiện đúng thứ tự:
+
+1. Chọn **Save changes** trong tab Build.
+2. Chọn **Publish**.
+3. Xác nhận function đã ở stage `LIVE`.
+
+Nếu Create hoặc Publish báo `UnknownError`, refresh danh sách Functions và kiểm tra function đã được tạo hoặc publish chưa trước khi thao tác lại.
 
 ![Publish function](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/4-publish-function.png)
 
@@ -64,6 +70,8 @@ Stage: LIVE
 ```
 
 Không gắn function vào behavior `/api/*`.
+
+Không cấu hình custom error 403/404 trả `/index.html` với HTTP 200 cho toàn distribution. Function chỉ xử lý route frontend ở Default behavior, còn lỗi API phải giữ nguyên status và body.
 
 ![Gắn function vào Viewer request](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
 

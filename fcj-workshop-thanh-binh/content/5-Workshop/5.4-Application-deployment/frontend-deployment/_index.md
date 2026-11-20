@@ -7,6 +7,19 @@ chapter: false
 
 Open PowerShell in the repository root.
 
+Keep the two CloudFront values separate:
+
+| Value | Example | Used for |
+| --- | --- | --- |
+| Domain | `d....cloudfront.net` | `VITE_API_BASE_URL` |
+| Distribution ID | `E...` | Invalidation command |
+
+Verify that Git ignores the local production file:
+
+```powershell
+git check-ignore frontend/.env.production.local
+```
+
 ## 1. Build the frontend
 
 ```powershell
@@ -25,6 +38,8 @@ npm run typecheck
 npm run test
 npm run build
 ```
+
+Use only the Supabase publishable/anon key in a `VITE_` variable. Do not use a service-role or secret key.
 
 ![Configure variables and build the frontend](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/1-set-up-variable-run-build-project.png)
 
@@ -49,13 +64,12 @@ aws s3 sync .\dist "s3://$BucketName" `
 
 ```powershell
 $DistributionId = "<CLOUDFRONT_DISTRIBUTION_ID>"
-
-aws cloudfront create-invalidation `
-  --distribution-id $DistributionId `
-  --paths "/*" `
-  --profile nexusoms-demo
+$InvalidationId = aws cloudfront create-invalidation --distribution-id $DistributionId --paths "/*" --profile nexusoms-demo --query "Invalidation.Id" --output text
+aws cloudfront wait invalidation-completed --distribution-id $DistributionId --id $InvalidationId --profile nexusoms-demo
 
 Pop-Location
 ```
+
+Continue only after the wait command completes successfully.
 
 ![Create a CloudFront invalidation](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3-create-invalidation-cloudfront.png)
