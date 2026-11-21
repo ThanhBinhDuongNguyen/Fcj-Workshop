@@ -6,119 +6,117 @@ chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
+# Báo cáo tổng kết: “Cloud Mastery”
 
-# Summary Report: “Cloud Mastery”
+### Mục tiêu sự kiện
 
-### Event Objectives
+- Hiểu khoảng cách giữa một AI prototype và hệ thống AI doanh nghiệp sẵn sàng cho production, cùng vai trò của cloud trong quá trình này.
+- Tìm hiểu Amazon Bedrock AgentCore và năm dịch vụ cốt lõi: Runtime, Identity, Gateway, Memory và Observability.
+- Theo dõi các use case thực tế và phần demo ứng dụng AI multi-agent nội bộ được xây dựng bằng Strands.
+- Tìm hiểu các pattern multi-agent, agentic AI và cách RAG tạo câu trả lời dựa trên nguồn dữ liệu cụ thể.
 
-- Understand the gap between an AI prototype and a production-grade enterprise AI system, and the role of the cloud in closing it.  
-- Explore Amazon Bedrock AgentCore and its five core services: Runtime, Identity, Gateway, Memory and Observability.  
-- See real-world use cases and a live demo of a multi-agent internal AI application built with Strands.  
-- Learn common multi-agent and agentic patterns, and how RAG produces grounded answers.  
+### Diễn giả
 
-### Speakers
+- **Khang Duong** – Developer, thành viên FCAJ
+- **Quynh** – Developer, thành viên FCAJ
+- **Bao Nguyen** – Developer, thành viên FCAJ
+- **Lam Anh** – Developer, thành viên FCAJ
+- **Khuong Huynh** – Developer, thành viên FCAJ
 
-- **Khang Duong** – Developer, FCAJ member  
-- **Quynh** – Developer, FCAJ member  
-- **Bao Nguyen** – Developer, FCAJ member  
-- **Lam Anh** – Developer, FCAJ member  
-- **Khuong Huynh** – Developer, FCAJ member  
+### Các điểm nhấn chính
 
-### Key Highlights
+#### 1. Khoảng cách từ prototype đến production
 
-#### 1. Section 1 - The Gap: From Prototype to Production
+- **Phép so sánh nhà hàng**: Prototype giống như căn bếp gia đình, AI doanh nghiệp giống chuỗi nhà hàng và cloud đóng vai trò bếp trung tâm.
+- **AI trong doanh nghiệp**: AI là một tính năng trong sản phẩm theo luồng Data → AI Model → Feature → Users, chẳng hạn hệ thống gợi ý, chatbot hỗ trợ hoặc phát hiện gian lận.
+- **AI học thuật và AI doanh nghiệp**: Hai hướng tiếp cận được so sánh theo mục tiêu, dữ liệu, người dùng và cách vận hành.
+- **Bốn trụ cột của AI production**: Security, Reliability, Scalability và Cost.
+- **Bảo mật AI**: Gồm quyền riêng tư dữ liệu, kiểm soát truy cập và các rủi ro đặc thù của AI.
+- **Khả năng mở rộng trên AWS**: Có thể sử dụng Lambda, Auto Scaling và Load Balancer để điều chỉnh tài nguyên theo nhu cầu.
+- **Vai trò của cloud**: Cung cấp các cơ chế bảo mật, khả năng mở rộng theo nhu cầu, độ tin cậy qua nhiều Availability Zone và mô hình chi phí pay-as-you-go.
+- **Các công cụ AWS**: Lambda chạy code theo sự kiện mà không cần quản lý máy chủ; Bedrock cung cấp foundation model qua API; AgentCore hỗ trợ vận hành AI agent với Runtime, Memory và Identity.
+- **Sử dụng model phù hợp**: Model lớn đảm nhiệm vai trò điều phối, còn các tác vụ chuyên biệt có thể sử dụng model nhỏ và tiết kiệm hơn.
 
-- **The restaurant analogy**: A prototype is a home kitchen, enterprise AI is a restaurant chain, and the cloud is the central kitchen.  
-- **AI in the enterprise**: AI is a feature inside the product (Data → AI Model → Feature → Users), for example recommendations, a support chatbot and fraud detection.  
-- **Academic vs. enterprise AI**: Compared across four aspects: goal, data, users and operation.  
-- **Four pillars a model needs in production**: Security, Reliability, Scalability and Cost.  
-- **Security in AI**: Data privacy, access control and AI-specific risks.  
-- **Elastic scalability on AWS**: Lambda, Auto Scaling and Load Balancer.  
-- **The role of the cloud**: Built-in security, scaling on demand, reliability through backup zones, and pay-as-you-go cost.  
-- **AWS toolbox**: Lambda runs code on events with no servers to manage; Bedrock provides ready-made foundation models through an API; AgentCore operates AI agents (Runtime, Memory, Identity).  
-- **Use AI wisely**: The "head chef" is an orchestrator running on a large model, while the "main course", "dessert" and "cashier" roles are handled by small, cheap models.  
+#### 2. Use case thực tế và AgentCore Runtime
 
-#### 2. Section 2 - Real-World Use Cases and AgentCore Runtime
+- **Use case**: Giới thiệu các ví dụ thực tế từ Cox Automotive và Mobileye.
+- **Vị trí của AgentCore**: Kiến trúc gồm model, ứng dụng agent và Amazon Bedrock AgentCore.
+- **Xây dựng agent bằng Strands**: Agent được phát triển với framework Strands.
+- **Chạy agent trên AgentCore Runtime**: Chạy local phù hợp cho phát triển; khi đưa vào ứng dụng thật, agent cần được triển khai lên AgentCore Runtime để vận hành theo session.
+- **Phân chia trách nhiệm**: Developer phụ trách business rule, dữ liệu, tool và kiểm thử; managed runtime đảm nhiệm compute, cô lập session và mở rộng tài nguyên.
 
-- **Use cases**: Real-life examples such as Cox Automotive and Mobileye.  
-- **Where AgentCore fits**: The stack consists of the model, the agent application and Amazon Bedrock AgentCore.  
-- **Building an agent with Strands**: Agents are written with the Strands framework.  
-- **Running an agent with AgentCore Runtime**: Running locally is fine for development, but for a real application the agent must be deployed to AgentCore Runtime so it can run in sessions.  
-- **Division of responsibility**: Developers own business rules, data and tools, and testing; the managed runtime provides compute, session isolation and scaling.  
+#### 3. Identity, Gateway, Memory và Observability
 
-#### 3. Section 3 - Identity, Gateway, Memory and Observability
+- **Identity và Gateway**: AgentCore tách inbound access khỏi outbound access thông qua một luồng gồm năm bước; Gateway là một trong các dịch vụ được trình bày trong phần này.
+- **Xây dựng context cho agent**: Context có thể gồm system prompt, tài liệu, tool, instruction, memory và lịch sử message.
+- **Thách thức của agent memory**: Khả năng mở rộng lưu trữ, cập nhật memory, độ phức tạp tích hợp, quyền riêng tư, bảo mật, độ chính xác khi truy xuất và observability.
+- **AgentCore Memory**: Gồm short-term memory cho message và session state; long-term memory cho semantic memory, sở thích người dùng, tóm tắt, episodic memory và custom strategy.
+- **Luồng memory**: Agent gửi event, đọc memory record và sử dụng module tự động để trích xuất dữ liệu từ short-term memory sang long-term memory.
+- **Observability – “You cannot fix what you cannot see”**: Hỗ trợ compliance, governance, traceability, lineage, theo dõi chi phí, troubleshooting, root cause analysis, phân tích latency, explainability và continuous evaluation.
 
-- **Identity and Gateway**: AgentCore separates inbound from outbound access through a 5-step flow, and Gateway was covered as one of the remaining AgentCore services.  
-- **Building context for an agent**: System prompt, documents, tools, instructions, memory and message history.  
-- **Current challenges of agent memory**: Storage scalability, memory refresh, integration complexity, privacy and security concerns, retrieval accuracy problems and observability.  
-- **AgentCore Memory**: Short-term memory (chat messages, session state) and long-term memory (semantic, user preferences, summarization, episodic and custom strategy).  
-- **Memory flow**: The agent implementation sends events (messages) and reads memory (agent store, list events, retrieve memory records) from AgentCore Memory, and an automatic memory extraction module turns short-term events into long-term memory.  
-- **Observability - "you cannot fix what you cannot see"**: Compliance, governance and traceability, lineage, cost visibility, troubleshooting and root cause analysis, understanding latency and operational performance, explainability and continuous evaluation.  
+#### 4. Demo và các pattern
 
-#### 4. Live Demo and Patterns
+- **Demo ứng dụng AI nội bộ**: User → FastAPI → Strands router; router chuyển từng request đến `qa_agent`, `ticket_agent` hoặc `research_agent`.
+- **Các pattern multi-agent phổ biến**: Routing/Supervisor, Sequential, Parallel và Evaluator-optimizer.
+- **Agentic pattern**: Reason → Act → Observe → Repeat hoặc Finish.
+- **RAG – từ tài liệu đến câu trả lời có căn cứ**:
+  - *Indexing*: Internal knowledge → embedding model → vector → vector store.
+  - *Querying*: User question → query embedding → truy xuất top-K dữ liệu liên quan → bổ sung context vào prompt → tạo câu trả lời kèm nguồn.
 
-- **Live demo of an internal AI app**: User → FastAPI → Strands router, which routes each request to one of three agents: `qa_agent`, `ticket_agent` or `research_agent`.  
-- **Common multi-agent patterns**: Routing/Supervisor, Sequential, Parallel and Evaluator-optimizer.  
-- **Agentic pattern**: Reason → Act → Observe → Repeat or Finish.  
-- **RAG - from documents to grounded answers**:  
-    - *Indexing*: internal knowledge → embedding model → generate vectors → store in a vector store.  
-    - *Querying*: user question → query embedding → retrieve the top-K relevant knowledge → add the retrieved context to the LLM prompt → generate a grounded answer with source references.  
+### Bài học cốt lõi
 
-### Key Takeaways
+#### Tư duy thiết kế
 
-#### Design Mindset
+- **AI là một tính năng của sản phẩm**: AI production phải được thiết kế như một phần của sản phẩm phục vụ người dùng thật, không phải một model độc lập.
+- **Ưu tiên bốn trụ cột**: Security, reliability, scalability và cost cần được xem xét ngay từ đầu.
+- **Chọn model theo tác vụ**: Dùng model lớn cho orchestration và model nhỏ hơn cho các tác vụ chuyên biệt.
 
-- **AI is a feature of the product**: Production AI must be designed as part of a product with real users, not as a standalone model.  
-- **Four pillars first**: Security, reliability, scalability and cost have to be planned from the start.  
-- **Right-sized models**: Use a large model for orchestration and small, cheaper models for the rest of the work.  
+#### Kiến trúc kỹ thuật
 
-#### Technical Architecture
+- Triển khai agent trên **managed runtime** để developer tập trung vào business rule, dữ liệu, tool và kiểm thử, trong khi nền tảng xử lý compute, session isolation và scaling.
+- Sử dụng **short-term memory và long-term memory** để duy trì context giữa các message và session.
+- Bổ sung **observability** gồm traceability, cost visibility, root cause analysis và continuous evaluation trước khi đưa hệ thống vào production.
+- Sử dụng **RAG** để tạo câu trả lời dựa trên dữ liệu nội bộ và có nguồn tham chiếu.
 
-- Deploy agents to a **managed runtime** so developers focus on business rules, data, tools and testing while the platform handles compute, session isolation and scaling.  
-- Use **short-term and long-term memory** to keep context across messages and sessions.  
-- Add **observability** (traceability, cost visibility, root cause analysis, continuous evaluation) before going to production.  
-- Use **RAG** to ground answers in internal knowledge with source references.  
+#### Chiến lược production
 
-#### Production Strategy
+- Chọn pattern multi-agent phù hợp với tác vụ: Routing/Supervisor, Sequential, Parallel hoặc Evaluator-optimizer.
+- Tách inbound access và outbound access để kiểm soát identity cùng permission của agent.
 
-- Pick the multi-agent pattern that matches the task: routing/supervisor, sequential, parallel or evaluator-optimizer.  
-- Separate inbound and outbound access for agents to keep identity and permissions under control.  
+### Áp dụng vào công việc
 
-### Applying to Work
+- **Tìm hiểu sâu hơn về AI Security**: Phân tích rủi ro về dữ liệu, quyền truy cập và hành vi của AI trước khi lựa chọn thêm công cụ xử lý.
+- **Thực hành luồng từ local đến ứng dụng**: Xây dựng một agent nhỏ bằng Strands và triển khai lên AgentCore Runtime.
+- **Dùng bốn trụ cột làm checklist**: Rà soát security, reliability, scalability và cost cho các kiến trúc AWS của tôi.
+- **Lập kế hoạch observability từ sớm**: Bổ sung logging, tracing và theo dõi chi phí trước khi triển khai production.
 
-- **Study AI security in depth**: Before adding another AI or tool as the answer to a security problem, understand the underlying risk (data privacy, access control and AI-specific risks) and why each control is needed.  
-- **Try the local-to-application flow**: Build a small agent with Strands and deploy it to AgentCore Runtime to turn the flow in my head into hands-on experience.  
-- **Use the four pillars as a checklist**: Review the security, reliability, scalability and cost of my own AWS architectures.  
-- **Plan for observability early**: Add logging, tracing and cost visibility before deployment, not after.  
+### Trải nghiệm sự kiện
 
-### Event Experience
+Tham dự **Cloud Mastery** giúp tôi hiểu rõ hơn những yêu cầu cần thiết để đưa một ứng dụng AI từ prototype lên production trên AWS.
 
-Attending **Cloud Mastery** showed what it takes to move an AI application from prototype to production on AWS. Key experiences included:
+#### Học hỏi từ diễn giả
 
-#### Learning from the speakers
-- Most speakers were developers and FCAJ members.  
-- Followed three sessions: the gap between prototype and production, real-world use cases with AgentCore Runtime, and the remaining AgentCore services (Identity, Gateway, Memory and Observability).  
-- The restaurant analogies (home kitchen, central kitchen, head chef) made the concepts easy to remember.  
+- Theo dõi ba phần chính: khoảng cách giữa prototype và production, use case thực tế với AgentCore Runtime, cùng các dịch vụ Identity, Gateway, Memory và Observability.
+- Các phép so sánh với căn bếp gia đình, bếp trung tâm và đầu bếp giúp nội dung dễ hình dung hơn.
 
-#### Hands-on technical exposure
-- Watched a live demo of an internal AI app that routes requests through FastAPI and a Strands router to three specialized agents.  
-- Saw how multi-agent patterns and RAG fit into a working application.  
+#### Tiếp cận kỹ thuật thực tế
 
-#### Leveraging modern tools
-- Learned the roles of Lambda, Bedrock and AgentCore, and how the Strands framework is used to build agents.  
+- Theo dõi demo ứng dụng nội bộ sử dụng FastAPI và Strands router để chuyển request đến ba agent chuyên biệt.
+- Hiểu cách các pattern multi-agent và RAG được kết hợp trong một ứng dụng hoạt động thực tế.
 
-#### Lessons learned
-- I now have a broader overview of agentic AI.  
-- I can picture how to take an AI from local development to an application, and the flow is clear in my head.  
-- A working model is not enough: production AI needs security, reliability, scalability and cost control from the start.  
-- A managed runtime lets developers concentrate on business rules, data, tools and testing.  
-- Memory and observability are what make agents trustworthy in production.  
-- Use large models only for orchestration and small, cheaper models for the rest.  
+#### Bài học rút ra
 
-#### Questions to explore further
-- Security needs more study. Most answers to security problems at the event were to add another AI or tool, so I want to understand the underlying issues in depth in order to manage them properly.  
+- Một model chạy được chưa đủ; AI production cần security, reliability, scalability và cost control ngay từ đầu.
+- Managed runtime giúp developer tập trung vào business rule, dữ liệu, tool và kiểm thử.
+- Memory và observability là những thành phần quan trọng để agent có thể vận hành ổn định và truy vết được.
+- Model lớn chỉ nên dùng cho các tác vụ cần khả năng điều phối; tác vụ còn lại có thể dùng model nhỏ hơn để tối ưu chi phí.
 
-#### Some event photos
-![Cloud Mastery Attendance Proof](/images/4-Event/cloud-mastery.jpg)
+#### Nội dung cần tiếp tục tìm hiểu
 
-> Overall, Cloud Mastery gave me a broader view of agentic AI and a clear picture of how to take an AI from local development to a deployed application, while leaving me with security questions that I want to study further.
+- AI Security cần được nghiên cứu sâu hơn để hiểu đúng vấn đề trước khi lựa chọn công cụ hoặc giải pháp bảo vệ.
+
+#### Một số hình ảnh sự kiện
+
+![Bằng chứng tham dự Cloud Mastery](/images/4-Event/cloud-mastery.jpg)
+
+> Nhìn chung, Cloud Mastery giúp tôi có góc nhìn tổng thể về agentic AI và hình dung rõ hơn quá trình đưa một AI agent từ môi trường local lên ứng dụng được triển khai thực tế.

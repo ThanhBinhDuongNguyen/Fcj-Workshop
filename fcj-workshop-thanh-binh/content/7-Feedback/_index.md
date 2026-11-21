@@ -1,47 +1,54 @@
 ---
 title: "Sharing and Feedback"
-date: 2024-01-01
+date: 2026-11-21
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+This section summarizes my experience and feedback after participating in the **First Cloud AI Journey** program at the AWS office.
 
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud AI Journey program. This will help the FCAJ team improve any shortcomings based on the following aspects:
+### Overall evaluation
 
-### Overall Evaluation
+#### Learning environment
 
-**1. Working Environment**  
-The working environment is very friendly and open. FCAJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+Working at the AWS office provided a focused environment for study and hands-on practice. The program encouraged participants to research independently, complete labs, and discuss issues when necessary. This approach strengthened my ability to learn independently instead of relying on step-by-step instruction.
 
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+#### Support from administrators
 
-**3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+I primarily researched and attempted to solve problems on my own. When support was needed, I could ask questions in the group and receive responses from the administrators. Support was not limited to one assigned person; different administrators contributed depending on the issue. Their input gave me additional perspectives for further investigation and improvement.
 
-**4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+#### Relevance to my academic major
 
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+The program aligned with Software Engineering by combining application development, testing, databases, CI/CD, and cloud deployment. NexusOMS allowed me to apply React, .NET, REST API, PostgreSQL, and testing knowledge to a system with clear business workflows before deploying it to AWS.
 
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+#### Learning opportunities
 
----
+I practiced multiple groups of AWS services, attended community events, and designed the architecture for my own project. Deploying NexusOMS helped me understand the relationship between an application and its infrastructure, including Docker images, IAM, networking, ECS Fargate, logging, security, and cost control.
 
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+### What I valued most
 
----
+- The freedom to choose and develop NexusOMS as my personal workshop project.
+- The opportunity to complete the full process from development and testing to AWS deployment.
+- Architecture and content feedback from the community.
+- Participation in AWS events and exposure to practical topics beyond the labs.
 
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+### Challenges identified
+
+- Some labs or source repositories were outdated and no longer worked as originally documented.
+- Changes to the AWS Console meant that some instructions and screenshots no longer matched the current interface.
+- There was no fixed review and feedback schedule for participants to plan what they needed to present.
+
+### Suggestions for improvement
+
+- Periodically review the labs, source repositories, and screenshots against the current AWS interface.
+- Clearly document known issues and replacement steps for labs that no longer work as originally written.
+- Publish review and feedback milestones so participants can prepare their work and track progress more effectively.
+
+### Next steps
+
+I would recommend First Cloud AI Journey to students who want to learn AWS through practice and are prepared to study independently. After the program, I plan to remain active in the community to continue learning, exchange experience, and keep my cloud knowledge current.
+
+### Conclusion
+
+First Cloud AI Journey helped me move from studying individual services to thinking about how to build and deploy a complete system. The experience at the AWS office, independent learning process, and support from the administrators were important factors in completing NexusOMS and its workshop documentation.

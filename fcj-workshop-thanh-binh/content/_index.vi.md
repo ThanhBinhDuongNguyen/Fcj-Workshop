@@ -6,8 +6,9 @@ chapter: false
 ---
 
 # Báo cáo thực tập
+
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Nguyễn Dương Thanh Binh
+&emsp; **Họ và tên:** Nguyễn Dương Thanh Bình
 
 &emsp; **Số điện thoại:** 0784964343
 
@@ -16,8 +17,6 @@ chapter: false
 &emsp; **Trường:** Đại học FPT
 
 &emsp; **Ngành:** Kỹ thuật phần mềm
-
-&emsp; **Lớp:** AWS082025
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Viet Nam
 

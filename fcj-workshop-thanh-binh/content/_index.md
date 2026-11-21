@@ -5,21 +5,19 @@ weight: 1
 chapter: false
 ---
 
-    
+
 # Internship Report
 
 ### Student Information:
 &emsp; **Full Name:** Nguyen Duong Thanh Binh
 
-&emsp; **Phone Number:** 0784964343 
+&emsp; **Phone Number:** 0784964343
 
 &emsp; **Email:** thanhbinhnguyenduong.work@gmail.com
 
 &emsp; **University:** FPT University
 
 &emsp; **Major:** Software Engineering
-
-&emsp; **Class:** AWS082025
 
 &emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
 
