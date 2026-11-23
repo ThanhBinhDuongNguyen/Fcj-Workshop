@@ -22,6 +22,8 @@ Audience: sts.amazonaws.com
 
 ![Configure the GitHub OIDC provider](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/2-configure-github-oidc-provider.png)
 
+AWS STS validates the OIDC token against the IAM role trust policy. When `aud` and `sub` match, STS returns temporary credentials to the workflow. Do not create a separate STS resource.
+
 ## 2. Create the GitHub Actions role
 
 IAM → **Roles → Create role → Web identity**:
@@ -144,6 +146,8 @@ Image tag: <sha>-<run_id>-<run_attempt>
 Task definition source: the revision currently used by the ECS service
 CloudFront: wait until the invalidation is completed
 ```
+
+The **Verify assumed AWS role** step runs `aws sts get-caller-identity`. It must return the intended AWS account and the `nexusoms-demo-github-actions-role` ARN.
 
 ![Open the deployment workflow](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/13-edit-deployment-workflow.png)
 

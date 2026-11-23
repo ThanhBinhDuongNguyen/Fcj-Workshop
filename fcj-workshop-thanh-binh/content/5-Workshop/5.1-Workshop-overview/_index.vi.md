@@ -7,7 +7,7 @@ chapter: false
 
 NexusOMS sử dụng CloudFront làm điểm truy cập công khai, S3 lưu frontend React và ALB chuyển tiếp `/api/*` đến ECS Fargate trong private subnet. API đưa webhook vào SQS FIFO; worker chạy trong ECS lấy message để xử lý. Message thất bại quá ba lần được chuyển sang dead-letter queue. Supabase cung cấp PostgreSQL và Authentication.
 
-GitHub Actions kiểm tra source code, đẩy backend image lên ECR, cập nhật ECS service, build frontend, đồng bộ lên S3 và tạo CloudFront invalidation.
+GitHub Actions gửi OIDC token đến AWS STS để assume IAM role và nhận credential tạm thời. Workflow dùng credential này để đẩy backend image lên ECR, cập nhật ECS service, build frontend, đồng bộ lên S3 và tạo CloudFront invalidation.
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 

@@ -7,7 +7,7 @@ chapter: false
 
 NexusOMS uses CloudFront as the public entry point, S3 for the React frontend, and an ALB to route `/api/*` to ECS Fargate tasks in private subnets. The API sends webhooks to an SQS FIFO queue and an ECS worker processes each message. Messages that fail more than three times move to a dead-letter queue. Supabase provides PostgreSQL and authentication.
 
-GitHub Actions validates the source, pushes the backend image to ECR, updates the ECS service, builds the frontend, synchronizes it to S3, and creates a CloudFront invalidation.
+GitHub Actions sends an OIDC token to AWS STS to assume the IAM role and receive temporary credentials. The workflow uses these credentials to push the backend image to ECR, update the ECS service, build the frontend, synchronize it to S3, and create a CloudFront invalidation.
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 

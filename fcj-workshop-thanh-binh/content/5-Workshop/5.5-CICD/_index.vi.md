@@ -22,7 +22,7 @@ Audience: sts.amazonaws.com
 
 ![Cấu hình GitHub OIDC provider](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/2-configure-github-oidc-provider.png)
 
-
+AWS STS kiểm tra OIDC token theo trust policy của IAM role. Nếu `aud` và `sub` hợp lệ, STS trả về credential tạm thời cho workflow. Không tạo tài nguyên STS riêng.
 
 ## 2. Tạo IAM role cho GitHub Actions
 
@@ -324,6 +324,9 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.AWS_REGION }}
 
+      - name: Verify assumed AWS role
+        run: aws sts get-caller-identity
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
@@ -470,6 +473,8 @@ Kiểm tra:
 4. Frontend được đồng bộ vào S3.
 5. CloudFront invalidation có trạng thái `Completed`.
 6. Website đăng nhập và gọi API thành công.
+
+Trong job `deploy-backend`, bước **Verify assumed AWS role** phải trả về đúng AWS Account ID và ARN của `nexusoms-demo-github-actions-role`.
 
 Job Docker build hiển thị màu xám trên lần chạy `main` là **skipped** theo điều kiện, không phải lỗi. Nếu có job đỏ, mở đúng job và đọc bước đầu tiên thất bại trước khi chạy lại.
 

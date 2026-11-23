@@ -52,12 +52,15 @@ Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm,
 | 15 | ALB ghi access log vào S3 audit bucket. |
 | 16 | CloudTrail ghi management event vào S3 audit bucket. |
 
+Đường nét đứt GitHub Actions → AWS STS thể hiện bước xác thực OIDC của CI/CD nên không đánh số trong luồng nghiệp vụ.
+
 *Dịch vụ AWS sử dụng*  
 - *Amazon S3 và Amazon CloudFront*: Lưu trữ và phân phối React/Vite build tĩnh.  
 - *AWS WAF*: Bảo vệ ứng dụng trước các request độc hại phổ biến.
 - *Application Load Balancer*: Định tuyến API tới ECS task khỏe.  
 - *Amazon ECS trên AWS Fargate*: Chạy container .NET 10 qua hai Availability Zone.  
 - *Amazon ECR*: Lưu Docker image backend có phiên bản từ GitHub CI.  
+- *AWS STS*: Xác thực GitHub OIDC token và cấp credential tạm thời cho GitHub Actions.
 - *Amazon SQS FIFO và Dead-letter Queue*: Đệm webhook tăng đột biến, giữ thứ tự theo nhóm và cô lập message xử lý lỗi.
 - *Amazon VPC, NAT Gateway và Internet Gateway*: Cô lập API task trong private subnet nhưng vẫn cho phép outbound có kiểm soát.  
 - *S3 Gateway Endpoint, AWS Secrets Manager và Amazon CloudWatch*: Định tuyến S3 riêng tư, quản lý secret và thu log/metric; ECR, Secrets Manager và CloudWatch Logs được truy cập qua NAT Gateway.  
@@ -72,7 +75,7 @@ Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm,
 - *Luồng hủy đơn*: Sự kiện `order.cancelled` cập nhật trạng thái, lưu lý do hủy và nhả tồn đang giữ nếu đơn chưa xuất kho. Idempotency ngăn việc hoàn tồn hai lần.
 - *Database và identity*: Supabase cung cấp PostgreSQL/Auth; dữ liệu nằm trong `public` schema của một tổ chức.  
 - *AWS runtime*: ECS task lấy secret an toàn, gửi log đến CloudWatch, đọc/ghi SQS bằng task role và đi ra Supabase/marketplace simulator qua NAT Gateway.
-- *CI/CD*: GitHub Actions dùng OIDC để nhận AWS credential ngắn hạn, đẩy image lên ECR, cập nhật ECS service, đồng bộ frontend lên S3 và tạo CloudFront invalidation.
+- *CI/CD*: GitHub Actions dùng OIDC để gọi AWS STS, nhận credential tạm thời, đẩy image lên ECR, cập nhật ECS service, đồng bộ frontend lên S3 và tạo CloudFront invalidation.
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  

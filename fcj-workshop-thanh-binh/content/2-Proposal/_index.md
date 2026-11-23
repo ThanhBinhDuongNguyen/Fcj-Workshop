@@ -52,12 +52,15 @@ The current application runs locally with React/Vite, a .NET 10 API and Supabase
 | 15 | The ALB writes access logs to the S3 audit bucket. |
 | 16 | CloudTrail writes management events to the S3 audit bucket. |
 
+The unnumbered dashed line from GitHub Actions to AWS STS represents CI/CD OIDC authentication rather than a business flow.
+
 ### AWS Services Used
 - **Amazon S3 and Amazon CloudFront**: Store and distribute the static React/Vite build.
 - **AWS WAF**: Protects the application from common malicious requests.
 - **Application Load Balancer**: Routes API traffic to healthy ECS tasks.
 - **Amazon ECS on AWS Fargate**: Runs the containerized .NET 10 API across two Availability Zones.
 - **Amazon ECR**: Stores versioned backend container images built from GitHub CI.
+- **AWS STS**: Validates the GitHub OIDC token and issues temporary credentials to GitHub Actions.
 - **Amazon SQS FIFO and a dead-letter queue**: Buffer webhook bursts, preserve ordering within a message group, and isolate failed messages.
 - **Amazon VPC, NAT Gateway and Internet Gateway**: Isolate API tasks in private subnets while allowing controlled outbound access.
 - **S3 Gateway Endpoint, AWS Secrets Manager and Amazon CloudWatch**: Route S3 traffic privately, manage secrets and collect logs/metrics; ECR, Secrets Manager and CloudWatch Logs are reached through NAT Gateways.
@@ -72,7 +75,7 @@ The current application runs locally with React/Vite, a .NET 10 API and Supabase
 - **Order cancellation workflow**: An `order.cancelled` event records the reason, changes the order state, and releases reserved inventory when the order has not been dispatched. Idempotency prevents stock from being released twice.
 - **Database and identity**: Supabase provides PostgreSQL and Auth; the database uses a single-organization `public` schema.
 - **AWS runtime**: ECS tasks obtain secrets safely, send logs to CloudWatch, access SQS through the task role, and reach Supabase/marketplace simulators through NAT Gateways.
-- **CI/CD**: GitHub Actions uses OIDC for short-lived AWS credentials, pushes images to ECR, updates the ECS service, syncs the frontend to S3, and creates a CloudFront invalidation.
+- **CI/CD**: GitHub Actions uses OIDC to call AWS STS, receives temporary credentials, pushes images to ECR, updates the ECS service, syncs the frontend to S3, and creates a CloudFront invalidation.
 
 ### 4. Technical Implementation
 **Implementation Phases**
