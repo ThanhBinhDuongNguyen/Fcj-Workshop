@@ -23,6 +23,6 @@ This section documents my daily tasks, learning progress, and technical achievem
 * **Week 7:** [NexusOMS Plan v4.0, Canonical Database Schema & Frontend MVP with Supabase Prototype](1.7-week7/)
 * **Week 8:** [NexusOMS MVP: .NET Backend, Order–Inventory Flow & Demo-Ready Frontend](1.8-week8/)
 * **Week 9:** [AWS Deployment with ECS Fargate, S3 & CloudFront, CI/CD with GitHub Actions & OIDC, and Workshop Documentation](1.9-week9/)
-* **Week 10:** *[Upcoming Worklog]*
+* **Week 10:** [Asynchronous Webhook Processing with SQS, AWS Workshop Completion, and Program Reports](1.10-week10/)
 * **Week 11:** *[Upcoming Worklog]*
 * **Week 12:** *[Upcoming Worklog]*

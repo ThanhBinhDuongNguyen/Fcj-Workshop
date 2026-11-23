@@ -61,13 +61,13 @@ pre: " <b> 4.4. </b> "
     - *Giữa các VPC*: dùng Transit Gateway và route tables để phân vùng, chỉ đưa các luồng cần thiết qua firewall và kiểm tra đường đi hai chiều.
     - *Ưu tiên*: bảo vệ các kết nối giữa những vùng có mức độ tin cậy khác nhau.
 
-#### 3. Prove It — Agentic Cloud Investigation Series (hiển thị trên slide)
+#### 3. Prove It - Agentic Cloud Investigation Series (hiển thị trên slide)
 
 - **Tổng quan thử thách**: Chuỗi thử thách do Cloud Thinker và AWS First Cloud Journey tổ chức, được University of Greenwich hỗ trợ, gồm hai vòng: *Find the Gaps* và *Find the Cause*.
-- **Vòng 1 — quy tắc bằng chứng**: Với câu hỏi "What would you optimize in this AWS account for cost?", mỗi phát hiện phải nêu đúng tool call, dán toàn bộ raw output, gắn nhãn (Verified / Inferred / Assumed / Blocked), ghi nguồn, phạm vi và thời gian, và không được đề xuất xóa hoặc release như một hành động thực thi.
+- **Vòng 1 - quy tắc bằng chứng**: Với câu hỏi "What would you optimize in this AWS account for cost?", mỗi phát hiện phải nêu đúng tool call, dán toàn bộ raw output, gắn nhãn (Verified / Inferred / Assumed / Blocked), ghi nguồn, phạm vi và thời gian, và không được đề xuất xóa hoặc release như một hành động thực thi.
 - **Báo cáo cuối gồm đúng ba phần**: Phạm vi đã kiểm tra; các đề xuất tối ưu được sắp xếp theo mức độ tác động, kèm nhãn, bằng chứng và raw output; cuối cùng là bước xử lý tiếp theo. Chỉ giữ các kết luận có đủ bằng chứng và che toàn bộ account ID cùng ARN.
 - **Tình huống mẫu**: Một website tĩnh trên AWS báo *Access Denied* trong khi kết quả mong đợi là trang mở được. Các câu hỏi cần đặt ra là yêu cầu đi đến đâu, ai cần truy cập vào cái gì, và bản sửa đề xuất có cấp quá nhiều quyền hay không: hãy điều tra trước khi thay đổi quyền.
-- **Vòng 2 — tìm nguyên nhân**: Tìm lỗi trong hạ tầng Kubernetes và đưa ra giải pháp, ví dụ một container liên tục bị OOMKilled và tự khởi động lại, hoặc pipeline orders-fulfillment bị kẹt do JSON lỗi tại offset 20.
+- **Vòng 2 - tìm nguyên nhân**: Tìm lỗi trong hạ tầng Kubernetes và đưa ra giải pháp, ví dụ một container liên tục bị OOMKilled và tự khởi động lại, hoặc pipeline orders-fulfillment bị kẹt do JSON lỗi tại offset 20.
 - **Chuỗi nhân quả (Causal chain)**: Chuỗi các mắt xích logic nối liền từ sự thay đổi ban đầu cho đến tác động trực tiếp đến người dùng cuối: thay đổi cấu hình → cơ chế kỹ thuật → telemetry bất thường → service failure → customer impact.
 
 ### Bài học cốt lõi

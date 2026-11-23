@@ -29,7 +29,7 @@ pre: " <b> 4.4. </b> "
 
 - **A joint event**: AWS Student Community Day Vietnam 2026 was co-organized by an alliance of AWS Student Builder Groups at HUFLIT, HCMUTE, PTIT and SGU.
 - **Community connections**: The event dedicated most of its time to networking and presenting the development journeys of the AWS Student Builder communities at four universities.
-- **Journey of Club HUFLIT**: Trung Kiên shared nearly three years—about 1,000 days—of community development.
+- **Journey of Club HUFLIT**: Trung Kiên shared nearly three years-about 1,000 days-of community development.
 - **Journey of AWS Student Builder Group HCMUTE**: Two Core Team members shared how the group was established and developed.
 - **Communities introduced** (Facebook fanpages): AWS Student Builder Group Saigon University, AWS Student Builder Group at HUFLIT, AWS Student Builder Group PTIT HCM and AWS Student Builder Group HCMUTE.
 
@@ -61,13 +61,13 @@ pre: " <b> 4.4. </b> "
     - *Between VPCs*: use Transit Gateway and route tables for segmentation, send only the necessary flows through the firewall and check the path in both directions.
     - *Priority*: protect the connections between zones that have different trust levels.
 
-#### 3. Prove It — Agentic Cloud Investigation Series (shown on the slides)
+#### 3. Prove It - Agentic Cloud Investigation Series (shown on the slides)
 
 - **Challenge overview**: A challenge series by Cloud Thinker and AWS First Cloud Journey, supported by the University of Greenwich, with two rounds: *Find the Gaps* and *Find the Cause*.
-- **Round 1 — evidence rules**: For the question "What would you optimize in this AWS account for cost?", every finding must show the exact tool call, the full raw output, a label (Verified / Inferred / Assumed / Blocked), the source, scope and time, and must not recommend deletion or release as an executable action.
+- **Round 1 - evidence rules**: For the question "What would you optimize in this AWS account for cost?", every finding must show the exact tool call, the full raw output, a label (Verified / Inferred / Assumed / Blocked), the source, scope and time, and must not recommend deletion or release as an executable action.
 - **Final report in exactly three sections**: The scope reviewed; optimization recommendations ordered by impact and supported by labels, evidence and raw output; and the next steps. Only conclusions supported by sufficient evidence are retained, and all account IDs and ARNs are redacted.
 - **Sample scenario**: A static website on AWS shows *Access Denied* while the expected result is that the page opens. The questions to ask are where the request goes, who needs access to what, and whether the proposed fix grants too much access: investigate before changing permissions.
-- **Round 2 — find the cause**: Find the fault in Kubernetes infrastructure and propose a solution, for example a container that keeps being OOMKilled and restarting, or an orders-fulfillment pipeline blocked by a JSON error at offset 20.
+- **Round 2 - find the cause**: Find the fault in Kubernetes infrastructure and propose a solution, for example a container that keeps being OOMKilled and restarting, or an orders-fulfillment pipeline blocked by a JSON error at offset 20.
 - **Causal chain**: A chain of logical links from the initial change to the impact on end users: configuration change → technical mechanism → abnormal telemetry → service failure → customer impact.
 
 ### Key Takeaways

@@ -24,6 +24,6 @@ Mục này ghi chép lại toàn bộ tiến độ công việc hàng ngày, ki�
 * **Tuần 7:** [Kế hoạch NexusOMS v4.0, Schema Database chuẩn & Frontend MVP cùng Prototype Supabase](1.7-week7/)
 * **Tuần 8:** [MVP NexusOMS: Backend .NET, Luồng đơn hàng–tồn kho & Frontend sẵn sàng demo](1.8-week8/)
 * **Tuần 9:** [Triển khai AWS với ECS Fargate, S3 & CloudFront, CI/CD với GitHub Actions & OIDC và Tài liệu Workshop](1.9-week9/)
-* **Tuần 10:** *[Đang cập nhật]*
+* **Tuần 10:** [Xử lý webhook bất đồng bộ với SQS, hoàn thiện Workshop AWS và báo cáo chương trình](1.10-week10/)
 * **Tuần 11:** *[Đang cập nhật]*
 * **Tuần 12:** *[Đang cập nhật]*
