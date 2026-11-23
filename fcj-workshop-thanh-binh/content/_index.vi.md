@@ -24,7 +24,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
 
-![Ảnh đại diện của bạn](/images/avatar.png)
+<img src="/images/avatar.jpg" alt="Nguyễn Dương Thanh Bình" style="display: block; width: 300px; max-width: 100%; height: auto; margin: 1.5rem auto;">
 
 
 

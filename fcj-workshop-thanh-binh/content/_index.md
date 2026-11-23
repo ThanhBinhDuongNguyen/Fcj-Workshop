@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
 
-![Your profile picture](/images/avatar.png)
+<img src="/images/avatar.jpg" alt="Nguyễn Dương Thanh Bình" style="display: block; width: 300px; max-width: 100%; height: auto; margin: 1.5rem auto;">
 
 ### Report Content
 
