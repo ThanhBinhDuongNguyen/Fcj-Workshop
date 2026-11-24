@@ -18,10 +18,10 @@ NexusOMS gave me end-to-end experience in business analysis, React/Vite frontend
 | 2 | **Ability to learn** | Proactively learned new technologies and services through documentation, labs, and practice | ✅ | ☐ | ☐ |
 | 3 | **Proactiveness** | Researched, experimented, and investigated causes before requesting support | ✅ | ☐ | ☐ |
 | 4 | **Responsibility** | Followed tasks through, verified results, and updated documentation after changes | ✅ | ☐ | ☐ |
-| 5 | **Discipline** | Followed the learning schedule but still needs stricter time management | ☐ | ✅ | ☐ |
+| 5 | **Discipline** | Followed the learning schedule but still needs stricter time management | ☐ | ☐ | ✅ |
 | 6 | **Growth mindset** | Accepted feedback and revised the code, architecture, and report | ✅ | ☐ | ☐ |
 | 7 | **Communication** | Explained issues, reported errors, and asked questions when support was needed | ✅ | ☐ | ☐ |
-| 8 | **Teamwork** | Interacted positively with administrators and members of the learning community | ✅ | ☐ | ☐ |
+| 8 | **Teamwork** | Interacted positively with administrators and members of the learning community | ☐ | ✅ | ☐ |
 | 9 | **Professional conduct** | Respected shared processes, feedback, and the working environment | ✅ | ☐ | ☐ |
 | 10 | **Problem solving** | Analyzed logs, tested hypotheses, and resolved issues across the application and infrastructure | ✅ | ☐ | ☐ |
 | 11 | **Project contribution** | Completed NexusOMS, its workshop documentation, and end-to-end demo workflows | ✅ | ☐ | ☐ |

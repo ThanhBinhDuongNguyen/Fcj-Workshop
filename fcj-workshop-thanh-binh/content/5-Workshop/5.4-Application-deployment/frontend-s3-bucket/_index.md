@@ -16,12 +16,12 @@ Open **S3 → Buckets → Create bucket**.
 ## Step 2: Configure the bucket
 
 ```text
-Bucket name: nexusoms-demo-frontend-<AWS_ACCOUNT_ID>
+Bucket name: nexusoms-demo-frontend-<ACCOUNT_ID>
 AWS Region: ap-southeast-1
 Block all public access: Enabled
 ```
 
-Replace `<AWS_ACCOUNT_ID>` with your account ID. Keep the default encryption and do not enable **Static website hosting**.
+Replace `<ACCOUNT_ID>` with your account ID. Keep the default encryption and do not enable **Static website hosting**.
 
 ![Configure the S3 bucket](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-s3-bucket/2-configure-bucket.png)
 

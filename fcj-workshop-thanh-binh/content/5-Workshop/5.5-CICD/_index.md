@@ -84,7 +84,6 @@ AWS_REGION=ap-southeast-1
 ECR_REPOSITORY=nexusoms-demo-api
 ECS_CLUSTER=nexusoms-demo-cluster
 ECS_SERVICE=nexusoms-demo-api-service
-ECS_TASK_DEFINITION=nexusoms-demo-api
 CONTAINER_NAME=api
 S3_BUCKET=nexusoms-demo-frontend-<ACCOUNT_ID>
 CLOUDFRONT_DISTRIBUTION_ID=<DISTRIBUTION_ID>
@@ -123,7 +122,9 @@ git log --oneline --decorate -5
 Get-ChildItem .github/workflows -File | Select-Object Name
 $LegacyWorkflow = ".github/workflows/cd.yml"
 if (Test-Path $LegacyWorkflow) { git rm $LegacyWorkflow }
-Get-ChildItem .github/workflows -File | Where-Object Name -Match '^(cd|deploy)' | Select-Object Name
+Get-ChildItem .github/workflows -File -Filter "*.yml" |
+  Where-Object Name -Match '^(cd|deploy)' |
+  Select-Object Name
 git diff -- .github/workflows
 ```
 
@@ -147,7 +148,7 @@ Task definition source: the revision currently used by the ECS service
 CloudFront: wait until the invalidation is completed
 ```
 
-The **Verify assumed AWS role** step runs `aws sts get-caller-identity`. It must return the intended AWS account and the `nexusoms-demo-github-actions-role` ARN.
+The **Authenticate AWS through OIDC** step must assume `nexusoms-demo-github-actions-role` in the intended AWS account.
 
 ![Open the deployment workflow](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/13-edit-deployment-workflow.png)
 
@@ -169,7 +170,9 @@ After merging, update `main` and verify the workflow files again:
 ```powershell
 git switch main
 git pull --ff-only origin main
-Get-ChildItem .github/workflows -File | Where-Object Name -Match '^(cd|deploy)' | Select-Object Name
+Get-ChildItem .github/workflows -File -Filter "*.yml" |
+  Where-Object Name -Match '^(cd|deploy)' |
+  Select-Object Name
 git status
 ```
 

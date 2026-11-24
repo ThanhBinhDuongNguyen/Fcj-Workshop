@@ -23,7 +23,7 @@ nexusoms-demo-web
 
 ## Bước 2: Chọn S3 origin cho frontend
 
-Chọn **Amazon S3**, sau đó chọn bucket `nexusoms-demo-frontend-<AWS_ACCOUNT_ID>`.
+Chọn **Amazon S3**, sau đó chọn bucket `nexusoms-demo-frontend-<ACCOUNT_ID>`.
 
 ```text
 Origin access: Origin access control settings

@@ -18,10 +18,10 @@ Dự án NexusOMS giúp tôi thực hành xuyên suốt từ phân tích nghiệ
 | 2 | **Khả năng học hỏi** | Chủ động tiếp cận công nghệ và dịch vụ mới thông qua tài liệu, bài lab và thực hành | ✅ | ☐ | ☐ |
 | 3 | **Tính chủ động** | Tự nghiên cứu, thử nghiệm và tìm nguyên nhân trước khi nhờ hỗ trợ | ✅ | ☐ | ☐ |
 | 4 | **Tinh thần trách nhiệm** | Theo sát công việc, kiểm tra kết quả và hoàn thiện tài liệu sau mỗi lần điều chỉnh | ✅ | ☐ | ☐ |
-| 5 | **Kỷ luật** | Tuân thủ lịch học và tiến độ nhưng vẫn cần quản lý thời gian chặt chẽ hơn | ☐ | ✅ | ☐ |
+| 5 | **Kỷ luật** | Tuân thủ lịch học và tiến độ nhưng vẫn cần quản lý thời gian chặt chẽ hơn | ☐ | ☐ | ✅ |
 | 6 | **Tính cầu tiến** | Tiếp nhận feedback và chủ động chỉnh sửa code, kiến trúc cùng nội dung báo cáo | ✅ | ☐ | ☐ |
 | 7 | **Giao tiếp** | Trao đổi vấn đề, mô tả lỗi và đặt câu hỏi khi cần hỗ trợ | ✅ | ☐ | ☐ |
-| 8 | **Hợp tác nhóm** | Tương tác tích cực với admin và các thành viên trong cộng đồng học tập | ✅ | ☐ | ☐ |
+| 8 | **Hợp tác nhóm** | Tương tác tích cực với admin và các thành viên trong cộng đồng học tập | ☐ | ✅ | ☐ |
 | 9 | **Ứng xử chuyên nghiệp** | Tôn trọng quy trình, phản hồi và môi trường làm việc chung | ✅ | ☐ | ☐ |
 | 10 | **Tư duy giải quyết vấn đề** | Phân tích log, kiểm tra giả thuyết và xử lý lỗi từ ứng dụng đến hạ tầng | ✅ | ☐ | ☐ |
 | 11 | **Đóng góp vào dự án** | Hoàn thiện NexusOMS, tài liệu workshop và các luồng demo end-to-end | ✅ | ☐ | ☐ |

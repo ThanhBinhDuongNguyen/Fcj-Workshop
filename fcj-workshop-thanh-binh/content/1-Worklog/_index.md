@@ -8,7 +8,7 @@ pre: " <b> 1. </b> "
 
 ### Overview
 
-This section documents my daily tasks, learning progress, and technical achievements throughout the **First Cloud AI Journey (FCAJ)** internship and **FCJ Buildrathon** program. Over the 12-week internship period, I record hands-on lab execution, architectural design exploration, and project development progress on AWS Cloud.
+This section documents my daily tasks, learning progress, and technical achievements throughout the **First Cloud AI Journey (FCAJ)** internship and **FCJ Buildrathon** program, from September 14, 2026 to the submission deadline on November 30, 2026.
 
 ---
 
@@ -25,4 +25,3 @@ This section documents my daily tasks, learning progress, and technical achievem
 * **Week 9:** [AWS Deployment with ECS Fargate, S3 & CloudFront, CI/CD with GitHub Actions & OIDC, and Workshop Documentation](1.9-week9/)
 * **Week 10:** [Asynchronous Webhook Processing with SQS, AWS Workshop Completion, and Program Reports](1.10-week10/)
 * **Week 11:** *[Upcoming Worklog]*
-* **Week 12:** *[Upcoming Worklog]*

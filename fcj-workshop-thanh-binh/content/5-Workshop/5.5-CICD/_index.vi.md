@@ -221,7 +221,6 @@ AWS_REGION=ap-southeast-1
 ECR_REPOSITORY=nexusoms-demo-api
 ECS_CLUSTER=nexusoms-demo-cluster
 ECS_SERVICE=nexusoms-demo-api-service
-ECS_TASK_DEFINITION=nexusoms-demo-api
 CONTAINER_NAME=api
 S3_BUCKET=nexusoms-demo-frontend-<ACCOUNT_ID>
 CLOUDFRONT_DISTRIBUTION_ID=<DISTRIBUTION_ID>
@@ -268,7 +267,9 @@ git log --oneline --decorate -5
 Get-ChildItem .github/workflows -File | Select-Object Name
 $LegacyWorkflow = ".github/workflows/cd.yml"
 if (Test-Path $LegacyWorkflow) { git rm $LegacyWorkflow }
-Get-ChildItem .github/workflows -File | Where-Object Name -Match '^(cd|deploy)' | Select-Object Name
+Get-ChildItem .github/workflows -File -Filter "*.yml" |
+  Where-Object Name -Match '^(cd|deploy)' |
+  Select-Object Name
 git diff -- .github/workflows
 ```
 
@@ -312,93 +313,88 @@ jobs:
   deploy-backend:
     needs: [backend-ci, frontend-ci]
     runs-on: ubuntu-latest
-    outputs:
-      image: ${{ steps.build-image.outputs.image }}
     steps:
-      - name: Checkout source
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials by OIDC
+      - name: Authenticate AWS through OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.AWS_REGION }}
 
-      - name: Verify assumed AWS role
-        run: aws sts get-caller-identity
-
-      - name: Login to Amazon ECR
-        id: login-ecr
+      - name: Login to ECR
+        id: ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build and push immutable backend image
-        id: build-image
+      - name: Build and push backend
+        id: image
         env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REGISTRY: ${{ steps.ecr.outputs.registry }}
+          REPOSITORY: ${{ vars.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
-          IMAGE="$REGISTRY/${{ vars.ECR_REPOSITORY }}:$IMAGE_TAG"
+          set -euo pipefail
+          IMAGE="$REGISTRY/$REPOSITORY:$IMAGE_TAG"
           docker build --file backend/Dockerfile --tag "$IMAGE" backend
           docker push "$IMAGE"
-          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+          echo "uri=$IMAGE" >> "$GITHUB_OUTPUT"
 
-      - name: Download and sanitize current ECS task definition
+      - name: Get current service task definition
+        env:
+          CLUSTER: ${{ vars.ECS_CLUSTER }}
+          SERVICE: ${{ vars.ECS_SERVICE }}
         run: |
-          TASK_DEFINITION_ARN=$(aws ecs describe-services \
-            --cluster "${{ vars.ECS_CLUSTER }}" \
-            --services "${{ vars.ECS_SERVICE }}" \
-            --query "services[0].taskDefinition" \
-            --output text)
+          set -euo pipefail
+          TASK_ARN=$(aws ecs describe-services \
+            --cluster "$CLUSTER" --services "$SERVICE" \
+            --query 'services[0].taskDefinition' --output text)
           aws ecs describe-task-definition \
-            --task-definition "$TASK_DEFINITION_ARN" \
+            --task-definition "$TASK_ARN" \
             --query taskDefinition > task-definition.raw.json
           jq 'del(
-            .taskDefinitionArn,
-            .revision,
-            .status,
-            .requiresAttributes,
-            .compatibilities,
-            .registeredAt,
-            .registeredBy
+            .taskDefinitionArn, .revision, .status,
+            .requiresAttributes, .compatibilities,
+            .registeredAt, .registeredBy
           )' task-definition.raw.json > task-definition.json
 
-      - name: Render task definition with new image
-        id: render-task
+      - name: Update image in task definition
+        id: task
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
           container-name: ${{ vars.CONTAINER_NAME }}
-          image: ${{ steps.build-image.outputs.image }}
+          image: ${{ steps.image.outputs.uri }}
 
-      - name: Deploy ECS task definition
+      - name: Deploy backend
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
-          task-definition: ${{ steps.render-task.outputs.task-definition }}
-          service: ${{ vars.ECS_SERVICE }}
+          task-definition: ${{ steps.task.outputs.task-definition }}
           cluster: ${{ vars.ECS_CLUSTER }}
+          service: ${{ vars.ECS_SERVICE }}
           wait-for-service-stability: true
 
   deploy-frontend:
     needs: deploy-backend
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials by OIDC
+      - name: Authenticate AWS through OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.AWS_REGION }}
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Install, check and build frontend
+      - name: Build frontend
         working-directory: frontend
         env:
           VITE_DATA_MODE: supabase
@@ -407,23 +403,23 @@ jobs:
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: |
           npm ci
-          npm run typecheck
-          npm run test
           npm run build
 
-      - name: Upload frontend to private S3 bucket
-        run: |
-          aws s3 sync frontend/dist "s3://${{ vars.S3_BUCKET }}" --delete
+      - name: Upload frontend
+        env:
+          BUCKET: ${{ vars.S3_BUCKET }}
+        run: aws s3 sync frontend/dist "s3://$BUCKET"
 
-      - name: Invalidate CloudFront cache
+      - name: Invalidate and wait for CloudFront
+        env:
+          DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
         run: |
+          set -euo pipefail
           INVALIDATION_ID=$(aws cloudfront create-invalidation \
-            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
-            --paths "/*" \
-            --query "Invalidation.Id" \
-            --output text)
+            --distribution-id "$DISTRIBUTION_ID" --paths "/*" \
+            --query Invalidation.Id --output text)
           aws cloudfront wait invalidation-completed \
-            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --distribution-id "$DISTRIBUTION_ID" \
             --id "$INVALIDATION_ID"
 ```
 
@@ -447,7 +443,9 @@ Sau khi merge, đồng bộ lại `main` và kiểm tra workflow lần cuối:
 ```powershell
 git switch main
 git pull --ff-only origin main
-Get-ChildItem .github/workflows -File | Where-Object Name -Match '^(cd|deploy)' | Select-Object Name
+Get-ChildItem .github/workflows -File -Filter "*.yml" |
+  Where-Object Name -Match '^(cd|deploy)' |
+  Select-Object Name
 git status
 ```
 
@@ -474,7 +472,7 @@ Kiểm tra:
 5. CloudFront invalidation có trạng thái `Completed`.
 6. Website đăng nhập và gọi API thành công.
 
-Trong job `deploy-backend`, bước **Verify assumed AWS role** phải trả về đúng AWS Account ID và ARN của `nexusoms-demo-github-actions-role`.
+Trong job `deploy-backend`, bước **Authenticate AWS through OIDC** phải assume đúng role `nexusoms-demo-github-actions-role` trong AWS Account của workshop.
 
 Job Docker build hiển thị màu xám trên lần chạy `main` là **skipped** theo điều kiện, không phải lỗi. Nếu có job đỏ, mở đúng job và đọc bước đầu tiên thất bại trước khi chạy lại.
 

@@ -23,7 +23,7 @@ chapter: false
 
 &emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
+&emsp; **Internship Duration:** From 14/09/2026 to 30/11/2026
 
 <img src="/images/avatar.jpg" alt="Nguyễn Dương Thanh Bình" style="display: block; width: 300px; max-width: 100%; height: auto; margin: 1.5rem auto;">
 

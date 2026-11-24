@@ -23,7 +23,7 @@ nexusoms-demo-web
 
 ## Step 2: Select the frontend S3 origin
 
-Select **Amazon S3**, then select `nexusoms-demo-frontend-<AWS_ACCOUNT_ID>`.
+Select **Amazon S3**, then select `nexusoms-demo-frontend-<ACCOUNT_ID>`.
 
 ```text
 Origin access: Origin access control settings

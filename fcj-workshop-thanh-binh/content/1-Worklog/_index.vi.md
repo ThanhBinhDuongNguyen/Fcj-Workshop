@@ -9,7 +9,7 @@ pre: " <b> 1. </b> "
 
 ### Giới thiệu chung
 
-Mục này ghi chép lại toàn bộ tiến độ công việc hàng ngày, kiến thức thu hoạch và kết quả thực hành trong suốt chương trình thực tập **First Cloud AI Journey (FCAJ)** và **FCJ Buildrathon**. Nhật ký được tổng hợp theo từng tuần trong lộ trình 12 tuần thực tập tại doanh nghiệp.
+Mục này ghi chép lại toàn bộ tiến độ công việc hàng ngày, kiến thức thu hoạch và kết quả thực hành trong suốt chương trình thực tập **First Cloud AI Journey (FCAJ)** và **FCJ Buildrathon**. Nhật ký được tổng hợp theo từng tuần từ ngày 14/09/2026 đến hạn nộp ngày 30/11/2026.
 
 ---
 
@@ -26,4 +26,3 @@ Mục này ghi chép lại toàn bộ tiến độ công việc hàng ngày, ki�
 * **Tuần 9:** [Triển khai AWS với ECS Fargate, S3 & CloudFront, CI/CD với GitHub Actions & OIDC và Tài liệu Workshop](1.9-week9/)
 * **Tuần 10:** [Xử lý webhook bất đồng bộ với SQS, hoàn thiện Workshop AWS và báo cáo chương trình](1.10-week10/)
 * **Tuần 11:** *[Đang cập nhật]*
-* **Tuần 12:** *[Đang cập nhật]*
