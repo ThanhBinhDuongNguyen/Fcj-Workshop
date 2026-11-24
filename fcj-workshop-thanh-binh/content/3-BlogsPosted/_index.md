@@ -12,8 +12,9 @@ This section lists the group's articles approved by [AWS Study Group](https://ww
 
 This article explains how GitHub Actions uses OIDC and AWS STS to obtain temporary credentials and deploy an application to AWS without storing long-lived access keys in GitHub Secrets.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+### [Blog 2 - ECS FARGATE FAILS TO START: DISTINGUISHING TASK ROLE AND EXECUTION ROLE](3.2-Blog2/)
+
+This article analyzes an ECS Fargate startup failure caused by missing permission to retrieve a secret. It explains the responsibilities of the Task Execution Role and Task Role, and shows how to read an AccessDenied error before changing an IAM policy.
 
 ###  [Blog 3 - ...](3.3-Blog3/)
 This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
