@@ -17,6 +17,8 @@ chapter: false
 
 &emsp; **University:** FPT University
 
+&emsp; **Class:** LavieTeam
+
 &emsp; **Major:** Software Engineering
 
 &emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited

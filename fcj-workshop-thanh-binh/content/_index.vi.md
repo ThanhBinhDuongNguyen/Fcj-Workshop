@@ -16,6 +16,8 @@ chapter: false
 
 &emsp; **Trường:** Đại học FPT
 
+&emsp; **Lớp:** LavieTeam
+
 &emsp; **Ngành:** Kỹ thuật phần mềm
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Viet Nam

@@ -1,31 +1,33 @@
 ---
-title: "Blog 1"
-date: 2024-01-01
+title: "GitHub Actions deploy lên AWS không dùng Access Key"
+date: 2026-11-24
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# GITHUB ACTIONS DEPLOY LÊN AWS KHÔNG DÙNG ACCESS KEY: OIDC HOẠT ĐỘNG NHƯ THẾ NÀO?
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+Trong quá trình xây dựng CI/CD cho NexusOMS, nhóm sử dụng GitHub Actions để triển khai backend lên Amazon ECR và Amazon ECS, đồng thời đưa frontend lên Amazon S3 và Amazon CloudFront. Workflow cần quyền gọi AWS API nhưng không lưu AWS access key dài hạn trong GitHub Secrets.
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Giải pháp được sử dụng là **OpenID Connect (OIDC)** kết hợp với **AWS Security Token Service (AWS STS)**.
 
-Các điểm chính cần nắm:
+### Luồng xác thực
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+1. GitHub Actions yêu cầu OIDC token cho workflow đang chạy.
+2. Token chứa các claim như `aud`, `sub`, repository và branch.
+3. Workflow gọi `AssumeRoleWithWebIdentity` để yêu cầu AWS STS cấp quyền.
+4. AWS kiểm tra token dựa trên trust policy của IAM role.
+5. Nếu các điều kiện hợp lệ, AWS STS trả về credential tạm thời cho workflow.
+6. Workflow sử dụng permission policy của role để thao tác với ECR, ECS, S3 và CloudFront.
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+### Các điểm cần lưu ý
 
-...Hình ảnh...
+- Không lưu access key dài hạn trong GitHub Secrets.
+- Credential chỉ tồn tại trong thời gian ngắn và được cấp lại cho từng workflow run.
+- Trust policy cần giới hạn đúng repository, branch và audience.
+- Permission policy chỉ cấp các quyền cần thiết cho quá trình triển khai.
+- OIDC xác định workflow nào được phép assume role; permission policy xác định role được phép thao tác với tài nguyên nào.
 
-...Link...
+Bài viết đã được duyệt và đăng trên AWS Study Group:
 
-...Hướng dẫn...
+[Xem bài viết trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2346635502768075)
