@@ -7,6 +7,8 @@ chapter: false
 
 Create one S3 Gateway Endpoint for both private route tables.
 
+At task startup, Fargate uses this endpoint to download ECR image layers from AWS-managed S3. This is flow 14 in the diagram, separate from the frontend and audit buckets. The backend does not currently store product images, invoices or reports in S3.
+
 ## Step 1: Create the endpoint
 
 Open **VPC → Endpoints → Create endpoint**.
@@ -52,4 +54,4 @@ Choose **Create endpoint** and wait for **Available**.
 
 ![Create the S3 Gateway Endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png)
 
-This endpoint handles only S3 traffic. Connections to Supabase and external APIs still use the NAT Gateways.
+This endpoint handles S3 traffic. ECR API/registry, SQS, Secrets Manager, CloudWatch Logs and Supabase still use NAT Gateways in the lab configuration.

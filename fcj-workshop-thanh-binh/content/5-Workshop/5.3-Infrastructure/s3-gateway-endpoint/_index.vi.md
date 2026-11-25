@@ -7,6 +7,8 @@ chapter: false
 
 Tạo một S3 Gateway Endpoint cho hai private route table.
 
+Khi khởi động task, Fargate tải ECR image layers từ S3 do AWS quản lý qua endpoint này. Đây là luồng 14 trên sơ đồ, khác với bucket frontend và bucket audit. Backend hiện chưa lưu ảnh sản phẩm, hóa đơn hay báo cáo lên S3.
+
 ## Bước 1: Tạo endpoint
 
 Mở **VPC → Endpoints → Create endpoint**.
@@ -52,4 +54,4 @@ Chọn **Create endpoint** và chờ trạng thái **Available**.
 
 ![Tạo S3 Gateway Endpoint](/images/5-Workshop/nexusoms/5.3-Infrastructure/s3-gateway-endpoint/5-click-create-endpoint.png)
 
-Endpoint này chỉ phục vụ lưu lượng S3. Kết nối đến Supabase và API bên ngoài vẫn đi qua NAT Gateway.
+Endpoint này phục vụ lưu lượng S3. ECR API/registry, SQS, Secrets Manager, CloudWatch Logs và Supabase vẫn đi qua NAT Gateway trong cấu hình lab.

@@ -16,6 +16,8 @@ SQS main queue: Available 0, In flight 0
 SQS dead-letter queue: Available 0
 ```
 
+For the two-task configuration shown in the diagram, verify `Running 2/2`, one task in each AZ and both targets `Healthy`.
+
 ## 2. Sign in
 
 Open the CloudFront domain and sign in using the Supabase account.
@@ -46,6 +48,8 @@ Open `/login` and `/app` directly, then refresh. Frontend routes must reload cor
 
 Create a product, select a warehouse, and enter the initial quantity.
 
+Verify data inside NexusOMS. The demo does not publish products or stock changes to live shops.
+
 ![Create a product](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/3-create-product.png)
 
 ## 5. Verify orders
@@ -59,6 +63,8 @@ Verify product cost and revenue.
 ![Verify product cost](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-1-measuring-product-cost.png)
 
 ## 6. Verify webhook creation and cancellation
+
+Use the built-in simulator to generate events on demand. No orders need to be placed or cancelled on a live marketplace.
 
 Open **Webhook Simulator → Order lifecycle**. Send the create-order webhook and wait for **Processed**.
 

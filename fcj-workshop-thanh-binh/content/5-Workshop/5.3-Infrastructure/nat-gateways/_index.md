@@ -5,7 +5,7 @@ weight: 5
 chapter: false
 ---
 
-Create one NAT Gateway in each Availability Zone for outbound access from the private subnets.
+Create one NAT Gateway in each Availability Zone for outbound access to Supabase and AWS services using public endpoints. The Webhook Simulator runs inside the application.
 
 ## Step 1: Create NAT Gateway A
 

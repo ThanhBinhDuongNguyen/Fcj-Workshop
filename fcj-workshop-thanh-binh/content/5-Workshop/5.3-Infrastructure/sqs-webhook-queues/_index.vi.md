@@ -7,6 +7,8 @@ chapter: false
 
 Tạo dead-letter queue trước, sau đó tạo webhook queue và gắn redrive policy.
 
+API gửi sự kiện tạo/hủy đơn mô phỏng vào queue (luồng 5). Background worker chạy trong cùng ứng dụng poll queue, xử lý và xóa message khi thành công (luồng 6). Cả hai Fargate task dùng chung queue; không cần tạo service worker riêng cho bài lab.
+
 ## 1. Tạo Dead-letter Queue
 
 Mở **Amazon SQS → Create queue**.

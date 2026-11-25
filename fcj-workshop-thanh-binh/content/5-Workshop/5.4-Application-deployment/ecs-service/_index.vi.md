@@ -7,6 +7,8 @@ chapter: false
 
 Tạo ECS Service chạy task Fargate trong hai private subnet và đăng ký task với ALB target group.
 
+Mỗi task chạy API và `WebhookQueueWorker` trong cùng tiến trình .NET khi dùng chế độ `Sqs`. Hai task trên sơ đồ là hai bản sao của cùng ứng dụng trong một service.
+
 ## Bước 1: Tạo service
 
 Mở **Amazon ECS → Clusters → nexusoms-demo-cluster → Services → Create**.
@@ -24,6 +26,8 @@ Desired tasks: 1
 ```
 
 Chọn revision task definition mới nhất. Khi cần trình diễn hai task, tăng **Desired tasks** lên `2`.
+
+Với hai task, mở tab **Tasks** và kiểm tra mỗi Availability Zone có một task `Running`. Cả hai task đều nhận request qua ALB và poll cùng webhook queue.
 
 Với `Desired tasks = 1`, task chỉ chạy trong một Availability Zone tại một thời điểm. Việc chọn hai private subnet chưa tạo backend HA hai AZ.
 

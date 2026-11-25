@@ -16,6 +16,8 @@ Store all four values in one JSON secret. Do not create four separate secrets.
 | `systemActorId` | UUID of the active demo profile |
 | `webhookSigningSecret` | Random string with at least 32 characters |
 
+`webhookSigningSecret` verifies HMAC signatures at the simulated webhook endpoint; it is an application secret, not an AWS secret access key. ECS retrieves configuration through the execution role, while backend code accesses SQS through the task role.
+
 Get these values from Supabase:
 
 - **Session pooler:** choose **Connect → Session pooler**, then copy the host, port, and username.

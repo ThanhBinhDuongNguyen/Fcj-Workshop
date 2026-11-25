@@ -7,6 +7,8 @@ chapter: false
 
 Create the dead-letter queue first. Then create the webhook queue and attach the redrive policy.
 
+The API sends simulated order creation/cancellation events to the queue (flow 5). A background worker in the same application polls, processes and deletes messages after success (flow 6). Both Fargate tasks use the same queue; the lab does not require a separate worker service.
+
 ## 1. Create the Dead-letter Queue
 
 Open **Amazon SQS → Create queue**.

@@ -16,6 +16,8 @@ Lưu bốn giá trị trong một secret JSON. Không tạo bốn secret riêng.
 | `systemActorId` | UUID của profile demo có `is_active=true` |
 | `webhookSigningSecret` | Chuỗi ngẫu nhiên dài ít nhất 32 ký tự |
 
+`webhookSigningSecret` dùng kiểm tra chữ ký HMAC tại endpoint webhook mô phỏng; đây là secret ứng dụng, không phải AWS secret access key. ECS đọc cấu hình bằng execution role, còn mã backend gọi SQS bằng task role.
+
 Lấy các giá trị từ Supabase:
 
 - **Session pooler:** chọn **Connect → Session pooler** rồi sao chép host, port và username.

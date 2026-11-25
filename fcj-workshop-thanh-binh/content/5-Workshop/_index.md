@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-Deploy NexusOMS to AWS across two Availability Zones, process webhooks asynchronously with SQS FIFO, and use GitHub Actions to update the backend and frontend.
+Deploy NexusOMS on AWS infrastructure spanning two Availability Zones, process simulated webhooks asynchronously with SQS FIFO, and use GitHub Actions to update the backend and frontend. The lab runs one Fargate task by default; increase to two tasks to demonstrate the two-AZ configuration.
 
 > Replace every `<...>` placeholder with the real value. Copy-ready input values are provided in code blocks.
 

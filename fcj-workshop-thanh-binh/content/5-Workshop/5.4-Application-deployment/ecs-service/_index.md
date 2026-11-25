@@ -7,6 +7,8 @@ chapter: false
 
 Create an ECS Service that runs Fargate tasks in two private subnets and registers them with the ALB target group.
 
+In `Sqs` mode, each task runs the API and `WebhookQueueWorker` in the same .NET process. The two tasks in the diagram are replicas of the same application in one service.
+
 ## Step 1: Create the service
 
 Open **Amazon ECS → Clusters → nexusoms-demo-cluster → Services → Create**.
@@ -24,6 +26,8 @@ Desired tasks: 1
 ```
 
 Select the latest task definition revision. Increase **Desired tasks** to `2` when demonstrating two tasks.
+
+With two tasks, open **Tasks** and confirm one `Running` task in each Availability Zone. Both tasks receive requests through the ALB and poll the same webhook queue.
 
 With `Desired tasks = 1`, the task runs in only one Availability Zone at a time. Selecting two private subnets does not create a highly available two-AZ backend.
 

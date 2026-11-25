@@ -40,19 +40,23 @@ The current application runs locally with React/Vite, a .NET 10 API and Supabase
 | 3 | CloudFront forwards `/api/*` requests to the Application Load Balancer. |
 | 4 | The ALB routes requests to healthy Fargate tasks. |
 | 5 | The API validates a webhook and sends the message to SQS FIFO. |
-| 6 | The worker in Fargate receives and processes messages in message-group order. |
+| 6 | The background worker in Fargate polls SQS, processes messages in message-group order and deletes them after successful processing. |
 | 7 | Messages that exceed the receive limit move to the dead-letter queue. |
 | 8 | Fargate uses the NAT Gateway in its Availability Zone for outbound traffic. |
 | 9 | The NAT Gateway routes outbound traffic through the Internet Gateway. |
-| 10 | The backend connects to Supabase and external sales platforms. |
+| 10 | The backend connects to Supabase; the sales-platform Open API branch represents planned integration that is not implemented in the demo. |
 | 11 | GitHub Actions builds and pushes the backend image to ECR. |
 | 12 | GitHub Actions registers the task definition and updates the ECS service. |
 | 13 | ECS deploys the new image as Fargate tasks in two Availability Zones. |
-| 14 | Fargate accesses S3 through the S3 Gateway Endpoint. |
+| 14 | At task startup, Fargate downloads ECR image layers from AWS-managed S3 through the S3 Gateway Endpoint. Number 14 covers the entire Fargate → Endpoint → S3 route. |
 | 15 | The ALB writes access logs to the S3 audit bucket. |
 | 16 | CloudTrail writes management events to the S3 audit bucket. |
 
 The unnumbered dashed line from GitHub Actions to AWS STS represents CI/CD OIDC authentication rather than a business flow.
+
+The two Fargate tasks are replicas of the same application in one ECS service. Each task runs the API and background worker in the same .NET process. Flows 5–6 apply to both replicas, not communication between tasks or separate services. To demonstrate the two-AZ configuration, set `Desired tasks = 2` and confirm one running task in each AZ; the lab uses one task by default.
+
+The sales-platform Open API block represents planned integration. The demo uses the built-in Webhook Simulator to generate order creation, cancellation and burst events on demand. Order and stock changes are verified inside NexusOMS; they are not synchronized with live shops. Outbound flow 10 does not represent incoming marketplace webhooks.
 
 ### AWS Services Used
 - **Amazon S3 and Amazon CloudFront**: Store and distribute the static React/Vite build.
@@ -63,18 +67,19 @@ The unnumbered dashed line from GitHub Actions to AWS STS represents CI/CD OIDC 
 - **AWS STS**: Validates the GitHub OIDC token and issues temporary credentials to GitHub Actions.
 - **Amazon SQS FIFO and a dead-letter queue**: Buffer webhook bursts, preserve ordering within a message group, and isolate failed messages.
 - **Amazon VPC, NAT Gateway and Internet Gateway**: Isolate API tasks in private subnets while allowing controlled outbound access.
-- **S3 Gateway Endpoint, AWS Secrets Manager and Amazon CloudWatch**: Route S3 traffic privately, manage secrets and collect logs/metrics; ECR, Secrets Manager and CloudWatch Logs are reached through NAT Gateways.
+- **S3 Gateway Endpoint**: Downloads image layers from the AWS-managed S3 storage used by ECR. This is separate from the frontend and audit buckets. The backend does not currently store product images, invoices or reports in S3.
+- **AWS Secrets Manager and Amazon CloudWatch**: Manage application configuration and collect logs/metrics. ECR API/registry, Secrets Manager, CloudWatch Logs and SQS use NAT Gateways in the lab; S3 traffic uses the Gateway Endpoint.
 - **AWS CloudTrail and Amazon S3**: Record management events and retain CloudTrail/ALB access logs in a private audit bucket.
-- **Supabase Cloud**: Remains the external PostgreSQL database and authentication provider because the application already uses PostgreSQL and Supabase Auth. This keeps the lab focused on AWS deployment instead of database migration. A production version can move to Amazon RDS or Aurora PostgreSQL when all data must be operated in AWS.
+- **Supabase Cloud**: Provides both PostgreSQL and the Supabase Auth integration already used by the application. Keeping Supabase lets the lab focus on AWS deployment. RDS PostgreSQL can replace the database, but replacing all of Supabase also requires a separate authentication solution.
 
 ### Component Design
 - **Frontend**: React/Vite presents product, warehouse, order, profit and webhook-simulation workflows.
 - **API**: .NET 10 Modular Monolith exposes REST endpoints, validates Supabase JWTs and applies role policies.
 - **Order and inventory workflow**: PostgreSQL transactions reserve, release or commit stock while preserving an inventory-operation record.
-- **Asynchronous webhook workflow**: The API verifies HMAC and sends events to SQS FIFO; an ECS worker processes messages and the DLQ receives messages that fail more than three times.
+- **Asynchronous webhook workflow**: The API receives simulator payloads and sends them to SQS FIFO. The external webhook endpoint checks HMAC signatures; the simulator UI requires Manager/Admin access. A background worker in the same application polls the queue, processes messages and deletes them after success. The DLQ isolates failures according to the redrive policy.
 - **Order cancellation workflow**: An `order.cancelled` event records the reason, changes the order state, and releases reserved inventory when the order has not been dispatched. Idempotency prevents stock from being released twice.
 - **Database and identity**: Supabase provides PostgreSQL and Auth; the database uses a single-organization `public` schema.
-- **AWS runtime**: ECS tasks obtain secrets safely, send logs to CloudWatch, access SQS through the task role, and reach Supabase/marketplace simulators through NAT Gateways.
+- **AWS runtime**: The execution role lets ECS retrieve images, send logs and read secrets referenced by the task definition. The task role grants SQS access to application code. The backend reaches Supabase through NAT Gateways; the simulator runs inside the application.
 - **CI/CD**: GitHub Actions uses OIDC to call AWS STS, receives temporary credentials, pushes images to ECR, updates the ECS service, syncs the frontend to S3, and creates a CloudFront invalidation.
 
 ### 4. Technical Implementation

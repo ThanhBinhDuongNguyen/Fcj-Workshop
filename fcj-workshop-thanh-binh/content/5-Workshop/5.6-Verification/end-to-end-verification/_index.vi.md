@@ -18,6 +18,8 @@ SQS main queue: Available 0, In flight 0
 SQS dead-letter queue: Available 0
 ```
 
+Nếu dùng cấu hình hai task theo sơ đồ, kiểm tra `Running 2/2`, mỗi AZ có một task và cả hai target đều `Healthy`.
+
 ## 2. Đăng nhập
 
 Mở:
@@ -50,6 +52,8 @@ Mở trực tiếp `/login`, `/app`, sau đó nhấn F5. Các route frontend ph�
 
 Tạo sản phẩm, chọn kho và nhập số lượng ban đầu.
 
+Kiểm tra dữ liệu trong NexusOMS. Phiên bản demo chưa đẩy sản phẩm hoặc tồn kho lên gian hàng thật.
+
 ![Tạo sản phẩm](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/3-create-product.png)
 
 ## 5. Kiểm tra đơn hàng
@@ -63,6 +67,8 @@ Kiểm tra chi phí và doanh thu của sản phẩm.
 ![Kiểm tra chi phí sản phẩm](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-1-measuring-product-cost.png)
 
 ## 6. Kiểm tra webhook và hủy đơn
+
+Các bước dưới dùng simulator tích hợp trong ứng dụng để chủ động tạo sự kiện. Không cần đặt hoặc hủy đơn trên sàn thật.
 
 Mở **Webhook Simulator → Vòng đời đơn**. Gửi webhook tạo đơn và chờ trạng thái **Đã hoàn tất**.
 

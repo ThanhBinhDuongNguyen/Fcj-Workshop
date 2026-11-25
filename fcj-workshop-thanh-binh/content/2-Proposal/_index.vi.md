@@ -40,19 +40,23 @@ Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm,
 | 3 | CloudFront chuyển request `/api/*` đến Application Load Balancer. |
 | 4 | ALB phân phối request đến Fargate task đang healthy. |
 | 5 | API xác thực webhook rồi gửi message vào SQS FIFO. |
-| 6 | Worker trong Fargate nhận và xử lý message theo thứ tự của message group. |
+| 6 | Background worker trong Fargate chủ động poll SQS, xử lý message theo thứ tự của message group và xóa message sau khi thành công. |
 | 7 | Message lỗi quá số lần nhận được chuyển sang dead-letter queue. |
 | 8 | Fargate đi ra ngoài qua NAT Gateway của Availability Zone tương ứng. |
 | 9 | NAT Gateway đi qua Internet Gateway. |
-| 10 | Backend kết nối Supabase và các nền tảng bán hàng bên ngoài. |
+| 10 | Backend kết nối Supabase; nhánh Open API tới nền tảng bán hàng thể hiện tích hợp mục tiêu, chưa triển khai trong demo. |
 | 11 | GitHub Actions build và đẩy backend image lên ECR. |
 | 12 | GitHub Actions đăng ký task definition và cập nhật ECS service. |
 | 13 | ECS triển khai image mới thành Fargate task ở hai Availability Zone. |
-| 14 | Fargate truy cập S3 qua S3 Gateway Endpoint. |
+| 14 | Khi khởi động task, Fargate tải image layers của ECR từ S3 do AWS quản lý qua S3 Gateway Endpoint. Số 14 áp dụng cho toàn tuyến Fargate → Endpoint → S3. |
 | 15 | ALB ghi access log vào S3 audit bucket. |
 | 16 | CloudTrail ghi management event vào S3 audit bucket. |
 
 Đường nét đứt GitHub Actions → AWS STS thể hiện bước xác thực OIDC của CI/CD nên không đánh số trong luồng nghiệp vụ.
+
+Hai Fargate trên sơ đồ là hai bản sao của cùng ứng dụng trong một ECS service. Mỗi task chạy API và background worker chung trong một tiến trình .NET. Luồng 5–6 áp dụng cho cả hai task, không phải giao tiếp giữa hai task hay hai service riêng biệt. Để trình diễn cấu hình hai AZ, đặt `Desired tasks = 2` và kiểm tra mỗi AZ có một task đang chạy; bài lab mặc định dùng một task.
+
+Khối Open API của các nền tảng bán hàng là kiến trúc mục tiêu. Demo hiện dùng Webhook Simulator tích hợp trong ứng dụng để chủ động tạo sự kiện đặt đơn, hủy đơn và tải cao. Các thay đổi đơn hàng và tồn kho được kiểm chứng trong NexusOMS; chưa đồng bộ với gian hàng thật. Đường outbound ở luồng 10 không biểu diễn webhook từ sàn gửi vào hệ thống.
 
 *Dịch vụ AWS sử dụng*  
 - *Amazon S3 và Amazon CloudFront*: Lưu trữ và phân phối React/Vite build tĩnh.  
@@ -63,18 +67,19 @@ Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm,
 - *AWS STS*: Xác thực GitHub OIDC token và cấp credential tạm thời cho GitHub Actions.
 - *Amazon SQS FIFO và Dead-letter Queue*: Đệm webhook tăng đột biến, giữ thứ tự theo nhóm và cô lập message xử lý lỗi.
 - *Amazon VPC, NAT Gateway và Internet Gateway*: Cô lập API task trong private subnet nhưng vẫn cho phép outbound có kiểm soát.  
-- *S3 Gateway Endpoint, AWS Secrets Manager và Amazon CloudWatch*: Định tuyến S3 riêng tư, quản lý secret và thu log/metric; ECR, Secrets Manager và CloudWatch Logs được truy cập qua NAT Gateway.  
+- *S3 Gateway Endpoint*: Tải image layers từ S3 do ECR sử dụng qua mạng riêng. Bucket này do AWS quản lý, khác với bucket frontend và audit. Backend hiện chưa lưu ảnh sản phẩm, hóa đơn hay báo cáo lên S3.
+- *AWS Secrets Manager và Amazon CloudWatch*: Quản lý cấu hình ứng dụng và thu log/metric. ECR API/registry, Secrets Manager, CloudWatch Logs và SQS dùng NAT Gateway trong cấu hình lab; lưu lượng S3 dùng Gateway Endpoint.
 - *AWS CloudTrail và Amazon S3*: Ghi management events và lưu CloudTrail/ALB access logs trong audit bucket riêng tư.  
-- *Supabase Cloud*: Tiếp tục là PostgreSQL/Auth bên ngoài AWS vì ứng dụng đã dùng PostgreSQL và Supabase Auth, giúp bài lab tập trung vào triển khai AWS thay vì di chuyển database. Bản production có thể chuyển sang Amazon RDS hoặc Aurora PostgreSQL khi cần vận hành toàn bộ dữ liệu trong AWS.
+- *Supabase Cloud*: Cung cấp cả PostgreSQL và Supabase Auth đã được ứng dụng tích hợp. Giữ Supabase giúp bài lab tập trung vào triển khai AWS. RDS PostgreSQL có thể thay phần database, nhưng cần xử lý riêng phần xác thực nếu thay toàn bộ Supabase.
 
 *Thiết kế thành phần*  
 - *Frontend*: React/Vite hiển thị sản phẩm, kho, đơn hàng, lợi nhuận và webhook simulator.  
 - *API*: .NET 10 Modular Monolith cung cấp REST API, xác thực Supabase JWT và áp dụng role policy.  
 - *Luồng đơn/tồn*: PostgreSQL transaction giữ, nhả hoặc commit tồn và lưu inventory operation.  
-- *Luồng webhook bất đồng bộ*: API xác minh HMAC và gửi sự kiện vào SQS FIFO; worker ECS xử lý message, còn DLQ giữ message thất bại quá ba lần.
+- *Luồng webhook bất đồng bộ*: API nhận payload từ simulator và gửi vào SQS FIFO; endpoint webhook bên ngoài kiểm tra chữ ký HMAC, còn thao tác simulator trên giao diện yêu cầu quyền Manager/Admin. Background worker trong cùng ứng dụng poll queue, xử lý và xóa message khi thành công. DLQ cô lập message lỗi theo redrive policy.
 - *Luồng hủy đơn*: Sự kiện `order.cancelled` cập nhật trạng thái, lưu lý do hủy và nhả tồn đang giữ nếu đơn chưa xuất kho. Idempotency ngăn việc hoàn tồn hai lần.
 - *Database và identity*: Supabase cung cấp PostgreSQL/Auth; dữ liệu nằm trong `public` schema của một tổ chức.  
-- *AWS runtime*: ECS task lấy secret an toàn, gửi log đến CloudWatch, đọc/ghi SQS bằng task role và đi ra Supabase/marketplace simulator qua NAT Gateway.
+- *AWS runtime*: Execution role cho phép ECS lấy image, gửi log và đọc secret được tham chiếu trong task definition. Task role cấp quyền SQS cho mã ứng dụng. Backend kết nối Supabase qua NAT Gateway; simulator chạy trong ứng dụng.
 - *CI/CD*: GitHub Actions dùng OIDC để gọi AWS STS, nhận credential tạm thời, đẩy image lên ECR, cập nhật ECS service, đồng bộ frontend lên S3 và tạo CloudFront invalidation.
 
 ### 4. Triển khai kỹ thuật  

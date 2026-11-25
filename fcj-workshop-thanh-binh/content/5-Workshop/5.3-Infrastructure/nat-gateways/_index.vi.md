@@ -5,7 +5,7 @@ weight: 5
 chapter: false
 ---
 
-Tạo một NAT Gateway trong mỗi Availability Zone để các task trong private subnet truy cập Supabase và webhook ngoài AWS.
+Tạo một NAT Gateway trong mỗi Availability Zone để task trong private subnet kết nối outbound tới Supabase và các dịch vụ AWS dùng public endpoint. Webhook Simulator chạy trong ứng dụng.
 
 ## 5.1. Tạo NAT Gateway A
 
