@@ -5,29 +5,34 @@ weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
+
 # GITHUB ACTIONS DEPLOY LÊN AWS KHÔNG DÙNG ACCESS KEY: OIDC HOẠT ĐỘNG NHƯ THẾ NÀO?
 
-Trong quá trình xây dựng CI/CD cho NexusOMS, nhóm sử dụng GitHub Actions để triển khai backend lên Amazon ECR và Amazon ECS, đồng thời đưa frontend lên Amazon S3 và Amazon CloudFront. Workflow cần quyền gọi AWS API nhưng không lưu AWS access key dài hạn trong GitHub Secrets.
+### Giới thiệu
 
-Giải pháp được sử dụng là **OpenID Connect (OIDC)** kết hợp với **AWS Security Token Service (AWS STS)**.
+Trong NexusOMS, nhóm dùng GitHub Actions để triển khai backend lên ECR/ECS và frontend lên S3/CloudFront. Bài viết giải thích cách kết hợp OpenID Connect (OIDC) với AWS STS để workflow nhận credential tạm thời, thay cho việc lưu access key dài hạn trong GitHub Secrets.
 
-### Luồng xác thực
+### Nội dung chính
 
-1. GitHub Actions yêu cầu OIDC token cho workflow đang chạy.
-2. Token chứa các claim như `aud`, `sub`, repository và branch.
-3. Workflow gọi `AssumeRoleWithWebIdentity` để yêu cầu AWS STS cấp quyền.
-4. AWS kiểm tra token dựa trên trust policy của IAM role.
-5. Nếu các điều kiện hợp lệ, AWS STS trả về credential tạm thời cho workflow.
-6. Workflow sử dụng permission policy của role để thao tác với ECR, ECS, S3 và CloudFront.
+1. **Yêu cầu token:** Workflow lấy OIDC token từ GitHub, chứa thông tin về danh tính của job cùng các claim như aud và sub.
+2. **Assume role:** Workflow gửi token tới AWS STS qua AssumeRoleWithWebIdentity.
+3. **Kiểm tra điều kiện:** AWS kiểm tra token và trust policy của IAM role. Điều kiện phải giới hạn đúng repository, branch và audience theo cấu hình OIDC thực tế.
+4. **Cấp credential:** Khi hợp lệ, STS trả credential tạm thời để job gọi AWS API.
+5. **Giới hạn thao tác:** Permission policy của role quy định các quyền triển khai đối với ECR, ECS, S3 và CloudFront.
 
-### Các điểm cần lưu ý
+### Bài học rút ra
 
-- Không lưu access key dài hạn trong GitHub Secrets.
-- Credential chỉ tồn tại trong thời gian ngắn và được cấp lại cho từng workflow run.
-- Trust policy cần giới hạn đúng repository, branch và audience.
-- Permission policy chỉ cấp các quyền cần thiết cho quá trình triển khai.
-- OIDC xác định workflow nào được phép assume role; permission policy xác định role được phép thao tác với tài nguyên nào.
+Trust policy quyết định workflow nào được assume role; permission policy quyết định role được làm gì. Cần kiểm tra cả hai phần khi pipeline bị AccessDenied, thay vì tạo access key dài hạn hoặc mở rộng quyền để thử cho chạy.
 
-Bài viết đã được duyệt và đăng trên AWS Study Group:
+### Nguồn tham khảo
+
+- [OpenID Connect trong GitHub Actions](https://docs.github.com/en/actions/concepts/security/openid-connect)
+- [Cấu hình OIDC với AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws)
+
+### Bài viết và minh chứng
+
+Bài viết đã được duyệt và đăng trên AWS Study Group.
 
 [Xem bài viết trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2346635502768075)
+
+![Minh chứng bài Blog 1 đã đăng trên AWS Study Group](/images/3-Blog/blog1.png)
