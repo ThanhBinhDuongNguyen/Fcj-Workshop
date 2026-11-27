@@ -1,5 +1,5 @@
 ---
-title: "Event 1 - Buildathon Kickoff: Code the Future with CMC Global"
+title: "Event 1"
 date: 2026-09-26
 weight: 1
 chapter: false

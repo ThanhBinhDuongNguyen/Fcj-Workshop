@@ -1,5 +1,5 @@
 ---
-title: "Event 2 - AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City"
+title: "Event 2"
 date: 2026-09-29
 weight: 2
 chapter: false

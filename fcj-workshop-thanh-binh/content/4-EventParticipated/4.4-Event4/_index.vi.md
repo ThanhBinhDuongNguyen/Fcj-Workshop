@@ -1,5 +1,5 @@
 ---
-title: "Event 4 - AWS Student Community Day Vietnam 2026"
+title: "Event 4"
 date: 2026-11-21
 weight: 4
 chapter: false

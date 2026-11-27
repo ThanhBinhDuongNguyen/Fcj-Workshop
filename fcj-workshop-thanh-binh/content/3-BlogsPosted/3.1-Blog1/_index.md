@@ -1,5 +1,5 @@
 ---
-title: "Deploying from GitHub Actions to AWS without Access Keys"
+title: "Blog 1"
 date: 2026-11-24
 weight: 1
 chapter: false

@@ -1,5 +1,5 @@
 ---
-title: "Deploying a .NET REST API on ECS Fargate"
+title: "Blog 3"
 date: 2026-11-27
 weight: 3
 chapter: false

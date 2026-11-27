@@ -1,5 +1,5 @@
 ---
-title: "ECS Fargate không khởi động"
+title: "Blog 2"
 date: 2026-11-24
 weight: 2
 chapter: false

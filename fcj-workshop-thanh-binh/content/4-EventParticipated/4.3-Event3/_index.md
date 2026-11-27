@@ -1,5 +1,5 @@
 ---
-title: "Event 3 - Cloud Mastery"
+title: "Event 3"
 date: 2026-11-14
 weight: 3
 chapter: false
