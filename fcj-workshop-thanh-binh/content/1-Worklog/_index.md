@@ -24,4 +24,4 @@ This section documents my daily tasks, learning progress, and technical achievem
 * **Week 8:** [NexusOMS MVP: .NET Backend, Order–Inventory Flow & Demo-Ready Frontend](1.8-week8/)
 * **Week 9:** [AWS Deployment with ECS Fargate, S3 & CloudFront, CI/CD with GitHub Actions & OIDC, and Workshop Documentation](1.9-week9/)
 * **Week 10:** [Asynchronous Webhook Processing with SQS, AWS Workshop Completion, and Program Reports](1.10-week10/)
-* **Week 11:** *[Upcoming Worklog]*
+* **Week 11:** [Architecture and Report Completion, Three Approved Blogs, and GitHub Pages Workflow Fixes](1.11-week11/)

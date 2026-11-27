@@ -25,4 +25,4 @@ Mục này ghi chép lại toàn bộ tiến độ công việc hàng ngày, ki�
 * **Tuần 8:** [MVP NexusOMS: Backend .NET, Luồng đơn hàng–tồn kho & Frontend sẵn sàng demo](1.8-week8/)
 * **Tuần 9:** [Triển khai AWS với ECS Fargate, S3 & CloudFront, CI/CD với GitHub Actions & OIDC và Tài liệu Workshop](1.9-week9/)
 * **Tuần 10:** [Xử lý webhook bất đồng bộ với SQS, hoàn thiện Workshop AWS và báo cáo chương trình](1.10-week10/)
-* **Tuần 11:** *[Đang cập nhật]*
+* **Tuần 11:** [Hoàn thiện kiến trúc và báo cáo, ba bài blog đã duyệt và sửa workflow GitHub Pages](1.11-week11/)
