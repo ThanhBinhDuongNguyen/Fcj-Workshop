@@ -26,7 +26,7 @@ Trạng thái service Active chưa chứng minh ứng dụng hoạt động. Tr�
 
 ### Nguồn tham khảo
 
-- [IAM for Amazon ECS on AWS Fargate — Wilklins Nyatteng](https://dev.to/aws-builders/iam-for-amazon-ecs-on-aws-fargate-2bk8)
+- [IAM for Amazon ECS on AWS Fargate - Wilklins Nyatteng](https://dev.to/aws-builders/iam-for-amazon-ecs-on-aws-fargate-2bk8)
 - [Amazon ECS task execution IAM role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
 
 ### Bài viết và minh chứng
