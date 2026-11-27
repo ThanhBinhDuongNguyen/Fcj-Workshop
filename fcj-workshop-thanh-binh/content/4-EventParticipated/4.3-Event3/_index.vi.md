@@ -11,7 +11,7 @@ pre: " <b> 4.3. </b> "
 ### Mục tiêu sự kiện
 
 - Hiểu khoảng cách giữa một AI prototype và hệ thống AI doanh nghiệp sẵn sàng cho production, cùng vai trò của cloud trong quá trình này.
-- Tìm hiểu Amazon Bedrock AgentCore và năm dịch vụ cốt lõi: Runtime, Identity, Gateway, Memory và Observability.
+- Tìm hiểu Amazon Bedrock AgentCore và năm dịch vụ được giới thiệu: Runtime, Identity, Gateway, Memory và Observability.
 - Theo dõi các use case thực tế và phần demo ứng dụng AI multi-agent nội bộ được xây dựng bằng Strands.
 - Tìm hiểu các pattern multi-agent, agentic AI và cách RAG tạo câu trả lời dựa trên nguồn dữ liệu cụ thể.
 
@@ -42,7 +42,7 @@ pre: " <b> 4.3. </b> "
 - **Use case**: Giới thiệu các ví dụ thực tế từ Cox Automotive và Mobileye.
 - **Vị trí của AgentCore**: Kiến trúc gồm model, ứng dụng agent và Amazon Bedrock AgentCore.
 - **Xây dựng agent bằng Strands**: Agent được phát triển với framework Strands.
-- **Chạy agent trên AgentCore Runtime**: Chạy local phù hợp cho phát triển; khi đưa vào ứng dụng thật, agent cần được triển khai lên AgentCore Runtime để vận hành theo session.
+- **Chạy agent trên AgentCore Runtime**: Phiên chia sẻ trình bày cách phát triển agent ở local, sau đó triển khai lên AgentCore Runtime để quản lý phiên làm việc.
 - **Phân chia trách nhiệm**: Developer phụ trách business rule, dữ liệu, tool và kiểm thử; managed runtime đảm nhiệm compute, cô lập session và mở rộng tài nguyên.
 
 #### 3. Identity, Gateway, Memory và Observability
@@ -109,7 +109,7 @@ Tham dự **Cloud Mastery** giúp tôi hiểu rõ hơn những yêu cầu cần 
 - Một model chạy được chưa đủ; AI production cần security, reliability, scalability và cost control ngay từ đầu.
 - Managed runtime giúp developer tập trung vào business rule, dữ liệu, tool và kiểm thử.
 - Memory và observability là những thành phần quan trọng để agent có thể vận hành ổn định và truy vết được.
-- Model lớn chỉ nên dùng cho các tác vụ cần khả năng điều phối; tác vụ còn lại có thể dùng model nhỏ hơn để tối ưu chi phí.
+- Lựa chọn kích thước model theo tác vụ; có thể dùng model nhỏ hơn khi đáp ứng yêu cầu để tối ưu chi phí.
 
 #### Nội dung cần tiếp tục tìm hiểu
 

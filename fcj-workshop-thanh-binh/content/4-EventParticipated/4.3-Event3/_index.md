@@ -11,7 +11,7 @@ pre: " <b> 4.3. </b> "
 ### Event Objectives
 
 - Understand the gap between an AI prototype and a production-grade enterprise AI system, and the role of the cloud in closing it.  
-- Explore Amazon Bedrock AgentCore and its five core services: Runtime, Identity, Gateway, Memory and Observability.  
+- Explore Amazon Bedrock AgentCore and the five services presented: Runtime, Identity, Gateway, Memory and Observability.
 - See real-world use cases and a live demo of a multi-agent internal AI application built with Strands.  
 - Learn common multi-agent and agentic patterns, and how RAG produces grounded answers.  
 
@@ -25,27 +25,27 @@ pre: " <b> 4.3. </b> "
 
 ### Key Highlights
 
-#### 1. Section 1 - The Gap: From Prototype to Production
+#### 1. The Gap: From Prototype to Production
 
 - **The restaurant analogy**: A prototype is a home kitchen, enterprise AI is a restaurant chain, and the cloud is the central kitchen.  
 - **AI in the enterprise**: AI is a feature inside the product (Data → AI Model → Feature → Users), for example recommendations, a support chatbot and fraud detection.  
 - **Academic vs. enterprise AI**: Compared across four aspects: goal, data, users and operation.  
-- **Four pillars a model needs in production**: Security, Reliability, Scalability and Cost.  
+- **Four pillars of production AI**: Security, Reliability, Scalability and Cost.
 - **Security in AI**: Data privacy, access control and AI-specific risks.  
 - **Elastic scalability on AWS**: Lambda, Auto Scaling and Load Balancer.  
-- **The role of the cloud**: Built-in security, scaling on demand, reliability through backup zones, and pay-as-you-go cost.  
+- **The role of the cloud**: Built-in security, scaling on demand, reliability across multiple Availability Zones, and pay-as-you-go cost.
 - **AWS toolbox**: Lambda runs code on events with no servers to manage; Bedrock provides ready-made foundation models through an API; AgentCore operates AI agents (Runtime, Memory, Identity).  
 - **Use AI wisely**: The "head chef" is an orchestrator running on a large model, while the "main course", "dessert" and "cashier" roles are handled by small, cheap models.  
 
-#### 2. Section 2 - Real-World Use Cases and AgentCore Runtime
+#### 2. Real-World Use Cases and AgentCore Runtime
 
 - **Use cases**: Real-life examples such as Cox Automotive and Mobileye.  
 - **Where AgentCore fits**: The stack consists of the model, the agent application and Amazon Bedrock AgentCore.  
 - **Building an agent with Strands**: Agents are written with the Strands framework.  
-- **Running an agent with AgentCore Runtime**: Running locally is fine for development, but for a real application the agent must be deployed to AgentCore Runtime so it can run in sessions.  
+- **Running an agent with AgentCore Runtime**: The session covered developing an agent locally and then deploying it to AgentCore Runtime to manage its sessions.
 - **Division of responsibility**: Developers own business rules, data and tools, and testing; the managed runtime provides compute, session isolation and scaling.  
 
-#### 3. Section 3 - Identity, Gateway, Memory and Observability
+#### 3. Identity, Gateway, Memory and Observability
 
 - **Identity and Gateway**: AgentCore separates inbound from outbound access through a 5-step flow, and Gateway was covered as one of the remaining AgentCore services.  
 - **Building context for an agent**: System prompt, documents, tools, instructions, memory and message history.  
@@ -85,8 +85,8 @@ pre: " <b> 4.3. </b> "
 
 ### Applying to Work
 
-- **Study AI security in depth**: Before adding another AI or tool as the answer to a security problem, understand the underlying risk (data privacy, access control and AI-specific risks) and why each control is needed.  
-- **Try the local-to-application flow**: Build a small agent with Strands and deploy it to AgentCore Runtime to turn the flow in my head into hands-on experience.  
+- **Study AI security in depth**: Understand risks involving data privacy, access control and AI behavior before choosing additional security tools.
+- **Practice the deployment flow**: Build a small agent with Strands and deploy it to AgentCore Runtime.
 - **Use the four pillars as a checklist**: Review the security, reliability, scalability and cost of my own AWS architectures.  
 - **Plan for observability early**: Add logging, tracing and cost visibility before deployment, not after.  
 
@@ -103,19 +103,19 @@ Attending **Cloud Mastery** showed what it takes to move an AI application from 
 - Watched a live demo of an internal AI app that routes requests through FastAPI and a Strands router to three specialized agents.  
 - Saw how multi-agent patterns and RAG fit into a working application.  
 
-#### Leveraging modern tools
+#### Exploring modern tools
 - Learned the roles of Lambda, Bedrock and AgentCore, and how the Strands framework is used to build agents.  
 
 #### Lessons learned
 - I now have a broader overview of agentic AI.  
-- I can picture how to take an AI from local development to an application, and the flow is clear in my head.  
+- I understand the steps involved in moving an AI agent from local development to a deployed application.
 - A working model is not enough: production AI needs security, reliability, scalability and cost control from the start.  
 - A managed runtime lets developers concentrate on business rules, data, tools and testing.  
-- Memory and observability are what make agents trustworthy in production.  
-- Use large models only for orchestration and small, cheaper models for the rest.  
+- Memory supports continuity across interactions, while observability helps trace agent behavior and investigate issues.
+- Choose model size according to the task and use smaller models when they meet the requirements at a lower cost.
 
 #### Questions to explore further
-- Security needs more study. Most answers to security problems at the event were to add another AI or tool, so I want to understand the underlying issues in depth in order to manage them properly.  
+- I need to study AI security further to understand the underlying risks before choosing tools or protective controls.
 
 #### Some event photos
 ![Cloud Mastery Attendance Proof](/images/4-Event/cloud-mastery.jpg)

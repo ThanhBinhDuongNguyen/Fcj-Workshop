@@ -27,7 +27,7 @@ Tôi được thực hành nhiều nhóm dịch vụ AWS, tham gia các sự ki�
 
 ### Điều tôi hài lòng nhất
 
-- Được chủ động lựa chọn và phát triển NexusOMS thành dự án workshop cá nhân.
+- Được chủ động tham gia lựa chọn và phát triển NexusOMS thành dự án thực hành của nhóm.
 - Có cơ hội thực hiện đầy đủ các bước từ phát triển, kiểm thử đến triển khai trên AWS.
 - Được nhận góp ý về kiến trúc và nội dung từ cộng đồng.
 - Được tham gia các sự kiện AWS và tiếp cận những chủ đề thực tế ngoài phạm vi bài lab.

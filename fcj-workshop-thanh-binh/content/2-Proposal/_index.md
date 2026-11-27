@@ -25,7 +25,7 @@ NexusOMS receives a simulated marketplace webhook, verifies its HMAC signature, 
 The platform creates one operating view for products, stock and orders, reducing manual reconciliation between channels. Reservation and commit/release operations make flash-sale behavior demonstrable and auditable. This workshop validates the technical solution and does not calculate financial ROI without measured operating data.
 
 ### 3. Solution Architecture
-The current application runs locally with React/Vite, a .NET 10 API and Supabase Cloud. The target demonstration architecture serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. Amazon SQS FIFO decouples webhook intake from business processing, and a dead-letter queue isolates messages that repeatedly fail. Each Availability Zone uses its own NAT Gateway so outbound connectivity remains available if one AZ fails. AWS WAF protects the application from common malicious requests. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
+NexusOMS has been tested locally and deployed on AWS for the demonstration, using React/Vite, a .NET 10 API and Supabase Cloud. The architecture shown in the diagram serves the frontend from Amazon S3 through CloudFront, sends API requests through an Application Load Balancer, and runs the API as an Amazon ECS Fargate service in two private subnets across two Availability Zones. Amazon SQS FIFO decouples webhook intake from business processing, and a dead-letter queue isolates messages that repeatedly fail. Each Availability Zone uses its own NAT Gateway so outbound connectivity remains available if one AZ fails. AWS WAF protects the application from common malicious requests. The workshop uses the default CloudFront domain and certificate, so it does not create AWS Certificate Manager resources. CloudTrail and ALB access logs are stored in one private S3 audit bucket.
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
@@ -82,10 +82,10 @@ The sales-platform Open API block represents planned integration. The demo uses 
 
 ### 4. Technical Implementation
 **Implementation Phases**
-This project has two parts-completing the NexusOMS MVP and preparing a short AWS demonstration-each following 4 phases:
-- Build Theory and Draw Architecture: review the order/inventory domain, inspect the existing codebase and draw the target AWS architecture.
-- Calculate Price and Check Practicality: use AWS Pricing Calculator to estimate the selected-region, short-duration demonstration cost and adjust if needed.
-- Fix Architecture for Cost or Solution Fit: review security groups, IAM permissions, NAT usage, image delivery and cleanup scope before deployment.
+The project covers the NexusOMS MVP and its AWS demonstration, with four implementation phases:
+- Research and Architecture Design: review the order/inventory domain, inspect the existing codebase and draw the target AWS architecture.
+- Cost Estimation and Feasibility: use AWS Pricing Calculator to estimate the selected-region, short-duration demonstration cost and adjust if needed.
+- Architecture Review and Cost Optimization: review security groups, IAM permissions, NAT usage, image delivery and cleanup scope before deployment.
 - Develop, Test, and Deploy: test frontend/backend flows locally, build the API container, deploy the selected AWS services, verify logs and remove temporary resources after the demonstration.
 
 **Technical Requirements**
@@ -125,7 +125,7 @@ The SQS estimate assumes `100,000` billable FIFO requests per month at `$0.50 pe
 ### Cost-saving option
 A learning environment can use one NAT Gateway and omit AWS WAF. NAT Gateway cost then decreases to approximately **$43.07 per month**, reducing the total estimate to **$66.27 per month** and saving approximately **$57.07 per month**. This option accepts the NAT Gateway as a single point of failure and removes the application-protection layer provided by AWS WAF.
 
-The workshop creates two CloudWatch metric alarms for unhealthy ALB targets and the SQS dead-letter queue. Monitoring cost remains grouped under Amazon CloudWatch instead of adding another service row. Keep the approved estimate and compare it with AWS Billing after the demo. The lab does not attach an SNS notification.
+The workshop creates two CloudWatch metric alarms for unhealthy ALB targets and the SQS dead-letter queue. Monitoring costs are included under Amazon CloudWatch. The estimate provides a baseline for comparison with actual costs in AWS Billing. The lab does not attach an SNS notification.
 
 - Hardware: No additional hardware is required; the project uses the existing development machines and Supabase Cloud project.
 

@@ -32,7 +32,7 @@ pre: " <b> 4.2. </b> "
 
 #### 1. Thực trạng ứng dụng AI tại Việt Nam
 
-- **Mức độ quan tâm cao vs. Hiệu quả kinh tế thấp**: Mặc dù 26% doanh nghiệp Việt Nam đã bắt đầu triển khai AI, rào cản lớn nhất vẫn là chuyển đổi việc triển khai kỹ thuật thành lợi nhuận tài chính rõ ràng. Thảo luận tập trung vào vai trò của AI đối với sự phát triển quốc gia trong thời gian tới.
+- **Mức độ quan tâm cao nhưng hiệu quả kinh tế còn hạn chế**: Mặc dù 26% doanh nghiệp Việt Nam đã bắt đầu triển khai AI, rào cản lớn nhất vẫn là chuyển đổi việc triển khai kỹ thuật thành lợi nhuận tài chính rõ ràng. Thảo luận tập trung vào vai trò của AI đối với sự phát triển quốc gia trong thời gian tới.
 - **Thách thức về độ sẵn sàng của dữ liệu**: Các kho dữ liệu phân tán (data silos) và pipeline dữ liệu thiếu tổ chức làm chậm quá trình tích hợp các mô hình nền tảng.  
 - **Thách thức về nhân lực**: Nhu cầu tăng cao đối với kỹ sư Cloud và AI có cả kinh nghiệm vận hành lẫn năng lực thiết kế kiến trúc.  
 
@@ -46,9 +46,9 @@ Chuyển từ các chatbot tĩnh sang các **AI Agent** linh hoạt có khả n�
 
 #### 3. Nền tảng Đám mây & Dữ liệu cho Doanh nghiệp
 
-- **Bảo mật Serverless & Cơ chế bên trong AWS (Phiên chia sẻ từ CTO AWS)**: Dr. Werner Vogels chia sẻ chuyên sâu về kiến trúc bên trong của các dịch vụ AWS, minh họa cách AWS giải quyết các điểm nghẽn hạ tầng trong khi vẫn đảm bảo an toàn tối đa khi triển khai serverless.
+- **Bảo mật serverless và cơ chế bên trong AWS (phiên chia sẻ từ CTO Amazon)**: Dr. Werner Vogels chia sẻ chuyên sâu về kiến trúc bên trong của các dịch vụ AWS, minh họa cách AWS giải quyết các điểm nghẽn hạ tầng đồng thời áp dụng các biện pháp bảo mật khi triển khai serverless.
 - **Data Clean Rooms**: Thiết lập khung làm việc an toàn cho phép phân tích dữ liệu đa bên mà không lộ thông tin bảo mật.  
-- **Evolusjon lưu trữ**: Chuyển đổi các cơ sở dữ liệu local sang các kho lưu trữ Vector serverless, được quản lý hoàn toàn và tối ưu cho truy xuất tốc độ cao.  
+- **Sự phát triển của công nghệ lưu trữ**: Chuyển đổi các cơ sở dữ liệu local sang các kho lưu trữ Vector serverless, được quản lý hoàn toàn và tối ưu cho truy xuất tốc độ cao.
 - **Hạ tầng có khả năng mở rộng**: Tinh chỉnh các instance máy chủ và mô hình kiến trúc tham chiếu để cân bằng giữa chi phí huấn luyện và hiệu quả triển khai.  
 
 #### 4. Hiện đại hóa Đám mây và Tác động Tài chính (Case Study Khối Tài chính - Ngân hàng)
@@ -57,7 +57,7 @@ Chuyển từ các chatbot tĩnh sang các **AI Agent** linh hoạt có khả n�
 - **Bảo mật & Tuân thủ**: Đáp ứng các quy định nghiêm ngặt của ngành tài chính nội địa trong khi vẫn giữ được tính co giãn của hạ tầng.  
 - **Sự linh hoạt trong kinh doanh**: Rút ngắn thời gian triển khai hạ tầng từ vài tuần xuống còn vài phút, cho phép thử nghiệm sản phẩm nhanh chóng.  
 
-#### 5. Mô hình Chia sẻ Tách nhiệm trong Kỷ nguyên AI
+#### 5. Mô hình chia sẻ trách nhiệm trong kỷ nguyên AI
 
 - **AWS Quản lý**: Bảo mật *CỦA* đám mây (Security *of* the cloud), bao gồm các trung tâm dữ liệu vật lý, hạ tầng cốt lõi và các mô hình nền tảng gốc.  
 - **Khách hàng Quản lý**: Bảo mật *TRÊN* đám mây (Security *in* the cloud), bao gồm dữ liệu nội bộ doanh nghiệp, quản trị truy cập và các rào chắn prompt an toàn.  
@@ -65,7 +65,7 @@ Chuyển từ các chatbot tĩnh sang các **AI Agent** linh hoạt có khả n�
 #### 6. Quản trị Tri thức Thực tiễn (Từ Tri thức đến Hành động)
 
 - **Hợp nhất Dữ liệu**: Kết nối các nguồn tri thức phân tán và rời rạc thành một kho lưu trữ tập trung cho doanh nghiệp.  
-- **Xác thực Nguồn & Tránh Ảo giác (Delusion)**: Thực thi cấu trúc prompt nghiêm ngặt và khung RAG để đảm bảo mô hình đưa ra câu trả lời chính xác, có trích dẫn nguồn mà không bị ảo giác logic.
+- **Kiểm chứng nguồn và giảm ảo giác (hallucination)**: Kết hợp cấu trúc prompt và RAG để hỗ trợ câu trả lời có căn cứ, kèm nguồn tham chiếu; kết quả vẫn cần được đánh giá và kiểm chứng.
 - **Bảo mật Dữ liệu khi Nạp (Ingestion)**: Thiết lập các quy tắc quản lý truy cập và định danh (IAM) chặt chẽ trước khi dữ liệu tùy chỉnh được nạp vào tầng mô hình nền tảng.  
 
 #### 7. Tính Thực tế trong Kiến trúc (Tránh Dùng Quá Tay / Over-Engineering)
@@ -89,7 +89,7 @@ Chuyển từ các chatbot tĩnh sang các **AI Agent** linh hoạt có khả n�
 
 #### Kiến trúc Kỹ thuật
 
-- Sử dụng **Vector Database** kết hợp với Retrieval-Augmented Generation (RAG) để đảm bảo ứng dụng AI truy xuất dữ liệu nội bộ theo thời gian thực mà không bị ảo giác.  
+- Sử dụng **Vector Database** kết hợp với Retrieval-Augmented Generation (RAG) để truy xuất dữ liệu nội bộ liên quan và bổ sung ngữ cảnh cho câu trả lời.
 - Triển khai **Kiến trúc Serverless** một cách an toàn để tối ưu hóa chi phí vận hành bằng cách tự động giảm tải trong giờ thấp điểm.  
 - Thiết lập **API Gateway** tập trung để dễ dàng quản lý kết nối giữa các microservices riêng biệt và các mô hình AI bên thứ ba.  
 
@@ -101,18 +101,18 @@ Chuyển từ các chatbot tĩnh sang các **AI Agent** linh hoạt có khả n�
 
 ### Áp dụng vào Công việc
 
-- **Đánh giá các Giải pháp RAG**: Nghiên cứu cách tích hợp kho tri thức hiện tại của doanh nghiệp vào các pipeline RAG an toàn trên AWS để loại bỏ ảo giác đầu ra.  
-- **Kiểm tra Hạ tầng Dữ liệu**: Rà soát lại các pipeline dữ liệu nội bộ để đánh giá độ sẵn sàng cho việc phân tích Generative AI trên đám mây.  
-- **Tối ưu Chi phí Vận hành**: Thực hiện kiểm tra các workload đám mây hiện tại để chuyển đổi các quy trình phù hợp sang kiến trúc serverless.  
-- **Nâng cao Năng lực Đội ngũ**: Tham gia các buổi workshop AWS thực hành tiếp theo để liên tục tích lũy kinh nghiệm thực tế về kiến trúc AI và Cloud.  
+- **Đánh giá giải pháp RAG**: Nghiên cứu cách tích hợp tài liệu vào một luồng RAG thử nghiệm trên AWS, có kiểm chứng nguồn và đánh giá chất lượng câu trả lời.
+- **Kiểm tra hạ tầng dữ liệu**: Tìm hiểu cách đánh giá dữ liệu và luồng xử lý trước khi tích hợp Generative AI.
+- **Tối ưu chi phí vận hành**: Áp dụng kiến thức về lựa chọn tài nguyên và serverless vào các dự án thực hành phù hợp.
+- **Tiếp tục học tập**: Tham gia các workshop AWS để tích lũy kinh nghiệm thực hành về kiến trúc AI và cloud.
 
 ### Trải nghiệm Sự kiện
 
 Tham dự **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** đã mang lại một góc nhìn kỹ thuật toàn diện về cách các nhà lãnh đạo công nghệ trong khu vực đang giải quyết bài toán dịch chuyển đám mây và tích hợp Generative AI thực tế. Các trải nghiệm nổi bật bao gồm:
 
 #### Học hỏi từ các diễn giả chuyên môn cao
-- Tiếp thu các góc nhìn kiến trúc giá trị trực tiếp từ các lãnh đạo toàn cầu như Dr. Werner Vogels (CTO AWS) về bảo mật serverless và Dr. Jens Lottner.  
-- Lắng nghe các câu chuyện triển khai thực tế giúp làm nổi bật cả chiến lược thành công lẫn các bẫy vận hành thường gặp.  
+- Tiếp thu các góc nhìn kiến trúc giá trị trực tiếp từ các lãnh đạo toàn cầu như Dr. Werner Vogels (CTO Amazon) về bảo mật serverless và Dr. Jens Lottner.
+- Lắng nghe các câu chuyện triển khai thực tế giúp làm nổi bật cả chiến lược thành công lẫn các khó khăn vận hành thường gặp.
 
 #### Tiếp cận Kỹ thuật Thực tế
 - Khám phá các khung làm việc thực tiễn để tổ chức dữ liệu doanh nghiệp thành các khối lưu trữ an toàn, sẵn sàng cho AI.  
@@ -124,15 +124,15 @@ Tham dự **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** đã
 
 #### Kết nối và Thảo luận
 - Giao lưu với các kiến trúc sư, lập trình viên địa phương và các đối tác trong hệ sinh thái tại điểm cầu TP. Hồ Chí Minh.  
-- Thảo luận về thách thức tìm kiếm nhân lực đám mây nội địa và chia sẻ các thực thi tốt nhất về tái cấu trúc hệ thống.  
+- Thảo luận về thách thức tìm kiếm nhân lực đám mây nội địa và chia sẻ các phương pháp thực hành tốt về tái cấu trúc hệ thống.
 
 #### Bài học Rút ra
 - Các ứng dụng AI hiệu năng cao đòi hỏi nền tảng dữ liệu vững chắc; nếu không có kiến trúc dữ liệu sạch, các mô hình tiên tiến sẽ mất đi giá trị.  
 - Bảo mật và tuân thủ phải được tích hợp trực tiếp vào giai đoạn thiết kế kiến trúc ban đầu thay vì bổ sung ở bước cuối cùng.  
-- Tối ưu hóa việc sử dụng AI yêu cầu kiểm soát prompt nghiêm ngặt và pipeline RAG để đảm bảo kết quả tin cậy, không bị ảo giác.
+- Cấu trúc prompt, RAG và đánh giá đầu ra cần được kết hợp để cải thiện độ tin cậy và hạn chế ảo giác.
 - Hợp tác với các chuyên gia công nghệ địa phương giúp rút ngắn đáng kể thời gian triển khai và giảm thiểu rủi ro dịch chuyển dự án.  
 
 #### Một số hình ảnh sự kiện
 ![Bằng chứng tham dự AWS Cloud Day and AI Day Hanoi - Watch Party](/images/4-Event/cloud-day-and-ai.jpg)
 
-> Nhìn chung, buổi watch party đã mang lại sự cân bằng tuyệt vời giữa chiến lược tầm cao và các lời khuyên kỹ thuật thực tế, thay đổi cách tôi tư duy về việc xây dựng các hệ thống AI doanh nghiệp tiết kiệm chi phí, linh hoạt và bảo mật.
+> Nhìn chung, buổi watch party giúp tôi kết nối chiến lược công nghệ với các lựa chọn kỹ thuật khi xây dựng các hệ thống AI doanh nghiệp tiết kiệm chi phí, linh hoạt và bảo mật.

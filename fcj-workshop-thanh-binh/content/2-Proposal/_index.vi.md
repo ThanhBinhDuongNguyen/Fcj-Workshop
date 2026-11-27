@@ -25,7 +25,7 @@ NexusOMS nhận webhook marketplace mô phỏng, kiểm tra chữ ký HMAC rồi
 Hệ thống tạo một góc nhìn vận hành thống nhất cho sản phẩm, tồn và đơn, giảm đối soát thủ công giữa các kênh. Luồng reserve, release và commit giúp minh họa flash sale có kiểm soát và có thể truy vết. Workshop tập trung chứng minh giải pháp kỹ thuật nên chưa quy đổi ROI tài chính khi chưa có dữ liệu vận hành thực tế.
 
 ### 3. Kiến trúc giải pháp  
-Ứng dụng hiện chạy local bằng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc mục tiêu cho demo đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. Amazon SQS FIFO tách bước tiếp nhận webhook khỏi bước xử lý nghiệp vụ; dead-letter queue giữ các message thất bại nhiều lần. Mỗi Availability Zone có một NAT Gateway để task vẫn có đường outbound khi một AZ gặp sự cố. AWS WAF bảo vệ ứng dụng trước các request độc hại phổ biến. Workshop dùng domain cùng chứng chỉ mặc định của CloudFront nên không tạo AWS Certificate Manager. CloudTrail và ALB access logs được lưu trong một S3 audit bucket riêng tư.
+NexusOMS đã được kiểm thử local và triển khai trên AWS trong phạm vi demo, sử dụng React/Vite, .NET 10 API và Supabase Cloud. Kiến trúc trên sơ đồ đặt frontend trên Amazon S3 qua CloudFront; API đi qua Application Load Balancer và chạy bằng Amazon ECS Fargate trong hai private subnet thuộc hai Availability Zone. Amazon SQS FIFO tách bước tiếp nhận webhook khỏi bước xử lý nghiệp vụ; dead-letter queue giữ các message thất bại nhiều lần. Mỗi Availability Zone có một NAT Gateway để task vẫn có đường outbound khi một AZ gặp sự cố. AWS WAF bảo vệ ứng dụng trước các request độc hại phổ biến. Workshop dùng domain cùng chứng chỉ mặc định của CloudFront nên không tạo AWS Certificate Manager. CloudTrail và ALB access logs được lưu trong một S3 audit bucket riêng tư.
 
 ![Kiến trúc luồng nghiệp vụ NexusOMS](/images/2-Proposal/noxus-aws-architect-1.png)
 
@@ -124,7 +124,7 @@ Chi phí SQS giả định `100.000` request FIFO có tính phí mỗi tháng v�
 *Phương án tiết kiệm chi phí*
 Môi trường học tập có thể triển khai một NAT Gateway và không sử dụng AWS WAF. Chi phí NAT Gateway khi đó còn khoảng **$43.07/tháng** và tổng dự toán giảm xuống **$66.27/tháng**, tiết kiệm khoảng **$57.07/tháng**. Phương án này chấp nhận NAT Gateway trở thành single point of failure và không còn lớp bảo vệ ứng dụng của AWS WAF.
 
-Workshop tạo hai CloudWatch metric alarm cho ALB unhealthy target và SQS dead-letter queue. Chi phí monitoring được theo dõi trong mục Amazon CloudWatch, không tách thêm dòng dịch vụ. Giữ dự toán đã chốt và đối chiếu số thực tế trong AWS Billing sau demo. Bài lab không gắn SNS notification.
+Workshop tạo hai CloudWatch metric alarm cho ALB unhealthy target và SQS dead-letter queue. Chi phí giám sát được tổng hợp trong mục Amazon CloudWatch. Dự toán là cơ sở để đối chiếu với chi phí thực tế trong AWS Billing. Bài lab không gắn SNS notification.
 
 - *Phần cứng*: Không cần mua thêm; dự án dùng máy phát triển hiện có và Supabase Cloud project.  
 

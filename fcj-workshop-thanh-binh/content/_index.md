@@ -13,7 +13,7 @@ chapter: false
 
 &emsp; **Phone Number:** 0784964343
 
-&emsp; **Email:** thanhbinhnguyenduong.work@gmail.com
+&emsp; **Email:** binhndtse182321@fpt.edu.vn
 
 &emsp; **University:** FPT University
 
@@ -25,7 +25,7 @@ chapter: false
 
 &emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Internship Duration:** From 14/09/2026 to 30/11/2026
+&emsp; **Internship Duration:** From 14/09/2026 to 14/12/2026
 
 <img src="/images/avatar.jpg" alt="Nguyễn Dương Thanh Bình" style="display: block; width: 300px; max-width: 100%; height: auto; margin: 1.5rem auto;">
 
@@ -33,7 +33,7 @@ chapter: false
 
 1.  [Worklog](1-Worklog/)
 2.  [Proposal](2-Proposal/)
-3.  [BlogsPosted](3-BlogsPosted/)
+3.  [Blogs Posted](3-BlogsPosted/)
 4.  [Events Participated](4-EventParticipated/)
 5.  [Workshop](5-Workshop/)
 6.  [Self-evaluation](6-Self-evaluation/)

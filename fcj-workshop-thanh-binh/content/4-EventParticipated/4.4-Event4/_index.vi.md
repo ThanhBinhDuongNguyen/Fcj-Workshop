@@ -92,7 +92,7 @@ pre: " <b> 4.4. </b> "
 
 ### Áp dụng vào công việc
 
-- **Dùng năm lớp làm checklist**: Rà soát lớp biên, mạng, ứng dụng, kiểm tra và giám sát của các kiến trúc AWS của mình, chẳng hạn NexusOMS.
+- **Dùng năm lớp làm checklist**: Rà soát lớp biên, mạng, ứng dụng, kiểm tra và giám sát của các kiến trúc AWS của tôi, chẳng hạn NexusOMS.
 - **Rà soát quy tắc mạng**: Kiểm tra security group và định tuyến để chỉ cho phép các kết nối cần thiết, đặc biệt giữa public subnet và private subnet.
 - **Tiếp tục tìm hiểu bảo mật**: Tiếp tục học sâu về bảo mật cloud và AI, nối tiếp các câu hỏi đặt ra sau Cloud Mastery.
 

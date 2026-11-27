@@ -28,7 +28,7 @@ I practiced multiple groups of AWS services, attended community events, and desi
 
 ### What I valued most
 
-- The freedom to choose and develop NexusOMS as my personal workshop project.
+- The opportunity to help choose and develop NexusOMS as the group's practical project.
 - The opportunity to complete the full process from development and testing to AWS deployment.
 - Architecture and content feedback from the community.
 - Participation in AWS events and exposure to practical topics beyond the labs.

@@ -11,9 +11,9 @@ pre: " <b> 4.2. </b> "
 ### Event Objectives
 
 - Explore the impact of Agentic AI and Generative AI on enterprise workflows and Vietnam's digital development trajectory.  
-- Guide businesses on bridging the gap between cutting-edge technology and actual financial value.  
+- Explain how businesses can connect technology adoption with measurable financial value.
 - Showcase modern cloud architectures, serverless internals, and data strategies for scalable, secure AI deployment.  
-- Foster community networking and knowledge sharing between the Hanoi main stage and Ho Chi Minh City tech ecosystems.  
+- Support community networking and knowledge sharing between the Hanoi main stage and Ho Chi Minh City tech ecosystems.
 
 ### Speakers
 
@@ -46,7 +46,7 @@ Moving beyond static chatbots into dynamic **AI Agents** that operate independen
 
 #### 3. Enterprise Cloud & Data Foundations
 
-- **Serverless Security & Inner Mechanics (AWS CTO Session)**: Dr. Werner Vogels shared deep insights on the internal architecture of AWS services, demonstrating how AWS solves infrastructure bottlenecks while ensuring maximum safety during serverless deployment.
+- **Serverless Security & Inner Mechanics (Amazon CTO Session)**: Dr. Werner Vogels shared deep insights on the internal architecture of AWS services, demonstrating how AWS solves infrastructure bottlenecks while applying security controls during serverless deployment.
 - **Data Clean Rooms**: Safe framework setups allowing collaborative multi-party data analytics without risking privacy leaks.  
 - **Storage Evolution**: Transitioning local databases to serverless, fully-managed vector stores optimized for high-speed retrieval.  
 - **Scalable Infrastructure**: Fine-tuning compute instances and reference architecture blueprints to balance training costs with deployment efficiency.  
@@ -65,7 +65,7 @@ Moving beyond static chatbots into dynamic **AI Agents** that operate independen
 #### 6. Actionable Knowledge Management (From Knowledge to Action)
 
 - **Data Consolidation**: Connecting distributed and fragmented knowledge sources into a unified corporate repository.  
-- **Source Attributability & Delusion Avoidance**: Implementing strict prompt structures and RAG frameworks to ensure models return factual, cited answers without logical delusions (hallucinations).  
+- **Source Verification and Hallucination Reduction**: Combining prompt structure and RAG to support grounded answers with source references; results still require evaluation and verification.
 - **Data Security at Ingestion**: Setting strict identity and access management (IAM) controls before any custom data hits the foundational model layer.  
 
 #### 7. Architecture Pragmatism (Avoiding Over-Engineering)
@@ -89,7 +89,7 @@ Moving beyond static chatbots into dynamic **AI Agents** that operate independen
 
 #### Technical Architecture
 
-- Use **Vector Databases** alongside Retrieval-Augmented Generation (RAG) to ensure AI applications utilize real-time internal data without delusion.  
+- Use **Vector Databases** alongside Retrieval-Augmented Generation (RAG) to retrieve relevant internal data and provide context for generated answers.
 - Implement **Serverless Architectures** safely to optimize operational costs by scaling down during low-traffic hours.  
 - Establish unified **API Gateways** to easily manage connections between separate microservices and third-party AI models.  
 
@@ -101,26 +101,26 @@ Moving beyond static chatbots into dynamic **AI Agents** that operate independen
 
 ### Applying to Work
 
-- **Evaluate RAG & RAG Options**: Explore how to integrate current corporate knowledge bases into secure RAG pipelines on AWS to prevent output delusion.  
-- **Audit Data Infrastructure**: Review internal data pipelines to evaluate readiness for cloud-based Generative AI analytics.  
-- **Optimize Operational Costs**: Run internal audits on current cloud workloads to transition eligible processes into serverless structures.  
-- **Upskill Internal Teams**: Join upcoming local AWS workshops to continuously build hands-on experience in cloud and AI architecture.  
+- **Evaluate RAG Solutions**: Explore a trial RAG workflow on AWS that uses documents, verifies sources and evaluates answer quality.
+- **Review Data Infrastructure**: Learn how to assess data and processing workflows before integrating Generative AI.
+- **Optimize Operational Costs**: Apply resource-selection and serverless knowledge to suitable practice projects.
+- **Continue Learning**: Attend AWS workshops to gain practical experience in AI and cloud architecture.
 
 ### Event Experience
 
-Attending the **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** provided a fantastic window into how regional tech leaders are addressing real-world cloud migrations and Generative AI integration challenges. Key experiences included:
+Attending the **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** provided insight into how regional technology leaders approach cloud migration and Generative AI integration. Key experiences included:
 
 #### Learning from highly skilled speakers
-- Gained valuable architectural perspectives directly from global and regional leaders like Dr. Werner Vogels (AWS CTO) on serverless security and Dr. Jens Lottner.  
+- Gained valuable architectural perspectives directly from global and regional leaders like Dr. Werner Vogels (Amazon CTO) on serverless security and Dr. Jens Lottner.
 - Listened to real-world deployment stories that highlighted both successful strategies and common operational pitfalls.  
 
 #### Hands-on technical exposure
 - Explored practical frameworks for organizing enterprise data into scalable, secure AI-ready storage blocks.  
 - Analyzed technical case studies detailing how massive financial institutions navigate security compliance while shifting workloads to public clouds.  
 
-#### Leveraging modern tools
+#### Exploring modern tools
 - Reviewed the latest AWS tools designed to automate cloud governance, monitor data privacy, and streamline custom model fine-tuning.  
-- Discovered new ways to leverage serverless pipelines and Solution Architect blueprints to keep development environments lightweight and cost-effective.  
+- Discovered new ways to use serverless pipelines and Solution Architect blueprints to keep development environments lightweight and cost-effective.
 
 #### Networking and discussions
 - Interacted with regional architects, local developers, and ecosystem partners at the Ho Chi Minh City venue.  
@@ -129,10 +129,10 @@ Attending the **AWS Cloud Day and AI Day Hanoi - Watch Party Ho Chi Minh City** 
 #### Lessons learned
 - High-performing AI applications require strong data foundations; without clean data architectures, advanced models lose value.  
 - Security and compliance must be integrated directly into the initial architecture phase rather than added as a final step.  
-- Optimizing AI usage requires strict prompt controls and RAG pipelines to ensure reliable outputs without delusion.
+- Prompt structure, RAG and output evaluation need to work together to improve reliability and reduce hallucinations.
 - Partnering with local tech experts drastically shortens deployment times and reduces project migration risks.  
 
 #### Some event photos
 ![AWS Cloud Day and AI Day Hanoi - Watch Party Attendance Proof](/images/4-Event/cloud-day-and-ai.jpg)
 
-> Overall, the watch party provided an excellent balance of high-level strategy and actionable technical advice, reshaping how I think about building cost-effective, scalable, and secure enterprise AI systems.
+> Overall, the watch party helped me connect technology strategy with technical decisions when building cost-effective, scalable, and secure enterprise AI systems.

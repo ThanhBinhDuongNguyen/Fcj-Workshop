@@ -24,7 +24,7 @@ chapter: false
 
 &emsp; **Vị trí thực tập:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Thời gian thực tập:** Từ ngày 14/09/2026 đến ngày 30/11/2026
+&emsp; **Thời gian thực tập:** Từ ngày 14/09/2026 đến ngày 14/12/2026
 
 <img src="/images/avatar.jpg" alt="Nguyễn Dương Thanh Bình" style="display: block; width: 300px; max-width: 100%; height: auto; margin: 1.5rem auto;">
 
@@ -34,8 +34,8 @@ chapter: false
 
 1.  [Worklog](1-Worklog/)
 2.  [Proposal](2-Proposal/)
-3.  [Các bài blogs đã đăng](3-BlogsPosted/)
-4.  [Các events đã tham gia](4-EventParticipated/)
+3.  [Các bài blog đã đăng](3-BlogsPosted/)
+4.  [Các sự kiện đã tham gia](4-EventParticipated/)
 5.  [Workshop](5-Workshop/)
 6.  [Tự đánh giá](6-Self-evaluation/)
 7.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
