@@ -11,7 +11,7 @@ Create `frontend/.env.local`.
 
 ```dotenv
 VITE_DATA_MODE=supabase
-VITE_API_BASE_URL=http://localhost:8080
+VITE_API_BASE_URL=http://localhost:5145
 VITE_SUPABASE_URL=https://<PROJECT_REF>.supabase.co
 VITE_SUPABASE_ANON_KEY=<SUPABASE_PUBLISHABLE_OR_ANON_KEY>
 ```

@@ -15,12 +15,28 @@ GitHub Actions sends an OIDC token to AWS STS to assume the IAM role and receive
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
+## Numbered architecture flow
+
 | Flow | Description |
-| --- | --- |
+| ---: | --- |
+| 1 | The user accesses the system through CloudFront. |
+| 2 | CloudFront loads the React frontend from S3. |
+| 3 | CloudFront forwards `/api/*` requests to the Application Load Balancer. |
+| 4 | The ALB routes requests to healthy Fargate tasks. |
 | 5 | The API sends valid webhook events to SQS FIFO. |
-| 6 | The worker polls SQS, processes messages and deletes them after success. |
+| 6 | The worker polls SQS, processes messages in message-group order and deletes them after success. |
+| 7 | Failed messages that exceed the receive limit move to the dead-letter queue. |
+| 8 | Fargate uses the NAT Gateway in its Availability Zone for outbound traffic. |
+| 9 | The NAT Gateway routes outbound traffic through the Internet Gateway. |
 | 10 | The backend connects to Supabase; marketplace Open API access is planned integration. |
+| 11 | GitHub Actions builds and pushes the backend image to ECR. |
+| 12 | GitHub Actions registers a new task definition revision and updates the ECS service. |
+| 13 | ECS deploys the new revision as Fargate tasks according to the desired count. |
 | 14 | At startup, Fargate downloads ECR image layers from AWS-managed S3 through the S3 Gateway Endpoint. |
+| 15 | The ALB writes access logs to the S3 audit bucket. |
+| 16 | CloudTrail writes management events to the S3 audit bucket. |
+
+The unnumbered dashed line from GitHub Actions to AWS STS represents OIDC authentication to obtain temporary credentials for CI/CD.
 
 Flows 5–6 apply to both API + Worker replicas in one ECS service. Flow 14 covers the complete Fargate → Endpoint → S3 route. ECR API/registry access still uses NAT Gateways.
 

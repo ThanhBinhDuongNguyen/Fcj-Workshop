@@ -113,4 +113,6 @@ try {
 
 Continue only when all four checks are valid.
 
-These checks validate the JSON structure, URL, UUID, and connection-string syntax only. Database connectivity is confirmed when a new ECS task starts, `/health` returns `200`, and the target group becomes `Healthy`.
+These checks validate the JSON structure, URL, UUID, and connection-string syntax only. A `200` response from `/health` and a `Healthy` target confirm that the application responds; they do not test database connectivity.
+
+After deploying the frontend, sign in with the demo account and open the order list. In **DevTools → Network**, confirm that `/api/v1/orders` returns `200` with JSON data, then open an order to verify that the backend can read the database.

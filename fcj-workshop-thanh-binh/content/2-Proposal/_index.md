@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-This section summarizes the NexusOMS workshop proposal and the AWS demonstration that the team **plans** to conduct.
-
 # NexusOMS - Multi-Channel Order and Inventory Operations Platform
 ## A Practical AWS Deployment for Reliable Order, Inventory and Profit Operations
 

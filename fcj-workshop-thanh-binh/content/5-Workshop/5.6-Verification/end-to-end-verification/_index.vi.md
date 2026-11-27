@@ -58,6 +58,8 @@ Kiểm tra dữ liệu trong NexusOMS. Phiên bản demo chưa đẩy sản ph�
 
 ## 5. Kiểm tra đơn hàng
 
+Mở danh sách đơn hàng. Trong **DevTools → Network**, xác nhận `/api/v1/orders` trả `200` với dữ liệu JSON. `/health` và target `Healthy` không thay thế bước kiểm tra database này.
+
 Tạo đơn hàng bằng sản phẩm vừa tạo. Mở chi tiết đơn và kiểm tra tồn kho đã cập nhật.
 
 ![Kiểm tra chi tiết đơn hàng](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-checking-order-detail.png)

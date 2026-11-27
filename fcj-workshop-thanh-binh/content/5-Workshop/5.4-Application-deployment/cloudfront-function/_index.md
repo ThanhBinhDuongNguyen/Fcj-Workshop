@@ -1,7 +1,7 @@
 ---
 title: "CloudFront Function for SPA"
 date: 2026-11-13
-weight: 12
+weight: 11
 chapter: false
 ---
 
@@ -73,8 +73,10 @@ Do not configure distribution-wide custom 403/404 responses that return `/index.
 
 ![Associate the function with Viewer request](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
 
-## Step 5: Verify
+## Step 5: Verify the association
 
-Wait for the distribution to become **Deployed**. Copy its domain name and open `/app?page=dashboard`.
+Confirm that the function is **LIVE** and associated with **Viewer request** on **Default (*)**, then wait for the distribution to become **Deployed**. Copy its domain name for [Build and upload the frontend](../frontend-deployment/).
+
+After uploading the frontend and completing the invalidation, open `/app?page=dashboard` to verify SPA routing.
 
 ![Copy the Distribution domain name](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png)

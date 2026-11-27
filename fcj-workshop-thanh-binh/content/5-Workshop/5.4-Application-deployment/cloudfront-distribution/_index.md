@@ -1,7 +1,7 @@
 ---
 title: "CloudFront Distribution"
 date: 2026-11-13
-weight: 11
+weight: 10
 chapter: false
 ---
 
@@ -94,7 +94,7 @@ If Path pattern reports `globPattern invalid`, clear the field and type `/api/*`
 
 ## Step 6: Record the CloudFront information
 
-Record the **Distribution ID** and **Distribution domain name** for GitHub Actions.
+Save the **Distribution ID** and **Distribution domain name** for the later frontend build/upload step and GitHub Actions.
 
 ```text
 Distribution ID: E...

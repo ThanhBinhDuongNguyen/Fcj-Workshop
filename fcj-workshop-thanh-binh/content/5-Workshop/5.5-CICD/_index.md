@@ -69,9 +69,130 @@ Copy the exact `OIDC_SUBJECT` value into the trust policy. If the workflow later
 
 ![Get the GitHub owner ID and repository ID with PowerShell](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/5a-get-github-owner-and-repository-id.png)
 
-![Create the deployment policy](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/6-create-inline-deployment-policy.png)
+If `gh auth status` shows that you are signed out, run `gh auth login` first.
 
-Use the trust policy and `DeployNexusOmsFromGitHub` inline policy from the Vietnamese page. Replace every placeholder before saving.
+After creating `nexusoms-demo-github-actions-role`, open **Trust relationships → Edit trust policy**. Replace `<ACCOUNT_ID>` and `<OIDC_SUBJECT>`, then paste the complete policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/token.actions.githubusercontent.com"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+          "token.actions.githubusercontent.com:sub": "<OIDC_SUBJECT>"
+        }
+      }
+    }
+  ]
+}
+```
+
+Choose **Update policy**. Next, open **Permissions → Add permissions → Create inline policy → JSON**.
+
+Replace `<ACCOUNT_ID>` and `<DISTRIBUTION_ID>` with your values. If you used different resource names, update their ARNs to match:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "EcrLogin",
+      "Effect": "Allow",
+      "Action": "ecr:GetAuthorizationToken",
+      "Resource": "*"
+    },
+    {
+      "Sid": "PushBackendImage",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:CompleteLayerUpload",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:InitiateLayerUpload",
+        "ecr:PutImage",
+        "ecr:UploadLayerPart"
+      ],
+      "Resource": "arn:aws:ecr:ap-southeast-1:<ACCOUNT_ID>:repository/nexusoms-demo-api"
+    },
+    {
+      "Sid": "RegisterTaskDefinition",
+      "Effect": "Allow",
+      "Action": [
+        "ecs:DescribeTaskDefinition",
+        "ecs:RegisterTaskDefinition"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DeployEcsService",
+      "Effect": "Allow",
+      "Action": [
+        "ecs:UpdateService",
+        "ecs:DescribeServices"
+      ],
+      "Resource": "arn:aws:ecs:ap-southeast-1:<ACCOUNT_ID>:service/nexusoms-demo-cluster/nexusoms-demo-api-service"
+    },
+    {
+      "Sid": "PassEcsRoles",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": [
+        "arn:aws:iam::<ACCOUNT_ID>:role/nexusoms-demo-ecs-execution-role",
+        "arn:aws:iam::<ACCOUNT_ID>:role/nexusoms-demo-ecs-task-role"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "ecs-tasks.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Sid": "ListFrontendBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": "arn:aws:s3:::nexusoms-demo-frontend-<ACCOUNT_ID>"
+    },
+    {
+      "Sid": "DeployFrontendObjects",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::nexusoms-demo-frontend-<ACCOUNT_ID>/*"
+    },
+    {
+      "Sid": "InvalidateCloudFront",
+      "Effect": "Allow",
+      "Action": [
+        "cloudfront:CreateInvalidation",
+        "cloudfront:GetInvalidation"
+      ],
+      "Resource": "arn:aws:cloudfront::<ACCOUNT_ID>:distribution/<DISTRIBUTION_ID>"
+    }
+  ]
+}
+```
+
+Choose **Next** and save the inline policy as:
+
+```text
+DeployNexusOmsFromGitHub
+```
+
+![Create the deployment policy](/images/5-Workshop/nexusoms/5.5-CICD/github-actions/6-create-inline-deployment-policy.png)
 
 ## 3. Add repository variables and secrets
 

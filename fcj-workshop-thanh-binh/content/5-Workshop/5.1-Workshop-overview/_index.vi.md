@@ -15,12 +15,28 @@ GitHub Actions gửi OIDC token đến AWS STS để assume IAM role và nhận 
 
 ![NexusOMS business flow architecture](/images/2-Proposal/noxus-aws-architect-1.png)
 
+## Luồng hoạt động trên sơ đồ
+
 | Luồng | Nội dung |
-| --- | --- |
+| ---: | --- |
+| 1 | Người dùng truy cập hệ thống qua CloudFront. |
+| 2 | CloudFront lấy giao diện React từ S3. |
+| 3 | CloudFront chuyển request `/api/*` đến Application Load Balancer. |
+| 4 | ALB phân phối request đến Fargate task đang healthy. |
 | 5 | API gửi webhook hợp lệ vào SQS FIFO. |
-| 6 | Worker poll SQS, xử lý và xóa message khi thành công. |
+| 6 | Worker poll SQS, xử lý theo thứ tự của message group và xóa message khi thành công. |
+| 7 | Message lỗi vượt số lần nhận cho phép được chuyển sang dead-letter queue. |
+| 8 | Fargate đi outbound qua NAT Gateway của Availability Zone tương ứng. |
+| 9 | NAT Gateway chuyển lưu lượng outbound qua Internet Gateway. |
 | 10 | Backend kết nối Supabase; nhánh Open API tới sàn là tích hợp mục tiêu. |
+| 11 | GitHub Actions build và đẩy backend image lên ECR. |
+| 12 | GitHub Actions đăng ký task definition revision mới và cập nhật ECS service. |
+| 13 | ECS triển khai revision mới thành các Fargate task theo số lượng mong muốn. |
 | 14 | Khi khởi động, Fargate tải ECR image layers từ S3 do AWS quản lý qua S3 Gateway Endpoint. |
+| 15 | ALB ghi access log vào S3 audit bucket. |
+| 16 | CloudTrail ghi management event vào S3 audit bucket. |
+
+Đường nét đứt GitHub Actions → AWS STS thể hiện xác thực OIDC để nhận credential tạm thời cho CI/CD nên không đánh số riêng.
 
 Luồng 5–6 áp dụng cho cả hai bản sao API + Worker trong một ECS service. Luồng 14 bao gồm toàn tuyến Fargate → Endpoint → S3. ECR API/registry vẫn dùng NAT Gateway.
 

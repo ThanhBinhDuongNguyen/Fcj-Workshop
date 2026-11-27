@@ -1,9 +1,11 @@
 ---
 title: "Build và upload frontend"
 date: 2026-11-15
-weight: 10
+weight: 12
 chapter: false
 ---
+
+Hoàn thành bước [CloudFront Distribution](../cloudfront-distribution/) và [CloudFront Function](../cloudfront-function/) trước khi build. Dùng domain và Distribution ID vừa tạo.
 
 Mở PowerShell tại thư mục gốc của repository.
 
@@ -73,3 +75,9 @@ Pop-Location
 Chỉ tiếp tục khi lệnh wait kết thúc thành công.
 
 ![Tạo CloudFront invalidation](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3-create-invalidation-cloudfront.png)
+
+## 4. Kiểm tra website
+
+Mở `https://<CLOUDFRONT_DOMAIN>/app?page=dashboard` và đăng nhập bằng tài khoản demo. Nhấn F5 để kiểm tra route SPA.
+
+Mở danh sách đơn hàng. Trong **DevTools → Network**, xác nhận request `/api/v1/orders` trả `200` với dữ liệu JSON từ backend.

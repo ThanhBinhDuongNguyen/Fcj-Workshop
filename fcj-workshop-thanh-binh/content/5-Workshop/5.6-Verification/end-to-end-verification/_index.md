@@ -54,6 +54,8 @@ Verify data inside NexusOMS. The demo does not publish products or stock changes
 
 ## 5. Verify orders
 
+Open the order list. In **DevTools → Network**, confirm that `/api/v1/orders` returns `200` with JSON data. `/health` and a `Healthy` target do not replace this database check.
+
 Create an order with the new product. Open the order details and verify the remaining stock.
 
 ![Verify order details](/images/5-Workshop/nexusoms/5.6-Verification/end-to-end-verification/4-checking-order-detail.png)

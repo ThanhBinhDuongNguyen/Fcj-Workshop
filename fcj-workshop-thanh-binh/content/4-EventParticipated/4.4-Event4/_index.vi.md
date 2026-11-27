@@ -105,7 +105,7 @@ Tham dự **AWS Student Community Day Vietnam 2026** là cơ hội gặp gỡ c�
 - Theo dõi phiên của anh Kha Van về kiến trúc bảo mật nhiều lớp, sự khác biệt giữa môi trường production và lab, cùng các cơ chế như Security Group và VPC Peering.
 
 #### Cộng đồng và kết nối
-- Các phần thảo luận giúp em hiểu thêm cách các AWS Student Builder Group tổ chức hoạt động và phát triển cộng đồng sinh viên.
+- Các phần thảo luận giúp tôi hiểu thêm cách các AWS Student Builder Group tổ chức hoạt động và phát triển cộng đồng sinh viên.
 - Biết thêm về bốn cộng đồng sinh viên và các fanpage của họ.
 
 #### Bài học rút ra

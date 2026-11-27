@@ -113,4 +113,6 @@ try {
 
 Chỉ tiếp tục khi bốn dòng kiểm tra đều hợp lệ.
 
-Kiểm tra trên chỉ xác nhận cấu trúc JSON, URL, UUID và cú pháp connection string. Bằng chứng kết nối database là task ECS mới khởi động thành công, `/health` trả `200` và target group chuyển sang `Healthy`.
+Kiểm tra trên chỉ xác nhận cấu trúc JSON, URL, UUID và cú pháp connection string. `/health` trả `200` và target `Healthy` chỉ xác nhận ứng dụng phản hồi, chưa kiểm tra kết nối database.
+
+Sau khi triển khai frontend, đăng nhập bằng tài khoản demo và mở danh sách đơn hàng. Trong **DevTools → Network**, xác nhận `/api/v1/orders` trả `200` với dữ liệu JSON, rồi mở chi tiết một đơn hàng để kiểm tra backend đọc được database.

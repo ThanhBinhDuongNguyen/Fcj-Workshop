@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-Tại phần này, bạn cần tóm tắt nội dung workshop NexusOMS mà nhóm **dự tính** thực hiện và demo trên AWS.
-
 # NexusOMS - Nền tảng Vận hành Đơn hàng và Tồn kho Đa kênh  
 ## Giải pháp AWS thực tiễn cho vận hành đơn hàng, tồn kho và lợi nhuận  
 

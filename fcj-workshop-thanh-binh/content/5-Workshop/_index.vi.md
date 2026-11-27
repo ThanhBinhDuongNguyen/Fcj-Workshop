@@ -6,6 +6,8 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
+**Ngày hoàn thành Workshop: 27/11/2026.**
+
 Triển khai NexusOMS trên hạ tầng AWS gồm hai Availability Zone, xử lý webhook mô phỏng bất đồng bộ bằng SQS FIFO và dùng GitHub Actions để cập nhật backend cùng frontend. Bài lab mặc định chạy một Fargate task; tăng lên hai task để trình diễn cấu hình hai AZ.
 
 > Thay mọi placeholder `<...>` bằng giá trị thật. Các giá trị cần nhập được đặt trong khối code để có thể sao chép.

@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-Trong quá trình thực tập, em đã tham gia 4 sự kiện. Mỗi sự kiện mang đến những kiến thức, trải nghiệm và cơ hội kết nối khác nhau.
+Trong quá trình thực tập, tôi đã tham gia 4 sự kiện. Mỗi sự kiện mang đến những kiến thức, trải nghiệm và cơ hội kết nối khác nhau.
 
 ### [Event 1](4.1-Event1/)
 &emsp;**Tên sự kiện:** Buildathon Kickoff: Code the Future with CMC Global

@@ -1,9 +1,11 @@
 ---
 title: "Build and upload the frontend"
 date: 2026-11-15
-weight: 10
+weight: 12
 chapter: false
 ---
+
+Complete [CloudFront distribution](../cloudfront-distribution/) and [CloudFront Function](../cloudfront-function/) before building. Use the domain and Distribution ID you just created.
 
 Open PowerShell in the repository root.
 
@@ -73,3 +75,9 @@ Pop-Location
 Continue only after the wait command completes successfully.
 
 ![Create a CloudFront invalidation](/images/5-Workshop/nexusoms/5.4-Application-deployment/frontend-deployment/3-create-invalidation-cloudfront.png)
+
+## 4. Verify the website
+
+Open `https://<CLOUDFRONT_DOMAIN>/app?page=dashboard` and sign in with the demo account. Refresh the page to verify SPA routing.
+
+Open the order list. In **DevTools → Network**, confirm that `/api/v1/orders` returns `200` with JSON data from the backend.

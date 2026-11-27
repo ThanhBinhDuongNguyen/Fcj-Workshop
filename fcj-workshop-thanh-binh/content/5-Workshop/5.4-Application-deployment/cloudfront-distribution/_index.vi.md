@@ -1,7 +1,7 @@
 ---
 title: "CloudFront Distribution"
 date: 2026-11-13
-weight: 11
+weight: 10
 chapter: false
 ---
 
@@ -98,7 +98,7 @@ Nếu ô Path pattern báo `globPattern invalid`, xóa nội dung và gõ lại 
 
 ## Bước 6: Ghi lại thông tin CloudFront
 
-Ghi lại **Distribution ID** và **Distribution domain name** để cấu hình GitHub Actions.
+Ghi lại **Distribution ID** và **Distribution domain name** để build/upload frontend ở bước sau và cấu hình GitHub Actions.
 
 ```text
 Distribution ID: E...

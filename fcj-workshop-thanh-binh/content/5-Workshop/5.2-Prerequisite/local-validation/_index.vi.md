@@ -64,11 +64,50 @@ docker build --file backend/Dockerfile --tag nexusoms-api:local-check backend
 
 ![Kiểm tra source và Docker image](/images/5-Workshop/nexusoms/5.2-Prerequisite/local-validation/1-run-tests-and-docker-build.png)
 
-## 6. Chạy backend local
+## 6. Cấu hình và chạy backend local
 
-```powershell
-$env:WebhookQueue__Mode = "Direct"
-dotnet run --project backend/src/NexusOMS.Api/NexusOMS.Api.csproj
+Mở PowerShell tại thư mục gốc của repository. Dùng thông tin đã lưu ở bước [Supabase project](../supabase-project/). Backend không tự đọc file `frontend/.env.local`.
+
+Để lấy `PROFILE_UUID`, mở Supabase → **SQL Editor → New query** và chạy:
+
+```sql
+select id, email
+from public.profiles
+where lower(email) = lower('<EMAIL_DANG_NHAP>')
+  and is_active = true
+limit 1;
 ```
 
-Chế độ `Direct` không cần SQS. Chỉ tiếp tục khi backend build/test, frontend typecheck/test/build và Docker build đều thành công.
+Dùng UUID của tài khoản demo có role `manager` hoặc `admin`. Thay các placeholder rồi chạy nguyên khối:
+
+```powershell
+$env:ConnectionStrings__Postgres = 'Host=<SESSION_POOLER_HOST>;Port=5432;Database=postgres;Username=<POOLER_USERNAME>;Password=<DATABASE_PASSWORD>;SSL Mode=Require;Trust Server Certificate=true'
+$env:Supabase__Url = "https://<PROJECT_REF>.supabase.co"
+$env:Frontend__Origin = "http://localhost:5173"
+$env:WebhookSimulator__SystemActorId = "<PROFILE_UUID>"
+$env:WebhookSimulator__Secret = ([guid]::NewGuid().ToString("N") + [guid]::NewGuid().ToString("N"))
+$env:WebhookQueue__Mode = "Direct"
+
+dotnet run --project backend/src/NexusOMS.Api/NexusOMS.Api.csproj --launch-profile http --urls "http://localhost:5145"
+```
+
+Giữ cửa sổ này chạy. Nếu mở PowerShell mới để chạy lại backend, đặt lại các biến trên. Chế độ `Direct` không cần SQS hay AWS credentials.
+
+## 7. Chạy frontend và kiểm tra
+
+Mở **cửa sổ PowerShell thứ hai** tại thư mục gốc của repository:
+
+```powershell
+Invoke-RestMethod -Method Get -Uri "http://localhost:5145/health"
+
+Push-Location frontend
+npm run dev -- --host localhost --port 5173 --strictPort
+```
+
+Lệnh `/health` trả `status: ok` chỉ xác nhận backend đang phản hồi.
+
+Mở `http://localhost:5173`, đăng nhập bằng tài khoản demo rồi mở danh sách và chi tiết đơn hàng. Trong **DevTools → Network**, kiểm tra request `/api/v1/orders` tới `http://localhost:5145` trả `200` với dữ liệu JSON. Đây là bước kiểm tra backend đọc được database.
+
+Mở **Webhook Simulator → Vòng đời đơn**, chọn channel connection, kho và SKU mapping từ dữ liệu seed rồi gửi một webhook tạo đơn. Chờ xử lý xong và mở chi tiết đơn vừa tạo.
+
+Chỉ tiếp tục khi các bước build/test và kiểm tra local đều thành công. Nhấn `Ctrl+C` ở mỗi cửa sổ để dừng backend và frontend.

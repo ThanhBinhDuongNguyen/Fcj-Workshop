@@ -1,7 +1,7 @@
 ---
 title: "CloudFront Function cho SPA"
 date: 2026-11-13
-weight: 12
+weight: 11
 chapter: false
 ---
 
@@ -75,8 +75,10 @@ Không cấu hình custom error 403/404 trả `/index.html` với HTTP 200 cho t
 
 ![Gắn function vào Viewer request](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/6-configure-function-associations.png)
 
-## Bước 5: Kiểm tra
+## Bước 5: Kiểm tra association
 
-Chờ distribution chuyển sang **Deployed**. Sao chép domain name và mở đường dẫn `/app?page=dashboard`.
+Xác nhận function ở stage **LIVE**, được gắn vào **Viewer request** của **Default (*)**, rồi chờ distribution chuyển sang **Deployed**. Sao chép domain name để thực hiện bước [Build và upload frontend](../frontend-deployment/).
+
+Sau khi upload frontend và invalidation hoàn tất, mở đường dẫn `/app?page=dashboard` để kiểm tra route SPA.
 
 ![Sao chép Distribution domain name](/images/5-Workshop/nexusoms/5.4-Application-deployment/cloudfront-function/7-copy-distribution-domain-name.png)
