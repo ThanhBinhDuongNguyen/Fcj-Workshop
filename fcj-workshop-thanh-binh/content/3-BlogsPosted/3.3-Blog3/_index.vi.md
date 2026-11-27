@@ -1,31 +1,45 @@
 ---
-title: "Blog 3"
-date: 2024-01-01
-weight: 1
+title: "Triển khai .NET REST API trên ECS Fargate"
+date: 2026-11-27
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+# TRIỂN KHAI .NET REST API TRÊN ECS FARGATE: TỪ DOCKER IMAGE ĐẾN CONTAINER ĐANG CHẠY
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Trong NexusOMS, nhóm đóng gói .NET REST API thành Docker image và triển khai bằng Amazon ECS Fargate. ECS điều phối vòng đời task; Fargate cung cấp tài nguyên chạy container mà nhóm không phải quản lý máy chủ EC2.
 
-Các điểm chính cần nắm:
+### Luồng triển khai
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+1. GitHub Actions build Docker image từ source backend.
+2. Pipeline gắn tag theo phiên bản và push image lên Amazon ECR.
+3. Pipeline đăng ký Task Definition revision mới rồi cập nhật ECS Service.
+4. Fargate khởi tạo task và pull image từ ECR.
+5. ALB kiểm tra health check trước khi chuyển traffic tới task mới.
+6. CloudWatch Logs nhận log để theo dõi quá trình khởi động và xử lý lỗi.
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+### Các điểm chính
 
-...Hình ảnh...
+- **Task Definition** mô tả image, CPU, memory, container port, biến môi trường, secret, log và IAM role.
+- **ECS Service** duy trì số task mong muốn. Kiến trúc hai AZ cần hai task đang chạy, mỗi AZ một task; bài lab mặc định dùng một task.
+- **Networking:** ALB dùng hai public subnet; Fargate chạy trong private subnet với `awsvpc`, network interface riêng và target group kiểu `ip`.
+- **IAM:** execution role phục vụ pull image, lấy secret và gửi log; task role cấp quyền cho code gọi AWS API như SQS.
+- **Secrets Manager** lưu connection string và webhook signing secret để ECS đưa vào container khi khởi tạo task.
 
-...Link...
+### Bài học rút ra
 
-...Hướng dẫn...
+Push image thành công chưa đồng nghĩa backend đã phục vụ được request. Cần kiểm tra revision mà service đang dùng, task `RUNNING`, target `Healthy` và phản hồi API. Khi bật deployment circuit breaker cùng rollback, ECS có thể phục hồi về deployment thành công trước đó nếu deployment mới thất bại.
+
+### Nguồn tham khảo
+
+- [Task Definition cho Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-tasks-services.html)
+- [Tổng quan Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
+- [Amazon ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+- [Tổng quan Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+
+Bài viết đã được duyệt và đăng trên AWS Study Group.
+
+[Xem bài viết trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2350934632338162)
+
+![Bài viết triển khai .NET REST API trên ECS Fargate đã được duyệt](/images/3-Blog/blog3.png)

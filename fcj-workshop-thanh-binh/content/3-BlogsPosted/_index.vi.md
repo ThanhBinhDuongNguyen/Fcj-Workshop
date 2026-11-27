@@ -16,5 +16,6 @@ Bài viết trình bày cách GitHub Actions sử dụng OIDC và AWS STS để 
 
 Bài viết phân tích lỗi ECS Fargate không thể lấy secret khi khởi động, từ đó làm rõ trách nhiệm của Task Execution Role, Task Role và cách đọc thông báo AccessDenied để sửa đúng IAM policy.
 
-###  [Blog 3 - ...](3.3-Blog3/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+### [Blog 3 - TRIỂN KHAI .NET REST API TRÊN ECS FARGATE: TỪ DOCKER IMAGE ĐẾN CONTAINER ĐANG CHẠY](3.3-Blog3/)
+
+Bài viết trình bày luồng đóng gói .NET API thành Docker image, đẩy lên ECR và cập nhật ECS Fargate qua GitHub Actions. Nội dung làm rõ vai trò của Task Definition, ECS Service, ALB health check và các cấu hình cần thiết khi chạy backend trong private subnet.

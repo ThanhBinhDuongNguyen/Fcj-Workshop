@@ -1,31 +1,45 @@
 ---
-title: "Blog 3"
-date: 2024-01-01
-weight: 1
+title: "Deploying a .NET REST API on ECS Fargate"
+date: 2026-11-27
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# SESSION POLICIES IN AMAZON EKS POD IDENTITY
+# DEPLOYING A .NET REST API ON ECS FARGATE: FROM DOCKER IMAGE TO RUNNING CONTAINER
 
-Amazon EKS Pod Identity has recently added the session policies feature, allowing you to narrow IAM permissions flexibly and precisely for each pod without needing to create many separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+For NexusOMS, the team packages the .NET REST API as a Docker image and deploys it on Amazon ECS Fargate. ECS orchestrates task lifecycles, while Fargate provides compute for the containers without requiring the team to manage EC2 servers.
 
-Key points to know:
+### Deployment flow
 
-* A session policy is an inline IAM policy specified when creating or updating a Pod Identity association.
-* Effective permissions = intersection between the IAM role permissions and the session policy → the session policy can only narrow permissions, not expand them.
-* Helps avoid over-permissioning when reusing a single IAM role for multiple workloads with different needs.
-* Supports both same-account and cross-account (via IAM role chaining).
-* Significantly reduces the number of IAM roles that need to be managed, helping avoid hitting IAM quota limits in large clusters.
-* Easily configured through the AWS Management Console, AWS CLI, or AWS SDK when creating an association between a Kubernetes ServiceAccount and an IAM role.
+1. GitHub Actions builds the Docker image from the backend source.
+2. The pipeline tags the image by version and pushes it to Amazon ECR.
+3. The pipeline registers a new Task Definition revision and updates the ECS Service.
+4. Fargate starts the task and pulls the image from ECR.
+5. The ALB checks task health before routing traffic to the new task.
+6. CloudWatch Logs receives container logs for startup monitoring and troubleshooting.
 
-This feature is especially useful when you have many applications running on the same IAM role but need different permission restrictions (for example: one pod only reads a specific S3 bucket, another pod only calls certain APIs).
+### Key points
 
-...Image...
+- **Task Definition:** specifies the image, CPU, memory, container port, environment variables, secrets, logging and IAM roles.
+- **ECS Service:** maintains the desired task count. The two-AZ architecture requires two running tasks, one per AZ; the lab uses one task by default.
+- **Networking:** the ALB uses two public subnets. Fargate runs in private subnets with `awsvpc`, a dedicated network interface per task and an `ip` target group.
+- **IAM:** the execution role supports image pulls, secret retrieval and log delivery. The task role authorizes application calls to AWS APIs such as SQS.
+- **Secrets Manager:** stores the connection string and webhook signing secret for ECS to inject at task startup.
 
-...Link...
+### Lessons learned
 
-...Guide...
+A successful image push does not prove that the backend can serve requests. Verify the service's Task Definition revision, `RUNNING` tasks, `Healthy` targets and API responses. With the deployment circuit breaker and rollback enabled, ECS can return to the previous successful deployment if the new deployment fails.
+
+### References
+
+- [Task definitions for Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-tasks-services.html)
+- [Amazon ECS overview](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html)
+- [Amazon ECS task definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+- [Amazon ECR overview](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+
+The Vietnamese article was approved and published in AWS Study Group.
+
+[View the post on Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2350934632338162)
+
+![The .NET REST API on ECS Fargate article approved by AWS Study Group](/images/3-Blog/blog3.png)

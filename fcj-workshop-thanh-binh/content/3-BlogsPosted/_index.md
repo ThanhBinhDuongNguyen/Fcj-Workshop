@@ -16,5 +16,6 @@ This article explains how GitHub Actions uses OIDC and AWS STS to obtain tempora
 
 This article analyzes an ECS Fargate startup failure caused by missing permission to retrieve a secret. It explains the responsibilities of the Task Execution Role and Task Role, and shows how to read an AccessDenied error before changing an IAM policy.
 
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+### [Blog 3 - DEPLOYING A .NET REST API ON ECS FARGATE: FROM DOCKER IMAGE TO RUNNING CONTAINER](3.3-Blog3/)
+
+This article follows a .NET API from Docker image creation and ECR upload to an ECS Fargate deployment through GitHub Actions. It explains Task Definitions, ECS Services, ALB health checks and the configuration required to run the backend in private subnets.
